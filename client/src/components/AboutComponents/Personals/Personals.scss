@@ -1,0 +1,125 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+//   @include MyFlex();
+#personals{
+    background-color: var(--mode-color-1);
+    @include MyFlex();
+    gap: 50px;
+    padding: 200px 20px;
+    flex-wrap: wrap;
+    .cartBox{
+        // background-color: yellow;
+        position: relative;
+        width: 320px;
+        .imgBox{
+    @include MyFlex();
+
+            position: relative;
+            img{
+                max-width:100%;
+            }
+            .imgHoverBox{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                right: 0;
+                transition: 0.3s;
+            }
+            .linkBox{
+              background: linear-gradient(90deg,rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.69));
+                padding: 20px;
+                position: absolute;
+                top: 0;
+                width: 100px;
+                height: 100%;
+                right: 0;
+                opacity: 0;
+                transition: 0.7s;
+
+                .link{
+                    color: white;
+                
+                }
+                ul {
+                    font-size: 16px;
+                    overflow: hidden;
+                    display: flex;
+                    flex-direction: column;
+                    list-style: none;
+                    cursor: pointer;
+                    gap: 10px;
+    
+                    .lis {
+                        display: flex;
+    
+                        li {
+                            position: relative;
+                            display: flex;
+    
+                        }
+    
+                        p {
+                            
+                            width: 1%;
+                            height: 100%;
+                        }
+                    }
+    
+                    li .line {
+                        height: 2px;
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                        transform-origin: right;
+                        width: 0px;
+                        background-color: white;
+                        transition: 0.2s ease-in-out;
+                    }
+    
+                    li:hover .line {
+                        width: 100%;
+                        transition-delay: left 300ms;
+                        left: 0;
+                    }
+                }
+    
+            }
+        }
+        .imgBox:hover{
+            .imgHoverBox{
+                background: rgb(0, 0, 0);
+                transition: 0.3s;
+                opacity: 0.5;
+            }
+            .linkBox{
+                opacity: 1;
+                transition: 0.7s;
+                width: 70px;
+            }
+        }
+       
+        .textBox{
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+       font-family: 'Space Grotesk', sans-serif;
+color: var(--mode-color-2);
+            p{
+                font-size: 20px;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 600px) {
+    #personals{
+        .cartBox{
+        width: 300px;
+        }
+    } 
+}

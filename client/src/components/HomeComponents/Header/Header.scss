@@ -1,0 +1,83 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+//   @include MyFlex();
+
+header {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    @include MyFlex();
+    align-items: start;
+
+    video {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .textBox {
+        position: absolute;
+
+        p {
+            font-size: 250px;
+            margin-top: 100px;
+            font-family: 'Mansalva', sans-serif;
+            letter-spacing: 57px;
+        }
+    }
+    .leftTextBox{
+        position: absolute;
+        bottom: 130px;
+        left: 70px;
+        img{
+            max-width: 70%;
+        }
+       
+    }
+    .rightTextBox{
+        position: absolute;
+        top: 140px;
+        right: 50px;
+        display: flex;
+        justify-content: end;
+        img{
+            max-width: 70%;
+        }
+    }
+}
+@media only screen and (max-width: 552px) {
+    header {
+        .textBox {
+            p {
+                font-size: 140px;
+                margin-top: 170px;
+            }
+        }
+        
+    }
+}
+@media only screen and (max-width: 830px) {
+    header {
+        .textBox {
+            p {
+                letter-spacing: 0px;
+            }
+        }
+        .leftTextBox{
+            bottom: 100px;
+            left: 50px;
+            img{
+                max-width: 90%;
+            }
+        }
+        .rightTextBox{
+            img{
+                max-width: 80%;
+            }
+        }
+    }
+}

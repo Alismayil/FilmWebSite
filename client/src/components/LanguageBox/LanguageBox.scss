@@ -1,0 +1,29 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  //   @include MyFlex();
+
+
+
+.languageBox{
+    background-color: red;
+    width: 100px;
+    height: 40px;
+    display: flex;  
+    gap: 10px;
+.language{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: green;
+    @include MyFlex();
+overflow: hidden;
+cursor: pointer;
+    img{
+        max-width: 150%;
+    }
+}
+}

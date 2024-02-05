@@ -1,0 +1,126 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+//   @include MyFlex();
+.backTopCircleBox {
+    background: rgba(255, 255, 255, 0);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border: 1px solid rgba(255, 255, 255, 0.18);
+    font-size: 18px;
+    color: var(--bg-color-1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    fill: var(--bg-color-1);
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 0.1, 3s;
+
+    .circleBox {
+        @include MyFlex();
+        border-radius: 50%;
+        transition: 10s;
+
+
+    }
+    .circleBoxResp{
+        display: none;
+    }
+
+    .arrowBox {
+        overflow: hidden;
+        height: 50px;
+        width: 50px;
+        top: 35px;
+        left: 35px;
+        position: absolute;
+
+        p {
+            transition: 0.7s;
+            font-size: 50px;
+            @include MyFlex();
+            opacity: 1;
+        }
+
+        .arr2 {
+            opacity: 0;
+
+        }
+    }
+
+
+}
+
+.backTopCircleBox:hover {
+    .circleBox, .circleBoxResp{
+        transform: rotate(700deg);
+        transition: 15s;
+    }
+    .arrowBox {
+        p {
+            transition: 0.7s;
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+
+        .arr2 {
+            opacity: 1;
+
+        }
+    }
+
+}
+
+.back-to-top.visible {
+    opacity: 1;
+
+}
+
+@media only screen and (max-width: 954px) {
+    .backTopCircleBox {
+        font-size: 10px;
+        bottom: 5px;
+        right: 5px;
+    
+        .circleBox {
+    display: none;
+        }
+        .circleBoxResp{
+            display: flex;
+        }
+    
+        .arrowBox {
+            height: 30px;
+            width: 30px;
+            top: 20px;
+            left: 20px;
+    
+            p {
+                font-size: 30px;
+            }
+    
+        }
+    
+    
+    }
+    .backTopCircleBox:hover {
+        .arrowBox {
+            p {
+                transform: translateY(-30px);
+            }
+    
+        }
+    
+    }
+}

@@ -1,0 +1,176 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+//   @include MyFlex();
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
+
+  #filmCatagory {
+
+    .cart {
+        height: 50vh;
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+        .boxFront {
+            width: 100%;
+            height: 100%;
+            opacity: 0.65;
+        }
+
+        img {
+            width: 100%;
+            height: 40vh;
+        }
+
+        .cartHover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+    background-color: var(--mode-color-1);
+    background-color: var();
+            border: 1px solid #363535;
+            z-index: 2;
+            transition: 0.4s;
+
+            .marqueeLeft,
+            .marqueeRight {
+                height: 100%;
+                @include MyFlex();
+                overflow: hidden;
+                width: 100%;
+                position: absolute;
+
+                div {
+                    display: block;
+                    width: 200%;
+
+                    position: absolute;
+                    overflow: hidden;
+                    animation: marqueeLeft 8s linear infinite;
+.hiddenBox{
+    display: none;
+    
+}
+                    span {
+                        float: left;
+                        font-size: 100px;
+                        width: 50%;
+                        @include MyFlex();
+                        color: white;
+                        gap: 350px;
+                      color: var(--bg-color-1);
+                      font-family: 'Space Grotesk', sans-serif;
+                        img {
+                            width: 380px;
+                            height: 380px;
+                        }
+                    }
+                }
+
+            }
+
+            .marqueeRight {
+                div {
+                    animation: marqueeRight 8s linear infinite;
+                }
+
+            }
+
+            @keyframes marqueeLeft {
+                0% {
+                    left: 0;
+                }
+
+                100% {
+                    left: -100%;
+                }
+            }
+
+            @keyframes marqueeRight {
+                0% {
+                    right: 0;
+                }
+
+                100% {
+                    right: -100%;
+                }
+            }
+        }
+
+
+        .cartHover:hover {
+            transition: 0.4s;
+            background-color: transparent;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 1111px) {
+    #filmCatagory {
+
+        .cart {
+            .cartHover {
+
+                .marqueeLeft,
+                .marqueeRight {
+                    div {
+                        width: 200%;
+
+                        span {
+                            font-size: 90px;
+                            width: 50%;
+                            gap: 120px !important;
+
+                            img {
+                                width: 250px;
+                                height: 250px;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
+    }
+}
+@media only screen and (max-width: 866px) {
+    #filmCatagory {
+
+        .cart {
+            height: 40vh;
+            .cartHover {
+
+                .marqueeLeft,
+                .marqueeRight {
+                    div {
+                        width: 200%;
+                        span {
+                            display: none;
+                        }
+.hiddenBox{
+display: flex;
+font-size: 30px;
+gap: 40px;
+img{
+width: 160px;
+height: 160px;
+}
+}
+                       
+                    }
+
+                }
+            }
+        }
+
+    }
+}

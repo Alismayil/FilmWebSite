@@ -1,0 +1,176 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+//   @include MyFlex();
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
+
+#informSlide {
+    background: var(--mode-color-1);
+    padding: 100px 10px;
+    @include MyFlex();
+    display: flex;
+    gap: 40px;
+
+    .leftBox {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+
+        img {
+            width: 140px;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
+    }
+
+    .rightBox {
+        width: 70%;
+        height: 300px;
+        display: flex;
+        gap: 20px;
+        justify-content: start;
+        align-items: start;
+
+        .left {
+            color: var(--bg-color-1);
+            font-size: 200px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .right {
+            position: relative;
+
+            .signatureBox {
+                background: var(--mode-color-1);
+                position: absolute;
+                bottom: -60px;
+                right: 0px;
+                max-width: 50%;
+border-radius: 10px;
+            }
+
+            .swiper {
+                width: 62vw;
+                height: 300px;
+            }
+
+            .swiper-slide {
+                .sliderBox {
+                    // background: teal;
+                    width: 95%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 10px;
+                    font-family: 'Space Grotesk', sans-serif;
+                    color: var(--mode-color-2);
+
+                    h1 {
+                        font-size: 40px;
+                    }
+
+                    p {
+                        color: #a7a7a7;
+                        font-size: 17px;
+
+                    }
+                }
+            }
+
+            .swiper-vertical>.swiper-pagination-bullets .swiper-pagination-bullet,
+            .swiper-pagination-vertical.swiper-pagination-bullets .swiper-pagination-bullet {
+                background-color: transparent;
+                border: 2px solid var(--mode-color-2);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1160px) {
+    #informSlide {
+        gap: 20px;
+        .leftBox {
+            img {
+                width: 100px;
+            }
+        }
+        .rightBox {
+            gap: 5px;
+            height: 210px;
+            .right {
+                .swiper {
+                    height: 210px;
+                }
+            }
+        }
+    }
+
+}
+@media only screen and (max-width: 854px) {
+    #informSlide {
+        flex-direction: column;
+        gap: 20px;
+        .leftBox {
+            img {
+                width: 130px;
+            }
+        }
+        .rightBox {
+            width: 100%;
+            gap: 5px;
+            height: 210px;
+            
+            .right {
+                .signatureBox{
+                    max-width: 300px;
+                }
+                .swiper {
+                width: 90%;
+                }
+                .swiper-slide {
+                    .sliderBox {
+                        h1 {
+                            font-size: 30px;
+                        }
+                        p {
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+@media only screen and (max-width: 550px) {
+    #informSlide {
+        .rightBox {
+            .right {
+                .signatureBox{
+                    max-width: 200px;
+                }
+                .swiper-slide {
+                    .sliderBox {
+                        h1 {
+                            font-size: 20px;
+                        }
+                        p {
+                            font-size: 15px;
+                        }
+                    }
+
+                }
+                .swiper-vertical>.swiper-pagination-bullets .swiper-pagination-bullet,
+                .swiper-pagination-vertical.swiper-pagination-bullets .swiper-pagination-bullet {
+              display: none;
+                }
+            }
+        }
+    }
+
+}
