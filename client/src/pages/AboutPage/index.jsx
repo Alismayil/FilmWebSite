@@ -5,8 +5,11 @@ import NotMeanBox from '../../components/NotMeanBox';
 import Partner from '../../components/AboutComponents/Partner';
 import Personals from '../../components/AboutComponents/Personals';
 import InformSlide from '../../components/AboutComponents/InformSlide';
+import { useLocation } from 'react-router-dom';
 
 function AboutPage() {
+  const location =useLocation()
+  console.log(location.pathname);
   return (
     <>
     <NotMeanBox/>

@@ -41,6 +41,7 @@
 }
 ::selection {
      background-color:pink; 
+     color: red;
   }
 
 ::-webkit-scrollbar {

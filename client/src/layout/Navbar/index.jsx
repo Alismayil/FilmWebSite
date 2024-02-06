@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Navbar.scss'
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { HiMiniPause } from "react-icons/hi2";
 import { VscDebugStart } from "react-icons/vsc";
@@ -9,26 +9,18 @@ import FilmLogo from '../../../image/filmLogo.svg'
 import LanguageBox from '../../components/LanguageBox';
 function Navbar() {
   const [openNavbar, setopenNavbar] = useState(false)
-  const [scrollDown, setScrollDown] = useState(false);
+  const {pathname} =useLocation()
+
+
 
   function handleOpenNavbar() {
     setopenNavbar(!openNavbar)
   }
 
-  const handleScroll = () => {
-    const scrollPosition = window.scrollY;
-    setScrollDown(scrollPosition > 600);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+ 
 
   return (
-    <nav className={scrollDown ? "scrollNavbar" : ""} >
+    <nav className={pathname !== "/" ? "location" : ""} >
       <div className="respLanguageBox">
         <select name="" id="">
           <option value="">Az</option>

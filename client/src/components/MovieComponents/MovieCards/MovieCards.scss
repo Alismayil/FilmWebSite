@@ -1,0 +1,330 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+//   @include MyFlex();
+#movieCards {
+    background: var(--mode-color-1);
+    .upBox {
+        background: var(--mode-color-1);
+        @include MyFlex();
+        justify-content: space-between;
+        padding: 30px 90px;
+        z-index: 2;
+
+        .searchAndFilterBox {
+            display: flex;
+            gap: 10px;
+
+            .filterBox {
+                background: var(--bg-color-1);
+                height: 40px;
+                width: 40px;
+                @include MyFlex();
+                border-radius: 5px;
+                font-size: 20px;
+                cursor: pointer;
+                color: var(--mode-color-1);
+
+            }
+
+            .searchBox {
+                background: var(--mode-color-2);
+                height: 40px;
+                width: 220px;
+                @include MyFlex();
+                border-radius: 5px;
+                gap: 2px;
+                font-size: 25px;
+                color: var(--mode-color-1);
+
+                input {
+                    height: 100%;
+                    border-radius: 7px;
+                    border: none;
+                    padding: 0px 0px 0px 10px;
+                    outline: none;
+                    background: transparent;
+                    color: var(--mode-color-1);
+                }
+
+            }
+        }
+
+        .menuBox {
+            height: 40px;
+            width: 100px;
+            display: flex;
+            justify-content: end;
+            .twoBoxMenu {
+                background: var(--bg-color-1);
+                height: 100%;
+                width: 40%;
+                @include MyFlex();
+                border-radius: 5px;
+                font-size: 15px;
+                cursor: pointer;
+                color: var(--mode-color-1);
+
+
+            }
+
+        }
+    }
+
+    .middleBox {
+        background: var(--mode-color-1);
+        background: transparent;
+        padding: 0px 90px;
+        height: 0px;
+        z-index: 1;
+        transition: 0.7s;
+        overflow: hidden;
+
+        .filterTextBox {
+            width: 270px;
+            border-radius: 7px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            form {
+                display: flex;
+                gap: 10px;
+                font-size: 20px;
+            }
+
+            .movieTypeBox {
+                background: var(--bg-color-1);
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                padding: 20px;
+                border-radius: 7px;
+                input[type="checkbox"]:checked+label:before {
+                    background-color: var(--bg-color-1);
+                }
+
+            }
+
+            input[type="checkbox"] {
+                display: none;
+            }
+
+            label {
+                position: relative;
+                padding-left: 30px;
+                cursor: pointer;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 20px;
+                    width: 20px;
+                    // background-color: var(--bg-color-1);
+                    border: 2px solid var(--mode-color-1);
+                    border-radius: 3px;
+                }
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    display: none;
+                }
+            }
+
+          
+
+            input[type="checkbox"]:checked+label:after {
+                display: block; // Check işaretini gösterme
+                left: 10px;
+                top: 5px;
+                width: 4px;
+                height: 9px;
+                border: solid var(--mode-color-1);
+                border-width: 0 2px 2px 0;
+                transform: rotate(45deg);
+            }
+
+            .filmTypeBox {
+                background: var(--mode-color-2);
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                padding: 20px;
+                border-radius: 7px;
+                color: var(--mode-color-1);
+                input[type="checkbox"]:checked+label:before {
+                    background-color: var(--mode-color-2);
+                }
+            }
+        }
+
+    }
+
+    .downBox {
+        background: var(--mode-color-1);
+        padding: 30px 10px;
+        @include MyFlex();
+        display: flex;
+        flex-wrap: wrap;
+        gap: 50px;
+// display: grid;
+// grid-template-columns: repeat(4, auto);
+        .swiper {
+            width: 300px;
+            // margin: 0;
+            @include MyFlex();
+
+            img {
+                object-fit: cover;
+                width: 100%;
+                aspect-ratio: 1 / 1.5;
+            }
+        }
+
+        .swiper-slide {
+            @include MyFlex();
+            .posterBox {
+                width: 300px;
+                @include MyFlex();
+                border: 2px solid var(--mode-color-2);
+                border-radius: 10px;
+position: relative;
+                img {
+                    border-radius: 8px;
+
+                }
+
+                .changeBox {
+                    position: absolute;
+                    top: 20px;
+                    right: 20px;
+                    font-size: 30px;
+                    color: var(--bg-color-1);
+                    @include MyFlex();
+                    border-radius: 50%;
+                    background: white;
+                }
+                
+            }
+          
+            .textBox {
+                background: var(--mode-color-2);
+                width: 100%;
+                padding: 20px;
+                height: 450px;
+                flex-direction: column;
+                display: flex;
+                gap: 10px;
+                position: relative;
+                border-radius: 10px;
+                border: 2px solid var(--mode-color-2);
+
+
+                .playBtn {
+                    background: var(--bg-color-1);
+                    @include MyFlex();
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 50%;
+                    position: absolute;
+                    bottom: 30px;
+                    right: 30px;
+                    color: white;
+                    cursor: pointer;
+                }
+
+                .playlistBox {
+                    cursor: pointer;
+                    font-size: 30px;
+                    width: 30px;
+
+                    &:hover {
+                        color: var(--bg-color-1);
+                    }
+                }
+
+                color: var(--mode-color-1);
+
+                h1 {
+                    font-size: 50px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    color: var(--bg-color-1);
+                }
+
+                span {
+                    font-size: 20px;
+
+                }
+
+                h2 {
+                    font-size: 18px;
+                    display: flex;
+                    gap: 5px;
+
+                    p {
+                        color: #A7A7A7;
+                        font-size: 20px;
+                    }
+                }
+
+                p {
+                    font-size: 18px;
+
+                    span {
+                        font-size: 17px;
+                    }
+                }
+            }
+            .twoGridWidthText{
+                width: 200px;
+height: 300px;
+            }
+            .twoGridWidthPoster{
+                width: 200px;
+            
+            }
+        }
+      
+    }
+    .twoGrid{
+        gap: 30px 0px;
+//   display: grid;
+//   grid-template-columns: repeat(2, auto);
+//   justify-content: unset;
+//   gap: 260px 20px;
+//   padding: 150px;
+    }
+ 
+    .open {
+        transition: 0.7s;
+        height: 410px;
+    }
+   
+}
+
+
+@media only screen and (max-width: 1020px) {
+    #movieCards {
+        .upBox {
+            @include MyFlex();
+
+            .menuBox {
+                display: none;
+            }
+        }
+
+        .middleBox {
+            padding: 0px;
+            @include MyFlex();
+
+        }
+    }
+}

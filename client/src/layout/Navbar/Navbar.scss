@@ -62,14 +62,14 @@ nav {
             text-decoration: none;
 
             .navlink {
-                color: var(--mode-color-1);
+                color: var(--mode-color-2);
                 text-decoration: none;
                 padding: 0px 4px;
                 border-left: 2.5px solid transparent;
                 position: relative;
 
                 .outline {
-                    background-color: var(--mode-color-1);
+                    background-color: var(--mode-color-2);
                     height: 100%;
                     position: absolute;
                     left: 0;
@@ -251,4 +251,8 @@ display: flex;
         }
 
     }
+}
+
+.location{
+    background: var(--mode-color-1);
 }
