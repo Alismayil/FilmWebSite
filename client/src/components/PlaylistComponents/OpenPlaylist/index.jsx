@@ -3,37 +3,40 @@ import './OpenPlaylist.scss'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay } from 'swiper/modules';
+import { useTranslation } from 'react-i18next';
 
 function OpenPlaylist() {
+  const { t, i18n } = useTranslation();
+
     return (
         <section id='openPlaylist'>
             <div className="backPage">
                 <div class="marquee1">
                     <div>
-                        <p>Watch Now.</p>
-                        <p>Watch Now.</p>
-                        <p>Watch Now.</p>
+                        <p>{t("WatchNow")}</p>
+                        <p>{t("WatchNow")}</p>
+                        <p>{t("WatchNow")}</p>
                     </div>
                 </div>
                 <div class="marquee2">
                     <div>
-                        <p>Watch Now.</p>
-                        <p>Watch Now.</p>
-                        <p>Watch Now.</p>
+                        <p>{t("WatchNow")}</p>
+                        <p>{t("WatchNow")}</p>
+                        <p>{t("WatchNow")}</p>
                     </div>
                 </div>
                 <div class="marquee1">
                     <div>
-                        <p>Watch Now.</p>
-                        <p>Watch Now.</p>
-                        <p>Watch Now.</p>
+                        <p>{t("WatchNow")}</p>
+                        <p>{t("WatchNow")}</p>
+                        <p>{t("WatchNow")}</p>
                     </div>
                 </div>
                 <div class="marquee2">
                     <div>
-                        <p>Watch Now.</p>
-                        <p>Watch Now.</p>
-                        <p>Watch Now.</p>
+                        <p>{t("WatchNow")}</p>
+                        <p>{t("WatchNow")}</p>
+                        <p>{t("WatchNow")}</p>
                     </div>
                 </div>
             </div>

@@ -5,8 +5,10 @@ import SeriesBack from '../../../../image/seriesGif.gif'
 import FilmBack from '../../../../image/filmGif.gif'
 import AllMovieBack from '../../../../image/allCatagoryGif.gif'
 import { Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next'
 
 function FilmCatagory() {
+    const { t, i18n } = useTranslation();
 
     return (
         <section id='filmCatagory'>
@@ -17,23 +19,23 @@ function FilmCatagory() {
                         <div class="marqueeLeft">
                             <div>
                                 <span style={{ gap: '450px' }}>
-                                     Series
+                                     {t("FilmCategorySeries")}
                                     <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
 
 
                                 </span>
                                 <span className='hiddenBox'>
                                     <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
-                                    <>Series</>
+                                    <>{t("FilmCategorySeries")}</>
                                 </span>
                                
                                 
-                                <span style={{ gap: '450px' }}> Series
+                                <span style={{ gap: '450px' }}> {t("FilmCategorySeries")}
                                     <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
                                 </span>
                                 <span className='hiddenBox'>
                                     <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
-                                    <>Series</>
+                                    <>{t("FilmCategorySeries")}</>
                                 </span>
                                
                             </div>
@@ -48,23 +50,23 @@ function FilmCatagory() {
                     <div className="cartHover">
                         <div class="marqueeRight">
                             <div>
-                                <span> Animation
+                                <span> {t("FilmCategoryAnimations")}
                                     <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
 
 
                                 </span>
                                 <span className='hiddenBox'>
                                     <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
-                                    <>Animation</>
+                                    <>{t("FilmCategoryAnimations")}</>
                                 </span>
                                
-                                <span> Animation
+                                <span> {t("FilmCategoryAnimations")}
                                     <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
 
                                 </span>
                                 <span className='hiddenBox'>
                                     <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
-                                    <>Animation</>
+                                    <>{t("FilmCategoryAnimations")}</>
                                 </span>
                                
                             </div>
@@ -78,23 +80,23 @@ function FilmCatagory() {
                     <div className="cartHover">
                         <div class="marqueeLeft">
                             <div>
-                                <span style={{ gap: '460px' }}> Film
+                                <span style={{ gap: '460px' }}> {t("FilmCategoryFilms")}
                                     <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
 
 
                                 </span>
                                 <span className='hiddenBox'>
                                     <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
-                                    <>Film</>
+                                    <>{t("FilmCategoryFilms")}</>
                                 </span>
                                
-                                <span style={{ gap: '460px' }}> Film
+                                <span style={{ gap: '460px' }}> {t("FilmCategoryFilms")}
                                     <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
 
                                 </span>
                                 <span className='hiddenBox'>
                                     <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
-                                    <>Film</>
+                                    <>{t("FilmCategoryFilms")}</>
                                 </span>
                                
                             </div>
@@ -108,23 +110,23 @@ function FilmCatagory() {
                     <div className="cartHover">
                         <div class="marqueeRight">
                             <div>
-                                <span> All Movie
+                                <span> {t("FilmCategoryAlls")}
                                     <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
 
 
                                 </span>
                                 <span style={{gap:'30px'}} className='hiddenBox'>
                                     <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
-                                    <> All Movie</>
+                                    <> {t("FilmCategoryAlls")}</>
                                 </span>
                                
-                                <span> All Movie
+                                <span> {t("FilmCategoryAlls")}
                                     <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
 
                                 </span>
                                 <span style={{gap:'30px'}} className='hiddenBox'>
                                     <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
-                                    <> All Movie</>
+                                    <> {t("FilmCategoryAlls")}</>
                                 </span>
                                
                             </div>

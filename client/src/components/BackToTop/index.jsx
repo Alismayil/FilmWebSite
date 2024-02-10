@@ -2,9 +2,11 @@
     import './BackToTop.scss';
     import { IoIosArrowRoundUp } from "react-icons/io";
     import ReactCurvedText from "react-curved-text";
+import { useTranslation } from 'react-i18next';
 
     function BackToTopCircularText() {
     const [isVisible, setIsVisible] = useState(false);
+    const { t, i18n } = useTranslation();
 
     useEffect(() => {
         function handleScroll() {
@@ -47,7 +49,7 @@
             rx={53}
             ry={53}
             startOffset={0}
-            text=" Back To Top  ○  Back To Top ○ Back To Top ○ "
+            text={`${t("BackToTop")}  ○  ${t("BackToTop")} ○ ${t("BackToTop")} ○ `}
             />
         </div>
         <div className="circleBoxResp">
@@ -59,7 +61,7 @@
             rx={30}
             ry={30}
             startOffset={0}
-            text=" Back To Top  ○  Back To Top ○ Back To Top ○ "
+            text={`${t("BackToTop")}  ○  ${t("BackToTop")} ○ ${t("BackToTop")} ○ `}
 
             />
         </div>

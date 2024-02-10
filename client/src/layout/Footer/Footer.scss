@@ -5,6 +5,9 @@
 }
 
 //   @include MyFlex();
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap');
+
+
 footer {
     background-color: var(--mode-color-1);
     padding: 100px 70px 20px;
@@ -12,6 +15,7 @@ footer {
     @include MyFlex();
     flex-direction: column;
     gap: 50px;
+    font-family: 'Space Grotesk', sans-serif;
 
     .upBox {
         @include MyFlex();
@@ -36,11 +40,11 @@ footer {
 }
             span {
                 color: var(--mode-color-2);
-                font-size: 23px;
+                font-size: 18px;
             }
 
             ul {
-                font-size: 21px;
+                font-size: 16px;
                 overflow: hidden;
                 display: flex;
                 flex-direction: column;
@@ -101,7 +105,7 @@ footer {
 
     .downBox {
         text-align: center;
-        font-size: 21px;
+        font-size: 16px;
         color: var(--bg-color-1);
     }
 

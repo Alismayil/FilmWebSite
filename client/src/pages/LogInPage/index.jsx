@@ -11,6 +11,7 @@ import { FcGoogle } from "react-icons/fc";
 import { BiSolidUserCircle } from "react-icons/bi";
 import { TbUserCircle } from "react-icons/tb";
 import { MdEmail } from "react-icons/md";
+import { useTranslation } from 'react-i18next';
 
 function LogInPage() {
   const [leftBox, setleftBox] = useState(false)
@@ -18,6 +19,7 @@ function LogInPage() {
   const [inputValueRegister, setInputValueRegister] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordRegister, setShowPasswordRegister] = useState(false);
+  const { t, i18n } = useTranslation();
   
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -54,22 +56,22 @@ function handleChangeLeftBox() {
             <img src="https://i.pinimg.com/564x/d9/e5/39/d9e5397d7d084c4009889dfcdf0b5758.jpg" alt="" />
           </div>
           <div className="registerChangeBox">
-            <h1>User Create</h1>
+            <h1>{t("RegisterText")}</h1>
             <form action="">
               <div className="upBox">
                 <div className="firstBox">
                   <div className="icon"><BiSolidUserCircle /></div>
-                <input type="text" placeholder='First' />
+                <input type="text" placeholder={`${t("First")}`} />
                 </div>
                 <div className="lastBox">
                 <div className="icon"><TbUserCircle /></div>
-                <input type="text" placeholder='Last' />
+                <input type="text" placeholder={`${t("Last")}`} />
                 </div>
 
               </div>
               <div className="emailBox">
                 <div className="icon"><MdEmail /></div>
-              <input type="text" placeholder='Email' />
+              <input type="text" placeholder={`${t("Email")}`} />
               </div>
               <div className="passwordBox">
                 <div className="icon"> <RiLockPasswordFill /></div>
@@ -77,21 +79,21 @@ function handleChangeLeftBox() {
                  type={showPasswordRegister ? 'text' : 'password'}
         value={inputValueRegister}
         onChange={handleInputChangeRegister} 
-        placeholder='Password' />
+        placeholder={`${t("Password")}`} />
 
                 <div className="eyeIcon" onClick={togglePasswordVisibilityRegister}> {showPasswordRegister ? <h5><IoEyeOutline /></h5> : <h5><IoEyeOffOutline /></h5>}
                   </div>
               </div>
-              <button><p>Create</p><div className="line"></div></button>
+              <button><p>{t("RegisterBtn")}</p><div className="line"></div></button>
             </form>
-            <button onClick={handleChangeLeftBox}><p >Back To Login</p><div className="line"></div></button>
+            <button onClick={handleChangeLeftBox}><p >{t("RegisterBackLogin")}</p><div className="line"></div></button>
           </div>
           <div className="loginChangeBox">
-            <h1>Welcome</h1>
+            <h1>{t("LoginText")}</h1>
             <form action="">
               <div className="userNameBox">
                 <div className="icon"><FaUserAlt /></div>
-                <input type="text" placeholder='UserName' />
+                <input type="text" placeholder={`${t("UserName")}`} />
               </div>
               <div className="passwordBox">
                 <div className="icon"><RiLockPasswordFill /></div>
@@ -99,19 +101,19 @@ function handleChangeLeftBox() {
                   type={showPassword ? 'text' : 'password'}
          value={inputValue}
          onChange={handleInputChange} 
-         placeholder='Password' />
+         placeholder={`${t("Password")}`} />
                 <div className="eyeIcon" onClick={togglePasswordVisibility}> {showPassword ? <h5><IoEyeOutline /></h5> : <h5><IoEyeOffOutline /></h5>}
                   </div>
               </div>
-              <button><p>Log in</p><div className="line"></div></button>
+              <button><p>{t("LoginBtn")}</p><div className="line"></div></button>
               <div className="googleBox">
                 <div className="image">
                 <FcGoogle />
                 </div>
-                <span>Forgot password</span>
+                <span>{t("ForgotText")}</span>
               </div>
             </form>
-            <p>Don't have account? <span onClick={handleChangeLeftBox}>Register</span></p>
+            <p>{t("LoginBackRegisterFirstText")}<span onClick={handleChangeLeftBox}> {t("LoginBackRegisterMainText")}</span></p>
           </div>
         </div>
       </div>

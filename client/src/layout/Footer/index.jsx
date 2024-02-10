@@ -2,7 +2,10 @@ import React from 'react'
 import './Footer.scss'
 import { Link } from "react-router-dom";
 import filmLogo from '../../../image/filmLogo.png'
+import { useTranslation } from 'react-i18next';
 function Footer() {
+  const { t, i18n } = useTranslation();
+
   return (
     <footer>
    <div className="upBox">
@@ -11,7 +14,8 @@ function Footer() {
     <img src={filmLogo} alt="" />
     </Link>
         <span  >
-          Lorem Ipsner gravida nibh velmlaucti eialiquetmue, aene sollic.</span>
+        {t("FooterSocialMediaText")}
+</span>
         <div className="socialMediaBox">
           <ul>
             <Link to={'https://www.facebook.com/'} className='link'>
@@ -42,13 +46,14 @@ function Footer() {
         </div>
       </div>
       <div className="textBox">
-        <span>
-          PRODUCTION</span>
+        <h1>
+        {t("FooterProductionText")}
+          </h1>
         <ul>
         <Link className='link' to={'about'}>
         <div className="lis">
             <li>
-              About
+              {t("About")}
               <div className="line"></div>
             </li>
             <p></p>
@@ -58,7 +63,7 @@ function Footer() {
        <Link to={'contact'}className='link'>
        <div className="lis">
             <li>
-            Contact
+            {t("Contact")}
               <div className="line"></div>
             </li>
             <p></p>
@@ -67,7 +72,7 @@ function Footer() {
       <Link className='link' to={'movies'}>
       <div className="lis">
             <li>
-            Movies
+            {t("Movies")}
               <div className="line"></div>
             </li>
             <p></p>
@@ -76,7 +81,7 @@ function Footer() {
           <Link to={'price'} className='link'>
           <div className="lis">
             <li>
-            Price
+            {t("Price")}
               <div className="line"></div>
             </li>
             <p></p>
@@ -85,7 +90,7 @@ function Footer() {
           <Link className='link' to={'/*'}>
           <div className="lis">
             <li>
-             Error
+            {t("Error")}
               <div className="line"></div>
             </li>
             <p></p>
@@ -97,15 +102,17 @@ function Footer() {
       </div>
       <div className="textBox">
         <Link to={'login'} className='link'>
-        <span>
-        SIGN UP
-</span>
+        <h1>
+        {t("FooterSigntext")}
+</h1>
 </Link>
-        <span >Register for convenient use of our site</span>
+        <span >
+          {t("FooterLogInText")}
+</span>
       </div>
    </div>
      <div className="downBox">
-     The "First Frame" website was created in © 2024 by Ali.Ismayıl_
+     {t("FooterCreatedText")}
      </div>
     </footer>
   )

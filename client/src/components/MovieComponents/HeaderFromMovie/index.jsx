@@ -1,11 +1,14 @@
 import React from 'react'
 import './HeaderFromMovie.scss'
 import  MovieHeader from '../../../../image/MovieHeader.jpg'
+import { useTranslation } from 'react-i18next';
 
-function HeaderFromMovie() {    
+function HeaderFromMovie() {
+  const { t, i18n } = useTranslation();
+      
   return (
          <div className='headerFromMovie' style={{ backgroundImage: `url(${MovieHeader})` }}>
-            <p>MOVIE</p>
+            <p>{t("Movies")}</p>
         </div>
   )
 }

@@ -12,11 +12,13 @@ import { IoFilterSharp } from "react-icons/io5";
 import { IoMdSearch } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import useLocalStorage from '../../../hook/LocalStorage/useLocalStorage';
+import { useTranslation } from 'react-i18next';
 
 
 function MovieCards() {
     const [openFiltertextBox, setopenFiltertextBox] = useState(false)
     const [changeTwoGrid, setChangeTwoGrid] = useLocalStorage()
+    const { t, i18n } = useTranslation();
 
     function handleChangeTwogrid() {
         setChangeTwoGrid(!changeTwoGrid)
@@ -35,13 +37,13 @@ function MovieCards() {
                         <IoFilterSharp />
                     </div>
                     <div className="searchBox">
-                        <input type="text" placeholder='Search' />
+                        <input type="text" placeholder={`${t("Search")}`} />
                         <IoMdSearch />
                     </div>
                 </div>
                 <div className="menuBox">
                     <div className="twoBoxMenu" onClick={handleChangeTwogrid}>
-                      {changeTwoGrid ? <p>Big</p> : <p>Little</p>}
+                      {changeTwoGrid ? <p>{t("Big")}</p> : <p>{t("Small")}</p>}
                     </div>
                 </div>
             </div>
@@ -50,53 +52,53 @@ function MovieCards() {
                     <div className="movieTypeBox">
                         <form action="">
                             <input type="checkbox" id="seriesCheckbox" />
-                            <label for="seriesCheckbox">Series</label>
+                            <label for="seriesCheckbox">{t("FilmCategorySeries")}</label>
                         </form>
                         <form action="">
                             <input type="checkbox" id="filmCheckbox" />
-                            <label for="filmCheckbox">Film</label>
+                            <label for="filmCheckbox">{t("FilmCategoryAnimations")}</label>
                         </form>
                         <form action="">
                             <input type="checkbox" id="animationCheckbox" />
-                            <label for="animationCheckbox">Animation</label>
+                            <label for="animationCheckbox">{t("FilmCategoryFilms")}</label>
                         </form>
                     </div>
                     <div className="filmTypeBox">
                         <form action="">
                             <input type="checkbox" id="comedyCheckbox" />
-                            <label for="comedyCheckbox">Comedy</label>
+                            <label for="comedyCheckbox">{t("Comedy")}</label>
                         </form>
                         <form action="">
                             <input type="checkbox" id="horrorCheckbox" />
-                            <label for="horrorCheckbox">Horror</label>
+                            <label for="horrorCheckbox">{t("Horror")}</label>
                         </form>
                         <form action="">
                             <input type="checkbox" id="actionCheckbox" />
-                            <label for="actionCheckbox">Action</label>
+                            <label for="actionCheckbox">{t("Action")}</label>
                         </form>
                         <form action="">
                             <input type="checkbox" id="dramaCheckbox" />
-                            <label for="dramaCheckbox">Drama</label>
+                            <label for="dramaCheckbox">{t("Drama")}</label>
                         </form>
                         <form action="">
                             <input type="checkbox" id="romanticCheckbox" />
-                            <label for="romanticCheckbox">Romantic</label>
+                            <label for="romanticCheckbox">{t("Romantic")}</label>
                         </form>
                         <form action="">
                             <input type="checkbox" id="adventureCheckbox" />
-                            <label for="adventureCheckbox">Adventure</label>
+                            <label for="adventureCheckbox">{t("Adventure")}</label>
                         </form>
                         <form action="">
                             <input type="checkbox" id="fantasyCheckbox" />
-                            <label for="fantasyCheckbox">Fantasy</label>
+                            <label for="fantasyCheckbox">{t("Fantasy")}</label>
                         </form>
                         <form action="">
                             <input type="checkbox" id="sportsCheckbox" />
-                            <label for="sportsCheckbox">Sports</label>
+                            <label for="sportsCheckbox">{t("Sports")}</label>
                         </form>
                         <form action="">
                             <input type="checkbox" id="musicalCheckbox" />
-                            <label for="musicalCheckbox">Musical</label>
+                            <label for="musicalCheckbox">{t("Musical")}</label>
                         </form>
                     </div>
                 </div>

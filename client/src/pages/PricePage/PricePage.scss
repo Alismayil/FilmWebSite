@@ -5,55 +5,65 @@
 }
 
 //   @include MyFlex();
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&display=swap');
+
 .pricePage {
     background-color: var(--mode-color-1);
-    height: 86vh;
+    // height: 86vh;
     @include MyFlex();
     padding: 110px 50px;
     align-items: start;
     gap: 30px;
     flex-wrap: wrap;
-
+    font-family: 'Space Grotesk', sans-serif;
+overflow: hidden;
     .priceCart {
-        border: 3px solid  var(--mode-color-4);
+        border: 3px solid var(--mode-color-4);
         width: 400px;
         text-align: center;
-border-radius: 10px;
-.saveBox{
-    background-color: var(--bg-color-1);
-color: white;
-    padding: 10px;
-    width: 101%;
-    margin-left: -1px;
-    margin-top: -2px;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-}
+        border-radius: 10px;
+
+        .saveBox {
+            background-color: var(--bg-color-1);
+            color: white;
+            padding: 10px;
+            width: 101%;
+            margin-left: -1px;
+            margin-top: -2px;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+    font-family: 'Space Grotesk', sans-serif;
+
+        }
+
         .upBox {
             background-color: var(--mode-color-4);
             text-align: start;
             padding: 20px;
             height: 120px;
-            font-size: 24px;
+            font-size: 20px;
             display: flex;
             flex-direction: column;
             gap: 10px;
-border-top-left-radius: 6px;
-border-top-right-radius: 6px;
-color: var(--mode-color-2);
-            h2{
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            color: var(--mode-color-2);
+
+            h2 {
                 display: flex;
                 gap: 10px;
-              align-items: end;
-              color: var(--bg-color-1);
-                p{
+                align-items: end;
+                color: var(--bg-color-1);
+
+                p {
                     text-decoration: line-through;
                     color: gray;
                 }
-                span{
+
+                span {
                     color: var(--mode-color-2);
 
-                    font-size: 20px;
+                    font-size: 15px;
                 }
             }
         }
@@ -68,8 +78,9 @@ color: var(--mode-color-2);
             align-items: start;
             border-bottom-left-radius: 8px;
             border-bottom-right-radius: 8px;
+
             p {
-                font-size: 25px;
+                font-size: 18px;
                 @include MyFlex();
                 gap: 10px;
                 color: var(--mode-color-2);
@@ -84,13 +95,15 @@ color: var(--mode-color-2);
                 cursor: pointer;
                 position: relative;
                 @include MyFlex();
-overflow: hidden;
-background-color: var(--bg-color-1);
+                overflow: hidden;
+                background-color: var(--bg-color-1);
 
                 p {
+    font-family: 'Space Grotesk', sans-serif;
+
                     font-size: 15px;
                     position: absolute;
-                    top: 12px;
+                    top: 10px;
                     left: 33%;
                     z-index: 3;
                     color: white;
@@ -139,4 +152,23 @@ background-color: var(--bg-color-1);
             }
         }
     }
+}
+
+
+@media only screen and (max-width: 510px) {
+    .pricePage {
+        padding: 110px 10px;
+            .downBox {
+                
+                p {
+                    font-size: 12px !important;
+                }
+                button{
+                    width: 150px !important;
+                    p{
+                        left:25% !important;
+                    }
+                }
+            }
+        }
 }

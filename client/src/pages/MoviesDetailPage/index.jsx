@@ -8,12 +8,18 @@ import { CgPlayListAdd } from "react-icons/cg";
 import { FaRegHeart } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { IoCloseSharp } from "react-icons/io5";
+import { useTranslation } from 'react-i18next';
+import { IoIosArrowDown } from "react-icons/io";
 
 function MoviesDetailPage() {
   const [openTrailerBox, setOpenTrailerBox] = useState(false)
   const [openWatchMovieBox, setOpenWatchMovieBox] = useState(false)
+  const [openSeriesBox, setopenSeriesBox] = useState(false)
+  const { t, i18n } = useTranslation();
 
-
+  function handleOpenSeriesBox() {
+    setopenSeriesBox(!openSeriesBox)
+  }
   function handleOpenWatchMovieBox() {
     setOpenWatchMovieBox(!openWatchMovieBox)
   }
@@ -30,7 +36,7 @@ function MoviesDetailPage() {
         <title>Movies Watch</title>
       </Helmet>
       <div className="moviesDetailPage">
-        <div className={`movieWatchBox ${openWatchMovieBox ? 'openMovieBox':''}`}>
+        <div className={`movieWatchBox ${openWatchMovieBox ? 'openMovieBox' : ''}`}>
           <div className="closeBtn" onClick={handleOpenWatchMovieBox}>
             <IoCloseSharp />
           </div>
@@ -82,23 +88,39 @@ function MoviesDetailPage() {
             {/* <Link className='link' to={'/login'}> */}
             <Link className='link' >
               <div className="watchBtn" onClick={handleOpenWatchMovieBox}>
-                Watch
+                {t("Watch")}
               </div>
             </Link>
             <div className="trailerBtn" onClick={handleOpenTrailerBox}>
-              Trailer
+              {t("Trailer")}
             </div>
           </div>
+          <div className="seriesBox" onClick={handleOpenSeriesBox}>
+            <p>{t("AllSeries")}</p>
+            <IoIosArrowDown />
+            <div className={`openSeriesBox ${openSeriesBox ?"openBox":""}`}>
+              <div className="series">
+
+              </div>
+              <div className="series">
+
+              </div>
+              <div className="series">
+
+              </div>
+            </div>
+
+          </div>
           <div className="commentBox">
-            <span>Comment</span>
+            <span>{t("Comment")}</span>
             <form action="">
               <input type="text" placeholder='Your Comment' />
-              <button><p>Send</p>
+              <button><p>{t("CommentBtn")}</p>
                 <div className="line"></div></button>
             </form>
           </div>
           <div className="allCommentBox">
-            <span>All Comment</span>
+            <span>{t("AllComment")}</span>
             <div className="sendCommentBox">
               her neyse comment
             </div>

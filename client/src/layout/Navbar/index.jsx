@@ -7,10 +7,13 @@ import { VscDebugStart } from "react-icons/vsc";
 import ModeBox from '../../components/ModeBox';
 import FilmLogo from '../../../image/filmLogo.png'
 import LanguageBox from '../../components/LanguageBox';
+import { useTranslation } from 'react-i18next';
+
 function Navbar() {
   const [openNavbar, setopenNavbar] = useState(false)
   const {pathname} =useLocation()
   const [scrollPosition, setScrollPosition] = useState(0);
+  const { t, i18n } = useTranslation();
 
   const handleScroll = () => {
     const currentPosition = window.scrollY;
@@ -32,12 +35,8 @@ function Navbar() {
 
   return (
     <nav id={pathname !== "/" ? "location" : ""} className={scrollPosition > 600  ? 'black' : ''}>
-      <div className="respLanguageBox">
-        <select name="" id="">
-          <option value="">Az</option>
-          <option value="">En</option>
-          <option value="">Ru</option>
-        </select>
+      <div className="respLanguageBox" >
+      <LanguageBox/>
       </div>
       <div className="navbarLeftBox">
         <Link to={'/'}>
@@ -49,37 +48,37 @@ function Navbar() {
           <ul>
             <li>
               <NavLink className='navlink' to={'/'}>
-                Home
+                {t("Home")}
                 <div className="outline"></div>
               </NavLink>
             </li>
             <li>
               <NavLink className='navlink' to={'/about'}>
-                About
+                {t("About")}
                 <div className="outline"></div>
               </NavLink>
             </li>
             <li>
               <NavLink className='navlink' to={'/movies'}>
-              Movies
+                {t("Movies")}
                 <div className="outline"></div>
               </NavLink>
             </li>
             <li>
               <NavLink className='navlink' to={'/price'}>
-              Price
+                {t("Price")}
                 <div className="outline"></div>
               </NavLink>
             </li>
             <li>
               <NavLink className='navlink' to={'/contact'}>
-                Contact
+                {t("Contact")}
                 <div className="outline"></div>
               </NavLink>
             </li>
             <li>
               <NavLink className='navlink' to={'/playlist'}>
-              Playlist
+                {t("Playlist")}
                 <div className="outline"></div>
               </NavLink>
             </li>
@@ -92,7 +91,8 @@ function Navbar() {
         </div>
         <div className="logInBox">
           <Link className='link' to={'/login'}>
-            <button><p>Log In</p>
+              
+            <button><p>{t("LoginBtn")}</p>
             <div className="frontBox"></div>
             </button>
           </Link>
@@ -105,44 +105,44 @@ function Navbar() {
       <ul>
             <li>
               <NavLink className='navlink' to={'/'}>
-                Home
+              {t("Home")}
                 <div className="outline"></div>
               </NavLink>
             </li>
             <li>
               <NavLink className='navlink' to={'/about'}>
-                About
+              {t("About")}
                 <div className="outline"></div>
               </NavLink>
             </li>
             <li>
               <NavLink className='navlink' to={'/movies'}>
-              Movies
+              {t("Movies")}
                 <div className="outline"></div>
               </NavLink>
             </li>
             <li>
               <NavLink className='navlink' to={'/price'}>
-              Price
+              {t("Price")}
                 <div className="outline"></div>
               </NavLink>
             </li>
             <li>
               <NavLink className='navlink' to={'/contact'}>
-                Contact
+              {t("Contact")}
                 <div className="outline"></div>
               </NavLink>
             </li>
             <li>
               <NavLink className='navlink' to={'/playlist'}>
-              Playlist
+              {t("Playlist")}
                 <div className="outline"></div>
               </NavLink>
             </li>
           </ul>
           <div className="logInBox">
           <Link className='link' to={'/login'}>
-            <button>Log In</button>
+            <button>{t("LoginBtn")}</button>
           </Link>
         </div>
       

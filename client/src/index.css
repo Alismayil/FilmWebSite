@@ -5,6 +5,7 @@
     --mode-color-3:#141314;
     --mode-color-4:#0d0c0c;
     --mode-color-5:#0d0c0c24;
+    font-family: 'Space Grotesk', sans-serif;
 
 }
 .purpleColor{
@@ -42,8 +43,8 @@
     text-decoration: none;
 }
 ::selection {
-     background-color:pink; 
-     color: greenyellow;
+     background-color:var(--bg-color-1); 
+     color: var(--mode-color-2);
   }
 
 ::-webkit-scrollbar {

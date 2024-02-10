@@ -28,6 +28,14 @@
        font-family: 'Space Grotesk', sans-serif;
     }
 }
+
+@media only screen and (max-width: 781px) {
+    .headerFromAnimation {
+        p {
+           font-size: 50px;
+        }
+    }
+}
 @media only screen and (max-width: 436px) {
     .headerFromAnimation {
         p {

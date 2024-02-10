@@ -5,8 +5,16 @@
 }
 
 //   @include MyFlex();
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&display=swap');
+
 #movieCards {
+  font-family: 'Space Grotesk', sans-serif;
+
     background: var(--mode-color-1);
+    input::placeholder{
+    font-family: 'Space Grotesk', sans-serif;
+
+    }
     .upBox {
         background: var(--mode-color-1);
         @include MyFlex();
@@ -67,7 +75,7 @@
                 font-size: 15px;
                 cursor: pointer;
                 color: var(--mode-color-1);
-
+font-size: 12px;
 
             }
 
@@ -93,7 +101,7 @@
             form {
                 display: flex;
                 gap: 10px;
-                font-size: 20px;
+                font-size: 15px;
             }
 
             .movieTypeBox {
@@ -123,8 +131,8 @@
                     position: absolute;
                     top: 0;
                     left: 0;
-                    height: 20px;
-                    width: 20px;
+                    height: 15px;
+                    width: 15px;
                     // background-color: var(--bg-color-1);
                     border: 2px solid var(--mode-color-1);
                     border-radius: 3px;
@@ -141,8 +149,9 @@
 
             input[type="checkbox"]:checked+label:after {
                 display: block; // Check işaretini gösterme
-                left: 10px;
-                top: 5px;
+                left: 6px;
+  font-family: 'Space Grotesk', sans-serif;
+                top: 2px;
                 width: 4px;
                 height: 9px;
                 border: solid var(--mode-color-1);

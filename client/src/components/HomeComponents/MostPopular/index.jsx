@@ -1,12 +1,15 @@
 import React from 'react'
 import './MostPopular.scss'
 import image1 from '../../../../image/pandaa.jpg'
+import { useTranslation } from 'react-i18next';
 //img 900x500
 function MostPopular() {
+  const { t, i18n } = useTranslation();
+
   return (
     <section id='mostPopular'>
 <div className="upBox">
-<p><h1>MOST POPULAR</h1> FILM FESTIVAL</p>
+<p><h1>{t("MostPopularHead")}</h1>{t("MostPopularMain")}</p>
 </div>
 <div className="downBox">
 <div className="cart">

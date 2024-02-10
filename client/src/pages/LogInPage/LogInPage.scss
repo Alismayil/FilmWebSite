@@ -5,12 +5,17 @@
 }
 
 //   @include MyFlex();
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&display=swap');
 
 .loginPage {
     background: var(--mode-color-1);
     height: 86vh;
     @include MyFlex();
+    font-family: 'Space Grotesk', sans-serif;
+input::placeholder{
+    font-family: 'Space Grotesk', sans-serif;
 
+}
     .loginBox {
         height: 85%;
         width: 70%;
@@ -210,6 +215,8 @@
                         left: 140px;
                         font-size: 17px;
                         z-index: 2;
+    font-family: 'Space Grotesk', sans-serif;
+                        
                     }
 
                     .line {
@@ -248,6 +255,8 @@
                     left: 22px;
                     font-size: 17px;
                     z-index: 2;
+    font-family: 'Space Grotesk', sans-serif;
+
                 }
 
                 .line {
@@ -356,6 +365,8 @@
                         left: 120px;
                         font-size: 17px;
                         z-index: 2;
+    font-family: 'Space Grotesk', sans-serif;
+
                     }
 
                     .line {
@@ -434,10 +445,12 @@
             width: 400px;
             @include MyFlex();
             flex-direction: column;
-
+h1{
+    font-size: 20px;
+}
             .changeImageBox {
-                height: 50%;
-                width: 500px;
+                height: 52.5%;
+                width: 400px;
                 top: 0;
             }
 
@@ -453,12 +466,12 @@
     .loginPage {
         .loginBox {
             .changeImageBox {
-                height: 52%;
+                height: 51%;
             }
 
             .registerChangeBox {
                 h1 {
-                    font-size: 29px;
+                    font-size: 19px;
                 }
 
                 form {

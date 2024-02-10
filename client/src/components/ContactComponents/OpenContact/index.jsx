@@ -1,13 +1,16 @@
 import React from 'react'
 import './OpenContact.scss'
 import { Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 function OpenContact() {
+  const { t, i18n } = useTranslation();
+
   return (
     <section id='openContact'>
 <div className="leftBox">
-<h1>WE WOULD LOVE TO HEAR FROM YOU.</h1>
-<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctnisi consequ adipiscing elit.</p>
+<h1>{t("ContactHeaderText")}</h1>
+<p>{t("ContactMainText")}</p>
 <ul>
             <Link to={'https://www.facebook.com/'} className='link'>
              <li>
@@ -38,11 +41,11 @@ function OpenContact() {
 <div className="rightBox">
     <form action="">
         <div className="upBox">
-            <input type="text" placeholder='Name...' />
-            <input type="text" placeholder='Email...' />
+            <input type="text" placeholder={`${t("Name")}`} />
+            <input type="text" placeholder={`${t("Email")}`} />
         </div>
-        <input type="text" placeholder='Messages...' />
-<button><p>Send Message</p><div className="link"></div></button>
+        <input type="text" placeholder={`${t("Message")}`} />
+<button><p>{t("ContactBtn")}</p><div className="link"></div></button>
     </form>
 </div>
     </section>

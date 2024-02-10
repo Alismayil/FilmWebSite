@@ -13,7 +13,8 @@
     display: flex;
     justify-content: end;
     padding:60px 100px 50px;
-
+    font-family: 'Space Grotesk', sans-serif;
+overflow: hidden;
     .textBox{
         background: rgba(255, 255, 255, 0.15);
 border-radius: 16px;
@@ -81,9 +82,9 @@ padding: 0px 10px;
         }
     }
 }
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 401px) {
     #reklamPoster{
-        padding:60px 5px 50px ;
+        padding:60px 0px 50px ;
         .textBox{
             padding: 0px;
             .upTextBox{

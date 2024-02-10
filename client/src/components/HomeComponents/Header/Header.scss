@@ -49,18 +49,8 @@ header {
         }
     }
 }
-@media only screen and (max-width: 552px) {
-    header {
-        .textBox {
-            p {
-                font-size: 140px;
-                margin-top: 170px;
-            }
-        }
-        
-    }
-}
-@media only screen and (max-width: 830px) {
+
+@media only screen and (max-width: 1115px) {
     header {
         .textBox {
             p {
@@ -77,6 +67,17 @@ header {
         .rightTextBox{
             img{
                 max-width: 80%;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 918px) {
+    header {
+        .textBox {
+            p {
+                font-size: 100px;
+                margin-top: 250px;
+
             }
         }
     }
