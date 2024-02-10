@@ -4,7 +4,7 @@
 .cursor{
     height: 20px;
     width: 20px;
-    background-color: #dc3918;
+    background-color: var(--bg-color-1);
     border-radius: 50%;
     position: fixed;
     pointer-events: none;

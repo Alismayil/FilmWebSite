@@ -1,0 +1,495 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+//   @include MyFlex();
+
+.loginPage {
+    background: var(--mode-color-1);
+    height: 86vh;
+    @include MyFlex();
+
+    .loginBox {
+        height: 85%;
+        width: 70%;
+        background: var(--bg-color-1);
+        border-radius: 7px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+
+        .changeImageBox {
+            position: absolute;
+            height: 100%;
+            width: 50%;
+            z-index: 3;
+            overflow: hidden;
+            transition: 0.7s;
+
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                aspect-ratio: 1 / 1;
+            }
+        }
+
+        .registerChangeBox {
+            width: 50%;
+            height: 100%;
+            @include MyFlex();
+            flex-direction: column;
+            gap: 10px;
+
+            h1 {
+                color: var(--mode-color-2);
+            }
+
+            form {
+                @include MyFlex();
+                flex-direction: column;
+                gap: 10px;
+
+                .upBox {
+                    display: flex;
+                    gap: 10px;
+
+                    .firstBox {
+                        display: flex;
+                        gap: 10px;
+                        background: var(--mode-color-1);
+                        padding: 10px;
+                        border-radius: 7px;
+
+                        .icon {
+                            background: var(--mode-color-2);
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 7px;
+                            font-size: 20px;
+                            @include MyFlex();
+                            color: var(--bg-color-1);
+                        }
+
+                        input {
+                            padding: 10px 10px 0px;
+                            width: 100px;
+                            outline: none;
+                            border: none;
+                            background: transparent;
+                            color: var(--mode-color-2);
+
+                        }
+                    }
+
+                    .lastBox {
+                        display: flex;
+                        gap: 10px;
+                        background: var(--mode-color-1);
+                        padding: 10px;
+                        border-radius: 7px;
+
+                        .icon {
+                            background: var(--mode-color-2);
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 7px;
+                            font-size: 20px;
+                            color: var(--bg-color-1);
+                            @include MyFlex();
+
+                        }
+
+                        input {
+                            padding: 10px 10px 0px;
+                            width: 100px;
+                            outline: none;
+                            border: none;
+                            background: transparent;
+                            color: var(--mode-color-2);
+                        }
+                    }
+                }
+
+                .emailBox {
+                    width: 100%;
+                    background: var(--mode-color-1);
+                    padding: 10px;
+                    border-radius: 7px;
+                    display: flex;
+                    gap: 10px;
+
+                    .icon {
+                        background: var(--mode-color-2);
+                        width: 35px;
+                        height: 30px;
+                        border-radius: 7px;
+                        font-size: 20px;
+                        @include MyFlex();
+                        color: var(--bg-color-1);
+                    }
+
+                    input {
+                        width: 100%;
+                        padding: 10px 10px 0px;
+                        outline: none;
+                        border: none;
+                        background-color: transparent;
+                        color: var(--mode-color-2);
+                    }
+                }
+
+                .passwordBox {
+                    width: 100%;
+                    background: var(--mode-color-1);
+                    padding: 10px;
+                    border-radius: 7px;
+                    display: flex;
+                    gap: 10px;
+
+                    .icon {
+                        background: var(--mode-color-2);
+                        width: 35px;
+                        height: 30px;
+                        border-radius: 7px;
+                        font-size: 20px;
+                        @include MyFlex();
+                        color: var(--bg-color-1);
+                    }
+
+                    input {
+                        width: 100%;
+                        padding: 10px 10px 0px;
+                        outline: none;
+                        border: none;
+                        background-color: transparent;
+                        color: var(--mode-color-2);
+
+                    }
+
+                    .eyeIcon {
+                        margin-top: 5px;
+                        cursor: pointer;
+                        color: gray;
+
+                        h5 {
+                            font-size: 20px;
+                        }
+
+                        h6 {
+                            font-size: 20px;
+                            display: none;
+                        }
+
+                        .open {
+                            display: none;
+                        }
+
+                        .close {
+                            display: block;
+                        }
+                    }
+                }
+
+                button {
+                    background-color: var(--mode-color-1);
+                    color: var(--mode-color-2);
+                    border: none;
+                    width: 100%;
+                    height: 45px;
+                    border-radius: 7px;
+                    cursor: pointer;
+                    position: relative;
+                    overflow: hidden;
+
+                    p {
+                        position: absolute;
+                        top: 13px;
+                        left: 140px;
+                        font-size: 17px;
+                        z-index: 2;
+                    }
+
+                    .line {
+                        background-color: rgba(0, 0, 0, 0.236);
+                        height: 100%;
+                        width: 0px;
+                        position: absolute;
+                        top: 0;
+                        transition: 0.7s;
+                    }
+
+                    &:hover {
+                        .line {
+                            width: 100%;
+                            transition: 0.7s;
+
+                        }
+                    }
+                }
+            }
+
+            button {
+                background-color: var(--mode-color-2);
+                color: var(--bg-color-1);
+                border: none;
+                width: 150px;
+                height: 45px;
+                border-radius: 7px;
+                cursor: pointer;
+                position: relative;
+                overflow: hidden;
+
+                p {
+                    position: absolute;
+                    top: 13px;
+                    left: 22px;
+                    font-size: 17px;
+                    z-index: 2;
+                }
+
+                .line {
+                    background-color: rgba(0, 0, 0, 0.236);
+                    height: 100%;
+                    width: 0px;
+                    position: absolute;
+                    top: 0;
+                    transition: 0.7s;
+                }
+
+                &:hover {
+                    .line {
+                        width: 100%;
+                        transition: 0.7s;
+
+                    }
+                }
+            }
+        }
+
+        .loginChangeBox {
+            width: 50%;
+            height: 100%;
+            @include MyFlex();
+            flex-direction: column;
+            gap: 10px;
+
+            h1 {
+                color: var(--mode-color-2)
+            }
+
+            form {
+                @include MyFlex();
+                flex-direction: column;
+                gap: 10px;
+
+                .userNameBox,
+                .passwordBox {
+                    width: 100%;
+                    @include MyFlex();
+                    justify-content: start;
+                    gap: 10px;
+                    background: var(--mode-color-1);
+                    padding: 10px 20px;
+                    border-radius: 7px;
+
+                    input {
+                        padding: 10px 10px 0px;
+                        outline: none;
+                        border: none;
+                        background-color: transparent;
+                        color: var(--mode-color-2);
+                    }
+
+                    .icon {
+                        background: var(--mode-color-2);
+                        color: var(--bg-color-1);
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 7px;
+                        @include MyFlex();
+                        font-size: 20px;
+                    }
+                }
+
+                .passwordBox {
+                    .eyeIcon {
+                        cursor: pointer;
+                        color: gray;
+                        margin-top: 5px;
+
+                        h5 {
+                            font-size: 20px;
+                        }
+
+                        h6 {
+                            font-size: 20px;
+                            display: none;
+                        }
+
+                        .open {
+                            display: none;
+                        }
+
+                        .close {
+                            display: block;
+                        }
+                    }
+                }
+
+                button {
+                    background-color: var(--mode-color-1);
+                    color: var(--mode-color-2);
+                    border: none;
+                    width: 100%;
+                    height: 45px;
+                    border-radius: 7px;
+                    cursor: pointer;
+                    position: relative;
+                    overflow: hidden;
+
+                    p {
+                        position: absolute;
+                        top: 13px;
+                        left: 120px;
+                        font-size: 17px;
+                        z-index: 2;
+                    }
+
+                    .line {
+                        background-color: rgba(0, 0, 0, 0.236);
+                        height: 100%;
+                        width: 0px;
+                        position: absolute;
+                        top: 0;
+                        transition: 0.7s;
+                    }
+
+                    &:hover {
+                        .line {
+                            width: 100%;
+                            transition: 0.7s;
+
+                        }
+                    }
+                }
+
+            }
+
+            .googleBox {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+
+                .image {
+                    height: 45px;
+                    width: 45px;
+                    border-radius: 7px;
+                    background: var(--mode-color-1);
+                    font-size: 40px;
+                    cursor: pointer;
+                    @include MyFlex();
+
+                }
+
+                span {
+                    cursor: pointer;
+                }
+            }
+
+            p {
+                text-align: center;
+
+                span {
+                    color: var(--mode-color-2);
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .changeBox {
+            transform: translate(100%);
+            transition: 0.7s;
+        }
+    }
+}
+
+@media only screen and (max-width: 965px) {
+
+    .loginPage {
+        .loginBox {
+            width: 95%;
+        }
+    }
+}
+
+@media only screen and (max-width: 735px) {
+    .loginPage {
+        height: 150vh;
+
+        .loginBox {
+            height: 75%;
+            width: 400px;
+            @include MyFlex();
+            flex-direction: column;
+
+            .changeImageBox {
+                height: 50%;
+                width: 500px;
+                top: 0;
+            }
+
+            .changeBox {
+                transform: translateY(100%);
+            }
+        }
+    }
+
+}
+
+@media only screen and (max-width: 430px) {
+    .loginPage {
+        .loginBox {
+            .changeImageBox {
+                height: 52%;
+            }
+
+            .registerChangeBox {
+                h1 {
+                    font-size: 29px;
+                }
+
+                form {
+                    .upBox {
+                        .firstBox {
+                            input {
+                                width: 75px;
+                            }
+                        }
+
+                        .lastBox {
+                            input {
+                                width: 75px;
+                            }
+                        }
+                    }
+
+                    .passwordBox {
+                        .icon {
+                            width: 44px;
+                        }
+                    }
+
+                    button {
+                        p {
+                            left: 110px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

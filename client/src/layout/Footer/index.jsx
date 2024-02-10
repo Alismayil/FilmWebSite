@@ -1,14 +1,14 @@
 import React from 'react'
 import './Footer.scss'
 import { Link } from "react-router-dom";
-
+import filmLogo from '../../../image/filmLogo.png'
 function Footer() {
   return (
     <footer>
    <div className="upBox">
    <div className="textBox">
     <Link to={'/'}>
-    <img src="https://firstframe.qodeinteractive.com/wp-content/uploads/2023/02/fotter-logo.png" alt="" />
+    <img src={filmLogo} alt="" />
     </Link>
         <span  >
           Lorem Ipsner gravida nibh velmlaucti eialiquetmue, aene sollic.</span>
@@ -45,28 +45,35 @@ function Footer() {
         <span>
           PRODUCTION</span>
         <ul>
-          <div className="lis">
+        <Link className='link' to={'about'}>
+        <div className="lis">
             <li>
               About
               <div className="line"></div>
             </li>
             <p></p>
           </div>
+        </Link>
           
-          <div className="lis">
+       <Link to={'contact'}className='link'>
+       <div className="lis">
             <li>
             Contact
               <div className="line"></div>
             </li>
             <p></p>
           </div>
-          <div className="lis">
+       </Link>
+      <Link className='link' to={'movies'}>
+      <div className="lis">
             <li>
             Movies
               <div className="line"></div>
             </li>
             <p></p>
           </div>
+      </Link>
+          <Link to={'price'} className='link'>
           <div className="lis">
             <li>
             Price
@@ -74,6 +81,7 @@ function Footer() {
             </li>
             <p></p>
           </div>
+          </Link>
           <Link className='link' to={'/*'}>
           <div className="lis">
             <li>
@@ -88,10 +96,12 @@ function Footer() {
         </ul>
       </div>
       <div className="textBox">
+        <Link to={'login'} className='link'>
         <span>
         SIGN UP
 </span>
-        <span >Lorem ipsner gravida nib velmley au ctsialeru milu.</span>
+</Link>
+        <span >Register for convenient use of our site</span>
       </div>
    </div>
      <div className="downBox">

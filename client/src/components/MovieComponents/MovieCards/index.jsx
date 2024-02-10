@@ -113,9 +113,11 @@ function MovieCards() {
                     // }}
                     speed={900}
                     modules={[EffectFlip, Autoplay]}
-                    className="mySwiper"
+                    className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
+                    
                 >
-                    <SwiperSlide>
+                 
+                    <SwiperSlide   >
                         <div className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
                             <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
                             <div className="changeBox">
@@ -124,7 +126,7 @@ function MovieCards() {
                         </div>
 
                     </SwiperSlide>
-                    <SwiperSlide>
+                   <SwiperSlide>
                     <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`}>
                             <h1>Inceriodsaasaaadsascacascsan</h1>
                             <span>Leanotda daoapinvni</span>
@@ -153,9 +155,10 @@ function MovieCards() {
                     // }}
                     speed={900}
                     modules={[EffectFlip, Autoplay]}
-                    className="mySwiper"
+                                        className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
+
                 >
-                    <SwiperSlide>
+                   <SwiperSlide >
                         <div className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
 
                             <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
@@ -165,7 +168,7 @@ function MovieCards() {
                         </div>
 
                     </SwiperSlide>
-                    <SwiperSlide>
+                   <SwiperSlide   className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`} >
                          <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`}>
                             <h1>Inceriodsaasaaadsascacascsan</h1>
                             <span>Leanotda daoapinvni</span>
@@ -194,9 +197,10 @@ function MovieCards() {
                     // }}
                     speed={900}
                     modules={[EffectFlip, Autoplay]}
-                    className="mySwiper"
+                                        className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
+
                 >
-                    <SwiperSlide>
+                   <SwiperSlide>
                         <div className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
 
                             <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
@@ -206,7 +210,7 @@ function MovieCards() {
                         </div>
 
                     </SwiperSlide>
-                    <SwiperSlide>
+                   <SwiperSlide   className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`} >
                          <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`}>
                             <h1>Inceriodsaasaaadsascacascsan</h1>
                             <span>Leanotda daoapinvni</span>
@@ -235,9 +239,10 @@ function MovieCards() {
                     // }}
                     speed={900}
                     modules={[EffectFlip, Autoplay]}
-                    className="mySwiper"
+                                        className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
+
                 >
-                    <SwiperSlide>
+                   <SwiperSlide >
                         <div className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
 
                             <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
@@ -247,7 +252,7 @@ function MovieCards() {
                         </div>
 
                     </SwiperSlide>
-                    <SwiperSlide>
+                   <SwiperSlide   className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`} >
                          <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`}>
                             <h1>Inceriodsaasaaadsascacascsan</h1>
                             <span>Leanotda daoapinvni</span>
@@ -276,9 +281,10 @@ function MovieCards() {
                     // }}
                     speed={900}
                     modules={[EffectFlip, Autoplay]}
-                    className="mySwiper"
+                                        className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
+
                 >
-                    <SwiperSlide>
+                   <SwiperSlide >
                         <div className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
 
                             <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
@@ -288,7 +294,7 @@ function MovieCards() {
                         </div>
 
                     </SwiperSlide>
-                    <SwiperSlide>
+                   <SwiperSlide   className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`} >
                          <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`}>
                             <h1>Inceriodsaasaaadsascacascsan</h1>
                             <span>Leanotda daoapinvni</span>
@@ -317,9 +323,10 @@ function MovieCards() {
                     // }}
                     speed={900}
                     modules={[EffectFlip, Autoplay]}
-                    className="mySwiper"
+                                        className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
+
                 >
-                    <SwiperSlide>
+                   <SwiperSlide >
                         <div className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
 
                             <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
@@ -329,7 +336,7 @@ function MovieCards() {
                         </div>
 
                     </SwiperSlide>
-                    <SwiperSlide>
+                   <SwiperSlide   className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`} >
                          <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`}>
                             <h1>Inceriodsaasaaadsascacascsan</h1>
                             <span>Leanotda daoapinvni</span>
@@ -358,9 +365,10 @@ function MovieCards() {
                     // }}
                     speed={900}
                     modules={[EffectFlip, Autoplay]}
-                    className="mySwiper"
+                                        className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
+
                 >
-                    <SwiperSlide>
+                   <SwiperSlide >
                         <div className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
 
                             <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
@@ -370,7 +378,7 @@ function MovieCards() {
                         </div>
 
                     </SwiperSlide>
-                    <SwiperSlide>
+                   <SwiperSlide   className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`} >
                          <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`}>
                             <h1>Inceriodsaasaaadsascacascsan</h1>
                             <span>Leanotda daoapinvni</span>
@@ -399,9 +407,10 @@ function MovieCards() {
                     // }}
                     speed={900}
                     modules={[EffectFlip, Autoplay]}
-                    className="mySwiper"
+                                        className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
+
                 >
-                    <SwiperSlide>
+                   <SwiperSlide >
                         <div className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
 
                             <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
@@ -411,7 +420,7 @@ function MovieCards() {
                         </div>
 
                     </SwiperSlide>
-                    <SwiperSlide>
+                   <SwiperSlide   className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`} >
                          <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`}>
                             <h1>Inceriodsaasaaadsascacascsan</h1>
                             <span>Leanotda daoapinvni</span>
@@ -440,9 +449,10 @@ function MovieCards() {
                     // }}
                     speed={900}
                     modules={[EffectFlip, Autoplay]}
-                    className="mySwiper"
+                                        className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
+
                 >
-                    <SwiperSlide>
+                   <SwiperSlide >
                         <div className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
 
                             <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
@@ -452,7 +462,7 @@ function MovieCards() {
                         </div>
 
                     </SwiperSlide>
-                    <SwiperSlide>
+                   <SwiperSlide   className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`} >
                          <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`}>
                             <h1>Inceriodsaasaaadsascacascsan</h1>
                             <span>Leanotda daoapinvni</span>
@@ -481,9 +491,10 @@ function MovieCards() {
                     // }}
                     speed={900}
                     modules={[EffectFlip, Autoplay]}
-                    className="mySwiper"
+                                        className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
+
                 >
-                    <SwiperSlide>
+                   <SwiperSlide >
                         <div className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
 
                             <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
@@ -493,7 +504,7 @@ function MovieCards() {
                         </div>
 
                     </SwiperSlide>
-                    <SwiperSlide>
+                   <SwiperSlide   className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`} >
                          <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`}>
                             <h1>Inceriodsaasaaadsascacascsan</h1>
                             <span>Leanotda daoapinvni</span>

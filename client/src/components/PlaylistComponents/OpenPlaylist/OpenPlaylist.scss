@@ -51,7 +51,7 @@
           text-decoration: none solid transparent;
           color: transparent;
           -webkit-text-stroke-width: 2px;
-          -webkit-text-stroke-color: gray;
+          -webkit-text-stroke-color: var(--bg-color-1);
         }
         .marquee2  > div p {
           width: 450px; /* Width of p elements must match the width of marquee "window"*/
@@ -63,7 +63,8 @@
           text-decoration: none solid transparent;
           color: transparent;
           -webkit-text-stroke-width: 2px;
-          -webkit-text-stroke-color: gray;
+          -webkit-text-stroke-color: var(--bg-color-1);
+
         }
         
         /* Make it move */

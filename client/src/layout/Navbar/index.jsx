@@ -5,13 +5,24 @@ import { NavLink } from "react-router-dom";
 import { HiMiniPause } from "react-icons/hi2";
 import { VscDebugStart } from "react-icons/vsc";
 import ModeBox from '../../components/ModeBox';
-import FilmLogo from '../../../image/filmLogo.svg'
+import FilmLogo from '../../../image/filmLogo.png'
 import LanguageBox from '../../components/LanguageBox';
 function Navbar() {
   const [openNavbar, setopenNavbar] = useState(false)
   const {pathname} =useLocation()
+  const [scrollPosition, setScrollPosition] = useState(0);
 
+  const handleScroll = () => {
+    const currentPosition = window.scrollY;
+      setScrollPosition(currentPosition);
+  };
 
+  React.useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   function handleOpenNavbar() {
     setopenNavbar(!openNavbar)
@@ -20,7 +31,7 @@ function Navbar() {
  
 
   return (
-    <nav className={pathname !== "/" ? "location" : ""} >
+    <nav id={pathname !== "/" ? "location" : ""} className={scrollPosition > 600  ? 'black' : ''}>
       <div className="respLanguageBox">
         <select name="" id="">
           <option value="">Az</option>
@@ -29,9 +40,11 @@ function Navbar() {
         </select>
       </div>
       <div className="navbarLeftBox">
+        <Link to={'/'}>
         <div className="iconBox">
           <img src={FilmLogo} alt="" />
         </div>
+        </Link>
         <div className="textBox">
           <ul>
             <li>

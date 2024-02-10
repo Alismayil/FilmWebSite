@@ -10,7 +10,7 @@ function HomePage() {
     <>
        <Helmet>
       <meta charSet="utf-8" />
-      <title>First Frame</title>
+      <title>Cinema Gia</title>
     </Helmet>
     <Header/> 
     {/* <p style={{backgroundColor:'green', height:"10vh"}}></p> */}

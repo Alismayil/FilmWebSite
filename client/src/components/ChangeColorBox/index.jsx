@@ -76,7 +76,7 @@ function ChangeColorBox() {
     return (
         <div className={`changeColorBox ${openChangeBox ? 'openChangeBox' : ""}`}>
             <div className="opcenChangeBox">
-                <div className='radioBtn' onClick={() => handleColorChange('purple')} style={{ backgroundColor: "#5F0F40" }}>
+                <div className='radioBtn' onClick={() => handleColorChange('purple')} style={{ backgroundColor: "#F9C80E" }}>
                     <div className={`clickedBox ${changeBoxColorPurple ? 'purple' : ''}`} >
                         <MdOutlineCheckCircleOutline />
                     </div>
@@ -86,7 +86,7 @@ function ChangeColorBox() {
                         <MdOutlineCheckCircleOutline />
                     </div>
                 </div>
-                <div className='radioBtn' onClick={() => handleColorChange('blue')} style={{ backgroundColor: "#03045E" }}>
+                <div className='radioBtn' onClick={() => handleColorChange('blue')} style={{ backgroundColor: "#0077B6" }}>
                     <div className={`clickedBox ${changeBoxColorBlue ? 'blue' : ''}`} >
                         <MdOutlineCheckCircleOutline />
                     </div>

@@ -16,7 +16,8 @@ nav {
     @include MyFlex();
     // background-color: var( --mode-color-1);
     // background-color: var(--mode-color-2 );
-    
+    background-color: var(--mode-color-5);
+  transition: 0.5s;
     justify-content: space-between;
     padding: 30px 60px;
     position: fixed;
@@ -99,7 +100,7 @@ nav {
             }
 
             .active {
-                border-left: 2.5px solid var(--mode-color-1);
+                border-left: 2.5px solid var(--mode-color-2);
                 padding: 0px 4px;
             }
         }
@@ -253,6 +254,10 @@ display: flex;
     }
 }
 
-.location{
+#location{
     background: var(--mode-color-1);
 }
+.black {
+    background-color: var(--mode-color-1);
+    transition: 0.5s;
+  }

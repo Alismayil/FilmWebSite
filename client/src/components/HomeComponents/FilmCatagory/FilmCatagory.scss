@@ -5,9 +5,9 @@
 }
 
 //   @include MyFlex();
-  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
 
-  #filmCatagory {
+#filmCatagory {
 
     .cart {
         height: 50vh;
@@ -33,8 +33,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-    background-color: var(--mode-color-1);
-    background-color: var();
+            background-color: var(--mode-color-1);
+            background-color: var();
             border: 1px solid #363535;
             z-index: 2;
             transition: 0.4s;
@@ -54,10 +54,12 @@
                     position: absolute;
                     overflow: hidden;
                     animation: marqueeLeft 8s linear infinite;
-.hiddenBox{
-    display: none;
-    
-}
+
+                    .hiddenBox {
+                        display: none;
+
+                    }
+
                     span {
                         float: left;
                         font-size: 100px;
@@ -65,8 +67,9 @@
                         @include MyFlex();
                         color: white;
                         gap: 350px;
-                      color: var(--bg-color-1);
-                      font-family: 'Space Grotesk', sans-serif;
+                        color: var(--bg-color-1);
+                        font-family: 'Space Grotesk', sans-serif;
+
                         img {
                             width: 380px;
                             height: 380px;
@@ -142,30 +145,61 @@
 
     }
 }
+
 @media only screen and (max-width: 866px) {
     #filmCatagory {
 
         .cart {
             height: 40vh;
+
             .cartHover {
 
                 .marqueeLeft,
                 .marqueeRight {
                     div {
                         width: 200%;
+
                         span {
                             display: none;
                         }
-.hiddenBox{
-display: flex;
-font-size: 30px;
-gap: 40px;
-img{
-width: 160px;
-height: 160px;
+
+                        .hiddenBox {
+                            display: flex;
+                            font-size: 30px;
+                            gap: 100px;
+
+                            img {
+                                width: 160px;
+                                height: 160px;
+                            }
+                        }
+
+                    }
+
+                }
+            }
+        }
+
+    }
 }
-}
-                       
+
+@media only screen and (max-width: 409px) {
+    #filmCatagory {
+
+        .cart {
+            .cartHover {
+
+                .marqueeLeft,
+                .marqueeRight {
+                    div {
+                        .hiddenBox {
+                            font-size: 50px;
+
+                            img {
+                                display: none;
+                            }
+                        }
+
                     }
 
                 }

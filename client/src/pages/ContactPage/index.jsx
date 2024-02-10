@@ -2,6 +2,7 @@ import React from 'react'
 import {Helmet} from "react-helmet";
 import NotMeanBox from '../../components/NotMeanBox';
 import HeaderFromContact from '../../components/ContactComponents/HeaderFromContact';
+import OpenContact from '../../components/ContactComponents/OpenContact';
 
 function ContactPage() {
   return (
@@ -12,6 +13,7 @@ function ContactPage() {
       <title>Contact</title>
     </Helmet>
 <HeaderFromContact/>
+<OpenContact/>
   </>
   )
 }

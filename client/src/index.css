@@ -4,29 +4,30 @@
     --mode-color-2:white;
     --mode-color-3:#141314;
     --mode-color-4:#0d0c0c;
+    --mode-color-5:#0d0c0c72;
 
 }
 .purpleColor{
-    --bg-color-1:#5F0F40;
-    --bg-color-2:#03045E;
+    --bg-color-1:#F9C80E;
+    --bg-color-2:#0077B6;
     --bg-color-3:#DC3918;
-    --bg-color-4:#5F0F40;
+    --bg-color-4:#F9C80E;
 
 
 }
 .orangeColor{
     --bg-color-1:#DC3918;
-    --bg-color-2:#5F0F40;
+    --bg-color-2:#F9C80E;
     --bg-color-3:#DC3918;
-    --bg-color-4:#03045E;
+    --bg-color-4:#0077B6;
 
 
 }
 .blueColor{
-    --bg-color-1:#03045E;
+    --bg-color-1:#0077B6;
     --bg-color-2:#DC3918;
     --bg-color-3:#DC3918;
-    --bg-color-4:#03045E;
+    --bg-color-4:#0077B6;
 
 }
 .lightMode{
@@ -34,6 +35,7 @@
     --mode-color-2:#121212;
     --mode-color-3:#ebeae9;
     --mode-color-4:#B2B2B2;
+    --mode-color-5:transparent;
 
 }
 .link{
@@ -41,7 +43,7 @@
 }
 ::selection {
      background-color:pink; 
-     color: red;
+     color: greenyellow;
   }
 
 ::-webkit-scrollbar {

@@ -176,7 +176,7 @@
 // display: grid;
 // grid-template-columns: repeat(4, auto);
         .swiper {
-            width: 300px;
+            width:300px;
             // margin: 0;
             @include MyFlex();
 
@@ -302,10 +302,13 @@ height: 300px;
 //   gap: 260px 20px;
 //   padding: 150px;
     }
+    .changeSwiper{
+        width: 250px !important;
+    }
  
     .open {
         transition: 0.7s;
-        height: 410px;
+        height: 400px;
     }
    
 }

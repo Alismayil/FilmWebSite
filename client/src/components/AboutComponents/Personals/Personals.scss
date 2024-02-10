@@ -13,14 +13,18 @@
     flex-wrap: wrap;
     .cartBox{
         // background-color: yellow;
+        border-radius: 7px;
         position: relative;
         width: 320px;
+        overflow: hidden;
         .imgBox{
     @include MyFlex();
 
             position: relative;
             img{
                 max-width:100%;
+        border-radius: 7px;
+
             }
             .imgHoverBox{
                 width: 100%;

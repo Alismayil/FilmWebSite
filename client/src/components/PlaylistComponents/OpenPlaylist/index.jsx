@@ -2,6 +2,7 @@ import React from 'react'
 import './OpenPlaylist.scss'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import { Autoplay } from 'swiper/modules';
 
 function OpenPlaylist() {
     return (
@@ -41,6 +42,12 @@ function OpenPlaylist() {
         slidesPerView={4}
         spaceBetween={30}
         loop={true}
+        autoplay={{
+            delay: 1500,
+            disableOnInteraction: false,
+          }}
+        modules={[Autoplay]}
+
         breakpoints={{
             0: {
                 slidesPerView: 1,
