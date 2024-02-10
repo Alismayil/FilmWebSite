@@ -16,7 +16,8 @@ function FilmCatagory() {
                     <div className="cartHover" >
                         <div class="marqueeLeft">
                             <div>
-                                <span style={{ gap: '450px' }}> Series
+                                <span style={{ gap: '450px' }}>
+                                     Series
                                     <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
 
 

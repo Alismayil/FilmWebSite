@@ -118,7 +118,7 @@ function MovieCards() {
                 >
                  
                     <SwiperSlide   >
-                        <div className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
+                        <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`} >
                             <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
                             <div className="changeBox">
                                 <MdOutlineChangeCircle />
@@ -159,7 +159,7 @@ function MovieCards() {
 
                 >
                    <SwiperSlide >
-                        <div className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
+                        <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
 
                             <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
                             <div className="changeBox">
@@ -201,7 +201,7 @@ function MovieCards() {
 
                 >
                    <SwiperSlide>
-                        <div className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
+                        <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
 
                             <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
                             <div className="changeBox">
@@ -243,7 +243,7 @@ function MovieCards() {
 
                 >
                    <SwiperSlide >
-                        <div className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
+                        <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
 
                             <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
                             <div className="changeBox">
@@ -285,7 +285,7 @@ function MovieCards() {
 
                 >
                    <SwiperSlide >
-                        <div className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
+                        <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
 
                             <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
                             <div className="changeBox">
@@ -327,7 +327,7 @@ function MovieCards() {
 
                 >
                    <SwiperSlide >
-                        <div className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
+                        <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
 
                             <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
                             <div className="changeBox">
@@ -369,7 +369,7 @@ function MovieCards() {
 
                 >
                    <SwiperSlide >
-                        <div className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
+                        <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
 
                             <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
                             <div className="changeBox">
@@ -411,7 +411,7 @@ function MovieCards() {
 
                 >
                    <SwiperSlide >
-                        <div className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
+                        <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
 
                             <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
                             <div className="changeBox">
@@ -453,7 +453,7 @@ function MovieCards() {
 
                 >
                    <SwiperSlide >
-                        <div className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
+                        <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
 
                             <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
                             <div className="changeBox">
@@ -495,7 +495,7 @@ function MovieCards() {
 
                 >
                    <SwiperSlide >
-                        <div className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
+                        <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
 
                             <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
                             <div className="changeBox">

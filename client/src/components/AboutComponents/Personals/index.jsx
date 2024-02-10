@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom'
 function Personals() {
     return (
         <section id='personals'>
-
-            <div className="cartBox">
+            <div className="cartBox" data-aos="zoom-in-down">
                 <div className="imgBox">
                     <img src="https://firstframe.qodeinteractive.com/wp-content/uploads/2023/03/pages-team-img-1.jpg" alt="" />
                     <div className="imgHoverBox"></div>
@@ -58,7 +57,7 @@ function Personals() {
                     <p>Film Director</p>
                 </div>
             </div>
-            <div className="cartBox">
+            <div className="cartBox" data-aos="zoom-in-down">
                 <div className="imgBox">
                     <img src="https://firstframe.qodeinteractive.com/wp-content/uploads/2023/03/pages-team-img-4.jpg" alt="" />
                     <div className="imgHoverBox"></div>
@@ -110,7 +109,7 @@ function Personals() {
                     <p>Director of photography</p>
                 </div>
             </div>
-            <div className="cartBox">
+            <div className="cartBox" data-aos="zoom-in-down">
                 <div className="imgBox">
                     <img src="https://firstframe.qodeinteractive.com/wp-content/uploads/2023/03/pages-team-img-3.jpg" alt="" />
                     <div className="imgHoverBox"></div>
@@ -161,7 +160,7 @@ function Personals() {
                     <p>Film producer</p>
                 </div>
             </div>
-            <div className="cartBox">
+            <div className="cartBox" data-aos="zoom-in-down">
                 <div className="imgBox">
                     <img src="https://firstframe.qodeinteractive.com/wp-content/uploads/2023/03/pages-team-img-2.jpg" alt="" />
                     <div className="imgHoverBox"></div>

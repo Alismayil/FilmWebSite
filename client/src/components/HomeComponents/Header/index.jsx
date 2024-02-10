@@ -9,7 +9,11 @@ function Header() {
 
 <header>
     <video src={HeaderVideo} autoPlay muted loop ></video>
-    <div className="textBox"><p>Hey!</p></div>
+    <div className="textBox">
+    <div data-aos="zoom-in-up"  data-aos-duration="3000"  >
+    <p>Hey!</p>
+    </div>
+     </div>
     <div className="leftTextBox">
       <img src="https://firstframe.qodeinteractive.com/wp-content/uploads/2023/06/h1-slider-layer-2.png" alt="" />
     </div>

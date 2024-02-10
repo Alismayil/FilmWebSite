@@ -18,6 +18,9 @@ import RegisterPage from './pages/RegisterPage';
 import SeriesPage from './pages/SeriesPage';
 import ChangeColorBox from './components/ChangeColorBox';
 import ModeBox from './components/ModeBox';
+import AOS from "aos";
+import "aos/dist/aos.css";
+import 'animate.css';
 
 function App() {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
@@ -33,6 +36,14 @@ function App() {
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
+
+
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
+
+
   return (
     <>
       {/* <div className="cursor" style={{ left: cursorPos.x + 'px', top: cursorPos.y + 'px', position: 'absolute' }}></div> */}

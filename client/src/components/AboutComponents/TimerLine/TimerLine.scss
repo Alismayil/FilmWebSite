@@ -16,6 +16,7 @@
   padding: 100px 10px 70px;
   /* veya overflow: scroll; */
   // position: relative;
+  overflow: hidden;
 }
 
 .normalScroolBox {
@@ -216,7 +217,6 @@ color: var(--mode-color-2);
         width: 250px;
         align-items: center;
         h1 {
-          background: pink;
           font-size: 30px;
   max-width: 250px;
           span {

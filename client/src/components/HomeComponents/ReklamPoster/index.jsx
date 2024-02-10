@@ -4,6 +4,7 @@ import './ReklamPoster.scss'
 function ReklamPoster() {
   return (
     <section id='reklamPoster'>
+      <div data-aos="fade-left" data-aos-duration="1000">
       <div className="textBox">
         <div className="upTextBox">
           <h1>Inception</h1>
@@ -20,6 +21,8 @@ function ReklamPoster() {
           <p>Christopher Nolan</p>
         </div>
       </div>
+      </div>
+  
     </section>
   )
 }

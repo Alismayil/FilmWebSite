@@ -16,7 +16,7 @@ function PricePage() {
     </Helmet>
     <HeaderFromPrice/>
 <div className="pricePage">
-  <div className="priceCart">
+  <div className="priceCart" data-aos="zoom-out-right" data-aos-duration="1000">
     <div className="upBox">
     Free
     <h2> $0<span>/ 5 days</span></h2>
@@ -33,7 +33,7 @@ function PricePage() {
       </button>
     </div>
   </div>
-  <div className="priceCart">
+  <div className="priceCart" data-aos="zoom-out" data-aos-duration="1000">
     <div className="saveBox">
       Save 20%
     </div>
@@ -54,7 +54,7 @@ function PricePage() {
       </button>
     </div>
   </div>
-  <div className="priceCart">
+  <div className="priceCart" data-aos="zoom-out-left" data-aos-duration="1000">
     <div className="upBox">
     Basic
     <h2> $19 <span>/ 1 Month</span></h2>
