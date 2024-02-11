@@ -77,6 +77,9 @@ nav {
             .active {
                 color: var(--mode-color-4);
             }
+            &:hover{
+                background: var(--mode-color-5);
+            }
         }
     }
 

@@ -4,7 +4,6 @@ const HeaderAndLoginSchema = new Schema({
 headerfromAbout:String,
 headerfromContact:String,
 headerfromPrice:String,
-headerfromContact:String,
 headerfromMovie:String,
 headerfromFilms:String,
 headerfromAnimations:String,
