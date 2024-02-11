@@ -224,6 +224,10 @@ position: relative;
           
             .textBox {
                 background: var(--mode-color-2);
+
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
                 width: 100%;
                 padding: 20px;
                 height: 450px;
@@ -233,7 +237,21 @@ position: relative;
                 position: relative;
                 border-radius: 10px;
                 border: 2px solid var(--mode-color-2);
+                overflow: hidden;
+                .text{
+                    z-index: 2;
 
+                }
+.frontBox{
+        background: var(--mode-color-2);
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        opacity: 0.3;
+        z-index: 1;
+}
 
                 .playBtn {
                     background: var(--bg-color-1);
@@ -244,7 +262,7 @@ position: relative;
                     position: absolute;
                     bottom: 30px;
                     right: 30px;
-                    color: white;
+                    color: var(--mode-color-2);
                     cursor: pointer;
                 }
 

@@ -1,11 +1,12 @@
-import React from 'react'
-import {Helmet} from "react-helmet";
-import MostPopular from '../../components/HomeComponents/MostPopular';
+import React from 'react';
+import { Helmet } from "react-helmet";
 import FilmCatagory from '../../components/HomeComponents/FilmCatagory';
-import ReklamPoster from '../../components/HomeComponents/ReklamPoster';
 import Header from '../../components/HomeComponents/Header';
+import MostPopular from '../../components/HomeComponents/MostPopular';
+import ReklamPoster from '../../components/HomeComponents/ReklamPoster';
 
 function HomePage() {
+
   return (
     <>
        <Helmet>

@@ -129,8 +129,10 @@ function MovieCards() {
 
                     </SwiperSlide>
                    <SwiperSlide>
-                    <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`}>
-                            <h1>Inceriodsaasaaadsascacascsan</h1>
+                    <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`} style={{backgroundImage: `url(https://i.pinimg.com/originals/eb/0f/8c/eb0f8c3e2e1a8e1508f3afa2c86ad51f.gif)` }}>
+                        <div className="frontBox" ></div>
+                           <div className="text">
+                           <h1>Inceriodsaasaaadsascacascsan</h1>
                             <span>Leanotda daoapinvni</span>
                             <h2>Category    /<p>drama</p></h2>
                             <p>Hour : <span>0202</span></p>
@@ -142,6 +144,7 @@ function MovieCards() {
                             <div className="playlistBox">
                                 <MdPlaylistAdd />
                             </div>
+                           </div>
 
                         </div>
                     </SwiperSlide>

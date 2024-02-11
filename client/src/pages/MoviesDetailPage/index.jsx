@@ -9,7 +9,8 @@ import { FaRegHeart } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { IoCloseSharp } from "react-icons/io5";
 import { useTranslation } from 'react-i18next';
-import { IoIosArrowDown } from "react-icons/io";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import { MdKeyboardArrowUp } from "react-icons/md";
 
 function MoviesDetailPage() {
   const [openTrailerBox, setOpenTrailerBox] = useState(false)
@@ -97,7 +98,8 @@ function MoviesDetailPage() {
           </div>
           <div className="seriesBox" onClick={handleOpenSeriesBox}>
             <p>{t("AllSeries")}</p>
-            <IoIosArrowDown />
+            <>{openSeriesBox ?< MdKeyboardArrowUp/>: <MdKeyboardArrowDown/>}  </>
+           
             <div className={`openSeriesBox ${openSeriesBox ?"openBox":""}`}>
               <div className="series">
 

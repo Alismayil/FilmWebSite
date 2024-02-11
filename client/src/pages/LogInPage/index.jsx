@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Helmet } from "react-helmet";
 import './LogInPage.scss'
 import NotMeanBox from '../../components/NotMeanBox';
@@ -12,6 +12,7 @@ import { BiSolidUserCircle } from "react-icons/bi";
 import { TbUserCircle } from "react-icons/tb";
 import { MdEmail } from "react-icons/md";
 import { useTranslation } from 'react-i18next';
+import axios from 'axios'
 
 function LogInPage() {
   const [leftBox, setleftBox] = useState(false)
@@ -20,7 +21,17 @@ function LogInPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordRegister, setShowPasswordRegister] = useState(false);
   const { t, i18n } = useTranslation();
-  
+  const [login, setLogin] = useState([])
+
+  async function getLoginData() {
+    const res = await axios.get("http://localhost:3000/headerandlogin")
+    setLogin(res.data)
+  }
+
+  useEffect(() => {
+    getLoginData()
+  }, [])
+
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
@@ -52,9 +63,13 @@ function handleChangeLeftBox() {
       </Helmet>
       <div className="loginPage">
         <div className="loginBox">
+      {
+        login && login.map((item)=>(
           <div className={`changeImageBox ${leftBox ? "changeBox":""}`}>
-            <img src="https://i.pinimg.com/564x/d9/e5/39/d9e5397d7d084c4009889dfcdf0b5758.jpg" alt="" />
-          </div>
+          <img src={item.loginimage} alt="" />
+        </div>
+        ))
+      }
           <div className="registerChangeBox">
             <h1>{t("RegisterText")}</h1>
             <form action="">
@@ -122,3 +137,6 @@ function handleChangeLeftBox() {
 }
 
 export default LogInPage
+
+
+

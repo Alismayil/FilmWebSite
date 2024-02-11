@@ -14,32 +14,36 @@
     position: fixed;
     z-index: 5;
     transition: 0.7s;
-transform: translate(-115px);
+    transform: translate(-115px);
+
     .opcenChangeBox {
-    background-color: var(--mode-color-4);
-border-radius: 10px;
+        background-color: var(--mode-color-4);
+        border-radius: 10px;
         padding: 10px 10px 10px 10px;
         display: flex;
         gap: 10px;
-       .radioBtn{
-        height: 25px;
-        width: 25px;
-        border-radius: 50%;
-        cursor: pointer;
-        
-        .clickedBox{
-            height: 100%;
-            width: 100%;
-            border-radius: 50%;
-            display: none;
-            font-size: 35px
 
+        .radioBtn {
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+
+            .clickedBox {
+                height: 100%;
+                width: 100%;
+                border-radius: 50%;
+                display: none;
+                font-size: 35px
+            }
+
+            .purple,
+            .orange,
+            .blue {
+                @include MyFlex();
+                color: white;
+            }
         }
-        .purple, .orange, .blue{
-        @include MyFlex();
-color: white;
-        }
-       }
     }
 
     .clickBox {
@@ -50,12 +54,12 @@ color: white;
         cursor: pointer;
         color: #F6F6F6;
         font-size: 30px;
-        
+
     }
- 
+
 }
-.openChangeBox{
+
+.openChangeBox {
     transform: translate(0px);
     transition: 0.7s;
 }
-
