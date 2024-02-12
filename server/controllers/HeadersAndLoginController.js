@@ -33,7 +33,7 @@ export const DeleteHeaderAndLogin = async (req, res) => {
 export const PostHeaderAndLogin = async (req, res) => {
     try {
         // Dosya yükleme işlemleri
-        upload.fields([{ name:'headerfromAbout'},{ name:'headerfromContact'},{ name:'headerfromPrice'},{ name:'headerfromMovie'},{ name:'headerfromFilms'},{ name:'headerfromAnimations'},{ name:'headerfromSeries'},{ name:'loginimage'}])
+        upload.fields([{ name:'headerfromHome'},{ name:'headerfromAbout'},{ name:'headerfromContact'},{ name:'headerfromPrice'},{ name:'headerfromMovie'},{ name:'headerfromFilms'},{ name:'headerfromAnimations'},{ name:'headerfromSeries'},{ name:'loginimage'}])
             (req, res, async function (err) {
                 try {
                     if (err) {
@@ -41,6 +41,9 @@ export const PostHeaderAndLogin = async (req, res) => {
                         return res.status(400).json({ message: err.message });
                     }
                   
+                    const headerfromHomeResult = req.files["headerfromHome"][0];
+                    const headerfromHomeUpload = cloudinary.uploader.upload(headerfromHomeResult.path, { folder: "FromHeader",  resource_type: "video" });
+
                     const headerfromAboutResult = req.files["headerfromAbout"][0];
                     const headerfromAboutUpload = cloudinary.uploader.upload(headerfromAboutResult.path, { folder: "FromHeader" });
 
@@ -65,9 +68,10 @@ export const PostHeaderAndLogin = async (req, res) => {
                     const loginimageResult = req.files["loginimage"][0];
                     const loginimageUpload = cloudinary.uploader.upload(loginimageResult.path, { folder: "Login" });
 
-                    const [headerfromAboutResponse,headerfromContactResponse,headerfromPriceResponse,headerfromMovieResponse,headerfromFilmsResponse,headerfromAnimationsResponse,headerfromSeriesResponse,loginimageResponse] = await Promise.all([headerfromAboutUpload,headerfromContactUpload,headerfromPriceUpload,headerfromMovieUpload, headerfromFilmsUpload,headerfromAnimationsUpload,headerfromSeriesUpload,loginimageUpload]);
+                    const [headerfromHomeResponse,headerfromAboutResponse,headerfromContactResponse,headerfromPriceResponse,headerfromMovieResponse,headerfromFilmsResponse,headerfromAnimationsResponse,headerfromSeriesResponse,loginimageResponse] = await Promise.all([headerfromHomeUpload,headerfromAboutUpload,headerfromContactUpload,headerfromPriceUpload,headerfromMovieUpload, headerfromFilmsUpload,headerfromAnimationsUpload,headerfromSeriesUpload,loginimageUpload]);
 
                     const newHeaderAndLogin = new HeaderAndLogin({
+                        headerfromHome: headerfromHomeResponse.secure_url,
                         headerfromAbout: headerfromAboutResponse.secure_url,
                         headerfromContact: headerfromContactResponse.secure_url,
                         headerfromPrice: headerfromPriceResponse.secure_url,
@@ -94,7 +98,7 @@ export const PostHeaderAndLogin = async (req, res) => {
 
 export const UpdateHeaderAndLogin = async (req, res) => {
     try {
-        upload.fields([{ name:'headerfromAbout'},{ name:'headerfromContact'},{ name:'headerfromPrice'},{ name:'headerfromMovie'},{ name:'headerfromFilms'},{ name:'headerfromAnimations'},{ name:'headerfromSeries'},{ name:'loginimage'}])(req, res, async function (err) {
+        upload.fields([{ name:'headerfromHome'},{ name:'headerfromAbout'},{ name:'headerfromContact'},{ name:'headerfromPrice'},{ name:'headerfromMovie'},{ name:'headerfromFilms'},{ name:'headerfromAnimations'},{ name:'headerfromSeries'},{ name:'loginimage'}])(req, res, async function (err) {
             if (err) {
                 console.error(err);
                 return res.status(400).json({ message: err.message });
@@ -105,6 +109,7 @@ export const UpdateHeaderAndLogin = async (req, res) => {
 
                 if(updatedİmage) {
 
+                  const headerfromHomeResult = req.files["headerfromHome"] ? req.files["headerfromHome"][0] : null;
                   const headerfromAboutResult = req.files["headerfromAbout"] ? req.files["headerfromAbout"][0] : null;
                     const headerfromContactResult = req.files["headerfromContact"] ? req.files["headerfromContact"][0] : null;
                     const headerfromPriceResult = req.files["headerfromPrice"] ? req.files["headerfromPrice"][0] : null;
@@ -114,6 +119,7 @@ export const UpdateHeaderAndLogin = async (req, res) => {
                     const headerfromSeriesResult = req.files["headerfromSeries"] ? req.files["headerfromSeries"][0] : null;
                     const loginimageResult = req.files["loginimage"] ? req.files["loginimage"][0] : null;
 
+                    const headerfromHomeUpload = headerfromHomeResult ? cloudinary.uploader.upload(headerfromHomeResult.path, { folder: "FilmCategory", resource_type: "video" }) : null;
                     const headerfromAboutUpload = headerfromAboutResult ? cloudinary.uploader.upload(headerfromAboutResult.path, { folder: "FilmCategory" }) : null;
                     const headerfromContactUpload = headerfromContactResult ? cloudinary.uploader.upload(headerfromContactResult.path, { folder: "FilmCategory" }) : null;
                     const headerfromPriceUpload = headerfromPriceResult ? cloudinary.uploader.upload(headerfromPriceResult.path, { folder: "FilmCategory" }) : null;
@@ -123,8 +129,9 @@ export const UpdateHeaderAndLogin = async (req, res) => {
                     const headerfromSeriesUpload = headerfromSeriesResult ? cloudinary.uploader.upload(headerfromSeriesResult.path, { folder: "FilmCategory" }) : null;
                     const loginimageUpload = loginimageResult ? cloudinary.uploader.upload(loginimageResult.path, { folder: "FilmCategory" }) : null;
 
-                    const [headerfromAboutResponse,headerfromContactResponse,headerfromPriceResponse,headerfromMovieResponse,headerfromFilmsResponse,headerfromAnimationsResponse,headerfromSeriesResponse,loginimageResponse] = await Promise.all([headerfromAboutUpload,headerfromContactUpload,headerfromPriceUpload,headerfromMovieUpload, headerfromFilmsUpload,headerfromAnimationsUpload,headerfromSeriesUpload,loginimageUpload]);
+                    const [headerfromHomeResponse,headerfromAboutResponse,headerfromContactResponse,headerfromPriceResponse,headerfromMovieResponse,headerfromFilmsResponse,headerfromAnimationsResponse,headerfromSeriesResponse,loginimageResponse] = await Promise.all([headerfromHomeUpload,headerfromAboutUpload,headerfromContactUpload,headerfromPriceUpload,headerfromMovieUpload, headerfromFilmsUpload,headerfromAnimationsUpload,headerfromSeriesUpload,loginimageUpload]);
 
+                    updatedİmage.headerfromHome = headerfromHomeResponse ? headerfromHomeResponse.secure_url : updatedİmage.headerfromHome;
                     updatedİmage.headerfromAbout = headerfromAboutResponse ? headerfromAboutResponse.secure_url : updatedİmage.headerfromAbout;
                     updatedİmage.headerfromContact = headerfromContactResponse ? headerfromContactResponse.secure_url : updatedİmage.headerfromContact;
                     updatedİmage.headerfromPrice = headerfromPriceResponse ? headerfromPriceResponse.secure_url : updatedİmage.headerfromPrice;

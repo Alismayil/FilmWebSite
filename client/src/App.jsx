@@ -21,6 +21,7 @@ import ModeBox from './components/ModeBox';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import 'animate.css';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
@@ -49,6 +50,8 @@ function App() {
       {/* <div className="cursor" style={{ left: cursorPos.x + 'px', top: cursorPos.y + 'px', position: 'absolute' }}></div> */}
 
       <BrowserRouter>
+      <ScrollToTop/>
+
         <Routes>
           <Route path="/" element={<MainLayOut />} >
             <Route path="/" element={<HomePage />} />

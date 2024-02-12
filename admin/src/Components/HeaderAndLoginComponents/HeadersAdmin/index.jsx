@@ -84,7 +84,10 @@ function HeadersAdmin() {
             <tr>
               <td><img src={image.headerfromSeries} alt="" /></td>
               <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><FaRegEdit /></p> <span>{t("Series")}</span></td>
-
+            </tr>
+            <tr>
+              <td><video src={image.headerfromHome} autoPlay muted loop alt="" /></td>
+              <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><FaRegEdit /></p> <span>{t("Series")}</span></td>
             </tr>
 
 

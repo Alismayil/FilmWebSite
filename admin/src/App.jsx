@@ -7,6 +7,7 @@ import AboutPage from './pages/AboutPage';
 import MovieCard from './pages/MovieCard';
 import HeadersAndLogin from './pages/HeadersAndLogin';
 import ErrorPage from './pages/ErrorPage';
+import ScrollToTop from './Components/ScrollToTop';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+      <ScrollToTop/>
       <Navbar/>
         <Routes>
           <Route path="/" element={<HomePage/>} />

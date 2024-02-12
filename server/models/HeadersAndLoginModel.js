@@ -1,6 +1,7 @@
 import mongoose, {Schema} from 'mongoose'
 
 const HeaderAndLoginSchema = new Schema({
+headerfromHome:String,
 headerfromAbout:String,
 headerfromContact:String,
 headerfromPrice:String,
