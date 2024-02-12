@@ -8,6 +8,7 @@ import Header from './routers/HeaderRouter.js';
 import TimeLine from './routers/TimeLineRouter.js';
 import FilmCategory from './routers/FilmCategoryRouter.js';
 import HeaderAndLogin from './routers/HeadersAndLoginRouter.js';
+import Login from './routers/LoginRouter.js';
 import dotenv  from  "dotenv"
 
 const {Schema} = mongoose;
@@ -27,6 +28,7 @@ app.use("/", Header)
 app.use("/",TimeLine)
 app.use("/", FilmCategory)
 app.use("/", HeaderAndLogin)
+app.use("/", Login)
 
 mongoose.connect(connectUrl)
     .then(() => console.log('Connected!'));
