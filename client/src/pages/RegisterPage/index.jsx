@@ -20,7 +20,6 @@ function RegisterPage({leftBox,setleftBox}) {
   const { t, i18n } = useTranslation();
   const [login, setLogin] = useState([])
 
-
   const { token, setUser, setToken } = useContext(userContext);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -50,9 +49,9 @@ function RegisterPage({leftBox,setleftBox}) {
     const decoded = jwtDecode(token);
     setUser(decoded)
     setToken(token)
-    navigate("/");
+    navigate("/movies");
    } catch (error) {
-    alert('Wrong username details');
+    alert('Her Şeyi Doldur');
     
    }
   }

@@ -19,7 +19,7 @@
         @include MyFlex();
         flex-direction: column;
         gap: 10px;
-
+width: 300px;
         .upBox {
             display: flex;
             gap: 10px;
@@ -244,3 +244,37 @@
         transition: 0.7s;
     }
 }
+
+// .registerChangeBox {
+//     h1 {
+//         font-size: 19px;
+//     }
+
+//     form {
+//         .upBox {
+//             .firstBox {
+//                 input {
+//                     width: 75px;
+//                 }
+//             }
+
+//             .lastBox {
+//                 input {
+//                     width: 75px;
+//                 }
+//             }
+//         }
+
+//         .passwordBox {
+//             .icon {
+//                 width: 44px;
+//             }
+//         }
+
+//         button {
+//             p {
+//                 left: 110px;
+//             }
+//         }
+//     }
+// }

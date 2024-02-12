@@ -33,19 +33,23 @@ function FilmCatagory() {
                             <div>
                                 <span style={{ gap: '450px' }}>
                                      {t("FilmCategorySeries")}
-                                    <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
+                                    
+                                    {/* <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" /> */}
                                 </span>
                                 <span className='hiddenBox'>
-                                    <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
+                                    
+                                    {/* <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" /> */}
                                     <>{t("FilmCategorySeries")}</>
                                 </span>
                                
                                 
                                 <span style={{ gap: '450px' }}> {t("FilmCategorySeries")}
-                                    <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
+                                    
+                                    {/* <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" /> */}
                                 </span>
                                 <span className='hiddenBox'>
-                                    <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
+                                    
+                                    {/* <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" /> */}
                                     <>{t("FilmCategorySeries")}</>
                                 </span>
                                
@@ -62,21 +66,25 @@ function FilmCatagory() {
                         <div class="marqueeRight">
                             <div>
                                 <span> {t("FilmCategoryAnimations")}
-                                    <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
+                                    
+                                    {/* <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" /> */}
 
 
                                 </span>
                                 <span className='hiddenBox'>
-                                    <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
+                                    
+                                    {/* <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" /> */}
                                     <>{t("FilmCategoryAnimations")}</>
                                 </span>
                                
                                 <span> {t("FilmCategoryAnimations")}
-                                    <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
+                                    
+                                    {/* <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" /> */}
 
                                 </span>
                                 <span className='hiddenBox'>
-                                    <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
+                                    
+                                    {/* <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" /> */}
                                     <>{t("FilmCategoryAnimations")}</>
                                 </span>
                                
@@ -92,21 +100,25 @@ function FilmCatagory() {
                         <div class="marqueeLeft">
                             <div>
                                 <span style={{ gap: '460px' }}> {t("FilmCategoryFilms")}
-                                    <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
+                                    
+                                    {/* <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" /> */}
 
 
                                 </span>
                                 <span className='hiddenBox'>
-                                    <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
+                                    
+                                    {/* <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" /> */}
                                     <>{t("FilmCategoryFilms")}</>
                                 </span>
                                
                                 <span style={{ gap: '460px' }}> {t("FilmCategoryFilms")}
-                                    <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
+                                    
+                                    {/* <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" /> */}
 
                                 </span>
                                 <span className='hiddenBox'>
-                                    <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
+                                    
+                                    {/* <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" /> */}
                                     <>{t("FilmCategoryFilms")}</>
                                 </span>
                                
@@ -122,21 +134,25 @@ function FilmCatagory() {
                         <div class="marqueeRight">
                             <div>
                                 <span> {t("FilmCategoryAlls")}
-                                    <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
+                                    
+                                    {/* <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" /> */}
 
 
                                 </span>
                                 <span style={{gap:'30px'}} className='hiddenBox'>
-                                    <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
+                                    
+                                    {/* <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" /> */}
                                     <> {t("FilmCategoryAlls")}</>
                                 </span>
                                
                                 <span> {t("FilmCategoryAlls")}
-                                    <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
+                                    
+                                    {/* <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" /> */}
 
                                 </span>
                                 <span style={{gap:'30px'}} className='hiddenBox'>
-                                    <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" />
+                                    
+                                    {/* <img src="https://img1.picmix.com/output/stamp/normal/1/1/4/2/2302411_aba33.gif" alt="" /> */}
                                     <> {t("FilmCategoryAlls")}</>
                                 </span>
                                

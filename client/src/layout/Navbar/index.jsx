@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Navbar.scss'
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { HiMiniPause } from "react-icons/hi2";
 import { VscDebugStart } from "react-icons/vsc";
@@ -8,16 +8,21 @@ import ModeBox from '../../components/ModeBox';
 import FilmLogo from '../../../image/filmLogo.png'
 import LanguageBox from '../../components/LanguageBox';
 import { useTranslation } from 'react-i18next';
+import { userContext } from '../../context/UserContext';
+import { RiLogoutCircleRLine } from "react-icons/ri";
 
 function Navbar() {
   const [openNavbar, setopenNavbar] = useState(false)
-  const {pathname} =useLocation()
+  const { pathname } = useLocation()
   const [scrollPosition, setScrollPosition] = useState(0);
   const { t, i18n } = useTranslation();
+  const { user, setUser } = useContext(userContext);
+  console.log(user)
+const nav = useNavigate()
 
   const handleScroll = () => {
     const currentPosition = window.scrollY;
-      setScrollPosition(currentPosition);
+    setScrollPosition(currentPosition);
   };
 
   React.useEffect(() => {
@@ -27,22 +32,27 @@ function Navbar() {
     };
   }, []);
 
+
+  function handleNavigate() {
+    setUser(null)
+    nav("/")
+  }
   function handleOpenNavbar() {
     setopenNavbar(!openNavbar)
   }
 
- 
+
 
   return (
-    <nav id={pathname !== "/" ? "location" : ""} className={scrollPosition > 600  ? 'black' : ''}>
+    <nav id={pathname !== "/" ? "location" : ""} className={scrollPosition > 600 ? 'black' : ''}>
       <div className="respLanguageBox" >
-      <LanguageBox/>
+        <LanguageBox />
       </div>
       <div className="navbarLeftBox">
         <Link to={'/'}>
-        <div className="iconBox">
-          <img src={FilmLogo} alt="" />
-        </div>
+          <div className="iconBox">
+            <img src={FilmLogo} alt="" />
+          </div>
         </Link>
         <div className="textBox">
           <ul>
@@ -76,76 +86,88 @@ function Navbar() {
                 <div className="outline"></div>
               </NavLink>
             </li>
-            <li>
+            {
+              user ? <li>
               <NavLink className='navlink' to={'/playlist'}>
                 {t("Playlist")}
                 <div className="outline"></div>
               </NavLink>
-            </li>
+            </li>:<></>
+            }
+            
           </ul>
         </div>
       </div>
       <div className="navbarRightBox">
         <div className="languageBox">
-          <LanguageBox/>
+          <LanguageBox />
         </div>
-        <div className="logInBox">
-          <Link className='link' to={'/login'}>
-              
-            <button><p>{t("LoginBtn")}</p>
-            <div className="frontBox"></div>
-            </button>
-          </Link>
-        </div>
+        {user ? <button className='logOut'  onClick={()=>handleNavigate()}><RiLogoutCircleRLine /></button> :
+          <div className="logInBox">
+            <Link className='link' to={'/login'}>
+              <button><p>{t("LoginBtn")}</p>
+                <div className="frontBox"></div>
+              </button>
+            </Link>
+          </div>
+
+        }
       </div>
       <div className="menuBox" onClick={handleOpenNavbar}>
         {openNavbar ? <HiMiniPause /> : <VscDebugStart />}
       </div>
       <div className={`respNavbar ${openNavbar ? 'open' : ''}`}>
-      <ul>
-            <li>
-              <NavLink className='navlink' to={'/'}>
+        <ul>
+          <li>
+            <NavLink className='navlink' to={'/'}>
               {t("Home")}
-                <div className="outline"></div>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className='navlink' to={'/about'}>
+              <div className="outline"></div>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className='navlink' to={'/about'}>
               {t("About")}
-                <div className="outline"></div>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className='navlink' to={'/movies'}>
+              <div className="outline"></div>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className='navlink' to={'/movies'}>
               {t("Movies")}
-                <div className="outline"></div>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className='navlink' to={'/price'}>
+              <div className="outline"></div>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className='navlink' to={'/price'}>
               {t("Price")}
-                <div className="outline"></div>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className='navlink' to={'/contact'}>
+              <div className="outline"></div>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className='navlink' to={'/contact'}>
               {t("Contact")}
-                <div className="outline"></div>
-              </NavLink>
-            </li>
-            <li>
+              <div className="outline"></div>
+            </NavLink>
+          </li>
+          {
+              user ? <li>
               <NavLink className='navlink' to={'/playlist'}>
-              {t("Playlist")}
+                {t("Playlist")}
                 <div className="outline"></div>
               </NavLink>
-            </li>
-          </ul>
+            </li>:<></>
+            }
+       
+        </ul>
+        {user ? <button className='logOut' onClick={()=>setUser(null)}><RiLogoutCircleRLine /></button> :
           <div className="logInBox">
-          <Link className='link' to={'/login'}>
-            <button>{t("LoginBtn")}</button>
-          </Link>
-        </div>
-      
+            <Link className='link' to={'/login'}>
+              <button><p>{t("LoginBtn")}</p>
+                <div className="frontBox"></div>
+              </button>
+            </Link>
+          </div>
+
+        }
       </div>
     </nav>
   )

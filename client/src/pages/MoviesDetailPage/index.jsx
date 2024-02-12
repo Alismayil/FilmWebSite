@@ -116,7 +116,7 @@ function MoviesDetailPage() {
           <div className="commentBox">
             <span>{t("Comment")}</span>
             <form action="">
-              <input type="text" placeholder='Your Comment' />
+              <input type="text" placeholder={`${t("YourComment")}`} />
               <button><p>{t("CommentBtn")}</p>
                 <div className="line"></div></button>
             </form>

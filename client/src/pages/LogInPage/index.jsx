@@ -52,10 +52,10 @@ function LogInPage() {
       setUser(decoded)
       setToken(token)
 
-      navigate("/");
+      navigate("/movies");
       setCookie('token', token) 
     } catch (error) {
-      alert('Wrong username details');
+      alert('Belə İsdifadəçi yoxdur');
     }
   }
 

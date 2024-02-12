@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css';
 import MainLayOut from './layout/MainLayOut';
@@ -22,9 +22,12 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import 'animate.css';
 import ScrollToTop from './components/ScrollToTop';
+import { userContext } from './context/UserContext';
+import PrivateRoute from './Router/PrivateRouter';
 
 function App() {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const { user, setUser } = useContext(userContext);
 
   const handleMouseMove = (e) => {
     setCursorPos({ x: e.pageX, y: e.pageY });
@@ -51,17 +54,18 @@ function App() {
 
       <BrowserRouter>
       <ScrollToTop/>
-
         <Routes>
           <Route path="/" element={<MainLayOut />} >
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/movies" element={<MoviesPage />} />
             <Route path="/price" element={<PricePage />} />
+            <Route element={<PrivateRoute check={["user", "admin"]} />}>
+            <Route path="/watch" element={<MoviesDetailPage />} />
             <Route path="/playlist" element={<PlaylistPage />} />
+            </Route>
             <Route path="/contact" element={<ContactPage />} />
             {/* <Route path="/watch/:id" element={<MoviesDetailPage />} /> */}
-            <Route path="/watch" element={<MoviesDetailPage />} />
             <Route path="/login" element={<LogInPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/series" element={<SeriesPage />} />

@@ -15,6 +15,7 @@
     z-index: 5;
     transition: 0.7s;
     transform: translate(-115px);
+    
 
     .opcenChangeBox {
         background-color: var(--mode-color-4);
@@ -49,12 +50,12 @@
     .clickBox {
         background-color: var(--bg-color-1);
         border-radius: 10px;
-        width: 55px;
+        width: 50px;
         @include MyFlex();
         cursor: pointer;
-        color: #F6F6F6;
-        font-size: 30px;
-
+        color: var(--mode-color-2);
+        font-size: 25px;
+        border: 2px solid var(--mode-color-2);
     }
 
 }

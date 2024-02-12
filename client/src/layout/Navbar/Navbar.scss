@@ -105,6 +105,17 @@ nav {
             }
         }
     }
+    .logOut{
+        background: var(--bg-color-1);
+        height: 30px;
+        width: 30px;
+        border: 2px solid var(--mode-color-1);
+        border-radius: 50%;
+        font-size: 25px;
+        color: var(--mode-color-2);
+        cursor: pointer;
+        @include MyFlex();
+    }
 
     .logInBox {
         .link {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './MovieCards.scss'
 import { FaPlay } from "react-icons/fa";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -13,12 +13,14 @@ import { IoMdSearch } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import useLocalStorage from '../../../hook/LocalStorage/useLocalStorage';
 import { useTranslation } from 'react-i18next';
+import { userContext } from '../../../context/UserContext';
 
 
 function MovieCards() {
     const [openFiltertextBox, setopenFiltertextBox] = useState(false)
     const [changeTwoGrid, setChangeTwoGrid] = useLocalStorage()
     const { t, i18n } = useTranslation();
+    const { user, setUser } = useContext(userContext);
 
     function handleChangeTwogrid() {
         setChangeTwoGrid(!changeTwoGrid)
@@ -136,7 +138,12 @@ function MovieCards() {
                             <span>Leanotda daoapinvni</span>
                             <h2>Category    /<p>drama</p></h2>
                             <p>Hour : <span>0202</span></p>
-                           <Link to={'/watch'}>
+                          
+                           <Link 
+                           to={
+                                user ?"/watch":"/login" 
+                            }
+                           >
                             <div className="playBtn">                           
                                 <FaPlay />
                             </div>                           
