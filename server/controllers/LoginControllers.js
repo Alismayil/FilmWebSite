@@ -12,49 +12,40 @@ export async function Register(req, res) {
       res.send("Username already exist!! Try other Username");
       return;
     } else {
-      const { username } = req.body;
+      const { username, email } = req.body;
       const hashedPassword = await hash(req.body.password, 10);
       const user = new Users({
         username,
         password: hashedPassword,
         role: "user",
+        email,
       });
       await user.save();
       const token = jwt.sign(
-        { _id: user._id, username: user.username, role: user.role },
+        { _id: user._id, username: user.username, role: user.role , email: user.email },
         PrivateKey
       );
       res.status(200).send(token);
     }
   } catch (error) {
-    res.status(500).send("Internal Server Error");
+    res.status(500).send(`Internal Server Error: ${error.message}`);
   }
 }
 
 // --------------------------LOGIN--------------------------------------------
 
-// export async function Login(req, res) {
-//   try {
-//     const { username, password } = req.body;
-//     const user = await Users.findOne({ username: username });
-//     if (user && (await compare(password, user.password))) {
-//       const token = jwt.sign(
-//         { _id: user._id, username: user.username, role: user.role },
-//         PrivateKey
-//       );
-//       res.status(200).send(token);
-//     } 
-//   } catch (error) {
-//     res.status(500).send("Internal Server Error");
-//   }
-// }
+
 export async function Login(req, res) {
     try {
-      const { username, password } = req.body;
+      const { username, password  } = req.body;
       const user = await Users.findOne({ username: username });
       const passwordMatch = await compare(password, user.password);
       if (!user) {
         res.status(404).send("Yanlış kullanici");
+        return
+      }
+      else if (!passwordMatch) {
+        res.status(404).send("Yanlış Parola");
         return
       }
       const token = jwt.sign(

@@ -9,7 +9,9 @@ const UserSchema = new Schema(
       required: true,
     },
     password: { type: String, required: true },
-    role: { type: String, default:"User"},
+    role: { type: String, default:"user"},
+    email: { type: String, required: true },
+
   },
   { timestamps: true }
 );
