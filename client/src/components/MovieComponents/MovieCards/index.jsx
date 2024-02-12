@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './MovieCards.scss'
 import { FaPlay } from "react-icons/fa";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -13,15 +13,21 @@ import { IoMdSearch } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import useLocalStorage from '../../../hook/LocalStorage/useLocalStorage';
 import { useTranslation } from 'react-i18next';
+import axios from 'axios'
 import { userContext } from '../../../context/UserContext';
-
 
 function MovieCards() {
     const [openFiltertextBox, setopenFiltertextBox] = useState(false)
     const [changeTwoGrid, setChangeTwoGrid] = useLocalStorage()
     const { t, i18n } = useTranslation();
-    const { user, setUser } = useContext(userContext);
+  const { user, setUser } = useContext(userContext);
 
+const [movieCard, setMovieCard] = useState([])
+
+async function getMoviCartData() {
+    const res=await axios.get('http://localhost:3000/moviecart')
+    setMovieCard(res.data)
+}
     function handleChangeTwogrid() {
         setChangeTwoGrid(!changeTwoGrid)
     }
@@ -30,6 +36,9 @@ function MovieCards() {
     function handleOpenFilterBox() {
         setopenFiltertextBox(!openFiltertextBox)
     }
+useEffect(() => {
+    getMoviCartData()
+}, [])
 
     return (
         <section id='movieCards'>
@@ -106,15 +115,12 @@ function MovieCards() {
                 </div>
             </div>
             <div className={`downBox ${changeTwoGrid ? "twoGrid" : ""}`}>
-                {/* <div className='downBox'> */}
-                <Swiper
+               {
+                movieCard && movieCard.map((item)=>(
+                    <Swiper
                     effect={'flip'}
                     grabCursor={true}
                     loop={true}
-                    // autoplay={{
-                    //     delay: 1500,
-                    //     disableOnInteraction: false,
-                    // }}
                     speed={900}
                     modules={[EffectFlip, Autoplay]}
                     className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
@@ -123,7 +129,7 @@ function MovieCards() {
                  
                     <SwiperSlide   >
                         <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`} >
-                            <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
+                            <img src={item.cartposterimage} alt="" />
                             <div className="changeBox">
                                 <MdOutlineChangeCircle />
                             </div>
@@ -131,19 +137,17 @@ function MovieCards() {
 
                     </SwiperSlide>
                    <SwiperSlide>
-                    <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`} style={{backgroundImage: `url(https://i.pinimg.com/originals/eb/0f/8c/eb0f8c3e2e1a8e1508f3afa2c86ad51f.gif)` }}>
+                    <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`} style={{backgroundImage: `url(${item.moviegif})` }}>
                         <div className="frontBox" ></div>
                            <div className="text">
-                           <h1>Inceriodsaasaaadsascacascsan</h1>
-                            <span>Leanotda daoapinvni</span>
+                           <h1>{item.name}</h1>
+                            <span>{item.writter}</span>
                             <h2>Category    /<p>drama</p></h2>
-                            <p>Hour : <span>0202</span></p>
-                          
-                           <Link 
-                           to={
-                                user ?"/watch":"/login" 
-                            }
-                           >
+                            <p>Hour : <span>{item.hourtime}</span></p>
+                           
+                           <Link to= {
+                                user ? `/watch/${item._id}`:"/login"
+                            }>
                             <div className="playBtn">                           
                                 <FaPlay />
                             </div>                           
@@ -157,7 +161,9 @@ function MovieCards() {
                     </SwiperSlide>
 
                 </Swiper>
-                <Swiper
+                ))
+               }
+                {/* <Swiper
                     effect={'flip'}
                     grabCursor={true}
                     loop={true}
@@ -534,7 +540,7 @@ function MovieCards() {
                         </div>
                     </SwiperSlide>
 
-                </Swiper>
+                </Swiper> */}
             </div>
         </section>
     )

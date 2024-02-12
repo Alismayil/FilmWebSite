@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { userContext } from '../../context/UserContext';
 import { jwtDecode } from "jwt-decode";
 import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 function RegisterPage({leftBox,setleftBox}) {
@@ -51,7 +52,7 @@ function RegisterPage({leftBox,setleftBox}) {
     setToken(token)
     navigate("/movies");
    } catch (error) {
-    alert('Her Şeyi Doldur');
+    toast.error("Bütün iniputları doldur")
     
    }
   }

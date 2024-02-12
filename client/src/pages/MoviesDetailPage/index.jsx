@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Helmet } from "react-helmet";
 import './MoviesDetailPage.scss'
 import NotMeanBox from '../../components/NotMeanBox';
@@ -6,18 +6,26 @@ import { FaStar } from "react-icons/fa6";
 import { FaStarHalfStroke } from "react-icons/fa6";
 import { CgPlayListAdd } from "react-icons/cg";
 import { FaRegHeart } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { IoCloseSharp } from "react-icons/io5";
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { MdKeyboardArrowUp } from "react-icons/md";
+import axios from 'axios';
+import useLocalStorage from '../../hook/LocalStorage/useLocalStorage';
 
 function MoviesDetailPage() {
   const [openTrailerBox, setOpenTrailerBox] = useState(false)
-  const [openWatchMovieBox, setOpenWatchMovieBox] = useState(false)
+  const [openWatchMovieBox, setOpenWatchMovieBox] = useLocalStorage(false)
   const [openSeriesBox, setopenSeriesBox] = useState(false)
   const { t, i18n } = useTranslation();
+  const [movieCartDetail, setMovieCartDetail] = useState()
+const {id}=useParams()
 
+async function getMovieCard() {
+  const res=await axios.get(`http://localhost:3000/moviecart/${id}`)
+  setMovieCartDetail(res.data)
+}
   function handleOpenSeriesBox() {
     setopenSeriesBox(!openSeriesBox)
   }
@@ -28,6 +36,10 @@ function MoviesDetailPage() {
   function handleOpenTrailerBox() {
     setOpenTrailerBox(!openTrailerBox)
   }
+  useEffect(() => {
+    getMovieCard()
+  }, [])
+  
 
   return (
     <>
@@ -37,20 +49,25 @@ function MoviesDetailPage() {
         <title>Movies Watch</title>
       </Helmet>
       <div className="moviesDetailPage">
-        <div className={`movieWatchBox ${openWatchMovieBox ? 'openMovieBox' : ''}`}>
+       
+    {
+      movieCartDetail ?
+      <>
+       <div className={`movieWatchBox ${openWatchMovieBox ? 'openMovieBox' : ''}`}>
+          <video  autoPlay muted loop src={movieCartDetail.filmvideo}></video>
           <div className="closeBtn" onClick={handleOpenWatchMovieBox}>
             <IoCloseSharp />
           </div>
         </div>
-        <div className="headerBox">
-          <img src="https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/newscms/2018_48/2666056/181130-daredevil-season-2-ew-705p.jpg" alt="" />
+          <div className="headerBox">
+          <img src={movieCartDetail.detailbigimage} alt="" />
         </div>
         <div className="downBox">
           <div className={`trailerBox ${openTrailerBox ? "open" : ""}`}>
-            <iframe src="https://www.youtube.com/embed/izdrYgrPxxo?list=RDizdrYgrPxxo" title="SYMPHONIE EXCL. #1 (MINUS)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe src={movieCartDetail.trailer} title="SYMPHONIE EXCL. #1 (MINUS)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           </div>
           <div className="firstBox">
-            <h1>Daredevil</h1>
+            <h1>{movieCartDetail.name}</h1>
             <div className="normalBox">
               <div className="starsBox">
                 <FaStar />
@@ -59,7 +76,7 @@ function MoviesDetailPage() {
                 <FaStar />
                 <FaStarHalfStroke style={{ fontSize: '20px' }} />
               </div>
-              <p>4.2</p>
+              <p>{movieCartDetail.imdbpoint}</p>
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/2560px-IMDB_Logo_2016.svg.png" alt="" />
 
             </div>
@@ -72,12 +89,12 @@ function MoviesDetailPage() {
             <p>Action</p>
           </div>
           <div className="thirdBox">
-            <p>2H : 6Mins</p>
+            <p>{movieCartDetail.hourtime} M</p>
             <span>●</span>
-            <p>Sep 2021
+            <p>{movieCartDetail.daytime}
             </p>
             <span>●</span>
-            <p>Christofer Nolan</p>
+            <p>{movieCartDetail.director}</p>
           </div>
           <div className="endBox">
             <div className="btn">
@@ -128,6 +145,9 @@ function MoviesDetailPage() {
             </div>
           </div>
         </div>
+      </>
+      :""
+    }
       </div>
     </>
   )

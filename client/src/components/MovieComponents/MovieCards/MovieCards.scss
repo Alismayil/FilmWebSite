@@ -8,13 +8,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&display=swap');
 
 #movieCards {
-  font-family: 'Space Grotesk', sans-serif;
-
-    background: var(--mode-color-1);
-    input::placeholder{
     font-family: 'Space Grotesk', sans-serif;
 
+    background: var(--mode-color-1);
+
+    input::placeholder {
+        font-family: 'Space Grotesk', sans-serif;
+
     }
+
     .upBox {
         background: var(--mode-color-1);
         @include MyFlex();
@@ -66,6 +68,7 @@
             width: 100px;
             display: flex;
             justify-content: end;
+
             .twoBoxMenu {
                 background: var(--bg-color-1);
                 height: 100%;
@@ -75,7 +78,7 @@
                 font-size: 15px;
                 cursor: pointer;
                 color: var(--mode-color-1);
-font-size: 12px;
+                font-size: 12px;
 
             }
 
@@ -111,6 +114,7 @@ font-size: 12px;
                 gap: 5px;
                 padding: 20px;
                 border-radius: 7px;
+
                 input[type="checkbox"]:checked+label:before {
                     background-color: var(--bg-color-1);
                 }
@@ -145,12 +149,12 @@ font-size: 12px;
                 }
             }
 
-          
+
 
             input[type="checkbox"]:checked+label:after {
                 display: block; // Check işaretini gösterme
                 left: 6px;
-  font-family: 'Space Grotesk', sans-serif;
+                font-family: 'Space Grotesk', sans-serif;
                 top: 2px;
                 width: 4px;
                 height: 9px;
@@ -167,6 +171,7 @@ font-size: 12px;
                 padding: 20px;
                 border-radius: 7px;
                 color: var(--mode-color-1);
+
                 input[type="checkbox"]:checked+label:before {
                     background-color: var(--mode-color-2);
                 }
@@ -182,10 +187,11 @@ font-size: 12px;
         display: flex;
         flex-wrap: wrap;
         gap: 50px;
-// display: grid;
-// grid-template-columns: repeat(4, auto);
+
+        // display: grid;
+        // grid-template-columns: repeat(4, auto);
         .swiper {
-            width:300px;
+            width: 300px;
             // margin: 0;
             @include MyFlex();
 
@@ -198,12 +204,14 @@ font-size: 12px;
 
         .swiper-slide {
             @include MyFlex();
+
             .posterBox {
                 width: 300px;
                 @include MyFlex();
                 border: 2px solid var(--mode-color-2);
                 border-radius: 10px;
-position: relative;
+                position: relative;
+
                 img {
                     border-radius: 8px;
 
@@ -219,15 +227,15 @@ position: relative;
                     border-radius: 50%;
                     background: white;
                 }
-                
+
             }
-          
+
             .textBox {
                 background: var(--mode-color-2);
 
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
                 width: 100%;
                 padding: 20px;
                 height: 450px;
@@ -238,20 +246,22 @@ position: relative;
                 border-radius: 10px;
                 border: 2px solid var(--mode-color-2);
                 overflow: hidden;
-                .text{
+
+                .text {
                     z-index: 2;
 
                 }
-.frontBox{
-        background: var(--mode-color-2);
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        opacity: 0.3;
-        z-index: 1;
-}
+
+                .frontBox {
+                    background: var(--mode-color-2);
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    opacity: 0.3;
+                    z-index: 1;
+                }
 
                 .playBtn {
                     background: var(--bg-color-1);
@@ -310,34 +320,38 @@ position: relative;
                     }
                 }
             }
-            .twoGridWidthText{
+
+            .twoGridWidthText {
                 width: 200px;
-height: 300px;
+                height: 300px;
             }
-            .twoGridWidthPoster{
+
+            .twoGridWidthPoster {
                 width: 200px;
-            
+
             }
         }
-      
+
     }
-    .twoGrid{
+
+    .twoGrid {
         gap: 30px 0px;
-//   display: grid;
-//   grid-template-columns: repeat(2, auto);
-//   justify-content: unset;
-//   gap: 260px 20px;
-//   padding: 150px;
+        //   display: grid;
+        //   grid-template-columns: repeat(2, auto);
+        //   justify-content: unset;
+        //   gap: 260px 20px;
+        //   padding: 150px;
     }
-    .changeSwiper{
+
+    .changeSwiper {
         width: 250px !important;
     }
- 
+
     .open {
         transition: 0.7s;
         height: 400px;
     }
-   
+
 }
 
 

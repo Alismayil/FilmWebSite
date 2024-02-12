@@ -43,7 +43,7 @@ width: 300px;
                 }
 
                 input {
-                    padding: 10px 10px 0px;
+                    padding: 10px;
                     outline: none;
                     border: none;
                     background: transparent;
@@ -52,33 +52,7 @@ width: 300px;
                 }
             }
 
-            // .lastBox {
-            //     display: flex;
-            //     gap: 10px;
-            //     background: var(--mode-color-1);
-            //     padding: 10px;
-            //     border-radius: 7px;
-
-            //     .icon {
-            //         background: var(--mode-color-2);
-            //         width: 30px;
-            //         height: 30px;
-            //         border-radius: 7px;
-            //         font-size: 20px;
-            //         color: var(--bg-color-1);
-            //         @include MyFlex();
-
-            //     }
-
-            //     input {
-            //         padding: 10px 10px 0px;
-            //         width: 100px;
-            //         outline: none;
-            //         border: none;
-            //         background: transparent;
-            //         color: var(--mode-color-2);
-            //     }
-            // }
+            
         }
 
         .emailBox {
@@ -101,7 +75,7 @@ width: 300px;
 
             input {
                 width: 100%;
-                padding: 10px 10px 0px;
+                padding: 10px;
                 outline: none;
                 border: none;
                 background-color: transparent;
@@ -129,7 +103,7 @@ width: 300px;
 
             input {
                 width: 100%;
-                padding: 10px 10px 0px;
+                padding: 10px;
                 outline: none;
                 border: none;
                 background-color: transparent;

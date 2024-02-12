@@ -12,6 +12,7 @@ import { setCookie } from '../../../helpers/helpers';
 import NotMeanBox from '../../components/NotMeanBox';
 import { userContext } from '../../context/UserContext';
 import RegisterPage from '../RegisterPage';
+import toast, { Toaster } from 'react-hot-toast';
 
 import './LogInPage.scss';
 function LogInPage() {
@@ -35,7 +36,10 @@ function LogInPage() {
   async function handleSubmitLogin(e) {
     e.preventDefault();
     if (userName.length === 0 || password.length === 0) {
-      alert('imput must not be empty')
+      toast('Good Job!', {
+        icon: '👏',
+      });
+      // alert('imput must not be empty')
       return
     }
 
@@ -55,7 +59,7 @@ function LogInPage() {
       navigate("/movies");
       setCookie('token', token) 
     } catch (error) {
-      alert('Belə İsdifadəçi yoxdur');
+      toast.error("Belə İsdifadəçi yoxdur")
     }
   }
 

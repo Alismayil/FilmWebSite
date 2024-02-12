@@ -70,10 +70,15 @@
                         gap: 350px;
                         // color: var(--bg-color-1);
                         color: transparent;
-                        font-family: 'Space Grotesk', sans-serif;
-                        -webkit-text-stroke-color: var(--bg-color-1) !important;
-                        -webkit-text-stroke-width: 2px !important;
-                        background: transparent;
+            font-family: 'Mansalva', sans-serif;
+
+                        // font-family: 'Space Grotesk', sans-serif;
+                        // -webkit-text-stroke-color: var(--bg-color-1) !important;
+                        // -webkit-text-stroke-width: 2px !important;
+                        // background: transparent;
+                        font-weight: 1000px;
+font-size: 160px;
+                        color: var(--bg-color-1);
                         img {
                             width: 380px;
                             height: 380px;

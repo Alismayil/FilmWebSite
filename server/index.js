@@ -10,6 +10,7 @@ import FilmCategory from './routers/FilmCategoryRouter.js';
 import HeaderAndLogin from './routers/HeadersAndLoginRouter.js';
 import Login from './routers/LoginRouter.js';
 import dotenv  from  "dotenv"
+import MovieCart from './routers/MovieCartRouter.js';
 
 const {Schema} = mongoose;
 const app = express()
@@ -29,6 +30,7 @@ app.use("/",TimeLine)
 app.use("/", FilmCategory)
 app.use("/", HeaderAndLogin)
 app.use("/", Login)
+app.use("/", MovieCart)
 
 mongoose.connect(connectUrl)
     .then(() => console.log('Connected!'));
