@@ -1,5 +1,5 @@
 {
-    "Home": "Ev",
+    "Home": "Ana Səhifə",
     "About": "Haqqımızda",
     "Movies": "Filmlər",
     "Price": "Qiymət",
@@ -75,7 +75,10 @@
     "YourComment":"Sizin Şərh",
     "Minute":"Dəqiqə",
     "Hour":"Saat",
-    "Time":"Vaxt"
+    "Time":"Vaxt",
+    "Type":"Növ"
+
+
 
 
 

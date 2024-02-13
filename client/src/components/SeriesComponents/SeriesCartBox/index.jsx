@@ -1,5 +1,7 @@
+
+
 import React, { useContext, useEffect, useState } from 'react';
-import './MovieCards.scss';
+import './SeriesCartBox.scss'
 import { FaPlay } from "react-icons/fa";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -15,7 +17,7 @@ import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import { userContext } from '../../../context/UserContext';
 
-function MovieCards() {
+function SeriesCartBox() {
     const [openFiltertextBox, setOpenFilterTextBox] = useState(false);
     const [changeTwoGrid, setChangeTwoGrid] = useLocalStorage();
     const { t } = useTranslation();
@@ -71,7 +73,7 @@ function MovieCards() {
     };
 
     return (
-        <section id='movieCards'>
+        <section id='seriesCartBox'>
             <div className="upBox">
                 <div className="searchAndFilterBox">
                     <div className="filterBox" onClick={handleOpenFilterBox}>
@@ -91,20 +93,6 @@ function MovieCards() {
             
             <div className={`middleBox ${openFiltertextBox ? 'open' : ''}`}>
                 <div className="filterTextBox">
-                    <div className="movieTypeBox">
-                        <form action="">
-                            <input type="checkbox" id="seriesCheckbox" onClick={handleCategoryFilter} value={'Series'} />
-                            <label htmlFor="seriesCheckbox">{t("FilmCategorySeries")}</label>
-                        </form>
-                        <form action="">
-                            <input type="checkbox" id="filmCheckbox" onClick={handleCategoryFilter} value={'Animation'} />
-                            <label htmlFor="filmCheckbox">{t("FilmCategoryAnimations")}</label>
-                        </form>
-                        <form action="">
-                            <input type="checkbox" id="animationCheckbox" onClick={handleCategoryFilter} value={'Film'} />
-                            <label htmlFor="animationCheckbox">{t("FilmCategoryFilms")}</label>
-                        </form>
-                    </div>
                     <div className="filmTypeBox">
                         <form action="">
                             <input type="checkbox" id="comedyCheckbox" />
@@ -150,7 +138,10 @@ function MovieCards() {
                     .filter((x) => x.name.toLowerCase().includes(search.toLowerCase()))
                     .filter((item) => filterCategory === "All" || filterData.includes(item.movietype))
                     .map((item) => (
-                        <Swiper
+                        <>
+                        {item.movietype=== "Series" ?
+                        <>
+<Swiper
                             effect={'flip'}
                             grabCursor={true}
                             loop={true}
@@ -173,7 +164,6 @@ function MovieCards() {
                                     <div className="text">
                                         <h1>{item.name}</h1>
                                         <span>{item.writter}</span>
-                                        <h2>{t("Type")} / <p>{item.movietype}</p></h2>
                                         <p>{t("Time")}: <span>{convertMinuteToHour(item.hourtime)}</span></p>
                                         <Link to={user ? `/watch/${item._id}` : "/login"}>
                                             <div className="playBtn">
@@ -187,6 +177,12 @@ function MovieCards() {
                                 </div>
                             </SwiperSlide>
                         </Swiper>
+
+
+                        </>
+                        
+                        :""}
+                        </>
                     ))
                 }
             </div>
@@ -194,4 +190,4 @@ function MovieCards() {
     );
 }
 
-export default MovieCards;
+export default SeriesCartBox;

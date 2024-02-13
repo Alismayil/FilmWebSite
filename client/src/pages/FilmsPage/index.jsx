@@ -2,6 +2,7 @@ import React from 'react'
 import {Helmet} from "react-helmet";
 import NotMeanBox from '../../components/NotMeanBox';
 import HeaderFromFilm from '../../components/FilmComponents/HeaderFromFilm';
+import FilmCartBox from '../../components/FilmComponents/FilmCartBox';
 
 function FilmsPage() {
   return (
@@ -12,7 +13,7 @@ function FilmsPage() {
       <title>Films</title>
     </Helmet>
     <HeaderFromFilm/>
-
+    <FilmCartBox/>
   </>
   )
 }

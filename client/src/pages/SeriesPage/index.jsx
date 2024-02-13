@@ -2,6 +2,7 @@ import React from 'react'
 import {Helmet} from "react-helmet";
 import NotMeanBox from '../../components/NotMeanBox';
 import HeaderFromSeries from '../../components/SeriesComponents/HeaderFromSeries';
+import SeriesCartBox from '../../components/SeriesComponents/SeriesCartBox';
 
 function SeriesPage() {
   return (
@@ -12,7 +13,7 @@ function SeriesPage() {
       <title>Series</title>
     </Helmet>
     <HeaderFromSeries/>
-
+<SeriesCartBox/>
   </>
   )
 }

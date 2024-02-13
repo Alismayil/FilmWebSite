@@ -7,7 +7,7 @@
 //   @include MyFlex();
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&display=swap');
 
-#movieCards {
+#seriesCartBox {
     font-family: 'Space Grotesk', sans-serif;
 
     background: var(--mode-color-1);
@@ -37,6 +37,7 @@
                 font-size: 20px;
                 cursor: pointer;
                 color: var(--mode-color-1);
+                color: var(--mode-color-2);
 
             }
 
@@ -79,6 +80,7 @@
                 cursor: pointer;
                 color: var(--mode-color-1);
                 font-size: 12px;
+color: var(--mode-color-2);
 
             }
 
@@ -93,7 +95,6 @@
         z-index: 1;
         transition: 0.7s;
         overflow: hidden;
-
         .filterTextBox {
             width: 270px;
             border-radius: 7px;
@@ -105,21 +106,9 @@
                 display: flex;
                 gap: 10px;
                 font-size: 15px;
+                
             }
 
-            .movieTypeBox {
-                background: var(--bg-color-1);
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-                padding: 20px;
-                border-radius: 7px;
-
-                input[type="checkbox"]:checked+label:before {
-                    background-color: var(--bg-color-1);
-                }
-
-            }
 
             input[type="checkbox"] {
                 display: none;
@@ -137,8 +126,7 @@
                     left: 0;
                     height: 15px;
                     width: 15px;
-                    // background-color: var(--bg-color-1);
-                    border: 2px solid var(--mode-color-1);
+                    border: 2px solid var(--mode-color-2);
                     border-radius: 3px;
                 }
 
@@ -158,22 +146,23 @@
                 top: 2px;
                 width: 4px;
                 height: 9px;
-                border: solid var(--mode-color-1);
+                border: solid var(--mode-color-2);
                 border-width: 0 2px 2px 0;
                 transform: rotate(45deg);
+                
             }
 
             .filmTypeBox {
-                background: var(--mode-color-2);
+                background: var(--bg-color-1);
                 display: flex;
                 flex-direction: column;
                 gap: 5px;
                 padding: 20px;
                 border-radius: 7px;
-                color: var(--mode-color-1);
+                color: var(--mode-color-2);
 
                 input[type="checkbox"]:checked+label:before {
-                    background-color: var(--mode-color-2);
+                    background-color: transparent;
                 }
             }
         }
@@ -302,7 +291,7 @@
                     gap: 5px;
 
                     p {
-                        color: var(--bg-color-1);
+                        color: #A7A7A7;
                         font-size: 20px;
                     }
                 }
@@ -331,11 +320,6 @@
 
     .twoGrid {
         gap: 30px 0px;
-        //   display: grid;
-        //   grid-template-columns: repeat(2, auto);
-        //   justify-content: unset;
-        //   gap: 260px 20px;
-        //   padding: 150px;
     }
 
     .changeSwiper {
@@ -351,7 +335,7 @@
 
 
 @media only screen and (max-width: 1020px) {
-    #movieCards {
+    #seriesCartBox {
         .upBox {
             @include MyFlex();
 
