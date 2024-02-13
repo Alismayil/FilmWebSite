@@ -19,19 +19,33 @@
         @include MyFlex();
         flex-direction: column;
         gap: 10px;
-width: 300px;
+width: 280px;
+.error{
+    color: red;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-weight: 600;
+}
         .upBox {
             display: flex;
-            gap: 10px;
             width: 100%;
             .firstBox {
-                width: 100%;
-
                 display: flex;
-                gap: 10px;
-                background: var(--mode-color-1);
-                padding: 10px;
-                border-radius: 7px;
+                flex-direction: column;
+                width: 100%;
+                .up{
+                    width: 100%;
+                    display: flex;
+                    // gap: 20px;
+                    background: var(--mode-color-1);
+                    padding: 10px;
+                    border-radius: 7px;
+        @include MyFlex();
+        justify-content: space-between;
+
+                }
+           
                 .icon {
                     background: var(--mode-color-2);
                     width: 30px;
@@ -48,7 +62,7 @@ width: 300px;
                     border: none;
                     background: transparent;
                     color: var(--mode-color-2);
-
+                    width: 220px;
                 }
             }
 
@@ -57,12 +71,18 @@ width: 300px;
 
         .emailBox {
             width: 100%;
-            background: var(--mode-color-1);
-            padding: 10px;
-            border-radius: 7px;
-            display: flex;
-            gap: 10px;
+            // background: var(--mode-color-1);
+            .up{
+                width: 100%;
+                display: flex;
+                gap: 10px;
+                background: var(--mode-color-1);
+                padding: 10px;
+                border-radius: 7px;
+    @include MyFlex();
 
+            }
+            
             .icon {
                 background: var(--mode-color-2);
                 width: 35px;
@@ -85,15 +105,23 @@ width: 300px;
 
         .passwordBox {
             width: 100%;
-            background: var(--mode-color-1);
-            padding: 10px;
             border-radius: 7px;
             display: flex;
             gap: 10px;
-
+            flex-direction: column;
+            .up{
+                width: 100%;
+                display: flex;
+                background: var(--mode-color-1);
+                padding: 10px;
+                border-radius: 7px;
+    @include MyFlex();
+gap: 15px;
+            }
+           
             .icon {
                 background: var(--mode-color-2);
-                width: 35px;
+                width: 30px;
                 height: 30px;
                 border-radius: 7px;
                 font-size: 20px;
@@ -102,13 +130,12 @@ width: 300px;
             }
 
             input {
-                width: 100%;
+                // width: 100%;
                 padding: 10px;
                 outline: none;
                 border: none;
                 background-color: transparent;
                 color: var(--mode-color-2);
-
             }
 
             .eyeIcon {

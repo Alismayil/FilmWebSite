@@ -11,9 +11,10 @@ import { userContext } from '../../context/UserContext';
 import { jwtDecode } from "jwt-decode";
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
-
-function RegisterPage({leftBox,setleftBox}) {
+function RegisterPage({ leftBox, setleftBox }) {
   const [inputValue, setInputValue] = useState('');
   const [inputValueRegister, setInputValueRegister] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -36,26 +37,26 @@ function RegisterPage({leftBox,setleftBox}) {
   async function handleSubmitRegister(e) {
     e.preventDefault();
     if (userName.length === 0 || password.length === 0) {
-      alert('imput must not be empty')
+      // alert('imput must not be empty')
       return
     }
-   try {
-    const res = await axios.post("http://localhost:3000/register", {
-      username: userName,
-      password: password,
-      email: email,
-    });
+    try {
+      const res = await axios.post("http://localhost:3000/register", {
+        username: userName,
+        password: password,
+        email: email,
+      });
 
-    const token = res.data;
-    const decoded = jwtDecode(token);
-    setUser(decoded)
-    setToken(token)
-    navigate("/movies");
-    toast.success('Isdifadəçi yaradıldı 🎉')
-   } catch (error) {
-    toast.error("Bütün iniputları doldur")
-    
-   }
+      const token = res.data;
+      const decoded = jwtDecode(token);
+      setUser(decoded)
+      setToken(token)
+      navigate("/movies");
+      toast.success('Isdifadəçi yaradıldı 🎉')
+    } catch (error) {
+      // toast.error("Bütün inputları doldur")
+
+    }
   }
 
 
@@ -82,42 +83,107 @@ function RegisterPage({leftBox,setleftBox}) {
   function handleEyeBox() {
     seteyeCursor(!eyeCursor)
   }
+
   return (
-          <div className="registerChangeBox">
-            <h1>{t("RegisterText")}</h1>
-            <form action="" onSubmit={handleSubmitRegister}>
-              <div className="upBox">
-                <div className="firstBox" onChange={(e) => handleChange(e, setUserName)} >
-                  <div className="icon"><BiSolidUserCircle /></div>
-                  <input type="text" placeholder={`${t("UserName")}...`} />
-                </div>
-                
+    <div className="registerChangeBox">
+      <h1>{t("RegisterText")}</h1>
 
-              </div>
-              <div className="emailBox">
-                <div className="icon"><MdEmail /></div>
-                <input type="text" placeholder={`${t("Email")}`} onChange={(e) => handleChange(e, setEmail)} />
-              </div>
-              <div className="passwordBox">
-                <div className="icon"> <RiLockPasswordFill /></div>
-                <input
-                  type={showPasswordRegister ? 'text' : 'password'}
-                  value={inputValueRegister}
-                  onChange={(e) => {
-                    handleInputChangeRegister(e);
-                    setPassword(e.target.value);
-                  }}
-                  placeholder={`${t("Password")}`}
-                />
-
-
-                <div className="eyeIcon" onClick={togglePasswordVisibilityRegister}> {showPasswordRegister ? <h5><IoEyeOutline /></h5> : <h5><IoEyeOffOutline /></h5>}
-                </div>
-              </div>
-              <button type="submit"><p>{t("RegisterBtn")}</p><div className="line"></div></button>
-            </form>
-            <button onClick={handleChangeLeftBox}><p >{t("RegisterBackLogin")}</p><div className="line"></div></button>
+      <Formik
+  initialValues={{ username: '', password: '', email: '' }}
+  validationSchema={Yup.object({
+    username: Yup.string()
+      .min(3, 'Your name cannot be less than 3 letters')
+      .matches(/^[A-Z][a-z]*$/, "Enter your name correctly")
+      .required('Required'),
+    password: Yup.string()
+    .min(5, 'Password cannot be less than 3 letters')
+      .max(20, 'Must be 20 characters or less')
+      .required('Required'),
+    email: Yup.string()
+    .email('Invalid email address')
+    .required('Required'),
+  })}
+  onSubmit={async (values, { setSubmitting, resetForm }) => {
+    try {
+      const res = await axios.post("http://localhost:3000/register", values);
+      const token = res.data;
+      const decoded = jwtDecode(token);
+      setUser(decoded);
+      setToken(token);
+      resetForm();
+      navigate("/movies");
+      toast.success('İsdifadəçi yaradıldı 🎉');
+    } catch (error) {
+      toast.error("Bütün inputları doldurun");
+    } finally {
+      setSubmitting(false);
+    }
+  }}
+>
+{({ isSubmitting }) => (
+        <Form >
+           <div className="upBox">
+          <div className="firstBox" onChange={(e) => handleChange(e, setUserName)} >
+            <div className="up">
+            <div className="icon"><BiSolidUserCircle /></div>
+            <Field className='input' name="username" type="text" placeholder={`${t("UserName")}...`}/>
+            </div>
+          <div className="error"><ErrorMessage name="username" onChange={(e) => handleChange(e, setUserName)} /></div>
           </div>
+        </div>
+         
+        <div className="emailBox">
+         <div className="up">
+         <div className="icon"><MdEmail /></div>
+          <Field className='input' name="email" type="email" placeholder={`${t("Email")}`} />
+         </div>
+          <div className="error"><ErrorMessage name="email" onChange={(e) => handleChange(e, setEmail)} /></div>
+        </div>
+
+
+        <div className="passwordBox">
+    <div className="up">
+    <div className="icon"> <RiLockPasswordFill /></div>
+          <Field className='input' name="password"  type={showPasswordRegister ? 'text' : 'password'} placeholder={`${t("Password")}...`}/>
+          <div className="eyeIcon" onClick={togglePasswordVisibilityRegister}> {showPasswordRegister ? <h5><IoEyeOutline /></h5> : <h5><IoEyeOffOutline /></h5>}
+          </div>
+    </div>
+          <div className="error"><ErrorMessage name="password" onChange={(e) => handleChange(e, setPassword)}   /></div>
+</div>
+
+          
+
+
+          <button type="submit"><p>{t("RegisterBtn")}</p><div className="line"></div></button>
+        </Form>
+        )}
+      </Formik>
+
+
+      
+      {/* <form action="" onSubmit={handleSubmitRegister}>
+       
+      
+        <div className="passwordBox">
+          <div className="icon"> <RiLockPasswordFill /></div>
+          <input
+            type={showPasswordRegister ? 'text' : 'password'}
+            value={inputValueRegister}
+            onChange={(e) => {
+              handleInputChangeRegister(e);
+              setPassword(e.target.value);
+            }}
+            
+          />
+          <div className="eyeIcon" onClick={togglePasswordVisibilityRegister}> {showPasswordRegister ? <h5><IoEyeOutline /></h5> : <h5><IoEyeOffOutline /></h5>}
+          </div>
+        </div>
+        <button type="submit"><p>{t("RegisterBtn")}</p><div className="line"></div></button>
+      </form> */}
+
+
+      <button onClick={handleChangeLeftBox}><p >{t("RegisterBackLogin")}</p><div className="line"></div></button>
+    </div>
 
   )
 }

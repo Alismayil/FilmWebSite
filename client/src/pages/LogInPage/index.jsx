@@ -62,6 +62,7 @@ function LogInPage() {
     } catch (error) {
       toast.error("Belə İsdifadəçi yoxdur")
       setleftBox(!leftBox)
+      return
     }
   }
 
