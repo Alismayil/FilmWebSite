@@ -14,6 +14,8 @@ daytime:String,
 trailer:String,
 detailbigimage:String,
 filmvideo:String,
+playlistImage:String,
+movietype:String
 // series:String
 
 

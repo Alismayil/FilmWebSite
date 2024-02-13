@@ -57,17 +57,17 @@
 }
 ::-webkit-scrollbar-thumb {
   background: #e1e1e1;
-  border: 10px solid var(--bg-color-1);
+  border: 10px solid var(--bg-color-1) ;
   border-radius:2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #ffffff;
+  background: #ffffff ;
 }
 ::-webkit-scrollbar-thumb:active {
   background: #000000;
 }
 ::-webkit-scrollbar-track {
-    background:var(--mode-color-1);
+    background:var(--mode-color-1) !important;
 
 }
 ::-webkit-scrollbar-track:hover {
@@ -75,7 +75,7 @@
 
 }
 ::-webkit-scrollbar-track:active {
-    background:var(--mode-color-1);
+    background:var(--mode-color-2);
 }
 ::-webkit-scrollbar-corner {
   background: transparent;

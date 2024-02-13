@@ -186,13 +186,10 @@
         @include MyFlex();
         display: flex;
         flex-wrap: wrap;
-        gap: 50px;
+        gap: 20px 0px;
 
-        // display: grid;
-        // grid-template-columns: repeat(4, auto);
         .swiper {
             width: 300px;
-            // margin: 0;
             @include MyFlex();
 
             img {
@@ -208,7 +205,6 @@
             .posterBox {
                 width: 300px;
                 @include MyFlex();
-                border: 2px solid var(--mode-color-2);
                 border-radius: 10px;
                 position: relative;
 
@@ -244,7 +240,6 @@
                 gap: 10px;
                 position: relative;
                 border-radius: 10px;
-                border: 2px solid var(--mode-color-2);
                 overflow: hidden;
 
                 .text {

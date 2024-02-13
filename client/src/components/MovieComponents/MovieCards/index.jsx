@@ -21,7 +21,7 @@ function MovieCards() {
     const [changeTwoGrid, setChangeTwoGrid] = useLocalStorage()
     const { t, i18n } = useTranslation();
   const { user, setUser } = useContext(userContext);
-
+const [search, setSearch] = useState('')
 const [movieCard, setMovieCard] = useState([])
 
 async function getMoviCartData() {
@@ -32,6 +32,11 @@ async function getMoviCartData() {
         setChangeTwoGrid(!changeTwoGrid)
     }
 
+    function convertMinuteToHour(minute) {
+        const hour = Math.floor(minute / 60);
+        const remainingMinute = minute % 60;
+        return `${hour} ${t("Hour")} ${remainingMinute} ${t("Minute")} `;
+      }
 
     function handleOpenFilterBox() {
         setopenFiltertextBox(!openFiltertextBox)
@@ -48,7 +53,7 @@ useEffect(() => {
                         <IoFilterSharp />
                     </div>
                     <div className="searchBox">
-                        <input type="text" placeholder={`${t("Search")}`} />
+                        <input type="text" placeholder={`${t("Search")}`} onChange={(e)=>setSearch(e.target.value)} />
                         <IoMdSearch />
                     </div>
                 </div>
@@ -116,7 +121,9 @@ useEffect(() => {
             </div>
             <div className={`downBox ${changeTwoGrid ? "twoGrid" : ""}`}>
                {
-                movieCard && movieCard.map((item)=>(
+                movieCard && movieCard
+                .filter((x)=>x.name.toLowerCase().includes(search.toLowerCase()))
+                .map((item)=>(
                     <Swiper
                     effect={'flip'}
                     grabCursor={true}
@@ -143,8 +150,7 @@ useEffect(() => {
                            <h1>{item.name}</h1>
                             <span>{item.writter}</span>
                             <h2>Category    /<p>drama</p></h2>
-                            <p>Hour : <span>{item.hourtime}</span></p>
-                           
+                            <p>{t("Time")}: <span>{convertMinuteToHour(item.hourtime)}</span></p>
                            <Link to= {
                                 user ? `/watch/${item._id}`:"/login"
                             }>
@@ -163,384 +169,6 @@ useEffect(() => {
                 </Swiper>
                 ))
                }
-                {/* <Swiper
-                    effect={'flip'}
-                    grabCursor={true}
-                    loop={true}
-                    // autoplay={{
-                    //     delay: 1500,
-                    //     disableOnInteraction: false,
-                    // }}
-                    speed={900}
-                    modules={[EffectFlip, Autoplay]}
-                                        className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
-
-                >
-                   <SwiperSlide >
-                        <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
-
-                            <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
-                            <div className="changeBox">
-                                <MdOutlineChangeCircle />
-                            </div>
-                        </div>
-
-                    </SwiperSlide>
-                   <SwiperSlide   className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`} >
-                         <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`}>
-                            <h1>Inceriodsaasaaadsascacascsan</h1>
-                            <span>Leanotda daoapinvni</span>
-                            <h2>Category    /<p>drama</p></h2>
-                            <p>Hour : <span>0202</span></p>
-                           <Link to={'/watch'}>
-                            <div className="playBtn">                           
-                                <FaPlay />
-                            </div>                           
-                           </Link>
-                            <div className="playlistBox">
-                                <MdPlaylistAdd />
-                            </div>
-
-                        </div>
-                    </SwiperSlide>
-
-                </Swiper>
-                <Swiper
-                    effect={'flip'}
-                    grabCursor={true}
-                    loop={true}
-                    // autoplay={{
-                    //     delay: 1500,
-                    //     disableOnInteraction: false,
-                    // }}
-                    speed={900}
-                    modules={[EffectFlip, Autoplay]}
-                                        className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
-
-                >
-                   <SwiperSlide>
-                        <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
-
-                            <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
-                            <div className="changeBox">
-                                <MdOutlineChangeCircle />
-                            </div>
-                        </div>
-
-                    </SwiperSlide>
-                   <SwiperSlide   className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`} >
-                         <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`}>
-                            <h1>Inceriodsaasaaadsascacascsan</h1>
-                            <span>Leanotda daoapinvni</span>
-                            <h2>Category    /<p>drama</p></h2>
-                            <p>Hour : <span>0202</span></p>
-                           <Link to={'/watch'}>
-                            <div className="playBtn">                           
-                                <FaPlay />
-                            </div>                           
-                           </Link>
-                            <div className="playlistBox">
-                                <MdPlaylistAdd />
-                            </div>
-
-                        </div>
-                    </SwiperSlide>
-
-                </Swiper>
-                <Swiper
-                    effect={'flip'}
-                    grabCursor={true}
-                    loop={true}
-                    // autoplay={{
-                    //     delay: 1500,
-                    //     disableOnInteraction: false,
-                    // }}
-                    speed={900}
-                    modules={[EffectFlip, Autoplay]}
-                                        className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
-
-                >
-                   <SwiperSlide >
-                        <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
-
-                            <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
-                            <div className="changeBox">
-                                <MdOutlineChangeCircle />
-                            </div>
-                        </div>
-
-                    </SwiperSlide>
-                   <SwiperSlide   className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`} >
-                         <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`}>
-                            <h1>Inceriodsaasaaadsascacascsan</h1>
-                            <span>Leanotda daoapinvni</span>
-                            <h2>Category    /<p>drama</p></h2>
-                            <p>Hour : <span>0202</span></p>
-                           <Link to={'/watch'}>
-                            <div className="playBtn">                           
-                                <FaPlay />
-                            </div>                           
-                           </Link>
-                            <div className="playlistBox">
-                                <MdPlaylistAdd />
-                            </div>
-
-                        </div>
-                    </SwiperSlide>
-
-                </Swiper>
-                <Swiper
-                    effect={'flip'}
-                    grabCursor={true}
-                    loop={true}
-                    // autoplay={{
-                    //     delay: 1500,
-                    //     disableOnInteraction: false,
-                    // }}
-                    speed={900}
-                    modules={[EffectFlip, Autoplay]}
-                                        className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
-
-                >
-                   <SwiperSlide >
-                        <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
-
-                            <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
-                            <div className="changeBox">
-                                <MdOutlineChangeCircle />
-                            </div>
-                        </div>
-
-                    </SwiperSlide>
-                   <SwiperSlide   className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`} >
-                         <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`}>
-                            <h1>Inceriodsaasaaadsascacascsan</h1>
-                            <span>Leanotda daoapinvni</span>
-                            <h2>Category    /<p>drama</p></h2>
-                            <p>Hour : <span>0202</span></p>
-                           <Link to={'/watch'}>
-                            <div className="playBtn">                           
-                                <FaPlay />
-                            </div>                           
-                           </Link>
-                            <div className="playlistBox">
-                                <MdPlaylistAdd />
-                            </div>
-
-                        </div>
-                    </SwiperSlide>
-
-                </Swiper>
-                <Swiper
-                    effect={'flip'}
-                    grabCursor={true}
-                    loop={true}
-                    // autoplay={{
-                    //     delay: 1500,
-                    //     disableOnInteraction: false,
-                    // }}
-                    speed={900}
-                    modules={[EffectFlip, Autoplay]}
-                                        className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
-
-                >
-                   <SwiperSlide >
-                        <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
-
-                            <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
-                            <div className="changeBox">
-                                <MdOutlineChangeCircle />
-                            </div>
-                        </div>
-
-                    </SwiperSlide>
-                   <SwiperSlide   className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`} >
-                         <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`}>
-                            <h1>Inceriodsaasaaadsascacascsan</h1>
-                            <span>Leanotda daoapinvni</span>
-                            <h2>Category    /<p>drama</p></h2>
-                            <p>Hour : <span>0202</span></p>
-                           <Link to={'/watch'}>
-                            <div className="playBtn">                           
-                                <FaPlay />
-                            </div>                           
-                           </Link>
-                            <div className="playlistBox">
-                                <MdPlaylistAdd />
-                            </div>
-
-                        </div>
-                    </SwiperSlide>
-
-                </Swiper>
-                <Swiper
-                    effect={'flip'}
-                    grabCursor={true}
-                    loop={true}
-                    // autoplay={{
-                    //     delay: 1500,
-                    //     disableOnInteraction: false,
-                    // }}
-                    speed={900}
-                    modules={[EffectFlip, Autoplay]}
-                                        className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
-
-                >
-                   <SwiperSlide >
-                        <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
-
-                            <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
-                            <div className="changeBox">
-                                <MdOutlineChangeCircle />
-                            </div>
-                        </div>
-
-                    </SwiperSlide>
-                   <SwiperSlide   className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`} >
-                         <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`}>
-                            <h1>Inceriodsaasaaadsascacascsan</h1>
-                            <span>Leanotda daoapinvni</span>
-                            <h2>Category    /<p>drama</p></h2>
-                            <p>Hour : <span>0202</span></p>
-                           <Link to={'/watch'}>
-                            <div className="playBtn">                           
-                                <FaPlay />
-                            </div>                           
-                           </Link>
-                            <div className="playlistBox">
-                                <MdPlaylistAdd />
-                            </div>
-
-                        </div>
-                    </SwiperSlide>
-
-                </Swiper>
-                <Swiper
-                    effect={'flip'}
-                    grabCursor={true}
-                    loop={true}
-                    // autoplay={{
-                    //     delay: 1500,
-                    //     disableOnInteraction: false,
-                    // }}
-                    speed={900}
-                    modules={[EffectFlip, Autoplay]}
-                                        className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
-
-                >
-                   <SwiperSlide >
-                        <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
-
-                            <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
-                            <div className="changeBox">
-                                <MdOutlineChangeCircle />
-                            </div>
-                        </div>
-
-                    </SwiperSlide>
-                   <SwiperSlide   className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`} >
-                         <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`}>
-                            <h1>Inceriodsaasaaadsascacascsan</h1>
-                            <span>Leanotda daoapinvni</span>
-                            <h2>Category    /<p>drama</p></h2>
-                            <p>Hour : <span>0202</span></p>
-                           <Link to={'/watch'}>
-                            <div className="playBtn">                           
-                                <FaPlay />
-                            </div>                           
-                           </Link>
-                            <div className="playlistBox">
-                                <MdPlaylistAdd />
-                            </div>
-
-                        </div>
-                    </SwiperSlide>
-
-                </Swiper>
-                <Swiper
-                    effect={'flip'}
-                    grabCursor={true}
-                    loop={true}
-                    // autoplay={{
-                    //     delay: 1500,
-                    //     disableOnInteraction: false,
-                    // }}
-                    speed={900}
-                    modules={[EffectFlip, Autoplay]}
-                                        className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
-
-                >
-                   <SwiperSlide >
-                        <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
-
-                            <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
-                            <div className="changeBox">
-                                <MdOutlineChangeCircle />
-                            </div>
-                        </div>
-
-                    </SwiperSlide>
-                   <SwiperSlide   className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`} >
-                         <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`}>
-                            <h1>Inceriodsaasaaadsascacascsan</h1>
-                            <span>Leanotda daoapinvni</span>
-                            <h2>Category    /<p>drama</p></h2>
-                            <p>Hour : <span>0202</span></p>
-                           <Link to={'/watch'}>
-                            <div className="playBtn">                           
-                                <FaPlay />
-                            </div>                           
-                           </Link>
-                            <div className="playlistBox">
-                                <MdPlaylistAdd />
-                            </div>
-
-                        </div>
-                    </SwiperSlide>
-
-                </Swiper>
-                <Swiper
-                    effect={'flip'}
-                    grabCursor={true}
-                    loop={true}
-                    // autoplay={{
-                    //     delay: 1500,
-                    //     disableOnInteraction: false,
-                    // }}
-                    speed={900}
-                    modules={[EffectFlip, Autoplay]}
-                                        className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
-
-                >
-                   <SwiperSlide >
-                        <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`}>
-
-                            <img src="https://artofthemovies.co.uk/cdn/shop/products/IMG_2690-973702.jpg?v=1686847908" alt="" />
-                            <div className="changeBox">
-                                <MdOutlineChangeCircle />
-                            </div>
-                        </div>
-
-                    </SwiperSlide>
-                   <SwiperSlide   className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`} >
-                         <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`}>
-                            <h1>Inceriodsaasaaadsascacascsan</h1>
-                            <span>Leanotda daoapinvni</span>
-                            <h2>Category    /<p>drama</p></h2>
-                            <p>Hour : <span>0202</span></p>
-                           <Link to={'/watch'}>
-                            <div className="playBtn">                           
-                                <FaPlay />
-                            </div>                           
-                           </Link>
-                            <div className="playlistBox">
-                                <MdPlaylistAdd />
-                            </div>
-
-                        </div>
-                    </SwiperSlide>
-
-                </Swiper> */}
             </div>
         </section>
     )
