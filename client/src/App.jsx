@@ -25,11 +25,12 @@ import ScrollToTop from './components/ScrollToTop';
 import { userContext } from './context/UserContext';
 import PrivateRoute from './Router/PrivateRouter';
 import Loading from './components/Loading';
+import EmailForm from './pages/ContactPage/EmailForm';
 
 function App() {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const { user, setUser } = useContext(userContext);
-const [loading, setloading] = useState(true)
+  const [loading, setloading] = useState(true)
 
   const handleMouseMove = (e) => {
     setCursorPos({ x: e.pageX, y: e.pageY });
@@ -59,38 +60,36 @@ const [loading, setloading] = useState(true)
   return (
     <>
       {/* <div className="cursor" style={{ left: cursorPos.x + 'px', top: cursorPos.y + 'px', position: 'absolute' }}></div> */}
-{
-  loading ?(
-    <Loading/>
-      ):(
-<BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<MainLayOut />} >
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/movies" element={<MoviesPage />} />
-            <Route path="/price" element={<PricePage />} />
-            <Route element={<PrivateRoute check={["user", "admin"]} />}>
-            <Route path="/watch/:id" element={<MoviesDetailPage />} />
-              <Route path="/playlist" element={<PlaylistPage />} />
-            </Route>
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/login" element={<LogInPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/series" element={<SeriesPage />} />
-            <Route path="/films" element={<FilmsPage />} />
-            <Route path="/animations" element={<AnimationsPage />} />
-          </Route>
-          <Route path="/*" element={<ErrorPage />} />
-        </Routes>
-        <ChangeColorBox />
-        <ModeBox />
-
-      </BrowserRouter>
-      )
-}
-      
+      {
+        loading ? (
+          <Loading />
+        ) : (
+          <BrowserRouter>
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<MainLayOut />} >
+                <Route path="/" element={<HomePage />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/movies" element={<MoviesPage />} />
+                <Route path="/price" element={<PricePage />} />
+                <Route element={<PrivateRoute check={["user", "admin"]} />}>
+                  <Route path="/watch/:id" element={<MoviesDetailPage />} />
+                  <Route path="/playlist" element={<PlaylistPage />} />
+                </Route>
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/login" element={<LogInPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/series" element={<SeriesPage />} />
+                <Route path="/films" element={<FilmsPage />} />
+                <Route path="/animations" element={<AnimationsPage />} />
+              </Route>
+              <Route path="/*" element={<ErrorPage />} />
+            </Routes>
+            <ChangeColorBox />
+            <ModeBox />
+          </BrowserRouter>
+        )
+      }
 
     </>
   )

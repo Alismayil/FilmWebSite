@@ -16,6 +16,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 import './LogInPage.scss';
 function LogInPage() {
+  const { user } = useContext(userContext);
   const [leftBox, setleftBox] = useState(false)
   const [inputValue, setInputValue] = useState('');
   const [inputValueRegister, setInputValueRegister] = useState('');
@@ -57,9 +58,10 @@ function LogInPage() {
       setToken(token)
 
       navigate("/movies");
-      setCookie('token', token) 
+      setCookie('token', token)
     } catch (error) {
       toast.error("Belə İsdifadəçi yoxdur")
+      setleftBox(!leftBox)
     }
   }
 
@@ -117,7 +119,7 @@ function LogInPage() {
               </div>
             ))
           }
-          <RegisterPage leftBox={leftBox} setleftBox={setleftBox}/>
+          <RegisterPage leftBox={leftBox} setleftBox={setleftBox} />
           <div className="loginChangeBox">
             <h1>{t("LoginText")}</h1>
             <form action="" onSubmit={handleSubmitLogin}>

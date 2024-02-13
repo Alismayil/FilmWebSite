@@ -88,7 +88,7 @@ function MovieCards() {
                     </div>
                 </div>
             </div>
-            
+
             <div className={`middleBox ${openFiltertextBox ? 'open' : ''}`}>
                 <div className="filterTextBox">
                     <div className="movieTypeBox">
@@ -180,9 +180,12 @@ function MovieCards() {
                                                 <FaPlay />
                                             </div>
                                         </Link>
-                                        <div className="playlistBox">
-                                            <MdPlaylistAdd />
-                                        </div>
+                                        <Link style={{color:'var(--mode-color-1)'}} to={user ? "": "/login"}>
+                                            <div className="playlistBox">
+                                                <MdPlaylistAdd />
+                                            </div>
+                                        </Link>
+
                                     </div>
                                 </div>
                             </SwiperSlide>

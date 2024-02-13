@@ -51,6 +51,7 @@ function RegisterPage({leftBox,setleftBox}) {
     setUser(decoded)
     setToken(token)
     navigate("/movies");
+    toast.success('Isdifadəçi yaradıldı 🎉')
    } catch (error) {
     toast.error("Bütün iniputları doldur")
     

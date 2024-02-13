@@ -38,6 +38,26 @@ function MoviesDetailPage() {
     setOpenTrailerBox(!openTrailerBox);
   }
 
+  function handleRating(rating) {
+    const arr = []
+    const isQaliq = rating % 1
+    let deyer = 0
+    if (isQaliq) {
+        rating -= 0.5
+        deyer = 1
+    }
+    for (let i = 0; i < rating; i++) {
+        arr.push(1)
+    }
+    if (isQaliq) {
+        arr.push(2)
+    }
+    for (let i = 0; i < 5 - rating - deyer; i++) {
+        arr.push(0)
+    }
+    return arr
+}
+
   useEffect(() => {
     getMovieCard();
   }, []);
@@ -75,11 +95,16 @@ function MoviesDetailPage() {
                 <h1>{movieCartDetail.name}</h1>
                 <div className="normalBox">
                   <div className="starsBox">
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                    <FaStarHalfStroke style={{ fontSize: '20px' }} />
+                  {handleRating(movieCartDetail.moviepoint).map(x => {
+                                            if (x === 1) {
+                                                return <FaStar />
+                                            }
+                                            else if (x === 2) {
+                                                return  <FaStarHalfStroke style={{ fontSize: '20px' }} />
+                                            }
+                                            return <FaStar style={{color:"grey"}} />
+
+                                        })}
                   </div>
                   <p>{movieCartDetail.imdbpoint}</p>
                   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/2560px-IMDB_Logo_2016.svg.png" alt="" />
