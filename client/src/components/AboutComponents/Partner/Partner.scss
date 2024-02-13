@@ -11,27 +11,39 @@
     display: flex;
     flex-direction: column;
     gap: 50px;
-
+overflow: hidden;
     .swiper {
         width: 100%;
         height: 200px;
     }
 
     .swiper-slide {
-        display: flex;
-        
-        justify-content: center;
-        align-items: center;
-        border: 1px solid var(--mode-color-2);
+       
+        border: 2px dashed  var(--bg-color-1);
         border-radius: 6px;
-        svg{
-            max-width: 100px;
-            cursor: pointer;
-            fill: var(--mode-color-2) !important;
-
+        background: var(--mode-color-6);
+        overflow: hidden;
+        .swiperBox{
+            width: 100%;
+            height: 100%;
+            @include MyFlex();
         }
-        svg:hover{
-            fill: var(--bg-color-1) !important;
+        img{
+            width: 50%;
+            transition: 0.7s;
+cursor: pointer;
+            &:hover{
+                transform: scale(1.4);
+                transition: 0.7s;
+            }
         }
+       
     }
+
+.link{
+    width: 100%;
+    height: 100%;
+    @include MyFlex();
+
+}
 }

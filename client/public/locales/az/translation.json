@@ -76,7 +76,20 @@
     "Minute":"Dəqiqə",
     "Hour":"Saat",
     "Time":"Vaxt",
-    "Type":"Növ"
+    "Type":"Növ",
+    "PleaseEntered":"Zəhmət olmasa daxil olun",
+    "NoSuchUser":"Belə İsdifadəçi yoxdur",
+    "UserCreated":"Isdifadəçi yaradıldı",
+    "Required":"Tələb olunur",
+    "Enteryournamecorrectly":"Adınızı düzgün daxil edin",
+    "Invalidemailaddress":"E-mail ünvanı səhvdir",
+    "Yournamecannotbelessthanletters":"Adınız 3 hərfdən az ola bilməz",
+    "Passcannotbelessthanletters":"Parol 5 hərfdən az ola bilməz"
+
+
+
+
+
 
 
 

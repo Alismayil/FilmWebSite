@@ -34,30 +34,29 @@ function RegisterPage({ leftBox, setleftBox }) {
 
   }
 
-  async function handleSubmitRegister(e) {
-    e.preventDefault();
-    if (userName.length === 0 || password.length === 0) {
-      // alert('imput must not be empty')
-      return
-    }
-    try {
-      const res = await axios.post("http://localhost:3000/register", {
-        username: userName,
-        password: password,
-        email: email,
-      });
+  // async function handleSubmitRegister(e) {
+  //   e.preventDefault();
+  //   if (userName.length === 0 || password.length === 0) {
+  //     // alert('imput must not be empty')
+  //     return
+  //   }
+  //   try {
+  //     const res = await axios.post("http://localhost:3000/register", {
+  //       username: userName,
+  //       password: password,
+  //       email: email,
+  //     });
 
-      const token = res.data;
-      const decoded = jwtDecode(token);
-      setUser(decoded)
-      setToken(token)
-      navigate("/movies");
-      toast.success('Isdifadəçi yaradıldı 🎉')
-    } catch (error) {
-      // toast.error("Bütün inputları doldur")
+  //     const token = res.data;
+  //     const decoded = jwtDecode(token);
+  //     setUser(decoded)
+  //     setToken(token)
+  //     navigate("/movies");
+  //     toast.success(`${t("UserCreated")}🎉` )
+  //   } catch (error) {
 
-    }
-  }
+  //   }
+  // }
 
 
 
@@ -92,16 +91,15 @@ function RegisterPage({ leftBox, setleftBox }) {
   initialValues={{ username: '', password: '', email: '' }}
   validationSchema={Yup.object({
     username: Yup.string()
-      .min(3, 'Your name cannot be less than 3 letters')
-      .matches(/^[A-Z][a-z]*$/, "Enter your name correctly")
-      .required('Required'),
+      .min(3, `${t("Yournamecannotbelessthanletters")}`)
+      .matches(/^[A-Z][a-z]*$/, `${t("Enteryournamecorrectly")}`)
+      .required(`${t("Required")}`),
     password: Yup.string()
-    .min(5, 'Password cannot be less than 3 letters')
-      .max(20, 'Must be 20 characters or less')
-      .required('Required'),
+    .min(5, `${t("Passcannotbelessthanletters")}`)
+      .required(`${t("Required")}`),
     email: Yup.string()
-    .email('Invalid email address')
-    .required('Required'),
+    .email(`${t("Invalidemailaddress")}`)
+    .required(`${t("Required")}`),
   })}
   onSubmit={async (values, { setSubmitting, resetForm }) => {
     try {
@@ -112,9 +110,8 @@ function RegisterPage({ leftBox, setleftBox }) {
       setToken(token);
       resetForm();
       navigate("/movies");
-      toast.success('İsdifadəçi yaradıldı 🎉');
+      toast.success(`${t("UserCreated")}🎉` )
     } catch (error) {
-      toast.error("Bütün inputları doldurun");
     } finally {
       setSubmitting(false);
     }

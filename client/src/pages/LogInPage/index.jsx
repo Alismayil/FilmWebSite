@@ -37,10 +37,9 @@ function LogInPage() {
   async function handleSubmitLogin(e) {
     e.preventDefault();
     if (userName.length === 0 || password.length === 0) {
-      toast('Good Job!', {
-        icon: '👏',
+      toast(`${t("PleaseEntered")}`, {
+        icon: '🙏',
       });
-      // alert('imput must not be empty')
       return
     }
 
@@ -60,7 +59,7 @@ function LogInPage() {
       navigate("/movies");
       setCookie('token', token)
     } catch (error) {
-      toast.error("Belə İsdifadəçi yoxdur")
+      toast.error(`${t("NoSuchUser")}`)
       setleftBox(!leftBox)
       return
     }

@@ -76,7 +76,17 @@
     "Minute":"Minute",
     "Hour":"Hour",
     "Time":"Time",
-    "Type":"Type"
+    "Type":"Type",
+    "PleaseEntered":"Please Entered",
+    "NoSuchUser":"No Such User",
+    "UserCreated":"User Has Been Created",
+    "Required":"Required",
+    "Enteryournamecorrectly":"Enter your name correctly",
+    "Invalidemailaddress":"Invalid email address",
+    "Yournamecannotbelessthanletters":"Your name cannot be less than 3 letters",
+    "Passcannotbelessthanletters":"Password cannot be less than 5 letters"
+
+    
 
 
 

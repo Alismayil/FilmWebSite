@@ -5,6 +5,8 @@
     --mode-color-3:#141314;
     --mode-color-4:#0d0c0c;
     --mode-color-5:#0d0c0c24;
+    --mode-color-6:#ebeae9;
+
     font-family: 'Space Grotesk', sans-serif;
 }
 .purpleColor{
@@ -36,6 +38,7 @@
     --mode-color-3:#ebeae9;
     --mode-color-4:#B2B2B2;
     --mode-color-5:transparent;
+    --mode-color-6:#ebeae9;
 
 }
 .link{

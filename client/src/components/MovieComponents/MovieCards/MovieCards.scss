@@ -186,10 +186,10 @@
         @include MyFlex();
         display: flex;
         flex-wrap: wrap;
-        gap: 20px 0px;
+        gap: 40px 0px;
 
         .swiper {
-            width: 300px;
+            width: 280px;
             @include MyFlex();
 
             img {
@@ -203,10 +203,10 @@
             @include MyFlex();
 
             .posterBox {
-                width: 300px;
                 @include MyFlex();
                 border-radius: 10px;
                 position: relative;
+                width: 280px;
 
                 img {
                     border-radius: 8px;
@@ -228,13 +228,13 @@
 
             .textBox {
                 background: var(--mode-color-2);
-
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: cover;
                 width: 100%;
+                
                 padding: 20px;
-                height: 450px;
+                height: 420px;
                 flex-direction: column;
                 display: flex;
                 gap: 10px;
@@ -330,7 +330,7 @@
     }
 
     .twoGrid {
-        gap: 30px 0px;
+        gap: 30px 10px;
         //   display: grid;
         //   grid-template-columns: repeat(2, auto);
         //   justify-content: unset;
