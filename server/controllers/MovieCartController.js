@@ -3,9 +3,10 @@ import cloudinary from "../utils/cloudinary.js";
 import upload from "../middleware/multer.js";
 import multer from "multer";
 import { Category } from "../models/CategoryModel.js";
+import { Users } from "../models/LoginModel.js";
 
 export const GetMovieCart = async (req, res) => {
-  const data = await MovieCart.find({}).populate("categories");
+  const data = await MovieCart.find({}).populate(["categories",`moviepoint.rater`]);
   res.send(data);
 };
 
@@ -281,5 +282,35 @@ export const UpdateMovieCart = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
+  }
+};
+
+export const UpdateRating = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { rating, film } = req.body;
+
+    const FindUser = await Users.findById(id);
+
+    const FindFilm = await MovieCart.findOne({ name: film });
+
+    const UpdatedFilm = await MovieCart.findOneAndUpdate(
+      { name: film },
+      {
+        moviepoint: [
+          ...FindFilm.moviepoint,
+          {
+            rater: FindUser,
+            rating: rating,
+          },
+        ],
+      }
+    );
+
+    res
+      .status(200)
+      .send(`${FindFilm.name} Rating Updated by ${FindUser.username}`);
+  } catch (error) {
+    res.status(404).send(error);
   }
 };

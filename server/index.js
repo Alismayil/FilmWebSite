@@ -13,6 +13,7 @@ import dotenv  from  "dotenv"
 import MovieCart from './routers/MovieCartRouter.js';
 import Patrner from './routers/PartnerRouter.js';
 import Category from './routers/CategoryRouter.js';
+// import Rating from './routers/RatingRouter.js';
 
 const {Schema} = mongoose;
 const app = express()
@@ -35,6 +36,7 @@ app.use("/", Login)
 app.use("/", MovieCart)
 app.use("/", Patrner)
 app.use("/", Category)
+// app.use("/", Rating)
 
 mongoose.connect(connectUrl)
     .then(() => console.log('Connected!'));
