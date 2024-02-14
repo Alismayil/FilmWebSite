@@ -33,7 +33,7 @@ function MostPopular() {
       async function getMostPopular() {
         try {
             const res = await axios.get("http://localhost:3000/moviecart");
-            // Alınan verileri sırala ve en popüler 9 filmi seç
+            // Alınan verileri sırala ve en popüler 9 filmi seçzz
             const sortedPopularMovies = res.data.sort((a, b) => {
                 // Her film için puanların ortalamasını hesapla
                 const avgRatingA = a.moviepoint.reduce((total, item) => total + item.rating, 0) / a.moviepoint.length;
