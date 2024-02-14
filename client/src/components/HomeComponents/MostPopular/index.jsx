@@ -30,16 +30,27 @@ function MostPopular() {
         return arr
       }
 
-    async function getMostPopular() {
+      async function getMostPopular() {
         try {
             const res = await axios.get("http://localhost:3000/moviecart");
             // Alınan verileri sırala ve en popüler 9 filmi seç
-            const sortedPopularMovies = res.data.sort((a, b) => (b.moviepoint.reduce((total, item)=> total += (item.rating),0)/b.moviepoint.length) - (a.moviepoint.reduce((total, item)=> total += (item.rating),0)/b.moviepoint.length)).slice(0, 9);
+            const sortedPopularMovies = res.data.sort((a, b) => {
+                // Her film için puanların ortalamasını hesapla
+                const avgRatingA = a.moviepoint.reduce((total, item) => total + item.rating, 0) / a.moviepoint.length;
+                const avgRatingB = b.moviepoint.reduce((total, item) => total + item.rating, 0) / b.moviepoint.length;
+                // Sıralamayı yap
+                return avgRatingB - avgRatingA; // Büyükten küçüğe doğru sırala
+            }).slice(0, 9);
             setMostPopular(sortedPopularMovies);
         } catch (error) {
             console.error("Error fetching most popular movies:", error);
         }
     }
+    
+    useEffect(() => {
+        getMostPopular();
+    }, []);
+    
     console.log();
 
     useEffect(() => {
