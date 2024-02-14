@@ -96,16 +96,16 @@ function MoviesDetailPage() {
                 <h1>{movieCartDetail.name}</h1>
                 <div className="normalBox">
                   <div className="starsBox">
-                    {/* {handleRating(movieCartDetail.moviepoint / 2).map(x => {
+                  <p>{handleRating((movieCartDetail.moviepoint.reduce((total, movieCartDetail)=> total += (movieCartDetail.rating),0)/movieCartDetail.moviepoint.length).toFixed(0) / 2).map(x => {
                       if (x === 1) {
-                        return <FaStar />
+                        return <FaStar style={{color:"var(--bg-color-1)"}} />
                       }
                       else if (x === 2) {
-                        return <FaStarHalfStroke style={{ fontSize: '20px' }} />
+                        return <FaStarHalfStroke style={{color:"var(--bg-color-1)", fontSize: '20px'}}  />
                       }
                       return <FaStar style={{ color: "grey" }} />
 
-                    })} */}
+                    })}</p>
                   </div>
                   <p>{movieCartDetail.imdbpoint}</p>
                   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/2560px-IMDB_Logo_2016.svg.png" alt="" />
