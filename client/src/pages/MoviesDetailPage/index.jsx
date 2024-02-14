@@ -111,11 +111,13 @@ function MoviesDetailPage() {
                 </div>
               </div>
               <div className="secondBox">
-                <p>Action</p>
-                <span>●</span>
-                <p>Action</p>
-                <span>●</span>
-                <p>Action</p>
+              {movieCartDetail.categories &&
+    movieCartDetail.categories.map((cate, index) => (
+      <React.Fragment key={cate.category}>
+        <p>{cate.category}</p>
+        {index !== movieCartDetail.categories.length - 1 && <span>●</span>}
+      </React.Fragment>
+    ))}
               </div>
               <div className="thirdBox">
                 <p>{convertMinuteToHour(movieCartDetail.hourtime)}</p>

@@ -17,7 +17,6 @@ function Navbar() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const { t, i18n } = useTranslation();
   const { user, setUser } = useContext(userContext);
-  console.log(user)
 const nav = useNavigate()
 
   const handleScroll = () => {

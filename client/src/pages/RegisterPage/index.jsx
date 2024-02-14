@@ -34,29 +34,29 @@ function RegisterPage({ leftBox, setleftBox }) {
 
   }
 
-  // async function handleSubmitRegister(e) {
-  //   e.preventDefault();
-  //   if (userName.length === 0 || password.length === 0) {
-  //     // alert('imput must not be empty')
-  //     return
-  //   }
-  //   try {
-  //     const res = await axios.post("http://localhost:3000/register", {
-  //       username: userName,
-  //       password: password,
-  //       email: email,
-  //     });
+  async function handleSubmitRegister(e) {
+    e.preventDefault();
+    if (userName.length === 0 || password.length === 0) {
+      // alert('imput must not be empty')
+      return
+    }
+    try {
+      const res = await axios.post("http://localhost:3000/register", {
+        username: userName,
+        password: password,
+        email: email,
+      });
 
-  //     const token = res.data;
-  //     const decoded = jwtDecode(token);
-  //     setUser(decoded)
-  //     setToken(token)
-  //     navigate("/movies");
-  //     toast.success(`${t("UserCreated")}🎉` )
-  //   } catch (error) {
+      const token = res.data;
+      const decoded = jwtDecode(token);
+      setUser(decoded)
+      setToken(token)
+      navigate("/movies");
+      toast.success(`${t("UserCreated")}🎉` )
+    } catch (error) {
 
-  //   }
-  // }
+    }
+  }
 
 
 
@@ -110,8 +110,9 @@ function RegisterPage({ leftBox, setleftBox }) {
       setToken(token);
       resetForm();
       navigate("/movies");
-      toast.success(`${t("UserCreated")}🎉` )
+      toast.success('İsdifadəçi yaradıldı 🎉');
     } catch (error) {
+      // toast.error("Bütün inputları doldurun");
     } finally {
       setSubmitting(false);
     }

@@ -115,7 +115,7 @@ function LogInPage() {
           {
             login && login.map((item) => (
               <div className={`changeImageBox ${leftBox ? "changeBox" : ""}`}>
-                <img src={item.loginimage} alt="" />
+                <img src={item.loginimage} alt=""  />
               </div>
             ))
           }
@@ -125,12 +125,12 @@ function LogInPage() {
             <form action="" onSubmit={handleSubmitLogin}>
               <div className="userNameBox">
                 <div className="icon"><FaUserAlt /></div>
-                <input type="text" placeholder={`${t("UserName")}`} onChange={(e) => handleChange(e, setUserName)} />
+                <input autoComplete="off" type="text" placeholder={`${t("UserName")}`} onChange={(e) => handleChange(e, setUserName)} />
               </div>
               <div className="passwordBox">
                 <div className="icon"><RiLockPasswordFill /></div>
 
-                <input
+                <input autoComplete="off"
                   type={showPassword ? 'text' : 'password'}
                   value={inputValue}
                   onChange={(e) => {
