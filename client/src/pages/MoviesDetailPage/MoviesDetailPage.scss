@@ -239,7 +239,10 @@
 
         .commentBox {
             margin-top: 50px;
-
+display: flex;
+flex-direction: column;
+justify-content: start;
+align-items: start;
             span {
                 font-size: 25px;
                 color: var(--mode-color-2);
