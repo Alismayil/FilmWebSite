@@ -54,7 +54,6 @@ function MovieCards() {
 
     const handleCategoryFilter = (e) => {
         const selectedValue = e.target.value;
-
         if (!filterData.includes(selectedValue)) {
             setFilterData([...filterData, selectedValue]);
             setFilterCategory(selectedValue);
@@ -69,6 +68,25 @@ function MovieCards() {
             }
         }
     };
+
+    // const filteredMovies = movies.filter(movie => {
+    //     // Her bir film belgesinin kategorilerini dön
+    //     for (const category of movie.categories) {
+    //       // Eğer kategori 'Horror' ise true döndür ve filtreye ekle
+    //       if (category.category === 'Horror') {
+    //         return true;
+    //       }
+    //     }
+    //     // Eğer kategori 'Horror' değilse false döndür ve filtreye ekleme
+    //     return false;
+    //   });
+
+    // const extractCategories = (data) => {
+    //     const datas= data && data.map(x => x.category);
+    //     console.log("datalar:" ,datas);
+    //     return datas
+    //   };
+
 
     return (
         <section id='movieCards'>
@@ -111,19 +129,19 @@ function MovieCards() {
                             <label htmlFor="comedyCheckbox">{t("Comedy")}</label>
                         </form>
                         <form action="">
-                            <input type="checkbox" id="horrorCheckbox" />
+                            <input type="checkbox" id="horrorCheckbox"  onClick={handleCategoryFilter} value={'Horror'} />
                             <label htmlFor="horrorCheckbox">{t("Horror")}</label>
                         </form>
                         <form action="">
-                            <input type="checkbox" id="actionCheckbox" />
+                            <input type="checkbox" id="actionCheckbox"  onClick={handleCategoryFilter} value={'Action'} />
                             <label htmlFor="actionCheckbox">{t("Action")}</label>
                         </form>
                         <form action="">
-                            <input type="checkbox" id="dramaCheckbox" />
+                            <input type="checkbox" id="dramaCheckbox"  onClick={handleCategoryFilter} value={'Drama'} />
                             <label htmlFor="dramaCheckbox">{t("Drama")}</label>
                         </form>
                         <form action="">
-                            <input type="checkbox" id="romanticCheckbox" />
+                            <input type="checkbox" id="romanticCheckbox"  onClick={handleCategoryFilter} value={'Romantic'} />
                             <label htmlFor="romanticCheckbox">{t("Romantic")}</label>
                         </form>
                         <form action="">
@@ -149,6 +167,15 @@ function MovieCards() {
                 {movieCard && movieCard
                     .filter((x) => x.name.toLowerCase().includes(search.toLowerCase()))
                     .filter((item) => filterCategory === "All" || filterData.includes(item.movietype))
+                    // .filter(movie => {
+                    //     for (const category of movie.categories) {
+                    //         console.log("filterdata:", filterData);
+                    //       if (filterData.includes(category.category)) {
+                    //         return true;
+                    //       }
+                    //     }
+                    //     return false;
+                    //   })
                     .map((item) => (
                         <Swiper
                             effect={'flip'}

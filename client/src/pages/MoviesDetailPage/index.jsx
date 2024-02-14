@@ -152,7 +152,7 @@ function MoviesDetailPage() {
               <div className="commentBox">
                 <span>{t("Comment")}</span>
             <button>Count ++++++</button>
-              <StarRating/>
+              <StarRating  FilmName={movieCartDetail.name}/>
                 <form action="">
                   <input type="text" placeholder={`${t("YourComment")}`} />
                   <button><p>{t("CommentBtn")}</p>
