@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './MostPopular.scss';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 //img 900x500
 import { FaStar } from "react-icons/fa6";
 import { FaStarHalfStroke } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
+import { userContext } from '../../../context/UserContext';
 
 function MostPopular() {
-    const { t } = useTranslation();
-    const [mostPopular, setMostPopular] = useState([]);
+  const { t } = useTranslation();
+  const [mostPopular, setMostPopular] = useState([]);
+  const { user } = useContext(userContext);
 
     function handleRating(rating) {
         const arr = []
@@ -33,13 +36,10 @@ function MostPopular() {
       async function getMostPopular() {
         try {
             const res = await axios.get("http://localhost:3000/moviecart");
-            // Alınan verileri sırala ve en popüler 9 filmi seçzz
             const sortedPopularMovies = res.data.sort((a, b) => {
-                // Her film için puanların ortalamasını hesapla
                 const avgRatingA = a.moviepoint.reduce((total, item) => total + item.rating, 0) / a.moviepoint.length;
                 const avgRatingB = b.moviepoint.reduce((total, item) => total + item.rating, 0) / b.moviepoint.length;
-                // Sıralamayı yap
-                return avgRatingB - avgRatingA; // Büyükten küçüğe doğru sırala
+                return avgRatingB - avgRatingA; 
             }).slice(0, 9);
             setMostPopular(sortedPopularMovies);
         } catch (error) {
@@ -65,10 +65,11 @@ function MostPopular() {
             <div className="downBox">
                 {mostPopular.map((item, index) => (
                     <div className="cart" key={index}>
-                        <div className="imgBox">
+                   
+                    <Link to={user ? `/watch/${item._id}` : "/login"}>
+                    <div className="imgBox">
                             <img src={item.popularcartimage} alt="" />
                             <div className="hoverBox">
-                                {/* <h1>{item.name}</h1> */}
                                 <p>{item.category}</p>
                                 <p>{handleRating((item.moviepoint.reduce((total, item)=> total += (item.rating),0)/item.moviepoint.length).toFixed(0) / 2).map(x => {
                       if (x === 1) {
@@ -81,9 +82,9 @@ function MostPopular() {
 
                     })}</p>
                      <span>{(item.moviepoint.reduce((total, item)=> total += (item.rating),0)/item.moviepoint.length).toFixed(1)}</span>
-                                {/* <sapn>{(item.moviepoint.reduce((total, item)=> total += (item.rating),0)/item.moviepoint.length).toFixed(1)}</sapn> */}
                             </div>
                         </div>
+                    </Link>
                     </div>
                 ))}
             </div>

@@ -98,16 +98,25 @@ function MoviesDetailPage() {
                 <h1>{movieCartDetail.name}</h1>
                 <div className="normalBox">
                   <div className="starsBox">
-                    <p>{handleRating((movieCartDetail.moviepoint.reduce((total, movieCartDetail) => total += (movieCartDetail.rating), 0) / movieCartDetail.moviepoint.length).toFixed(0) / 2).map(x => {
-                      if (x === 1) {
-                        return <IoStar style={{ color: "var(--bg-color-1)" }} />
-                      }
-                      else if (x === 2) {
-                        return <IoStarHalf style={{ color: "var(--bg-color-1)" }} />
-                      }
-                      return <IoStar style={{ color: "grey" }} />
+                    <p>
 
-                    })}</p>
+                      {movieCartDetail.moviepoint.length !== 0 ?
+                        handleRating((movieCartDetail.moviepoint.reduce((total, movieCartDetail) => total += (movieCartDetail.rating), 0) / movieCartDetail.moviepoint.length).toFixed(0) / 2).map(x => {
+                          if (x === 1) {
+                            return <IoStar style={{ color: "var(--bg-color-1)" }} />;
+                          } else if (x === 2) {
+                            return <IoStarHalf style={{ color: "var(--bg-color-1)" }} />;
+                          }
+                          return <IoStar style={{ color: "grey" }} />;
+                        })
+                        :
+                        <>
+                          {[...Array(5)].map((_, index) => (
+                              <IoStar key={index} style={{ color: "grey" }} />
+                            ))}
+                        </>
+                      }
+                    </p>
                   </div>
                   <p>{movieCartDetail.imdbpoint}</p>
                   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/2560px-IMDB_Logo_2016.svg.png" alt="" />
@@ -153,7 +162,7 @@ function MoviesDetailPage() {
               </div>
               <div className="commentBox">
                 <span>{t("Comment")}</span>
-                <StarRating  filmİD={movieCartDetail.moviepoint}  FilmName={movieCartDetail.name} />
+                <StarRating filmİD={movieCartDetail.moviepoint} FilmName={movieCartDetail.name} />
                 <form action="">
                   <input type="text" placeholder={`${t("YourComment")}`} />
                   <button><p>{t("CommentBtn")}</p>

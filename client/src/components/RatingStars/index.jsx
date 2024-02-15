@@ -54,7 +54,6 @@ const StarRating = ({filmİD}) => {
   const [selectedStar, setSelectedStar] = useState(
     localStorage.getItem('selectedStar') || null
   );
-console.log("film:", filmİD);
   const handleStarSelect = (index) => {
     if (selectedStar === null) {
       setSelectedStar(index-1);
