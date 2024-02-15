@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import './OpenPlaylist.scss'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay } from 'swiper/modules';
 import { useTranslation } from 'react-i18next';
+import { PlaylistContext } from '../../../context/PlaylistContext';
 
 function OpenPlaylist() {
-  const { t, i18n } = useTranslation();
-
+    const { t, i18n } = useTranslation();
+    const { playlist, fetchAllPlaylist } = useContext(PlaylistContext)
+    useEffect(() => {
+        fetchAllPlaylist()
+    }, [])
+    console.log('asfljahsfkjas', playlist)
     return (
         <section id='openPlaylist'>
             <div className="backPage">
@@ -41,50 +46,55 @@ function OpenPlaylist() {
                 </div>
             </div>
             <div className="frontPage">
-            <Swiper
-        slidesPerView={4}
-        spaceBetween={30}
-        loop={true}
-        autoplay={{
-            delay: 1500,
-            disableOnInteraction: false,
-          }}
-        modules={[Autoplay]}
+                <Swiper
+                    slidesPerView={4}
+                    spaceBetween={30}
+                    loop={true}
+                    autoplay={{
+                        delay: 1500,
+                        disableOnInteraction: false,
+                    }}
+                    modules={[Autoplay]}
 
-        breakpoints={{
-            0: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-              },
-              386: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-            640: {
-              slidesPerView: 3,
-              spaceBetween: 20,
-            },
-            901: {
-              slidesPerView: 3,
-              spaceBetween: 40,
-            },
-            1024: {
-              slidesPerView: 4,
-              spaceBetween: 50,
-            },
-          }}
-        pagination={{
-          clickable: true,
-        }}
-        className="mySwiper"
-      >
-        <SwiperSlide>
-            <div className="sliderBox">
-                <div className="imgHoverBox"></div>
-                <img src="https://tmssl.akamaized.net//images/foto/galerie/jude-bellingham-real-madrid-2023-24-1698938944-121078.jpg" alt="" />
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
+                    breakpoints={{
+                        0: {
+                            slidesPerView: 1,
+                            spaceBetween: 20,
+                        },
+                        386: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        640: {
+                            slidesPerView: 3,
+                            spaceBetween: 20,
+                        },
+                        901: {
+                            slidesPerView: 3,
+                            spaceBetween: 40,
+                        },
+                        1024: {
+                            slidesPerView: 4,
+                            spaceBetween: 50,
+                        },
+                    }}
+                    pagination={{
+                        clickable: true,
+                    }}
+                    className="mySwiper"
+                >
+                    {
+                        playlist && playlist.map((item) => (
+                            <SwiperSlide>
+                                <div className="sliderBox">
+                                    <div className="imgHoverBox"></div>
+                                    <img src={item.product.playlistImage} alt="" />
+                                </div>
+                            </SwiperSlide>
+                        ))
+                    }
+
+                    {/* <SwiperSlide>
             <div className="sliderBox">
                 <div className="imgHoverBox"></div>
                 <img src="https://media.newyorker.com/photos/64bc4330ef09d4a0e04cb249/master/pass/Rosen-Messi-Miami.jpg" alt="" />
@@ -131,8 +141,8 @@ function OpenPlaylist() {
                 <div className="imgHoverBox"></div>
                 <img src="https://firstframe.qodeinteractive.com/wp-content/uploads/2023/03/h7-gallery-img-1.jpg" alt="" />
             </div>
-        </SwiperSlide>
-      </Swiper>
+        </SwiperSlide> */}
+                </Swiper>
             </div>
         </section>
     )

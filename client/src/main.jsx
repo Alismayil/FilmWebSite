@@ -4,10 +4,13 @@ import App from './App.jsx'
 import './index.css'
 import './i18n';
 import UserProvider from './context/UserContext.jsx';
+import PlaylistProvider from './context/PlaylistContext.jsx';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <UserProvider>
-    <App />
+      <PlaylistProvider>
+        <App />
+      </PlaylistProvider>
     </UserProvider>
   </React.StrictMode>,
 )

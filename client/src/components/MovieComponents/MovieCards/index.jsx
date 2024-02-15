@@ -15,6 +15,9 @@ import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import { userContext } from '../../../context/UserContext';
 
+import { PlaylistContext } from '../../../context/PlaylistContext';
+
+
 function MovieCards() {
     const [openFiltertextBox, setOpenFilterTextBox] = useState(false);
     const [changeTwoGrid, setChangeTwoGrid] = useLocalStorage();
@@ -24,6 +27,9 @@ function MovieCards() {
     const [movieCard, setMovieCard] = useState([]);
     const [filterData, setFilterData] = useState([]);
     const [filterCategory, setFilterCategory] = useState("All");
+
+
+    const {handleAddPlaylist}=useContext(PlaylistContext)
 
     async function getMovieCardData() {
         try {
@@ -60,7 +66,6 @@ function MovieCards() {
         } else {
             const updatedFilterData = filterData.filter((x) => x !== selectedValue);
             setFilterData(updatedFilterData);
-
             if (updatedFilterData.length === 0) {
                 setFilterCategory("All");
             } else {
@@ -129,19 +134,19 @@ function MovieCards() {
                             <label htmlFor="comedyCheckbox">{t("Comedy")}</label>
                         </form>
                         <form action="">
-                            <input type="checkbox" id="horrorCheckbox"  onClick={handleCategoryFilter} value={'Horror'} />
+                            <input type="checkbox" id="horrorCheckbox" onClick={handleCategoryFilter} value={'Horror'} />
                             <label htmlFor="horrorCheckbox">{t("Horror")}</label>
                         </form>
                         <form action="">
-                            <input type="checkbox" id="actionCheckbox"  onClick={handleCategoryFilter} value={'Action'} />
+                            <input type="checkbox" id="actionCheckbox" onClick={handleCategoryFilter} value={'Action'} />
                             <label htmlFor="actionCheckbox">{t("Action")}</label>
                         </form>
                         <form action="">
-                            <input type="checkbox" id="dramaCheckbox"  onClick={handleCategoryFilter} value={'Drama'} />
+                            <input type="checkbox" id="dramaCheckbox" onClick={handleCategoryFilter} value={'Drama'} />
                             <label htmlFor="dramaCheckbox">{t("Drama")}</label>
                         </form>
                         <form action="">
-                            <input type="checkbox" id="romanticCheckbox"  onClick={handleCategoryFilter} value={'Romantic'} />
+                            <input type="checkbox" id="romanticCheckbox" onClick={handleCategoryFilter} value={'Romantic'} />
                             <label htmlFor="romanticCheckbox">{t("Romantic")}</label>
                         </form>
                         <form action="">
@@ -207,8 +212,8 @@ function MovieCards() {
                                                 <FaPlay />
                                             </div>
                                         </Link>
-                                        <Link style={{color:'var(--mode-color-1)'}} to={user ? "": "/login"}>
-                                            <div className="playlistBox">
+                                        <Link style={{ color: 'var(--mode-color-1)' }} to={user ? "" : "/login"}>
+                                            <div className="playlistBox" onClick={() => handleAddPlaylist(item._id)}>
                                                 <MdPlaylistAdd />
                                             </div>
                                         </Link>
