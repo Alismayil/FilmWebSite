@@ -111,7 +111,7 @@ export async function UpdateUser(req, res) {
 
 export async function GetAllUsers(req, res) {
   try {
-    const users = await Users.find({});
+    const users = await Users.find({}).populate('wishlist.product');
     res.send(users);
   } catch (error) {
     res.status(500).send("Internal Server Error");

@@ -13,6 +13,8 @@ import axios from 'axios';
 import useLocalStorage from '../../hook/LocalStorage/useLocalStorage';
 import { useParams, Link } from "react-router-dom";
 import StarRating from '../../components/RatingStars';
+import { IoStar } from "react-icons/io5";
+import { IoStarHalf } from "react-icons/io5";
 
 function MoviesDetailPage() {
   const [openTrailerBox, setOpenTrailerBox] = useState(false);
@@ -96,14 +98,14 @@ function MoviesDetailPage() {
                 <h1>{movieCartDetail.name}</h1>
                 <div className="normalBox">
                   <div className="starsBox">
-                  <p>{handleRating((movieCartDetail.moviepoint.reduce((total, movieCartDetail)=> total += (movieCartDetail.rating),0)/movieCartDetail.moviepoint.length).toFixed(0) / 2).map(x => {
+                    <p>{handleRating((movieCartDetail.moviepoint.reduce((total, movieCartDetail) => total += (movieCartDetail.rating), 0) / movieCartDetail.moviepoint.length).toFixed(0) / 2).map(x => {
                       if (x === 1) {
-                        return <FaStar style={{color:"var(--bg-color-1)"}} />
+                        return <IoStar style={{ color: "var(--bg-color-1)" }} />
                       }
                       else if (x === 2) {
-                        return <FaStarHalfStroke style={{color:"var(--bg-color-1)", fontSize: '20px'}}  />
+                        return <IoStarHalf style={{ color: "var(--bg-color-1)" }} />
                       }
-                      return <FaStar style={{ color: "grey" }} />
+                      return <IoStar style={{ color: "grey" }} />
 
                     })}</p>
                   </div>
@@ -151,8 +153,7 @@ function MoviesDetailPage() {
               </div>
               <div className="commentBox">
                 <span>{t("Comment")}</span>
-            <button>Count ++++++</button>
-              <StarRating  FilmName={movieCartDetail.name}/>
+                <StarRating  filmİD={movieCartDetail.moviepoint}  FilmName={movieCartDetail.name} />
                 <form action="">
                   <input type="text" placeholder={`${t("YourComment")}`} />
                   <button><p>{t("CommentBtn")}</p>

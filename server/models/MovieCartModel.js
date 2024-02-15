@@ -15,7 +15,7 @@ const MovieCartSchema = new Schema({
   detailbigimage: String,
   filmvideo: String,
   playlistImage: String,
-  movietype: String,
+  movietype: String,  
   // series:String
 
   // ---------------
@@ -29,8 +29,8 @@ const MovieCartSchema = new Schema({
   ],
   moviepoint: [
     {
-      rating: { type: Number,  minLength: [2, "username must be minimum 3 character"],
-      maxLength: [20, "username must be maximum 20 character"],
+      rating: { type: Number,  minLength: [0, "username must be minimum 0 character"],
+      maxLength: [10, "username must be maximum 10 character"],
      },
       rater: {
         type: mongoose.Types.ObjectId,

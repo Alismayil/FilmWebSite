@@ -6,7 +6,10 @@ import { Category } from "../models/CategoryModel.js";
 import { Users } from "../models/LoginModel.js";
 
 export const GetMovieCart = async (req, res) => {
-  const data = await MovieCart.find({}).populate(["categories",`moviepoint.rater`]);
+  const data = await MovieCart.find({}).populate([
+    "categories",
+    `moviepoint.rater`,
+  ]);
   res.send(data);
 };
 
@@ -290,27 +293,43 @@ export const UpdateRating = async (req, res) => {
     const { id } = req.params;
     const { rating, film } = req.body;
 
+    // Veritabanında kullanıcıyı bulun
     const FindUser = await Users.findById(id);
+    if (!FindUser) {
+      return res.status(404).send("User not found");
+    }
 
+    // Veritabanında filmi bulun
     const FindFilm = await MovieCart.findOne({ name: film });
+    if (!FindFilm) {
+      return res.status(404).send("Film not found");
+    }
 
+    // Kullanıcının daha önce bu filme puan verip vermediğini kontrol edin
+    const findedRater = FindFilm.moviepoint.find(
+      (x) => x.rater.toString() === id.toString()
+    );
+    if (findedRater) {
+      return res.status(406).send("User already rated this film");
+    }
+
+    // Filmin puanını güncelleyin
     const UpdatedFilm = await MovieCart.findOneAndUpdate(
       { name: film },
       {
-        moviepoint: [
-          ...FindFilm.moviepoint,
-          {
+        $push: {
+          moviepoint: {
             rater: FindUser,
             rating: rating,
           },
-        ],
-      }
+        },
+      },
+      { new: true }
     );
 
-    res
-      .status(200)
-      .send(`${FindFilm.name} Rating Updated by ${FindUser.username}`);
+    res.status(200).send(`${FindFilm.name} rating updated by ${FindUser.username}`);
   } catch (error) {
-    res.status(404).send(error);
+    console.error("UpdateRating error:", error);
+    res.status(500).send("Internal Server Error");
   }
 };
