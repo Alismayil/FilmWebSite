@@ -3,6 +3,7 @@ import './ChangeColorBox.scss';
 import { CgColorPicker } from "react-icons/cg";
 import { MdOutlineCheckCircleOutline } from "react-icons/md";
 import useLocalStorage from '../../hook/LocalStorage/useLocalStorage';
+import ModeBox from '../ModeBox';
 
 function ChangeColorBox() {
     const [openChangeBox, setOpenChangeBox] = useState(false);
@@ -75,6 +76,7 @@ function ChangeColorBox() {
 
     return (
         <div className={`changeColorBox ${openChangeBox ? 'openChangeBox' : ""}`}>
+            <ModeBox/>
             <div className="opcenChangeBox">
                 <div className='radioBtn' onClick={() => handleColorChange('purple')} style={{ backgroundColor: "#F9C80E" }}>
                     <div className={`clickedBox ${changeBoxColorPurple ? 'purple' : ''}`} >

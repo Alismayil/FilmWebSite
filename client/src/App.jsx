@@ -86,7 +86,7 @@ function App() {
               <Route path="/*" element={<ErrorPage />} />
             </Routes>
             <ChangeColorBox />
-            <ModeBox />
+            {/* <ModeBox /> */}
           </BrowserRouter>
         )
       }

@@ -28,8 +28,8 @@ function MovieCards() {
     const [filterData, setFilterData] = useState([]);
     const [filterCategory, setFilterCategory] = useState("All");
 
-
     const {handleAddPlaylist, playlist}=useContext(PlaylistContext)
+
 
     async function getMovieCardData() {
         try {
@@ -213,7 +213,7 @@ function MovieCards() {
                                             </div>
                                         </Link>
                                         <Link style={{ color: 'var(--mode-color-1)' }} to={user ? "" : "/login"}>
-                                            <div className="playlistBox" onClick={() => handleAddPlaylist(item._id)}>
+                                            <div className="playlistBox" onClick={() => handleAddPlaylist(item._id)} >
                                                 {playlist.find((x)=>item._id === x.product._id)?<CgPlayListCheck style={{color:"var(--bg-color-1"}} />:<MdPlaylistAdd />}
                                             </div>
                                         </Link>

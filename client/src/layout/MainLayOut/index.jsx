@@ -11,7 +11,17 @@ function MainLayOut() {
   return (
     <>
 <BackToTopCircularText/>
-<Toaster/>
+<Toaster  toastOptions={{
+    className: '',
+    style: {
+    //  backgroundColor:"var(--mode-color-2)",
+    //  color:"var(--bg-color-1)",
+
+     backgroundColor:"var(--bg-color-1)",
+     color:"var(--mode-color-2)",
+    },
+  }}
+/>
     <Navbar/>
     <Outlet/>
     <Footer/>

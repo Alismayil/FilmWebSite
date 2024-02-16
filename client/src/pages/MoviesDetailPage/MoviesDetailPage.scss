@@ -17,11 +17,13 @@
         background: rgba(0, 0, 0, 0.501);
         z-index: 5;
         display: none;
-        video {
-            height: 100%;
+
+        .video {
             width: 100%;
-            object-fit: cover;
+            height: 100%;
+
         }
+
         .closeBtn {
             position: absolute;
             top: 20px;
@@ -165,10 +167,16 @@
                 border: 5px solid var(--mode-color-2);
                 cursor: pointer;
                 color: var(--mode-color-2);
+                font-size: 25px;
 
                 &:hover {
                     border: 5px solid gray;
                     color: gray;
+                }
+
+                .playlistBox {
+                    @include MyFlex();
+
                 }
             }
 
@@ -239,10 +247,11 @@
 
         .commentBox {
             margin-top: 50px;
-display: flex;
-flex-direction: column;
-justify-content: start;
-align-items: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: start;
+
             span {
                 font-size: 25px;
                 color: var(--mode-color-2);

@@ -65,12 +65,12 @@ function MostPopular() {
             <div className="downBox">
                 {mostPopular.map((item, index) => (
                     <div className="cart" key={index}>
-                   
                     <Link to={user ? `/watch/${item._id}` : "/login"}>
                     <div className="imgBox">
                             <img src={item.popularcartimage} alt="" />
                             <div className="hoverBox">
-                                <p>{item.category}</p>
+                   <h1>{item.name}</h1>
+                            
                                 <p>{handleRating((item.moviepoint.reduce((total, item)=> total += (item.rating),0)/item.moviepoint.length).toFixed(0) / 2).map(x => {
                       if (x === 1) {
                         return <FaStar style={{color:"var(--bg-color-1)"}} />
@@ -81,6 +81,7 @@ function MostPopular() {
                       return <FaStar style={{ color: "grey" }} />
 
                     })}</p>
+                        <span>{item.movietype}</span>
                      <span>{(item.moviepoint.reduce((total, item)=> total += (item.rating),0)/item.moviepoint.length).toFixed(1)}</span>
                             </div>
                         </div>

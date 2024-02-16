@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { Helmet } from "react-helmet";
-import './MoviesDetailPage.scss';
-import NotMeanBox from '../../components/NotMeanBox';
-import { FaStar } from "react-icons/fa6";
-import { FaStarHalfStroke } from "react-icons/fa6";
-import { CgPlayListAdd } from "react-icons/cg";
-import { IoCloseSharp } from "react-icons/io5";
-import { useTranslation } from 'react-i18next';
-import { MdKeyboardArrowDown } from "react-icons/md";
-import { MdKeyboardArrowUp } from "react-icons/md";
 import axios from 'axios';
-import useLocalStorage from '../../hook/LocalStorage/useLocalStorage';
-import { useParams, Link } from "react-router-dom";
+import { default as React, useContext, useEffect, useState } from 'react';
+import { Helmet } from "react-helmet";
+import { useTranslation } from 'react-i18next';
+import { CgPlayListCheck } from "react-icons/cg";
+import { IoCloseSharp, IoStar, IoStarHalf } from "react-icons/io5";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp, MdPlaylistAdd } from "react-icons/md";
+import ReactPlayer from 'react-player';
+import { Link, useParams } from "react-router-dom";
+import NotMeanBox from '../../components/NotMeanBox';
 import StarRating from '../../components/RatingStars';
-import { IoStar } from "react-icons/io5";
-import { IoStarHalf } from "react-icons/io5";
+import { PlaylistContext } from '../../context/PlaylistContext';
+import { userContext } from '../../context/UserContext';
+import useLocalStorage from '../../hook/LocalStorage/useLocalStorage';
+import './MoviesDetailPage.scss';
 
 function MoviesDetailPage() {
   const [openTrailerBox, setOpenTrailerBox] = useState(false);
@@ -23,6 +21,8 @@ function MoviesDetailPage() {
   const { t, i18n } = useTranslation();
   const [movieCartDetail, setMovieCartDetail] = useState();
   const { id } = useParams();
+  const { user } = useContext(userContext);
+  const {handleAddPlaylist, playlist}=useContext(PlaylistContext)
 
   async function getMovieCard() {
     const res = await axios.get(`http://localhost:3000/moviecart/${id}`);
@@ -82,7 +82,11 @@ function MoviesDetailPage() {
         {movieCartDetail ? (
           <>
             <div className={`movieWatchBox ${openWatchMovieBox ? 'openMovieBox' : ''}`}>
-              <video autoPlay muted loop src={movieCartDetail.filmvideo}></video>
+              <div className="video">
+                <ReactPlayer width="100%"
+                  height="100%" controls="true" url={movieCartDetail.filmvideo} />
+
+              </div>
               <div className="closeBtn" onClick={handleOpenWatchMovieBox}>
                 <IoCloseSharp />
               </div>
@@ -112,8 +116,8 @@ function MoviesDetailPage() {
                         :
                         <>
                           {[...Array(5)].map((_, index) => (
-                              <IoStar key={index} style={{ color: "grey" }} />
-                            ))}
+                            <IoStar key={index} style={{ color: "grey" }} />
+                          ))}
                         </>
                       }
                     </p>
@@ -140,7 +144,12 @@ function MoviesDetailPage() {
               </div>
               <div className="endBox">
                 <div className="btn">
-                  <CgPlayListAdd style={{ fontSize: '20px' }} />
+                  <Link style={{ color: 'var(--mode-color-1)' }} to={user ? "" : "/login"}>
+                    <div className="playlistBox" onClick={() => handleAddPlaylist(movieCartDetail._id)} >
+                      {playlist.find((x) => movieCartDetail._id === x.product._id) ? 
+                      <CgPlayListCheck style={{ color: "var(--mode-color-1" }} /> : <MdPlaylistAdd />}
+                    </div>
+                  </Link>
                 </div>
                 <Link className='link' >
                   <div className="watchBtn" onClick={handleOpenWatchMovieBox}>

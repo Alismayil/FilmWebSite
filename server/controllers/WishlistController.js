@@ -18,7 +18,7 @@ export const addToWishlist = async (req, res) => {
         (item) => !item.product._id.equals(productId)
       );
       await user.save();
-      res.status(200).send("Product Deleted from Wishlist");
+      res.status(201).send("Product Deleted from Wishlist");
       return;
     }
     user.wishlist.push({ product: productId });
