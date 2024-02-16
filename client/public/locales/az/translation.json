@@ -84,7 +84,8 @@
     "Enteryournamecorrectly":"Adınızı düzgün daxil edin",
     "Invalidemailaddress":"E-mail ünvanı səhvdir",
     "Yournamecannotbelessthanletters":"Adınız 3 hərfdən az ola bilməz",
-    "Passcannotbelessthanletters":"Parol 5 hərfdən az ola bilməz"
+    "Passcannotbelessthanletters":"Parol 5 hərfdən az ola bilməz",
+    "Empty":"Boşdur"
 
 
 

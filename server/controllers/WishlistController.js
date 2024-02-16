@@ -47,13 +47,14 @@ export const deleteDataFromWishlist = async (req, res) => {
     const userId = req.params.userId;
     const { productId } = req.body;
     const user = await Users.findById(userId).populate("wishlist.product");
+    console.log("productId:",productId);
     if (!user) {
       res.status(404).send("User Not Found");
       return;
     }
     user.wishlist = user.wishlist.filter(
       (x) => !x.product._id.equals(productId)
-    );
+    );  
     await user.save();
     res.status(200).send("Product Deleted");
   } catch (error) {

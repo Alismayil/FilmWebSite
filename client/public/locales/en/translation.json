@@ -84,7 +84,9 @@
     "Enteryournamecorrectly":"Enter your name correctly",
     "Invalidemailaddress":"Invalid email address",
     "Yournamecannotbelessthanletters":"Your name cannot be less than 3 letters",
-    "Passcannotbelessthanletters":"Password cannot be less than 5 letters"
+    "Passcannotbelessthanletters":"Password cannot be less than 5 letters",
+    "Empty":"Empty"
+
 
     
 

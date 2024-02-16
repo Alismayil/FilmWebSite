@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import { getCookie } from '../../helpers/helpers';
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from "jwt-decode"; 
 import axios from 'axios'
 
 export const PlaylistContext = createContext();
@@ -8,7 +8,7 @@ export const PlaylistContext = createContext();
 function PlaylistProvider({ children }) {
     const [playlist, setplaylist] = useState([])
     const token = getCookie("token")
-    const decoded = jwtDecode(token);
+    const decoded = token && jwtDecode(token)
 
 
     async function handleAddPlaylist(id) {
@@ -22,19 +22,34 @@ function PlaylistProvider({ children }) {
         }
     }
 
-    async function fetchAllPlaylist(id) {
+
+    async function handleDeletePlaylist(id) {
         try {
-            const res = await axios(`http://localhost:3000/users/${decoded._id}/wishlist`)
-            setplaylist(res.data)
+            const res = await axios.post(`http://localhost:3000/users/${decoded._id}/deletewish`, {
+                productId: id
+            })
+           
+            await fetchAllPlaylist()
         } catch (error) {
-            alert(error.message)
+            console.log(error.message);
         }
+    }
+// console.log("birsey:")
+    async function fetchAllPlaylist(id) {
+        if (decoded) {
+            try {
+                const res = await axios(`http://localhost:3000/users/${decoded._id}/wishlist`)
+                setplaylist(res.data)
+            } catch (error) {
+                alert(error.message)
+            }
+        }
+       
     }
 
     useEffect(() => {
         fetchAllPlaylist()
     }, [])
-    console.log("playlist", playlist)
 
     const data = {
         playlist,
@@ -42,7 +57,8 @@ function PlaylistProvider({ children }) {
         token,
         decoded,
         handleAddPlaylist,
-        fetchAllPlaylist
+        fetchAllPlaylist,
+        handleDeletePlaylist
     }
 
     return (

@@ -16,7 +16,7 @@ function Navbar() {
   const { pathname } = useLocation()
   const [scrollPosition, setScrollPosition] = useState(0);
   const { t, i18n } = useTranslation();
-  const { user, setUser } = useContext(userContext);
+  const { user, setUser , setToken} = useContext(userContext);
 const nav = useNavigate()
 
   const handleScroll = () => {
@@ -34,6 +34,7 @@ const nav = useNavigate()
 
   function handleNavigate() {
     setUser(null)
+    setToken(null)
     nav("/")
   }
   function handleOpenNavbar() {

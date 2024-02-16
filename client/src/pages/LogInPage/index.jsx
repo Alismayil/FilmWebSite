@@ -15,6 +15,7 @@ import RegisterPage from '../RegisterPage';
 import toast, { Toaster } from 'react-hot-toast';
 
 import './LogInPage.scss';
+import { PlaylistContext } from '../../context/PlaylistContext';
 function LogInPage() {
   const { user } = useContext(userContext);
   const [leftBox, setleftBox] = useState(false)
@@ -32,7 +33,7 @@ function LogInPage() {
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-
+const {fetchAllPlaylist}=useContext(PlaylistContext)
 
   async function handleSubmitLogin(e) {
     e.preventDefault();
@@ -49,12 +50,14 @@ function LogInPage() {
       const res = await axios.post("http://localhost:3000/login", {
         username: userName,
         password: password,
+        
       });
 
       const token = res.data;
       const decoded = jwtDecode(token);
       setUser(decoded)
       setToken(token)
+      fetchAllPlaylist()
 
       navigate("/movies");
       setCookie('token', token)

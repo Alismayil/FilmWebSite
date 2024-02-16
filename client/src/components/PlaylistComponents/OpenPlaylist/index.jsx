@@ -5,43 +5,46 @@ import 'swiper/css';
 import { Autoplay } from 'swiper/modules';
 import { useTranslation } from 'react-i18next';
 import { PlaylistContext } from '../../../context/PlaylistContext';
+import { userContext } from '../../../context/UserContext';
+import { MdPlaylistRemove } from "react-icons/md";
 
 function OpenPlaylist() {
     const { t, i18n } = useTranslation();
-    const { playlist, fetchAllPlaylist } = useContext(PlaylistContext)
+        const { playlist, fetchAllPlaylist, handleDeletePlaylist  } = useContext(PlaylistContext)
+
     useEffect(() => {
         fetchAllPlaylist()
     }, [])
-    console.log('asfljahsfkjas', playlist)
+    
     return (
         <section id='openPlaylist'>
             <div className="backPage">
                 <div class="marquee1">
                     <div>
-                        <p>{t("WatchNow")}</p>
-                        <p>{t("WatchNow")}</p>
-                        <p>{t("WatchNow")}</p>
+                        {playlist.length === 0?<p>{t("Empty")}</p>:<p>{t("WatchNow")}</p>}
+                        {playlist.length === 0?<p>{t("Empty")}</p>:<p>{t("WatchNow")}</p>}
+                        {playlist.length === 0?<p>{t("Empty")}</p>:<p>{t("WatchNow")}</p>}
                     </div>
                 </div>
                 <div class="marquee2">
-                    <div>
-                        <p>{t("WatchNow")}</p>
-                        <p>{t("WatchNow")}</p>
-                        <p>{t("WatchNow")}</p>
+                <div>
+                        {playlist.length === 0?<p>{t("Empty")}</p>:<p>{t("WatchNow")}</p>}
+                        {playlist.length === 0?<p>{t("Empty")}</p>:<p>{t("WatchNow")}</p>}
+                        {playlist.length === 0?<p>{t("Empty")}</p>:<p>{t("WatchNow")}</p>}
                     </div>
                 </div>
                 <div class="marquee1">
-                    <div>
-                        <p>{t("WatchNow")}</p>
-                        <p>{t("WatchNow")}</p>
-                        <p>{t("WatchNow")}</p>
+                <div>
+                        {playlist.length === 0?<p>{t("Empty")}</p>:<p>{t("WatchNow")}</p>}
+                        {playlist.length === 0?<p>{t("Empty")}</p>:<p>{t("WatchNow")}</p>}
+                        {playlist.length === 0?<p>{t("Empty")}</p>:<p>{t("WatchNow")}</p>}
                     </div>
                 </div>
                 <div class="marquee2">
-                    <div>
-                        <p>{t("WatchNow")}</p>
-                        <p>{t("WatchNow")}</p>
-                        <p>{t("WatchNow")}</p>
+                <div>
+                        {playlist.length === 0?<p>{t("Empty")}</p>:<p>{t("WatchNow")}</p>}
+                        {playlist.length === 0?<p>{t("Empty")}</p>:<p>{t("WatchNow")}</p>}
+                        {playlist.length === 0?<p>{t("Empty")}</p>:<p>{t("WatchNow")}</p>}
                     </div>
                 </div>
             </div>
@@ -85,8 +88,12 @@ function OpenPlaylist() {
                 >
                     {
                         playlist && playlist.map((item) => (
+                            
                             <SwiperSlide>
                                 <div className="sliderBox">
+                                    <div className="closeBtn" onClick={()=>handleDeletePlaylist(item.product._id)}>
+                                    <MdPlaylistRemove />
+                                    </div>
                                     <div className="imgHoverBox"></div>
                                     <img src={item.product.playlistImage} alt="" />
                                 </div>

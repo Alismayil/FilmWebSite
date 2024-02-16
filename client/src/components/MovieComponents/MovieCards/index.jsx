@@ -14,7 +14,7 @@ import useLocalStorage from '../../../hook/LocalStorage/useLocalStorage';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import { userContext } from '../../../context/UserContext';
-
+import { CgPlayListCheck } from "react-icons/cg";
 import { PlaylistContext } from '../../../context/PlaylistContext';
 
 
@@ -29,7 +29,7 @@ function MovieCards() {
     const [filterCategory, setFilterCategory] = useState("All");
 
 
-    const {handleAddPlaylist}=useContext(PlaylistContext)
+    const {handleAddPlaylist, playlist}=useContext(PlaylistContext)
 
     async function getMovieCardData() {
         try {
@@ -214,7 +214,7 @@ function MovieCards() {
                                         </Link>
                                         <Link style={{ color: 'var(--mode-color-1)' }} to={user ? "" : "/login"}>
                                             <div className="playlistBox" onClick={() => handleAddPlaylist(item._id)}>
-                                                <MdPlaylistAdd />
+                                                {playlist.find((x)=>item._id === x.product._id)?<CgPlayListCheck style={{color:"var(--bg-color-1"}} />:<MdPlaylistAdd />}
                                             </div>
                                         </Link>
 
