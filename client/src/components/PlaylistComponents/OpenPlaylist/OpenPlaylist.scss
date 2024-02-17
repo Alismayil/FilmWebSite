@@ -1,151 +1,175 @@
 @mixin MyFlex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 //   @include MyFlex();
-  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&display=swap');
 
-  #openPlaylist{
-    background: var(--mode-color-1);
-    height: 100vh;
-    position: relative;
-    @include MyFlex();
-    overflow: hidden;
-    .backPage{
-        position: absolute;
-        font-family: 'Space Grotesk', sans-serif;
-        display: flex;
-        flex-direction: column;
-        left: 0;
-        gap: 20px;
-        .marquee1, .marquee2 {
-            // width: 450px; /* Width of marquee "window" must match the width of p elements*/
-            margin: 0 auto;
-            white-space: nowrap;
-            overflow: hidden;
-            box-sizing: border-box;
-          
-        }
-        
-        .marquee1  > div {
-          display: table-row;
-          white-space: nowrap;
-          padding-left: 100%; 
-          animation: marquee1 20s linear infinite; /* Time must be adjusted based on total width of scrolled elements*/
-        }
-        .marquee2  > div {
-          display: table-row;
-          white-space: nowrap;
-          padding-left: 100%; 
-          animation: marquee2 20s linear infinite; /* Time must be adjusted based on total width of scrolled elements*/
-        }
-        
-        .marquee1  > div p {
-          width: 450px; /* Width of p elements must match the width of marquee "window"*/
-          padding-left: 450px; /* Padding determines space between scrolled elements */
-          display: table-cell; 
-          font-size: 130px;
-          font-weight: bold;
-          vertical-align: baseline;
-          text-decoration: none solid transparent;
-          color: transparent;
-          -webkit-text-stroke-width: 2px;
-          -webkit-text-stroke-color: var(--bg-color-1);
-        }
-        .marquee2  > div p {
-          width: 450px; /* Width of p elements must match the width of marquee "window"*/
-          padding-left: 450px; /* Padding determines space between scrolled elements */
-          display: table-cell; 
-          font-size: 130px;
-          font-weight: bold;
-          vertical-align: baseline;
-          text-decoration: none solid transparent;
-          color: transparent;
-          -webkit-text-stroke-width: 2px;
-          -webkit-text-stroke-color: var(--bg-color-1);
-
-        }
-        
-        /* Make it move */
-        @keyframes marquee1 {
-            0%   { transform: translate(0, 0); }
-            100% { transform: translate(-100%, 0); }
-        }
-        @keyframes marquee2 {
-            0%   { transform: translate(-100%, 0); }
-            100% { transform: translate(0, 0); }
-        }
-    }
-    .frontPage{
-        // background: blue;
-        position: absolute;
-        transform: rotate(3.2deg);
-        
-        .swiper {
-            width:110vw;
-            height: 100%;
-            
-          }
-          
-              
-          .swiper-slide {
-            height: 100%;
-            position: relative;
-    @include MyFlex();
-overflow: hidden;
-.closeBtn{
-  background: red;
-  width: 25px;
-  height: 25px;
-  border-radius: 5px;
+#openPlaylist {
   background: var(--mode-color-1);
-  color: var(--bg-color-1);
-  cursor: pointer;
-  font-size: 25px;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 2;
+  height: 100vh;
+  position: relative;
   @include MyFlex();
+  overflow: hidden;
 
-}
-            .imgHoverBox{
-                background: var(--bg-color-1);
-                -webkit-filter: grayscale(100%);
-                filter: grayscale(100%);
-                position: absolute;
-                top: 0px;
-                left: 0px;
-                width: 100%;
-                height: 100%;
-                opacity: 0.2;
-                transition: 0.2s;
-                
-            }
-            
-           img{
-            transition: 0.4s;
-            width: 100%;
-            cursor: pointer;
-            object-fit: cover;
-            aspect-ratio: 1 / 1.5;
-           }
-           &:hover{
-            img{
-                transition: 0.4s;
-                transform: scale(1.1);
-            }
-            .background{
-                filter: grayscale(0%);
-                transition: 0.2s;
-                -webkit-filter: grayscale(0%);
+  .backPage {
+    position: absolute;
+    font-family: 'Space Grotesk', sans-serif;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    gap: 20px;
 
-            }
-           }
-          }
+    .marquee1,
+    .marquee2 {
+      // width: 450px; /* Width of marquee "window" must match the width of p elements*/
+      margin: 0 auto;
+      white-space: nowrap;
+      overflow: hidden;
+      box-sizing: border-box;
+
     }
-    
-    
+
+    .marquee1>div {
+      display: table-row;
+      white-space: nowrap;
+      padding-left: 100%;
+      animation: marquee1 20s linear infinite;
+      /* Time must be adjusted based on total width of scrolled elements*/
+    }
+
+    .marquee2>div {
+      display: table-row;
+      white-space: nowrap;
+      padding-left: 100%;
+      animation: marquee2 20s linear infinite;
+      /* Time must be adjusted based on total width of scrolled elements*/
+    }
+
+    .marquee1>div p {
+      width: 450px;
+      /* Width of p elements must match the width of marquee "window"*/
+      padding-left: 450px;
+      /* Padding determines space between scrolled elements */
+      display: table-cell;
+      font-size: 130px;
+      font-weight: bold;
+      vertical-align: baseline;
+      text-decoration: none solid transparent;
+      color: transparent;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: var(--bg-color-1);
+    }
+
+    .marquee2>div p {
+      width: 450px;
+      /* Width of p elements must match the width of marquee "window"*/
+      padding-left: 450px;
+      /* Padding determines space between scrolled elements */
+      display: table-cell;
+      font-size: 130px;
+      font-weight: bold;
+      vertical-align: baseline;
+      text-decoration: none solid transparent;
+      color: transparent;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: var(--bg-color-1);
+
+    }
+
+    /* Make it move */
+    @keyframes marquee1 {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      100% {
+        transform: translate(-100%, 0);
+      }
+    }
+
+    @keyframes marquee2 {
+      0% {
+        transform: translate(-100%, 0);
+      }
+
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+  }
+
+  .frontPage {
+    position: absolute;
+    transform: rotate(3.2deg);
+
+
+
+    .swiper {
+      height: 100%;
+    }
+
+    .swiper-slide {
+      height: 100%;
+      position: relative;
+      @include MyFlex();
+      overflow: hidden;
+
+      .closeBtn {
+        width: 25px;
+        height: 25px;
+        border-radius: 5px;
+        background: var(--mode-color-1);
+        color: var(--bg-color-1);
+        cursor: pointer;
+        font-size: 25px;
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        z-index: 2;
+        @include MyFlex();
+
+      }
+
+      .imgHoverBox {
+        background: var(--bg-color-1);
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        opacity: 0.2;
+        transition: 0.2s;
+
+      }
+
+      img {
+        transition: 0.4s;
+        width: 100%;
+        cursor: pointer;
+        object-fit: cover;
+        aspect-ratio: 1 /1.5;
+      }
+
+      &:hover {
+        img {
+          transition: 0.4s;
+          transform: scale(1.1);
+        }
+
+        .background {
+          filter: grayscale(0%);
+          transition: 0.2s;
+          -webkit-filter: grayscale(0%);
+
+        }
+      }
+    }
+  }
+
+
 }

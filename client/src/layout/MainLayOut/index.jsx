@@ -12,7 +12,10 @@ function MainLayOut({ setloading, loading }) {
   return (
     <>
 <BackToTopCircularText/>
-<Toaster  toastOptions={{
+<Toaster 
+   position="top-left"
+   reverseOrder={false}
+toastOptions={{
     className: '',
     style: {
      backgroundColor:"var(--bg-color-1)",
