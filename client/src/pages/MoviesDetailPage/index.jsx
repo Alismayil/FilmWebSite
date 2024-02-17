@@ -29,6 +29,7 @@ function MoviesDetailPage({ setloading, loading }) {
     const res = await axios.get(`http://localhost:3000/moviecart/${id}`);
     setMovieCartDetail(res.data);
   }
+  console.log("data:", movieCartDetail);  
 
   function handleOpenSeriesBox() {
     setopenSeriesBox(!openSeriesBox);

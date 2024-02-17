@@ -59,18 +59,18 @@ const StarRating = ({ movieId, Film }) => {
   const { user } = useContext(userContext)
 
   const [selectedStar, setSelectedStar] = useState(
-    localStorage.getItem(`selectedStar-${movieId}`) || null
+    localStorage.getItem(`selectedStar-${Film._id}`) || null
   );
 
-  const handleStarSelect = async (index, rating, film) => {
+  const handleStarSelect = async (index, rating, product) => {
     if (selectedStar === null) {
       setSelectedStar(index);
       localStorage.setItem(`selectedStar-${movieId}`, index);
     }
 
-    const res = await axios.put(`http://localhost:3000/moviecart/rating-update/${user._id}`, {
+    const res = await axios.put(`http://localhost:3000/rating/${user._id}`, {
       rating: rating,
-      film: film
+      product: product
     })
   };
 
