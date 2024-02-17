@@ -13,8 +13,9 @@ import { PlaylistContext } from '../../context/PlaylistContext';
 import { userContext } from '../../context/UserContext';
 import useLocalStorage from '../../hook/LocalStorage/useLocalStorage';
 import './MoviesDetailPage.scss';
+import Loading from '../../components/Loading';
 
-function MoviesDetailPage() {
+function MoviesDetailPage({ setloading, loading }) {
   const [openTrailerBox, setOpenTrailerBox] = useState(false);
   const [openWatchMovieBox, setOpenWatchMovieBox] = useLocalStorage(false);
   const [openSeriesBox, setopenSeriesBox] = useState(false);
@@ -22,7 +23,7 @@ function MoviesDetailPage() {
   const [movieCartDetail, setMovieCartDetail] = useState();
   const { id } = useParams();
   const { user } = useContext(userContext);
-  const {handleAddPlaylist, playlist}=useContext(PlaylistContext)
+  const { handleAddPlaylist, playlist } = useContext(PlaylistContext)
 
   async function getMovieCard() {
     const res = await axios.get(`http://localhost:3000/moviecart/${id}`);
@@ -71,124 +72,142 @@ function MoviesDetailPage() {
     return `${hour} ${t("Hour")} ${remainingMinute} ${t("Minute")} `;
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      setloading(false)
+    }, 1000)
+
+    setloading(true)
+  }, [])
+
   return (
+
     <>
-      <NotMeanBox />
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Movies Watch</title>
-      </Helmet>
-      <div className="moviesDetailPage">
-        {movieCartDetail ? (
+      {
+        loading ? (
+          <Loading />
+        ) : (
           <>
-            <div className={`movieWatchBox ${openWatchMovieBox ? 'openMovieBox' : ''}`}>
-              <div className="video">
-                <ReactPlayer width="100%"
-                  height="100%" controls="true" url={movieCartDetail.filmvideo} />
+            <NotMeanBox />
+            <Helmet>
+              <meta charSet="utf-8" />
+              <title>Movies Watch</title>
+            </Helmet>
+            <div className="moviesDetailPage">
+              {movieCartDetail ? (
+                <>
+                  <div className={`movieWatchBox ${openWatchMovieBox ? 'openMovieBox' : ''}`}>
+                    <div className="video">
+                      <ReactPlayer width="100%"
+                        height="100%" controls="true" url={movieCartDetail.filmvideo} />
 
-              </div>
-              <div className="closeBtn" onClick={handleOpenWatchMovieBox}>
-                <IoCloseSharp />
-              </div>
-            </div>
-            <div className="headerBox">
-              <img src={movieCartDetail.detailbigimage} alt="" />
-            </div>
-            <div className="downBox">
-              <div className={`trailerBox ${openTrailerBox ? "open" : ""}`}>
-                <iframe src={movieCartDetail.trailer} title="SYMPHONIE EXCL. #1 (MINUS)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-              </div>
-              <div className="firstBox">
-                <h1>{movieCartDetail.name}</h1>
-                <div className="normalBox">
-                  <div className="starsBox">
-                    <p>
-
-                      {movieCartDetail.moviepoint.length !== 0 ?
-                        handleRating((movieCartDetail.moviepoint.reduce((total, movieCartDetail) => total += (movieCartDetail.rating), 0) / movieCartDetail.moviepoint.length).toFixed(0) / 2).map(x => {
-                          if (x === 1) {
-                            return <IoStar style={{ color: "var(--bg-color-1)" }} />;
-                          } else if (x === 2) {
-                            return <IoStarHalf style={{ color: "var(--bg-color-1)" }} />;
-                          }
-                          return <IoStar style={{ color: "grey" }} />;
-                        })
-                        :
-                        <>
-                          {[...Array(5)].map((_, index) => (
-                            <IoStar key={index} style={{ color: "grey" }} />
-                          ))}
-                        </>
-                      }
-                    </p>
-                  </div>
-                  <p>{movieCartDetail.imdbpoint}</p>
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/2560px-IMDB_Logo_2016.svg.png" alt="" />
-                </div>
-              </div>
-              <div className="secondBox">
-                {movieCartDetail.categories &&
-                  movieCartDetail.categories.map((cate, index) => (
-                    <React.Fragment key={cate.category}>
-                      <p>{cate.category}</p>
-                      {index !== movieCartDetail.categories.length - 1 && <span>●</span>}
-                    </React.Fragment>
-                  ))}
-              </div>
-              <div className="thirdBox">
-                <p>{convertMinuteToHour(movieCartDetail.hourtime)}</p>
-                <span>●</span>
-                <p>{movieCartDetail.daytime}</p>
-                <span>●</span>
-                <p>{movieCartDetail.director}</p>
-              </div>
-              <div className="endBox">
-                <div className="btn">
-                  <Link style={{ color: 'var(--mode-color-1)' }} to={user ? "" : "/login"}>
-                    <div className="playlistBox" onClick={() => handleAddPlaylist(movieCartDetail._id)} >
-                      {playlist.find((x) => movieCartDetail._id === x.product._id) ? 
-                      <CgPlayListCheck style={{ color: "var(--mode-color-1" }} /> : <MdPlaylistAdd />}
                     </div>
-                  </Link>
-                </div>
-                <Link className='link' >
-                  <div className="watchBtn" onClick={handleOpenWatchMovieBox}>
-                    {t("Watch")}
+                    <div className="closeBtn" onClick={handleOpenWatchMovieBox}>
+                      <IoCloseSharp />
+                    </div>
                   </div>
-                </Link>
-                <div className="trailerBtn" onClick={handleOpenTrailerBox}>
-                  {t("Trailer")}
-                </div>
-              </div>
-              <div className="seriesBox" onClick={handleOpenSeriesBox}>
-                <p>{t("AllSeries")}</p>
-                <>{openSeriesBox ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}</>
-                <div className={`openSeriesBox ${openSeriesBox ? "openBox" : ""}`}>
-                  <div className="series"></div>
-                  <div className="series"></div>
-                  <div className="series"></div>
-                </div>
-              </div>
-              <div className="commentBox">
-                <span>{t("Comment")}</span>
-                <StarRating filmİD={movieCartDetail.moviepoint} FilmName={movieCartDetail.name} />
-                <form action="">
-                  <input type="text" placeholder={`${t("YourComment")}`} />
-                  <button><p>{t("CommentBtn")}</p>
-                    <div className="line"></div></button>
-                </form>
-              </div>
-              <div className="allCommentBox">
-                <span>{t("AllComment")}</span>
-                <div className="sendCommentBox">
-                  her neyse comment
-                </div>
-              </div>
+                  <div className="headerBox">
+                    <img src={movieCartDetail.detailbigimage} alt="" />
+                  </div>
+                  <div className="downBox">
+                    <div className={`trailerBox ${openTrailerBox ? "open" : ""}`}>
+                      <iframe src={movieCartDetail.trailer} title="SYMPHONIE EXCL. #1 (MINUS)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div className="firstBox">
+                      <h1>{movieCartDetail.name}</h1>
+                      <div className="normalBox">
+                        <div className="starsBox">
+                          <p>
+
+                            {movieCartDetail.moviepoint.length !== 0 ?
+                              handleRating((movieCartDetail.moviepoint.reduce((total, movieCartDetail) => total += (movieCartDetail.rating), 0) / movieCartDetail.moviepoint.length).toFixed(0) / 2).map(x => {
+                                if (x === 1) {
+                                  return <IoStar style={{ color: "var(--bg-color-1)" }} />;
+                                } else if (x === 2) {
+                                  return <IoStarHalf style={{ color: "var(--bg-color-1)" }} />;
+                                }
+                                return <IoStar style={{ color: "grey" }} />;
+                              })
+                              :
+                              <>
+                                {[...Array(5)].map((_, index) => (
+                                  <IoStar key={index} style={{ color: "grey" }} />
+                                ))}
+                              </>
+                            }
+                          </p>
+                        </div>
+                        <p>{movieCartDetail.imdbpoint}</p>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/2560px-IMDB_Logo_2016.svg.png" alt="" />
+                      </div>
+                    </div>
+                    <div className="secondBox">
+                      {movieCartDetail.categories &&
+                        movieCartDetail.categories.map((cate, index) => (
+                          <React.Fragment key={cate.category}>
+                            <p>{cate.category}</p>
+                            {index !== movieCartDetail.categories.length - 1 && <span>●</span>}
+                          </React.Fragment>
+                        ))}
+                    </div>
+                    <div className="thirdBox">
+                      <p>{convertMinuteToHour(movieCartDetail.hourtime)}</p>
+                      <span>●</span>
+                      <p>{movieCartDetail.daytime}</p>
+                      <span>●</span>
+                      <p>{movieCartDetail.director}</p>
+                    </div>
+                    <div className="endBox">
+                      <div className="btn">
+                        <Link style={{ color: 'var(--mode-color-1)' }} to={user ? "" : "/login"}>
+                          <div className="playlistBox" onClick={() => handleAddPlaylist(movieCartDetail._id)} >
+                            {playlist.find((x) => movieCartDetail._id === x.product._id) ?
+                              <CgPlayListCheck style={{ color: "var(--mode-color-1" }} /> : <MdPlaylistAdd />}
+                          </div>
+                        </Link>
+                      </div>
+                      <Link className='link' >
+                        <div className="watchBtn" onClick={handleOpenWatchMovieBox}>
+                          {t("Watch")}
+                        </div>
+                      </Link>
+                      <div className="trailerBtn" onClick={handleOpenTrailerBox}>
+                        {t("Trailer")}
+                      </div>
+                    </div>
+                    <div className="seriesBox" onClick={handleOpenSeriesBox}>
+                      <p>{t("AllSeries")}</p>
+                      <>{openSeriesBox ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}</>
+                      <div className={`openSeriesBox ${openSeriesBox ? "openBox" : ""}`}>
+                        <div className="series"></div>
+                        <div className="series"></div>
+                        <div className="series"></div>
+                      </div>
+                    </div>
+                    <div className="commentBox">
+                      <span>{t("Comment")}</span>
+                      <StarRating filmİD={movieCartDetail.moviepoint} Film={movieCartDetail} />
+                      <form action="">
+                        <input type="text" placeholder={`${t("YourComment")}`} />
+                        <button><p>{t("CommentBtn")}</p>
+                          <div className="line"></div></button>
+                      </form>
+                    </div>
+                    <div className="allCommentBox">
+                      <span>{t("AllComment")}</span>
+                      <div className="sendCommentBox">
+                        her neyse comment
+                      </div>
+                    </div>
+                  </div>
+                </>
+              ) : ''}
             </div>
           </>
-        ) : ''}
-      </div>
+        )
+      }
     </>
+
   );
 }
 

@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import axios from 'axios'
 import Loading from '../../Loading';
 
-function Header() {
+function  Header() {
   const { t, i18n } = useTranslation();
   const [header, setHeader] = useState([])
 

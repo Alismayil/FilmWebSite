@@ -36,7 +36,7 @@ function PlaylistProvider({ children }) {
             const res = await axios.post(`http://localhost:3000/users/${decoded._id}/deletewish`, {
                 productId: id
             })
-            toast.error("Deete Movie")
+            toast.error("Delete Movie")
             await fetchAllPlaylist()
         } catch (error) {
             console.log(error.message);

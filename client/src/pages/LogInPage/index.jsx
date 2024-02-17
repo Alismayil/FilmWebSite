@@ -16,7 +16,8 @@ import toast, { Toaster } from 'react-hot-toast';
 
 import './LogInPage.scss';
 import { PlaylistContext } from '../../context/PlaylistContext';
-function LogInPage() {
+import Loading from '../../components/Loading';
+function LogInPage({ setloading, loading }) {
   const { user } = useContext(userContext);
   const [leftBox, setleftBox] = useState(false)
   const [inputValue, setInputValue] = useState('');
@@ -33,7 +34,7 @@ function LogInPage() {
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-const {fetchAllPlaylist}=useContext(PlaylistContext)
+  const { fetchAllPlaylist } = useContext(PlaylistContext)
 
   async function handleSubmitLogin(e) {
     e.preventDefault();
@@ -50,7 +51,7 @@ const {fetchAllPlaylist}=useContext(PlaylistContext)
       const res = await axios.post("http://localhost:3000/login", {
         username: userName,
         password: password,
-        
+
       });
 
       const token = res.data;
@@ -106,58 +107,74 @@ const {fetchAllPlaylist}=useContext(PlaylistContext)
   function handleEyeBox() {
     seteyeCursor(!eyeCursor)
   }
+  useEffect(() => {
+    setTimeout(() => {
+      setloading(false)
+    }, 1000)
+
+    setloading(true)
+  }, [])
+
   return (
     <>
-      <NotMeanBox />
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>LogIn</title>
-      </Helmet>
-      <div className="loginPage">
-        <div className="loginBox">
-          {
-            login && login.map((item) => (
-              <div className={`changeImageBox ${leftBox ? "changeBox" : ""}`}>
-                <img src={item.loginimage} alt=""  />
-              </div>
-            ))
-          }
-          <RegisterPage leftBox={leftBox} setleftBox={setleftBox} />
-          <div className="loginChangeBox">
-            <h1>{t("LoginText")}</h1>
-            <form action="" onSubmit={handleSubmitLogin}>
-              <div className="userNameBox">
-                <div className="icon"><FaUserAlt /></div>
-                <input autoComplete="off" type="text" placeholder={`${t("UserName")}`} onChange={(e) => handleChange(e, setUserName)} />
-              </div>
-              <div className="passwordBox">
-                <div className="icon"><RiLockPasswordFill /></div>
+      {
+        loading ? (
+          <Loading />
+        ) : (
+          <>
+            <NotMeanBox />
+            <Helmet>
+              <meta charSet="utf-8" />
+              <title>LogIn</title>
+            </Helmet>
+            <div className="loginPage">
+              <div className="loginBox">
+                {
+                  login && login.map((item) => (
+                    <div className={`changeImageBox ${leftBox ? "changeBox" : ""}`}>
+                      <img src={item.loginimage} alt="" />
+                    </div>
+                  ))
+                }
+                <RegisterPage leftBox={leftBox} setleftBox={setleftBox} />
+                <div className="loginChangeBox">
+                  <h1>{t("LoginText")}</h1>
+                  <form action="" onSubmit={handleSubmitLogin}>
+                    <div className="userNameBox">
+                      <div className="icon"><FaUserAlt /></div>
+                      <input autoComplete="off" type="text" placeholder={`${t("UserName")}`} onChange={(e) => handleChange(e, setUserName)} />
+                    </div>
+                    <div className="passwordBox">
+                      <div className="icon"><RiLockPasswordFill /></div>
 
-                <input autoComplete="off"
-                  type={showPassword ? 'text' : 'password'}
-                  value={inputValue}
-                  onChange={(e) => {
-                    handleInputChange(e);
-                    setPassword(e.target.value);
-                  }}
-                  placeholder={`${t("Password")}`}
-                />
+                      <input autoComplete="off"
+                        type={showPassword ? 'text' : 'password'}
+                        value={inputValue}
+                        onChange={(e) => {
+                          handleInputChange(e);
+                          setPassword(e.target.value);
+                        }}
+                        placeholder={`${t("Password")}`}
+                      />
 
-                <div className="eyeIcon" onClick={togglePasswordVisibility}> {showPassword ? <h5><IoEyeOutline /></h5> : <h5><IoEyeOffOutline /></h5>}
+                      <div className="eyeIcon" onClick={togglePasswordVisibility}> {showPassword ? <h5><IoEyeOutline /></h5> : <h5><IoEyeOffOutline /></h5>}
+                      </div>
+                    </div>
+                    <button type="submit"><p>{t("LoginBtn")}</p><div className="line"></div></button>
+                    <div className="googleBox">
+                      <div className="image">
+                        <FcGoogle />
+                      </div>
+                      <span>{t("ForgotText")}</span>
+                    </div>
+                  </form>
+                  <p>{t("LoginBackRegisterFirstText")}<span onClick={handleChangeLeftBox}> {t("LoginBackRegisterMainText")}</span></p>
                 </div>
               </div>
-              <button type="submit"><p>{t("LoginBtn")}</p><div className="line"></div></button>
-              <div className="googleBox">
-                <div className="image">
-                  <FcGoogle />
-                </div>
-                <span>{t("ForgotText")}</span>
-              </div>
-            </form>
-            <p>{t("LoginBackRegisterFirstText")}<span onClick={handleChangeLeftBox}> {t("LoginBackRegisterMainText")}</span></p>
-          </div>
-        </div>
-      </div>
+            </div>
+          </>
+        )
+      }
     </>
   )
 }

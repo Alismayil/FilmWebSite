@@ -1,8 +1,7 @@
 import { hash, compare } from "bcrypt";
 import jwt from "jsonwebtoken";
 const PrivateKey = "wexvlj@!@#$!__++=";
-import {Users} from '../models/LoginModel.js'
-
+import { Users } from "../models/LoginModel.js";
 
 // ----------------------REGISTER-----------------------------
 export async function Register(req, res) {
@@ -22,7 +21,12 @@ export async function Register(req, res) {
       });
       await user.save();
       const token = jwt.sign(
-        { _id: user._id, username: user.username, role: user.role , email: user.email },
+        {
+          _id: user._id,
+          username: user.username,
+          role: user.role,
+          email: user.email,
+        },
         PrivateKey
       );
       res.status(200).send(token);
@@ -34,29 +38,27 @@ export async function Register(req, res) {
 
 // --------------------------LOGIN--------------------------------------------
 
-
 export async function Login(req, res) {
-    try {
-      const { username, password  } = req.body;
-      const user = await Users.findOne({ username: username });
-      const passwordMatch = await compare(password, user.password);
-      if (!user) {
-        res.status(404).send("Yanlış kullanici");
-        return
-      }
-      else if (!passwordMatch) {
-        res.status(404).send("Yanlış Parola");
-        return
-      }
-      const token = jwt.sign(
-        { _id: user._id, username: user.username, role: user.role },
-        PrivateKey // Burada PrivateKey yerine gerçek özel anahtarınızı kullanmalısınız
-      );
-      res.status(200).send(token);
-    } catch (error) {
-      res.status(500).send("İç Sunucu Hatası");
+  try {
+    const { username, password } = req.body;
+    const user = await Users.findOne({ username: username });
+    const passwordMatch = await compare(password, user.password);
+    if (!user) {
+      res.status(404).send("Yanlış kullanici");
+      return;
+    } else if (!passwordMatch) {
+      res.status(404).send("Yanlış Parola");
+      return;
     }
+    const token = jwt.sign(
+      { _id: user._id, username: user.username, role: user.role },
+      PrivateKey // Burada PrivateKey yerine gerçek özel anahtarınızı kullanmalısınız
+    );
+    res.status(200).send(token);
+  } catch (error) {
+    res.status(500).send("İç Sunucu Hatası");
   }
+}
 // --------------------------DELETE--------------------------------------------
 
 export async function DeleteUser(req, res) {
@@ -111,7 +113,7 @@ export async function UpdateUser(req, res) {
 
 export async function GetAllUsers(req, res) {
   try {
-    const users = await Users.find({}).populate('wishlist.product');
+    const users = await Users.find({}).populate("wishlist.product");
     res.send(users);
   } catch (error) {
     res.status(500).send("Internal Server Error");
@@ -127,5 +129,27 @@ export async function GetUserById(req, res) {
     res.send(user);
   } catch (error) {
     res.status(500).send("Internal Server Error");
+  }
+}
+
+export async function UpdateReview(req, res) {
+  try {
+    const { id } = req.params;
+    const { NewReview , ProductName } = req.body;
+
+    const FindUser = await Users.findById(id);
+ 
+    const FindProduct=await MovieCart.findOne({name:ProductName})
+
+    const UpdatedUser = await Users.findByIdAndUpdate(id, {
+      review: [...FindUser.review, {
+        product:FindProduct,
+        rating:NewReview
+      }],
+    });
+ 
+    res.status(200).send("Review Updated");
+  } catch (error) {
+    res.status(404).send(error);
   }
 }

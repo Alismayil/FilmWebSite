@@ -1,25 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from "react-helmet";
 import FilmCatagory from '../../components/HomeComponents/FilmCatagory';
 import Header from '../../components/HomeComponents/Header';
 import MostPopular from '../../components/HomeComponents/MostPopular';
 import ReklamPoster from '../../components/HomeComponents/ReklamPoster';
+import Loading from '../../components/Loading';
 
-function HomePage() {
+function HomePage({ setloading, loading }) {
+
+  useEffect(() => {
+    setTimeout(() => {
+      setloading(false)
+    }, 1000)
+
+    setloading(true)
+  }, [])
 
   return (
     <>
-       <Helmet>
-      <meta charSet="utf-8" />
-      <title>Cinema Gia</title>
-    </Helmet>
-    <Header/> 
-    {/* <p style={{backgroundColor:'green', height:"10vh"}}></p> */}
+      {
+        loading ? (
+          <Loading />
+        ) : (
+          <>
+            <Helmet>
+              <meta charSet="utf-8" />
+              <title>Cinema Gia</title>
+            </Helmet>
+            <Header />
 
-    <MostPopular/>
-    <FilmCatagory/>
-    <ReklamPoster/>
-    {/* <p style={{backgroundColor:'green', height:"500vh"}}></p> */}
+            <MostPopular />
+            <FilmCatagory />
+            <ReklamPoster />
+          </>
+        )
+      }
     </>
   )
 }

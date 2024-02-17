@@ -31,10 +31,20 @@
 // export default StarRating
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { userContext } from '../../context/UserContext';
 
-const Star = ({ selected, onSelect, index }) => {
+const Star = ({ selected, onSelect }) => {
   const [hovered, setHovered] = useState(false);
+  const {user}=useContext(userContext)
+
+ async function handleReview(id, newreview , productname) {
+  const res=await axios.put(`http://localhost:3000/users/updatereview/${id}`,{
+    NewReview:newreview,
+    ProductName:productname
+  })
+  console.log("saalm:",res.data);
+ }
 
   const starColor = selected ? 'blue' : hovered ? 'green' : 'red';
 
@@ -50,31 +60,33 @@ const Star = ({ selected, onSelect, index }) => {
   );
 };
 
-const StarRating = ({filmİD}) => {
+const StarRating = ({ movieId , Film }) => {
   const [selectedStar, setSelectedStar] = useState(
-    localStorage.getItem('selectedStar') || null
+    localStorage.getItem(`selectedStar-${movieId}`) || null
   );
+
   const handleStarSelect = (index) => {
     if (selectedStar === null) {
-      setSelectedStar(index-1);
-      localStorage.setItem('selectedStar', index);
+      setSelectedStar(index);
+      localStorage.setItem(`selectedStar-${movieId}`, index);
     }
   };
 
   useEffect(() => {
     if (selectedStar !== null) {
-      localStorage.setItem('selectedStar', selectedStar);
+      localStorage.setItem(`selectedStar-${movieId}`, selectedStar);
     }
-  }, [selectedStar]);
+  }, [selectedStar, movieId]);
 
   return (
     <div>
       {[...Array(5)].map((_, index) => (
         <Star
           key={index}
-          index={index}
           selected={index.toString() <= selectedStar}
           onSelect={() => handleStarSelect(index.toString())}
+        //   onClick={()=>handleReview(user._id, ,Film.Name)}
+        //   onChange={(e) => handleRatingChange(e)}
         />
       ))}
     </div>
@@ -82,3 +94,5 @@ const StarRating = ({filmİD}) => {
 };
 
 export default StarRating;
+
+

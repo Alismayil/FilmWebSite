@@ -7,24 +7,26 @@ import ChangeColorBox from '../../components/ChangeColorBox'
 import BackToTopCircularText from '../../components/BackToTop'
 import { Toaster } from 'react-hot-toast'
 
-function MainLayOut() {
+function MainLayOut({ setloading, loading }) {
+
   return (
     <>
 <BackToTopCircularText/>
 <Toaster  toastOptions={{
     className: '',
     style: {
-    //  backgroundColor:"var(--mode-color-2)",
-    //  color:"var(--bg-color-1)",
-
      backgroundColor:"var(--bg-color-1)",
      color:"var(--mode-color-2)",
     },
   }}
 />
-    <Navbar/>
+{
+  loading ? "":<Navbar/>
+}
     <Outlet/>
-    <Footer/>
+    {
+  loading ? "":<Footer/>
+}
     </>
   )
 }

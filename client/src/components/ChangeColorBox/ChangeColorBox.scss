@@ -41,7 +41,7 @@
             .orange,
             .blue {
                 @include MyFlex();
-                color: white;
+                color: var(--mode-color-1);
             }
         }
     }
@@ -52,9 +52,9 @@
         width: 50px;
         @include MyFlex();
         cursor: pointer;
-        color: var(--mode-color-2);
+        color: var(--mode-color-1);
         font-size: 25px;
-        border: 2px solid var(--mode-color-2);
+        border: 2px solid var(--mode-color-1);
     }
 
 }

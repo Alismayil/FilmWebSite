@@ -49,47 +49,46 @@ function App() {
     AOS.init();
     AOS.refresh();
   }, []);
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setloading(false)
-    }, 2000)
 
-    return () => clearTimeout(timeout)
-  }, [])
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     setloading(false)
+  //   }, 2000)
+
+  //   return () => clearTimeout(timeout)
+  // }, [])
 
   return (
     <>
       {/* <div className="cursor" style={{ left: cursorPos.x + 'px', top: cursorPos.y + 'px', position: 'absolute' }}></div> */}
-      {
-        loading ? (
-          <Loading />
-        ) : (
-          <BrowserRouter>
-            <ScrollToTop />
-            <Routes>
-              <Route path="/" element={<MainLayOut />} >
-                <Route path="/" element={<HomePage />} />
-                <Route path="/about" element={<AboutPage />} />
-                <Route path="/movies" element={<MoviesPage />} />
-                <Route path="/price" element={<PricePage />} />
-                <Route element={<PrivateRoute check={["user", "admin"]} />}>
-                  <Route path="/watch/:id" element={<MoviesDetailPage />} />
-                  <Route path="/playlist" element={<PlaylistPage />} />
-                </Route>
-                <Route path="/contact" element={<ContactPage />} />
-                <Route path="/login" element={<LogInPage />} />
-                <Route path="/register" element={<RegisterPage />} />
-                <Route path="/series" element={<SeriesPage />} />
-                <Route path="/films" element={<FilmsPage />} />
-                <Route path="/animations" element={<AnimationsPage />} />
-              </Route>
-              <Route path="/*" element={<ErrorPage />} />
-            </Routes>
-            <ChangeColorBox />
-            {/* <ModeBox /> */}
-          </BrowserRouter>
-        )
-      }
+
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<MainLayOut setloading={setloading} loading={loading} />} >
+            <Route path="/" element={<HomePage setloading={setloading} loading={loading} />} />
+            <Route path="/about" element={<AboutPage setloading={setloading} loading={loading} />} />
+            <Route path="/movies" element={<MoviesPage setloading={setloading} loading={loading} />} />
+            <Route path="/price" element={<PricePage setloading={setloading} loading={loading} />}  />
+            <Route element={<PrivateRoute check={["user", "admin"]} />}>
+              <Route path="/watch/:id" element={<MoviesDetailPage setloading={setloading} loading={loading} />} />
+              <Route path="/playlist" element={<PlaylistPage setloading={setloading} loading={loading} />} />
+            </Route>
+            <Route path="/contact" element={<ContactPage setloading={setloading} loading={loading} />} />
+            <Route path="/login" element={<LogInPage setloading={setloading} loading={loading} />} />
+            <Route path="/series" element={<SeriesPage setloading={setloading} loading={loading} />} />
+            <Route path="/films" element={<FilmsPage setloading={setloading} loading={loading} />} />
+            <Route path="/animations" element={<AnimationsPage setloading={setloading} loading={loading} />} />
+          </Route>
+          <Route path="/*" element={<ErrorPage setloading={setloading} loading={loading} />} />
+        </Routes>
+        {
+          loading ? "": <ChangeColorBox />
+        }
+       
+      </BrowserRouter>
+
+
 
     </>
   )

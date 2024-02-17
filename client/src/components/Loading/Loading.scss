@@ -1,9 +1,30 @@
-#container {
-  width:260px;
-  height:143px;
-  overflow:visible;
+#camera-body,
+#reel-1,
+#reel-2 {
+	fill: #fff;
+	fill-opacity: 0.95;
+	stroke: none;
 }
 
-#preloader{
-  overflow:visible;
+.laodingBox{
+  background: var(--mode-color-1);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+color: white;
+z-index: 6;
+}
+span {
+	font-size: 1.2em;
+	font-weight: lighter;
+	font-weight: 300;
+	line-height: 2em;
+  font-family: 'Space Grotesk', sans-serif;
+
+}
+.load{
+  display: flex;
+  flex-direction: column;
 }
