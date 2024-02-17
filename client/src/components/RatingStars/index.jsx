@@ -33,18 +33,13 @@
 
 import React, { useState, useEffect, useContext } from 'react';
 import { userContext } from '../../context/UserContext';
+import axios from 'axios'
 
 const Star = ({ selected, onSelect }) => {
   const [hovered, setHovered] = useState(false);
-  const {user}=useContext(userContext)
+  const { user } = useContext(userContext)
 
- async function handleReview(id, newreview , productname) {
-  const res=await axios.put(`http://localhost:3000/users/updatereview/${id}`,{
-    NewReview:newreview,
-    ProductName:productname
-  })
-  console.log("saalm:",res.data);
- }
+
 
   const starColor = selected ? 'blue' : hovered ? 'green' : 'red';
 
@@ -60,16 +55,23 @@ const Star = ({ selected, onSelect }) => {
   );
 };
 
-const StarRating = ({ movieId , Film }) => {
+const StarRating = ({ movieId, Film }) => {
+  const { user } = useContext(userContext)
+
   const [selectedStar, setSelectedStar] = useState(
     localStorage.getItem(`selectedStar-${movieId}`) || null
   );
 
-  const handleStarSelect = (index) => {
+  const handleStarSelect = async (index, rating, film) => {
     if (selectedStar === null) {
       setSelectedStar(index);
       localStorage.setItem(`selectedStar-${movieId}`, index);
     }
+
+    const res = await axios.put(`http://localhost:3000/moviecart/rating-update/${user._id}`, {
+      rating: rating,
+      film: film
+    })
   };
 
   useEffect(() => {
@@ -84,9 +86,8 @@ const StarRating = ({ movieId , Film }) => {
         <Star
           key={index}
           selected={index.toString() <= selectedStar}
-          onSelect={() => handleStarSelect(index.toString())}
-        //   onClick={()=>handleReview(user._id, ,Film.Name)}
-        //   onChange={(e) => handleRatingChange(e)}
+          onSelect={() => handleStarSelect(index.toString(),(index+1)*2, Film.name)}
+          onChange={(e) => handleRatingChange(e)}
         />
       ))}
     </div>

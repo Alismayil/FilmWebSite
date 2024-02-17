@@ -1,5 +1,6 @@
-// import express from 'express'
-// import { DeleteRating, GetByIdRating, GetRating, PostRating, UpdateRating } from '../controllers/RatinigController.js'
+import express from "express";
+import { UpdateRating } from "../controllers/MovieCartController.js";
+const RatingRouter = express.Router();
 
 // const RatingRouter=express.Router()
 
@@ -11,6 +12,6 @@
 
 // RatingRouter.post('/rating',PostRating)
 
-// RatingRouter.put('/rating/:id',UpdateRating)
+RatingRouter.put("/rating/:userId", UpdateRating);
 
-// export default RatingRouter 
+export default RatingRouter;
