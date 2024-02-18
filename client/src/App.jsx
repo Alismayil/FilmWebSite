@@ -26,11 +26,15 @@ import { userContext } from './context/UserContext';
 import PrivateRoute from './Router/PrivateRouter';
 import Loading from './components/Loading';
 import EmailForm from './pages/ContactPage/EmailForm';
+import PayNow from './components/PayNow';
+
+
 
 function App() {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const { user, setUser } = useContext(userContext);
   const [loading, setloading] = useState(true)
+
 
   const handleMouseMove = (e) => {
     setCursorPos({ x: e.pageX, y: e.pageY });
@@ -87,7 +91,6 @@ function App() {
         }
        
       </BrowserRouter>
-
 
 
     </>

@@ -26,7 +26,8 @@ function PlaylistProvider({ children }) {
 
             await fetchAllPlaylist()
         } catch (error) {
-            alert(error.message)
+            // alert(error.message)
+            console.log(error.message);
         }
     }
 
