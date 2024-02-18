@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Helmet } from "react-helmet";
 import './PricePage.scss'
 import NotMeanBox from '../../components/NotMeanBox';
@@ -8,18 +8,27 @@ import HeaderFromPrice from '../../components/PriceComponents/HeaderFromPrice';
 import { useTranslation } from 'react-i18next';
 import Loading from '../../components/Loading';
 import PayNow from '../../components/PayNow';
-import aixos from 'axios'
 import axios from 'axios';
+import { PriceTypeContext } from '../../context/PriceTypeContext';
+import { useNavigate } from 'react-router-dom';
 
-function PricePage({ setloading, loading, StripeCheckout }) {
+function PricePage({ setloading, loading }) {
   const { t, i18n } = useTranslation();
   const [price, setPrice] = useState([])
+  const navigate = useNavigate();
 
   async function getPriceData() {
     const res = await axios.get("http://localhost:3000/price")
     setPrice(res.data)
   }
 
+
+  const { choosePriceType , setFreeType } = useContext(PriceTypeContext)
+
+  function handleFreeType(params) {
+    setFreeType("Free")
+    navigate("/movies");
+  }
   useEffect(() => {
     getPriceData()
   }, [])
@@ -57,7 +66,7 @@ function PricePage({ setloading, loading, StripeCheckout }) {
                     }
                     <div className="upBox" style={{ borderRadius: '0px' }}>
                       {item.pricetype}
-                      <h2>{item.oldprice ? <p>${item.oldprice}</p>:""} ${item.newprice} <span>/ {item.time}</span></h2>
+                      <h2>{item.oldprice ? <p>${item.oldprice}</p> : ""} ${item.newprice} <span>/ {item.time}</span></h2>
                     </div>
                     <div className="downBox">
                       <div className='textBox'>
@@ -79,7 +88,16 @@ function PricePage({ setloading, loading, StripeCheckout }) {
 
 
                       <button>
-                        <div className='stripeBox'><PayNow Item={item} /></div>
+                        <div className='stripeBox'>
+                          {
+                            item.pricetype === "Free" ?
+
+                              <div className='freePrice' onClick={handleFreeType}>{`${t("SelectFree")}`}</div>
+
+                              : ""
+                          }
+                          <PayNow Item={item} />
+                        </div>
 
                         {/* <p>{t("SelectPremium")}</p> */}
                         <div className="leftLine"></div>

@@ -17,6 +17,8 @@ import Loading from '../../components/Loading';
 import ReklamPoster from '../../components/HomeComponents/ReklamPoster';
 import ReklamPartner from '../../components/ReklamPartner';
 import MovieVideo from '../../components/MovieVideo';
+import PayNow from '../../components/PayNow';
+import { PriceTypeContext } from '../../context/PriceTypeContext';
 
 function MoviesDetailPage({ setloading, loading }) {
   const [openTrailerBox, setOpenTrailerBox] = useState(false);
@@ -28,8 +30,20 @@ function MoviesDetailPage({ setloading, loading }) {
   const { user } = useContext(userContext);
   const { handleAddPlaylist, playlist } = useContext(PlaylistContext)
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const mediaDisplay = windowWidth <= 720 ? "none" : ''
   const [showHello, setShowHello] = useState(false);
+  const { choosePriceType, freeType } = useContext(PriceTypeContext)
+  const mediaDisplay = windowWidth <= 720 ? "none" : ''
+
+
+  function handleCheckPriceType() {
+    if (choosePriceType === "Basic" || choosePriceType === "Premium" || freeType === "Free") {
+      return "";
+    } else {
+      return "/price";
+
+    }
+  }
+
 
   async function getMovieCard() {
     const res = await axios.get(`http://localhost:3000/moviecart/${id}`);
@@ -42,6 +56,12 @@ function MoviesDetailPage({ setloading, loading }) {
 
   function handleOpenWatchMovieBox() {
     setOpenWatchMovieBox(!openWatchMovieBox);
+    const timer1 = setTimeout(() => setShowHello(true), 5000);
+    const timer2 = setTimeout(() => setShowHello(false), 15600);
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
   }
 
   function handleOpenTrailerBox() {
@@ -68,14 +88,15 @@ function MoviesDetailPage({ setloading, loading }) {
     return arr
   }
 
-  useEffect(() => {
-    const timer1 = setTimeout(() => setShowHello(true), 5000);
-    const timer2 = setTimeout(() => setShowHello(false), 15600);
 
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-    };
+  useEffect(() => {
+    // const timer1 = setTimeout(() => setShowHello(true), 10000);
+    // const timer2 = setTimeout(() => setShowHello(false), 15600);
+
+    // return () => {
+    //   clearTimeout(timer1);
+    //   clearTimeout(timer2);
+    // };
   }, []);
 
 
@@ -108,7 +129,6 @@ function MoviesDetailPage({ setloading, loading }) {
 
     setloading(true)
   }, [])
-
   return (
 
     <>
@@ -126,22 +146,31 @@ function MoviesDetailPage({ setloading, loading }) {
             <div className="moviesDetailPage">
               {movieCartDetail ? (
                 <>
-                  <div className={`movieWatchBox ${openWatchMovieBox ? 'openMovieBox' : ''}`} style={{ display: mediaDisplay }}>
-                    <div className="video" >
-                      {/* {showHello && <ReklamPartner />} */}
-                    <MovieVideo Film={movieCartDetail} />
 
-                      {/* <ReactPlayer width="100%" height="100%" controls="true" url={movieCartDetail.filmvideo} /> */}
-
+                  <div className={`movieWatchBox ${openWatchMovieBox ? 'openMovieBox' : ''}`} style={choosePriceType !== "Premium" && choosePriceType !== "Basic" ? { display: mediaDisplay } : {}}>
+                    <div className="video">
+                      {choosePriceType === "Premium" ? (
+                        <div className='reklamShow'>
+                          {showHello && <ReklamPartner />}
+                        </div>
+                      ) : (
+                        <div className='reklamLook'>
+                          {showHello && <ReklamPartner />}
+                        </div>
+                      )}
+                      <MovieVideo Film={movieCartDetail} className='movieee' />
+                      <div className="boxxxxx">d</div>
                     </div>
                     <div className="closeBtn" onClick={handleOpenWatchMovieBox}>
                       <IoCloseSharp />
                     </div>
                   </div>
+
                   <div className="headerBox">
                     <img src={movieCartDetail.detailbigimage} alt="" />
                   </div>
                   <div className="downBox">
+
                     <div className={`trailerBox ${openTrailerBox ? "open" : ""}`}>
                       <iframe src={movieCartDetail.trailer} title="SYMPHONIE EXCL. #1 (MINUS)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
@@ -198,10 +227,12 @@ function MoviesDetailPage({ setloading, loading }) {
                           </div>
                         </Link>
                       </div>
-                      <Link className='link' >
+                      <Link className='link' to={handleCheckPriceType()} >
                         <div className="watchBtn" onClick={handleOpenWatchMovieBox}>
                           {t("Watch")}
                         </div>
+
+
                       </Link>
                       <div className="trailerBtn" onClick={handleOpenTrailerBox}>
                         {t("Trailer")}

@@ -73,7 +73,7 @@ function App() {
             <Route path="/" element={<HomePage setloading={setloading} loading={loading} />} />
             <Route path="/about" element={<AboutPage setloading={setloading} loading={loading} />} />
             <Route path="/movies" element={<MoviesPage setloading={setloading} loading={loading} />} />
-            <Route path="/price" element={<PricePage setloading={setloading} loading={loading} />}  />
+            <Route path="/price" element={<PricePage setloading={setloading} loading={loading} />} />
             <Route element={<PrivateRoute check={["user", "admin"]} />}>
               <Route path="/watch/:id" element={<MoviesDetailPage setloading={setloading} loading={loading} />} />
               <Route path="/playlist" element={<PlaylistPage setloading={setloading} loading={loading} />} />
@@ -85,11 +85,12 @@ function App() {
             <Route path="/animations" element={<AnimationsPage setloading={setloading} loading={loading} />} />
           </Route>
           <Route path="/*" element={<ErrorPage setloading={setloading} loading={loading} />} />
+          {/* <Route path="/" element={<ErrorPage setloading={setloading} loading={loading} />} />mellimnen sorus */}
         </Routes>
         {
-          loading ? "": <ChangeColorBox />
+          loading ? "" : <ChangeColorBox />
         }
-       
+
       </BrowserRouter>
 
 
