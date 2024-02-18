@@ -59,6 +59,7 @@ export const PostMovieCart = async (req, res) => {
         trailer,
         movietype,
         categories,
+        status
       } = req.body;
 
       const cartposterimageResult = req.files["cartposterimage"][0];
@@ -99,7 +100,7 @@ export const PostMovieCart = async (req, res) => {
         playlistImageResponse,
       ] = await Promise.all(uploadPromises);
 
-      console.log(categories);
+      // console.log(categories);
 
       let AllCategories = [];
 
@@ -121,6 +122,7 @@ export const PostMovieCart = async (req, res) => {
         trailer,
         movietype,
         categories: AllCategories,
+        status,
         cartposterimage: cartposterimageResponse.secure_url,
         moviegif: moviegifResponse.secure_url,
         popularcartimage: popularcartimageResponse.secure_url,
@@ -172,6 +174,7 @@ export const UpdateMovieCart = async (req, res) => {
           daytime,
           trailer,
           movietype,
+          status
         } = req.body;
 
         if (updatedMovieCart) {
@@ -270,6 +273,7 @@ export const UpdateMovieCart = async (req, res) => {
           if (daytime) updatedMovieCart.daytime = daytime;
           if (trailer) updatedMovieCart.trailer = trailer;
           if (movietype) updatedMovieCart.movietype = movietype;
+          if (status) updatedMovieCart.status = status;
 
           await updatedMovieCart.save();
 

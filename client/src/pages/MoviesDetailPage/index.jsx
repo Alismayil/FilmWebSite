@@ -14,6 +14,9 @@ import { userContext } from '../../context/UserContext';
 import useLocalStorage from '../../hook/LocalStorage/useLocalStorage';
 import './MoviesDetailPage.scss';
 import Loading from '../../components/Loading';
+import ReklamPoster from '../../components/HomeComponents/ReklamPoster';
+import ReklamPartner from '../../components/ReklamPartner';
+import MovieVideo from '../../components/MovieVideo';
 
 function MoviesDetailPage({ setloading, loading }) {
   const [openTrailerBox, setOpenTrailerBox] = useState(false);
@@ -24,12 +27,14 @@ function MoviesDetailPage({ setloading, loading }) {
   const { id } = useParams();
   const { user } = useContext(userContext);
   const { handleAddPlaylist, playlist } = useContext(PlaylistContext)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const mediaDisplay = windowWidth <= 720 ? "none" : ''
+  const [showHello, setShowHello] = useState(false);
 
   async function getMovieCard() {
     const res = await axios.get(`http://localhost:3000/moviecart/${id}`);
     setMovieCartDetail(res.data);
   }
-  console.log("data:", movieCartDetail);  
 
   function handleOpenSeriesBox() {
     setopenSeriesBox(!openSeriesBox);
@@ -64,6 +69,17 @@ function MoviesDetailPage({ setloading, loading }) {
   }
 
   useEffect(() => {
+    const timer1 = setTimeout(() => setShowHello(true), 5000);
+    const timer2 = setTimeout(() => setShowHello(false), 15600);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
+  }, []);
+
+
+  useEffect(() => {
     getMovieCard();
   }, []);
 
@@ -72,6 +88,18 @@ function MoviesDetailPage({ setloading, loading }) {
     const remainingMinute = minute % 60;
     return `${hour} ${t("Hour")} ${remainingMinute} ${t("Minute")} `;
   }
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
@@ -90,6 +118,7 @@ function MoviesDetailPage({ setloading, loading }) {
         ) : (
           <>
             <NotMeanBox />
+
             <Helmet>
               <meta charSet="utf-8" />
               <title>Movies Watch</title>
@@ -97,10 +126,12 @@ function MoviesDetailPage({ setloading, loading }) {
             <div className="moviesDetailPage">
               {movieCartDetail ? (
                 <>
-                  <div className={`movieWatchBox ${openWatchMovieBox ? 'openMovieBox' : ''}`}>
-                    <div className="video">
-                      <ReactPlayer width="100%"
-                        height="100%" controls="true" url={movieCartDetail.filmvideo} />
+                  <div className={`movieWatchBox ${openWatchMovieBox ? 'openMovieBox' : ''}`} style={{ display: mediaDisplay }}>
+                    <div className="video" >
+                      {/* {showHello && <ReklamPartner />} */}
+                    <MovieVideo Film={movieCartDetail} />
+
+                      {/* <ReactPlayer width="100%" height="100%" controls="true" url={movieCartDetail.filmvideo} /> */}
 
                     </div>
                     <div className="closeBtn" onClick={handleOpenWatchMovieBox}>
@@ -115,11 +146,11 @@ function MoviesDetailPage({ setloading, loading }) {
                       <iframe src={movieCartDetail.trailer} title="SYMPHONIE EXCL. #1 (MINUS)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <div className="firstBox">
+
                       <h1>{movieCartDetail.name}</h1>
                       <div className="normalBox">
                         <div className="starsBox">
                           <p>
-
                             {movieCartDetail.moviepoint.length !== 0 ?
                               handleRating((movieCartDetail.moviepoint.reduce((total, movieCartDetail) => total += (movieCartDetail.rating), 0) / movieCartDetail.moviepoint.length).toFixed(0) / 2).map(x => {
                                 if (x === 1) {

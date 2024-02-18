@@ -1,0 +1,18 @@
+.countBox{
+    border: 5px solid var(--bg-color-1);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .countdown-box{
+        font-size: 30px;
+        color: var(--bg-color-1);
+    }
+
+}
+.close{
+    display: none;
+}

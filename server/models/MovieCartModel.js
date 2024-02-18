@@ -8,7 +8,6 @@ const MovieCartSchema = new Schema({
   moviegif: String,
   popularcartimage: String,
   imdbpoint: String,
-  // moviepoint: Number,
   hourtime: Number,
   daytime: String,
   trailer: String,
@@ -16,11 +15,6 @@ const MovieCartSchema = new Schema({
   filmvideo: String,
   playlistImage: String,
   movietype: String,  
-  // series:String
-
-  // ---------------
-  // comment:String,
-  // category:String,
   categories: [
     {
       type: mongoose.Types.ObjectId,
@@ -38,6 +32,7 @@ const MovieCartSchema = new Schema({
       },
     },
   ],
+  status:String
 });
 
 export const MovieCart = mongoose.model("MovieCart", MovieCartSchema);
