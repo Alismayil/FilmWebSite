@@ -34,7 +34,9 @@ function LoginAdmin() {
           <IoMdClose />
         </div>
         <label htmlFor="">{t("UpdateImage")}</label>
-        <input type="text" placeholder={`${t("Login")}${t("Images")}...`} />
+        <label style={{ fontSize: '14px' , color:"var(--mode-color-2)"}} htmlFor="">{t("Login")} {t("Images")}...</label>
+          <input type="file" id="myfile" name="myfile" multiple class="hidden-file-input" />
+      
         <button onClick={console.log("salam")}>{t("Add")}</button>
       </form>
     </div>

@@ -53,7 +53,7 @@ function PersonalAdmin() {
         <IoMdClose />
         </div>
     <label htmlFor="">{t("UpdatePersonal")}</label>
-    <input type="text" placeholder={`${t("Image")}...`}/>
+    <input type="file"  id="myfile" name="myfile" multiple class="hidden-file-input"/>
     <input type="text" placeholder={`${t("Says")}...`}/>
     <input type="text" placeholder={`${t("Job")}...`}/>
     <button>{t("Add")}</button>
@@ -64,3 +64,5 @@ function PersonalAdmin() {
 }
 
 export default PersonalAdmin
+
+// placeholder={`${t("Image")}...`}

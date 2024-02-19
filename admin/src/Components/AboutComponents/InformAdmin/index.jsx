@@ -51,19 +51,19 @@ function InformAdmin() {
                 }
             </table>
 
-    <div className={`informFormBox ${openForm ?"openForm":""}`}>
-    <form action="">
-                <div className="closeBtn" onClick={handleOpenform}>
-                    <IoMdClose />
-                </div>
-                <label htmlFor="">{t("UpdateInform")}</label>
-                <input type="text" placeholder={`${t("Image")}...`} />
-                <input type="text" placeholder={`${t("Comment")}...`} />
-                <input type="text" placeholder={`${t("Says")}...`} />
-                <input type="text" placeholder={`${t("Job")}...`} />
-                <button>{t("Add")}</button>
-            </form>
-    </div>
+            <div className={`informFormBox ${openForm ? "openForm" : ""}`}>
+                <form action="">
+                    <div className="closeBtn" onClick={handleOpenform}>
+                        <IoMdClose />
+                    </div>
+                    <label htmlFor="">{t("UpdateInform")}</label>
+                    <input type="file" id="myfile" name="myfile" multiple class="hidden-file-input" />
+                    <input type="text" placeholder={`${t("Comment")}...`} />
+                    <input type="text" placeholder={`${t("Says")}...`} />
+                    <input type="text" placeholder={`${t("Job")}...`} />
+                    <button>{t("Add")}</button>
+                </form>
+            </div>
         </section>
     )
 }

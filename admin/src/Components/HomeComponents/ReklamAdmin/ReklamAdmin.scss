@@ -9,10 +9,11 @@
     @include MyFlex();
     flex-direction: column;
     gap: 50px;
-    height: 100vh;
-    padding: 50px 10px;
-position: relative;
-background: var(--mode-color-2);
+    padding: 0px 100px;
+    position: relative;
+    background: var(--mode-color-2);
+    justify-content: start;
+
     h1 {
         font-size: 50px;
         color: var(--mode-color-1);
@@ -38,12 +39,14 @@ background: var(--mode-color-2);
                 padding: 0px 20px;
                 height: 60px;
                 overflow: hidden;
-color: var(--mode-color-3);
+                color: var(--mode-color-3);
+
                 img {
                     border-radius: 5px;
                     width: 300px;
                 }
-                p{
+
+                p {
                     color: var(--mode-color-1);
                 }
             }
@@ -61,15 +64,16 @@ color: var(--mode-color-3);
         border-radius: 5px;
     }
 
-    .reklamFormBox{
+    .reklamFormBox {
         background: rgba(0, 0, 0, 0.596);
         position: absolute;
         top: 0;
         left: 0;
         height: 100%;
         width: 100%;
-    @include MyFlex();
+        @include MyFlex();
         display: none;
+
         form {
             display: flex;
             background: var(--mode-color-1);
@@ -81,6 +85,7 @@ color: var(--mode-color-3);
             color: white;
 
             position: relative;
+
             .closeBtn {
                 position: absolute;
                 top: 10px;
@@ -112,7 +117,8 @@ color: var(--mode-color-3);
             }
         }
     }
-    .openForm{
+
+    .openForm {
         display: flex;
     }
 }
@@ -122,5 +128,5 @@ color: var(--mode-color-3);
         h1 {
             font-size: 29px;
         }
-    }  
+    }
 }

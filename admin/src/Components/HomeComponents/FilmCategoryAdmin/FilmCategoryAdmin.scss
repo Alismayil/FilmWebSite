@@ -6,20 +6,19 @@
 
 //   @include MyFlex();
 #filmCategoryAdmin {
-    // height: 100vh;
     border-radius: 7px;
     width: 100%;
-    height: 100vh;
     @include MyFlex();
-    padding: 60px 10px 120px;
     flex-direction: column;
     gap: 50px;
-    // display: flex;
     position: relative;
-h1{
-    font-size: 50px;
-    color: var(--mode-color-1);
-}
+    justify-content: start;
+
+    h1 {
+        font-size: 50px;
+        color: var(--mode-color-1);
+    }
+
     .gifFormBox {
         background: rgba(0, 0, 0, 0.596);
         width: 100%;
@@ -92,7 +91,7 @@ h1{
                 border: 1px solid var(--mode-color-3);
                 border-radius: 3px;
                 width: 200px;
-color: var(--mode-color-3);
+                color: var(--mode-color-3);
             }
 
             td {
@@ -103,16 +102,20 @@ color: var(--mode-color-3);
                 @include MyFlex();
                 height: 100px;
                 justify-content: space-around;
+
                 img {
                     max-width: 200px;
                 }
-color: var(--mode-color-3);
+
+                color: var(--mode-color-3);
+
                 p {
                     font-size: 40px;
                     color: var(--mode-color-1);
                     cursor: pointer;
                 }
-                span{
+
+                span {
                     font-size: 15px;
                 }
             }
@@ -123,34 +126,39 @@ color: var(--mode-color-3);
 
 @media only screen and (max-width: 520px) {
     #filmCategoryAdmin {
-        h1{
+        h1 {
             font-size: 30px;
         }
+
         table {
             tr {
-    
+
                 th {
                     width: 120px;
-    
+
                 }
+
                 td {
                     padding: 0 !important;
                     width: 120px;
                     justify-content: center;
-                    img{
-                            object-fit: cover;
-                width: 100%;
-                aspect-ratio: 1 / 1;
+
+                    img {
+                        object-fit: cover;
+                        width: 100%;
+                        aspect-ratio: 1 / 1;
                     }
-                    p{
+
+                    p {
                         font-size: 20px;
                     }
-                    span{
+
+                    span {
                         font-size: 12px;
                     }
                 }
             }
         }
-    
+
     }
 }

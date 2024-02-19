@@ -107,7 +107,13 @@
                 border-radius: 4px;
                 border: none;
             }
-
+            input[type="file"] {
+               background: white;
+               cursor: pointer;
+               color: var(--mode-color-7);
+            }
+           
+           
             button {
                 height: 35px;
                 width: 70px;

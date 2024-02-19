@@ -91,7 +91,12 @@ background: var(--mode-color-2);
             label {
                 font-size: 20px;
             }
-    
+            input[type="file"] {
+                background: white;
+                cursor: pointer;
+                color: var(--mode-color-7);
+             }
+            
             input {
                 padding: 10px;
                 outline: none;
