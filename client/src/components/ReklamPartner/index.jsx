@@ -6,7 +6,7 @@ import { PriceTypeContext } from '../../context/PriceTypeContext';
 function ReklamPartner() {
   const [display, setDisplay] = useState(false)
   const [showGreeting, setShowGreeting] = useState(false);
-  const { choosePriceType } = useContext(PriceTypeContext)
+  const { currentUser } = useContext(PriceTypeContext)
 
   function handleSkip() {
     setDisplay(!display)
@@ -23,7 +23,7 @@ function ReklamPartner() {
     <div className={`reklamPartner ${display ? "close" : ""}`}>
 
       {
-        choosePriceType === "Basic" ?
+        currentUser.stripe === "Basic" ?
           <>
             {
               showGreeting && <button onClick={handleSkip} >Skip</button>

@@ -21,6 +21,8 @@ const UserSchema = new Schema(
         rating: { type: Number },
       },
     ],
+    stripe:{type:String}
+    
   },
   { timestamps: true }
 );

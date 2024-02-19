@@ -16,6 +16,7 @@ function PricePage({ setloading, loading }) {
   const { t, i18n } = useTranslation();
   const [price, setPrice] = useState([])
   const navigate = useNavigate();
+  const { currentUser } = useContext(PriceTypeContext)
 
   async function getPriceData() {
     const res = await axios.get("http://localhost:3000/price")
@@ -23,12 +24,11 @@ function PricePage({ setloading, loading }) {
   }
 
 
-  const { choosePriceType , setFreeType } = useContext(PriceTypeContext)
 
-  function handleFreeType(params) {
-    setFreeType("Free")
-    navigate("/movies");
-  }
+  // function handleFreeType(params) {
+  //   setFreeType("Free")
+  //   navigate("/movies");
+  // }
   useEffect(() => {
     getPriceData()
   }, [])
@@ -89,13 +89,6 @@ function PricePage({ setloading, loading }) {
 
                       <button>
                         <div className='stripeBox'>
-                          {
-                            item.pricetype === "Free" ?
-
-                              <div className='freePrice' onClick={handleFreeType}>{`${t("SelectFree")}`}</div>
-
-                              : ""
-                          }
                           <PayNow Item={item} />
                         </div>
 

@@ -26,6 +26,7 @@ export async function Register(req, res) {
           username: user.username,
           role: user.role,
           email: user.email,
+          movieType: user.movieType
         },
         PrivateKey
       );
@@ -51,7 +52,7 @@ export async function Login(req, res) {
       return;
     }
     const token = jwt.sign(
-      { _id: user._id, username: user.username, role: user.role },
+      { _id: user._id, username: user.username, role: user.role , movieType: user.movieType },
       PrivateKey // Burada PrivateKey yerine gerçek özel anahtarınızı kullanmalısınız
     );
     res.status(200).send(token);
@@ -151,5 +152,21 @@ export async function UpdateReview(req, res) {
     res.status(200).send("Review Updated");
   } catch (error) {
     res.status(404).send(error);
+  }
+}
+
+
+
+export async function PostStripe(req, res) {
+  try {
+    const { id } = req.params;
+    const {movieType}=req.body
+   await Users.findByIdAndUpdate(id, {
+      stripe:movieType,
+    });
+
+    res.status(200).send("Add");
+  } catch (error) {
+    res.status(500).send("Internal Server Error");
   }
 }

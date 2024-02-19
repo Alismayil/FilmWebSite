@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { default as React, useContext, useEffect, useState } from 'react';
 import { Helmet } from "react-helmet";
-import { useTranslation } from 'react-i18next';
+import { useSSR, useTranslation } from 'react-i18next';
 import { CgPlayListCheck } from "react-icons/cg";
 import { IoCloseSharp, IoStar, IoStarHalf } from "react-icons/io5";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp, MdPlaylistAdd } from "react-icons/md";
@@ -31,12 +31,16 @@ function MoviesDetailPage({ setloading, loading }) {
   const { handleAddPlaylist, playlist } = useContext(PlaylistContext)
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [showHello, setShowHello] = useState(false);
-  const { choosePriceType, freeType } = useContext(PriceTypeContext)
+  const { currentUser } = useContext(PriceTypeContext)
   const mediaDisplay = windowWidth <= 720 ? "none" : ''
+
+  console.log("user.movieType", currentUser.stripe);
+  console.log("user", currentUser);
+
 
 
   function handleCheckPriceType() {
-    if (choosePriceType === "Basic" || choosePriceType === "Premium" || freeType === "Free") {
+    if (currentUser.stripe) {
       return "";
     } else {
       return "/price";
@@ -89,15 +93,6 @@ function MoviesDetailPage({ setloading, loading }) {
   }
 
 
-  useEffect(() => {
-    // const timer1 = setTimeout(() => setShowHello(true), 10000);
-    // const timer2 = setTimeout(() => setShowHello(false), 15600);
-
-    // return () => {
-    //   clearTimeout(timer1);
-    //   clearTimeout(timer2);
-    // };
-  }, []);
 
 
   useEffect(() => {
@@ -129,6 +124,7 @@ function MoviesDetailPage({ setloading, loading }) {
 
     setloading(true)
   }, [])
+
   return (
 
     <>
@@ -147,17 +143,19 @@ function MoviesDetailPage({ setloading, loading }) {
               {movieCartDetail ? (
                 <>
 
-                  <div className={`movieWatchBox ${openWatchMovieBox ? 'openMovieBox' : ''}`} style={choosePriceType !== "Premium" && choosePriceType !== "Basic" ? { display: mediaDisplay } : {}}>
+                  <div className={`movieWatchBox ${openWatchMovieBox ? 'openMovieBox' : ''}`} style={currentUser.stripe !== "Premium" && currentUser.stripe !== "Basic" ? { display: mediaDisplay } : {}}>
                     <div className="video">
-                      {choosePriceType === "Premium" ? (
-                        <div className='reklamShow'>
+                    {
+                          
+                          currentUser.stripe === "Premium"?
+                          <div className='reklamShow'>
                           {showHello && <ReklamPartner />}
                         </div>
-                      ) : (
-                        <div className='reklamLook'>
+                          :
+                          <>
                           {showHello && <ReklamPartner />}
-                        </div>
-                      )}
+                          </>
+                      }
                       <MovieVideo Film={movieCartDetail} className='movieee' />
                       <div className="boxxxxx">d</div>
                     </div>
