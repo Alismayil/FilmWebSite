@@ -15,6 +15,7 @@
     --bg-color-2:#0077B6;
     --bg-color-3:#DC3918;
     --bg-color-4:#F9C80E;
+    --bg-color-5:red;
 
 
 }
@@ -23,6 +24,7 @@
     --bg-color-2:#F9C80E;
     --bg-color-3:#DC3918;
     --bg-color-4:#0077B6;
+    --bg-color-5:#0077B6;
 
 
 }
@@ -31,6 +33,7 @@
     --bg-color-2:#DC3918;
     --bg-color-3:#DC3918;
     --bg-color-4:#0077B6;
+    --bg-color-5:#F9C80E;
 
 }
 .lightMode{

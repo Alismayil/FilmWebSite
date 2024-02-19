@@ -24,8 +24,6 @@ function PayNow({ Item }) {
             const res = await axios.put(`http://localhost:3000/${user._id}`, {
                 movieType: Item.pricetype
             })
-            alert("add")
-            // setChoosePriceType(Item.pricetype)
             const response = await axios({
                 url: "http://localhost:3000/payment",
                 method: "post",
@@ -41,8 +39,6 @@ function PayNow({ Item }) {
                 toast.success('Payment successfully completed')
             }
         } catch (error) {
-            alert("not add")
-
             toast.error("Oops a problem arose")
         }
     };
