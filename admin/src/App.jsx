@@ -8,6 +8,7 @@ import MovieCard from './pages/MovieCard';
 import HeadersAndLogin from './pages/HeadersAndLogin';
 import UserPage from './pages/UserPage';
 import ScrollToTop from './Components/ScrollToTop';
+import OpenSignIn from './pages/OpenSignIn';
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
           <Route path="/user" element={<UserPage/>} />
         </Routes>
       </BrowserRouter>
-
+<OpenSignIn/>
     </>
   )
 }
