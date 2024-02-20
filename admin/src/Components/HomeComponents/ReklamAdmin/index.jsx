@@ -5,7 +5,9 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import { IoMdClose } from "react-icons/io";
 import { useTranslation } from 'react-i18next';
-
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 function ReklamAdmin() {
     const [reklam, setReklam] = useState([])
@@ -23,6 +25,18 @@ function ReklamAdmin() {
     useEffect(() => {
         getReklamData()
     }, [])
+
+    const VisuallyHiddenInput = styled('input')({
+        clip: 'rect(0 0 0 0)',
+        clipPath: 'inset(50%)',
+        height: 1,
+        overflow: 'hidden',
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        whiteSpace: 'nowrap',
+        width: 1,
+    });
 
     return (
         <section id='reklamAdmin'>
@@ -75,21 +89,32 @@ function ReklamAdmin() {
                 ))
             }
 
-       <div className={`reklamFormBox ${openForm ?"openForm":""}`}>
-       <form action="">
-       <div className="closeBtn" onClick={handleOpenform}>
-        <IoMdClose />
-        </div>
-                <label htmlFor="">{t("UpdateReklam")}</label>
-                <input type="text" placeholder={`${t("Poster")}...`} />
-                <input type="text" placeholder={`${t("Name")}...`} />
-                <input type="text" placeholder={`${t("Writter")}...`} />
-                <input type="text" placeholder={`${t("Directed")}...`} />
-                <input type="text" placeholder={`${t("Studio")}...`} />
-                <input type="text" placeholder={`${t("Time")}...`} />
-                <button>{t("Add")}</button>
-            </form>
-       </div>
+            <div className={`reklamFormBox ${openForm ? "openForm" : ""}`}>
+                <form action="">
+                    <div className="closeBtn" onClick={handleOpenform}>
+                        <IoMdClose />
+                    </div>
+                    <label htmlFor="">{t("UpdateReklam")}</label>
+                    <label htmlFor="" className='posterLabel'>{`${t("Poster")}...`}</label>
+                    <Button
+                        className='uploadBtn'
+                        component="label"
+                        role={undefined}
+                        variant="contained"
+                        tabIndex={-1}
+                        startIcon={<CloudUploadIcon />}
+                    >
+                        Upload file
+                        <VisuallyHiddenInput type="file" />
+                    </Button>
+                    <input type="text" placeholder={`${t("Name")}...`} />
+                    <input type="text" placeholder={`${t("Writter")}...`} />
+                    <input type="text" placeholder={`${t("Directed")}...`} />
+                    <input type="text" placeholder={`${t("Studio")}...`} />
+                    <input type="text" placeholder={`${t("Time")}...`} />
+                    <button>{t("Add")}</button>
+                </form>
+            </div>
         </section>
     )
 }

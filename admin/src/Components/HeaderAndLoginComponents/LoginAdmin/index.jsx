@@ -7,6 +7,9 @@ import { useEffect } from 'react'
 import { FaRegEdit } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { useTranslation } from 'react-i18next';
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 function LoginAdmin() {
     const [header, setHeader] = useState([])
@@ -25,6 +28,19 @@ function LoginAdmin() {
     useEffect(() => {
       getHeaderData()
     }, [])
+
+    const VisuallyHiddenInput = styled('input')({
+      clip: 'rect(0 0 0 0)',
+      clipPath: 'inset(50%)',
+      height: 1,
+      overflow: 'hidden',
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      whiteSpace: 'nowrap',
+      width: 1,
+    });
+
   return (
     <div id='loginAdmin'>
     <h1>{t("EditedLogin")}</h1>
@@ -35,7 +51,17 @@ function LoginAdmin() {
         </div>
         <label htmlFor="">{t("UpdateImage")}</label>
         <label style={{ fontSize: '14px' , color:"var(--mode-color-2)"}} htmlFor="">{t("Login")} {t("Images")}...</label>
-          <input type="file" id="myfile" name="myfile" multiple class="hidden-file-input" />
+             <Button
+            className='uploadBtn'
+            component="label"
+            role={undefined}
+            variant="contained"
+            tabIndex={-1}
+            startIcon={<CloudUploadIcon />}
+          >
+            Upload file
+            <VisuallyHiddenInput type="file" />
+          </Button>
       
         <button onClick={console.log("salam")}>{t("Add")}</button>
       </form>
