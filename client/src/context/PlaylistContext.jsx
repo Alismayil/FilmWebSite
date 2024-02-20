@@ -23,11 +23,9 @@ function PlaylistProvider({ children }) {
                 productId: id
             })
             res.status === 201 ? toast.error(`${t("DeletePlaylist")}`) : toast.success(`${t("AddedPlaylist")}`)
-
             await fetchAllPlaylist()
         } catch (error) {
-            // alert(error.message)
-            console.log(error.message);
+            alert(error.message)
         }
     }
 

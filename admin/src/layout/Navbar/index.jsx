@@ -34,6 +34,10 @@ function handleOpenNavbar() {
     {
       title: `${t("HeaderAndLogin")}`,
       path: '/headerandlogin',
+    },
+    {
+      title: `${t("User")}`,
+      path: '/user',
     }
   ]
 

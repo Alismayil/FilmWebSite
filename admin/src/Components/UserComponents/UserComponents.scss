@@ -1,0 +1,116 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+//   @include MyFlex();
+
+.userComponents {
+    border-radius: 7px;
+    width: 100%;
+    @include MyFlex();
+    padding: 60px 10px 30px;
+    // flex-wrap: wrap;
+    flex-direction: column;
+    gap: 50px;
+    position: relative;
+    gap: 20px;
+
+    h1 {
+        font-size: 70px;
+        color: var(--mode-color-1);
+    }
+
+    .userAdminBox {
+
+        table {
+            // border: 1px solid white;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+
+            tr {
+                @include MyFlex();
+                gap: 10px;
+
+                th {
+                    border: 1px solid var(--mode-color-3);
+                    border-radius: 3px;
+                    width: 200px;
+                    color: var(--mode-color-3);
+                    font-size: 20px;
+                    height: 50px;
+                    @include MyFlex();
+
+                }
+
+                .priceType {
+                    color: white;
+                }
+
+                td {
+                    border: 1px solid var(--mode-color-3);
+                    border-radius: 3px;
+                    // overflow: hidden;
+                    width: 200px;
+                    @include MyFlex();
+                    height: 60px;
+                    color: var(--mode-color-3);
+                    gap: 10px;
+                    font-size: 15px;
+                    font-weight: 600;
+
+                    p {
+                        padding: 0px 10px;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+
+                    .deleteBtn {
+                        color: red;
+                        // border: 1px solid red;
+
+                    }
+
+                    // .editBtn {
+                    //     color: var(--mode-color-1);
+                    //     border: 1px solid var(--mode-color-1);
+
+                    // }
+
+                    .changeRole {
+                        background: #00B4D8;
+                        font-size: 10px;
+                        margin-left: 30px;
+                        border: 1px solid black;
+                        font-weight: 600;
+                        color: white;
+                        border-top-left-radius: 15px;
+                        border-bottom-right-radius: 15px;
+
+                    }
+
+                    button {
+                        height: 40px;
+                        width: 40px;
+                        font-size: 25px;
+                        border-radius: 7px;
+                        @include MyFlex();
+                        cursor: pointer;
+                        background-color: transparent;
+                        border: none;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}

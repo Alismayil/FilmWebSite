@@ -6,7 +6,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import MovieCard from './pages/MovieCard';
 import HeadersAndLogin from './pages/HeadersAndLogin';
-import ErrorPage from './pages/ErrorPage';
+import UserPage from './pages/UserPage';
 import ScrollToTop from './Components/ScrollToTop';
 
 
@@ -22,7 +22,7 @@ function App() {
           <Route path="/about" element={<AboutPage/>} />
           <Route path="/moviecard" element={<MovieCard/>} />
           <Route path="/headerandlogin" element={<HeadersAndLogin/>} />
-          <Route path="/*" element={<ErrorPage/>} />
+          <Route path="/user" element={<UserPage/>} />
         </Routes>
       </BrowserRouter>
 

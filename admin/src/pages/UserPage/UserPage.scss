@@ -5,12 +5,11 @@
 }
 
 //   @include MyFlex();
-
-#adminMovieCardPage{
+    
+#adminUserPage{
     background: var(--mode-color-2);
-    // height: 100vh;
+    // height: 110vh;
     width: 100%;
-    padding: 50px 0px;
-    @include MyFlex();
-
+    display: flex;
+    // padding: 10px 0px;
 }

@@ -17,7 +17,7 @@ function PayNow({ Item }) {
     const navigate = useNavigate();
 
     const { user } = useContext(userContext)
-
+ const {getCurrentData}=useContext(PriceTypeContext)
 
     const payNow = async (token) => {
         try {
@@ -37,6 +37,7 @@ function PayNow({ Item }) {
             if (response.status === 200) {
                 navigate("/movies");
                 toast.success('Payment successfully completed')
+                getCurrentData()
             }
         } catch (error) {
             toast.error("Oops a problem arose")
