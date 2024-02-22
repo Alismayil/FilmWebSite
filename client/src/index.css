@@ -8,7 +8,22 @@
     --mode-color-6:#ebeae9;
 
     font-family: 'Space Grotesk', sans-serif;
-   
+    
+    --mode-color-7:#00B4D8; 
+    /* 1 */
+    --mode-color-8:#121212;
+    /* 2 */
+    --mode-color-9:#ebeae9;
+    /* 3 */
+    --mode-color-10:#DEE2E6;
+    /* 4 */
+    --mode-color-11:#00517d70;
+    /* 5 */
+    --mode-color-12:#00607367;
+    /* 6 */
+    --mode-color-13:#03045E;
+    /* 7 */
+    --mode-color-14:#005eb6bc;
 }
 .purpleColor{
     --bg-color-1:#F9C80E;
@@ -44,6 +59,22 @@
     --mode-color-5:transparent;
     --mode-color-6:#ebeae9;
 
+
+    --mode-color-7:#03045E;
+    /* 1 */
+    --mode-color-8:#ebeae9;
+    /* 2 */
+    --mode-color-9:#121212;
+    /* 3 */
+    --mode-color-10:#343A40;
+    /* 4/'' */
+    --mode-color-11:#00607367;
+    /* 5 */
+    --mode-color-12:#00517d70;
+    /* 6 */
+    --mode-color-13:#00B4D8;
+    /* 7 */
+    --mode-color-14:#1E96FC;
 }
 .link{
     text-decoration: none;

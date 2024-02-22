@@ -6,7 +6,7 @@ import { userContext } from "../context/UserContext";
 function PrivateRoute({check}) {
   const { user } = useContext(userContext);
  
-  return check.includes(user?.role) &&  user ? <Outlet /> : <Navigate to={"/login"} />;
+  return check.includes(user?.role) &&  user ? <Outlet /> : <Navigate to={"/*"} />;
 }
 
 export default PrivateRoute;

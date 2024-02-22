@@ -109,7 +109,7 @@ export const PostMovieCart = async (req, res) => {
         AllCategories.push(categ);
       }
 
-      console.log(AllCategories);
+      // console.log(AllCategories);
 
       const newMovieCart = new MovieCart({
         name,

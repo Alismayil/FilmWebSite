@@ -14,19 +14,21 @@ import MoviesDetailPage from './pages/MoviesDetailPage';
 import MoviesPage from './pages/MoviesPage';
 import PlaylistPage from './pages/PlaylistPage';
 import PricePage from './pages/PricePage';
-import RegisterPage from './pages/RegisterPage';
 import SeriesPage from './pages/SeriesPage';
-import ChangeColorBox from './components/ChangeColorBox';
-import ModeBox from './components/ModeBox';
+// import ModeBox from './components/ModeBox';
+import 'animate.css';
 import AOS from "aos";
 import "aos/dist/aos.css";
-import 'animate.css';
+import PrivateRoute from './Router/PrivateRouter';
 import ScrollToTop from './components/ScrollToTop';
 import { userContext } from './context/UserContext';
-import PrivateRoute from './Router/PrivateRouter';
-import Loading from './components/Loading';
-import EmailForm from './pages/ContactPage/EmailForm';
-import PayNow from './components/PayNow';
+import AboutPageAdmin from './pages/AboutPageAdmin';
+import HeadersAndLoginAdmin from './pages/HeadersAndLoginAdmin';
+import HomePageAdmin from './pages/HomePageAdmin';
+import MovieCardAdmin from './pages/MovieCardAdmin';
+import UserPageAdmin from './pages/UserPageAdmin';
+import ChangeColorBox from './components/ChangeColorBox';
+import { Toaster } from 'react-hot-toast';
 
 
 
@@ -65,7 +67,18 @@ function App() {
   return (
     <>
       {/* <div className="cursor" style={{ left: cursorPos.x + 'px', top: cursorPos.y + 'px', position: 'absolute' }}></div> */}
-
+      <Toaster
+        position="top-left"
+        reverseOrder={false}
+        toastOptions={{
+          className: '',
+          style: {
+            zIndex:"10",
+            backgroundColor: "var(--bg-color-1)",
+            color: "var(--mode-color-2)",
+          },
+        }}
+      />
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
@@ -86,11 +99,23 @@ function App() {
           </Route>
           <Route path="/*" element={<ErrorPage setloading={setloading} loading={loading} />} />
           {/* <Route path="/" element={<ErrorPage setloading={setloading} loading={loading} />} />mellimnen sorus */}
+    
+          {/* <Route path="/homeadmin" element={<AdminLayOut/>} > */}
+            <Route element={<PrivateRoute check={["admin"]} />}>
+              <Route path="/admin" element={<HomePageAdmin />} />
+              <Route path="/AdminAbout" element={<AboutPageAdmin />} />
+              <Route path="/AdminFilm" element={<MovieCardAdmin />} />
+              <Route path="/AdminHeaderAndLogin" element={<HeadersAndLoginAdmin />} />
+              <Route path="/AdminUsers" element={<UserPageAdmin />} />
+            </Route>
+         
+          {/* </Route> */}
+
+
         </Routes>
         {
-          loading ? "" : <ChangeColorBox />
-        }
-
+            loading ? "" : <ChangeColorBox />
+          }
       </BrowserRouter>
 
 

@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { HiMiniPause } from "react-icons/hi2";
 import { VscDebugStart } from "react-icons/vsc";
-import ModeBox from '../../components/ModeBox';
+// import ModeBox from '../../components/ModeBox';
 import FilmLogo from '../../../image/filmLogo.png'
 import LanguageBox from '../../components/LanguageBox';
 import { useTranslation } from 'react-i18next';
@@ -16,8 +16,8 @@ function Navbar() {
   const { pathname } = useLocation()
   const [scrollPosition, setScrollPosition] = useState(0);
   const { t, i18n } = useTranslation();
-  const { user, setUser , setToken} = useContext(userContext);
-const nav = useNavigate()
+  const { user, setUser, setToken } = useContext(userContext);
+  const nav = useNavigate()
 
   const handleScroll = () => {
     const currentPosition = window.scrollY;
@@ -88,13 +88,13 @@ const nav = useNavigate()
             </li>
             {
               user ? <li>
-              <NavLink className='navlink' to={'/playlist'}>
-                {t("Playlist")}
-                <div className="outline"></div>
-              </NavLink>
-            </li>:<></>
+                <NavLink className='navlink' to={'/playlist'}>
+                  {t("Playlist")}
+                  <div className="outline"></div>
+                </NavLink>
+              </li> : <></>
             }
-            
+
           </ul>
         </div>
       </div>
@@ -102,7 +102,7 @@ const nav = useNavigate()
         <div className="languageBox">
           <LanguageBox />
         </div>
-        {user ? <button className='logOut'  onClick={()=>handleNavigate()}><RiLogoutCircleRLine /></button> :
+        {user ? <button className='logOut' onClick={() => handleNavigate()}><RiLogoutCircleRLine /></button> :
           <div className="logInBox">
             <Link className='link' to={'/login'}>
               <button><p>{t("LoginBtn")}</p>
@@ -149,16 +149,16 @@ const nav = useNavigate()
             </NavLink>
           </li>
           {
-              user ? <li>
+            user ? <li>
               <NavLink className='navlink' to={'/playlist'}>
                 {t("Playlist")}
                 <div className="outline"></div>
               </NavLink>
-            </li>:<></>
-            }
-       
+            </li> : <></>
+          }
+
         </ul>
-        {user ? <button className='logOut' onClick={()=>setUser(null)}><RiLogoutCircleRLine /></button> :
+        {user ? <button className='logOut' onClick={() => setUser(null)}><RiLogoutCircleRLine /></button> :
           <div className="logInBox">
             <Link className='link' to={'/login'}>
               <button><p>{t("LoginBtn")}</p>
