@@ -17,6 +17,7 @@ import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import { userContext } from '../../../context/UserContext';
 import { PlaylistContext } from '../../../context/PlaylistContext';
+import CardsLoad from '../../CardsLoad';
 
 function AnimationCartBox() {
     const [openFiltertextBox, setOpenFilterTextBox] = useState(false);
@@ -29,11 +30,14 @@ function AnimationCartBox() {
     const [filterCategory, setFilterCategory] = useState("All");
     const [selectedCategories, setSelectedCategories] = useState([]);
     const { playlist, handleAddPlaylist } = useContext(PlaylistContext)
+    const [load, setload] = useState(true)
 
     async function getMovieCardData() {
         try {
             const res = await axios.get('http://localhost:3000/moviecart');
             setMovieCard(res.data);
+            setload(false)
+
         } catch (error) {
             console.error("Error fetching movie card data:", error);
         }
@@ -190,7 +194,10 @@ function AnimationCartBox() {
                 </div>
             </div>
             <div className={`downBox ${changeTwoGrid ? "twoGrid" : ""}`}>
-                {movieCard && movieCard
+                {load ? 
+                <CardsLoad/>
+                :
+                movieCard
                     .filter((x) => x.name.toLowerCase().includes(search.toLowerCase()))
                     .filter((item) => filterCategory === "All" || filterData.includes(item.movietype))
                     .filter(filterByCategory)

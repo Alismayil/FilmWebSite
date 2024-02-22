@@ -18,11 +18,10 @@ overflow: hidden;
     }
 
     .swiper-slide {
-       
         border: 2px dashed  var(--bg-color-1);
         border-radius: 6px;
-        background: var(--mode-color-6);
         overflow: hidden;
+
         .swiperBox{
             width: 100%;
             height: 100%;

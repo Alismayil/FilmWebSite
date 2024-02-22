@@ -16,6 +16,7 @@ import axios from 'axios';
 import { userContext } from '../../../context/UserContext';
 import { CgPlayListCheck } from "react-icons/cg";
 import { PlaylistContext } from '../../../context/PlaylistContext';
+import CardsLoad from '../../CardsLoad';
 
 
 function MovieCards() {
@@ -29,23 +30,9 @@ function MovieCards() {
     const [filterCategory, setFilterCategory] = useState("All");
     const [flipEffect, setflipEffect] = useState(false)
     const { playlist, handleAddPlaylist } = useContext(PlaylistContext)
-    // ----------------------------
     const [selectedCategories, setSelectedCategories] = useState([]);
+    const [load, setload] = useState(true)
 
-    // const handleCategory = (category) => {
-    //     if (selectedCategories.includes(category)) {
-    //         setSelectedCategories(selectedCategories.filter((selected) => selected !== category));
-    //     } else {
-    //         setSelectedCategories([...selectedCategories, category]);
-    //     }
-    // };
-    // const filterByCategory = (movie) => {
-    //     return (
-    //         selectedCategories.length === 0 ||
-    //         movie.category.some((cat) => selectedCategories.includes(cat.categoryname))
-    //     );
-    // };
-    // -------------------------
 
 
 
@@ -54,6 +41,7 @@ function MovieCards() {
         try {
             const res = await axios.get('http://localhost:3000/moviecart');
             setMovieCard(res.data);
+            setload(false)
         } catch (error) {
             console.error("Error fetching movie card data:", error);
         }
@@ -109,24 +97,7 @@ function MovieCards() {
         }
     };
 
-    // const filteredMovies = movies.filter(movie => {
-    //     // Her bir film belgesinin kategorilerini dön
-    //     for (const category of movie.categories) {
-    //       // Eğer kategori 'Horror' ise true döndür ve filtreye ekle
-    //       if (category.category === 'Horror') {
-    //         return true;
-    //       }
-    //     }
-    //     // Eğer kategori 'Horror' değilse false döndür ve filtreye ekleme
-    //     return false;
-    //   });
-
-    // const extractCategories = (data) => {
-    //     const datas= data && data.map(x => x.category);
-    //     console.log("datalar:" ,datas);
-    //     return datas
-    //   };
-
+  
 
     return (
         <section id='movieCards'>
@@ -262,44 +233,47 @@ function MovieCards() {
                 </div>
             </div>
             <div className={`downBox ${changeTwoGrid ? "twoGrid" : ""}`}>
-                {movieCard && movieCard
-                    .filter((x) => x.name.toLowerCase().includes(search.toLowerCase()))
-                    .filter((item) => filterCategory === "All" || filterData.includes(item.movietype))
-                    .filter(filterByCategory)
-                    .map((item) => (
-                        <>
-                            <div className="flipContainer">
-                                <div className={`card ${changeTwoGrid ? 'changeSwiper' : ""} `} >
-                                    <div className={`frontSide ${changeTwoGrid ? 'changeSwiper' : ""}`}>
-                                        <img src={item.cartposterimage} alt="" />
-                                        <div className="changeBox">
-                                            <MdOutlineChangeCircle />
-                                        </div>
+                {load ? 
+                <CardsLoad/>
+                :
+                movieCard
+                .filter((x) => x.name.toLowerCase().includes(search.toLowerCase()))
+                .filter((item) => filterCategory === "All" || filterData.includes(item.movietype))
+                .filter(filterByCategory)
+                .map((item) => (
+                    <>
+                        <div className="flipContainer">
+                            <div className={`card ${changeTwoGrid ? 'changeSwiper' : ""} `} >
+                                <div className={`frontSide ${changeTwoGrid ? 'changeSwiper' : ""}`}>
+                                    <img src={item.cartposterimage} alt="" />
+                                    <div className="changeBox">
+                                        <MdOutlineChangeCircle />
                                     </div>
-                                    <div className={`backSide ${changeTwoGrid ? 'changeSwiper' : ""}`} style={{ backgroundImage: `url(${item.moviegif})` }}>
-                                        <div className="frontBox"></div>
-                                        <div className="text">
-                                            <h1 className={`${changeTwoGrid ? 'textSmall' : ""}`}>{item.name}</h1>
-                                            <span>{item.writter}</span>
-                                            <h2>{t("Type")} / <p>{item.movietype}</p></h2>
-                                            <p>{t("Time")}: <span>{convertMinuteToHour(item.hourtime)}</span></p>
-                                            <Link to={user ? `/watch/${item._id}` : "/login"}>
-                                                <div className="playBtn">
-                                                    <FaPlay />
-                                                </div>
-                                            </Link>
-                                            <Link style={{ color: 'var(--mode-color-1)' }} to={user ? "" : "/login"}>
-                                                <div className="playlistBox" onClick={() => handleAddPlaylist(item._id)} >
-                                                    {playlist.find((x) => item._id === x.product._id) ? <CgPlayListCheck style={{ color: "var(--bg-color-1" }} /> : <MdPlaylistAdd />}
-                                                </div>
-                                            </Link>
+                                </div>
+                                <div className={`backSide ${changeTwoGrid ? 'changeSwiper' : ""}`} style={{ backgroundImage: `url(${item.moviegif})` }}>
+                                    <div className="frontBox"></div>
+                                    <div className="text">
+                                        <h1 className={`${changeTwoGrid ? 'textSmall' : ""}`}>{item.name}</h1>
+                                        <span>{item.writter}</span>
+                                        <h2>{t("Type")} / <p>{item.movietype}</p></h2>
+                                        <p>{t("Time")}: <span>{convertMinuteToHour(item.hourtime)}</span></p>
+                                        <Link to={user ? `/watch/${item._id}` : "/login"}>
+                                            <div className="playBtn">
+                                                <FaPlay />
+                                            </div>
+                                        </Link>
+                                        <Link style={{ color: 'var(--mode-color-1)' }} to={user ? "" : "/login"}>
+                                            <div className="playlistBox" onClick={() => handleAddPlaylist(item._id)} >
+                                                {playlist.find((x) => item._id === x.product._id) ? <CgPlayListCheck style={{ color: "var(--bg-color-1" }} /> : <MdPlaylistAdd />}
+                                            </div>
+                                        </Link>
 
-                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </>
-                    ))
+                        </div>
+                    </>
+                ))
                 }
 
             </div>
