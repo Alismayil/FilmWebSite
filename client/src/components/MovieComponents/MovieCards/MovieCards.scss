@@ -191,6 +191,7 @@
             height: 420px;
             perspective: 800px;
             @include MyFlex();
+            width: 300px;
 
             .card {
                 height: 100%;
@@ -199,6 +200,7 @@
                 transition: transform 700ms;
                 transform-style: preserve-3d;
                 width: 300px;
+                @include MyFlex();
 
                 .frontSide,
                 .backSide {
@@ -249,7 +251,7 @@
                     background-position: center;
                     background-repeat: no-repeat;
                     background-size: cover;
-                    width: 100%;
+                    width: 90%;
 
                     padding: 20px;
                     height: 420px;
@@ -353,154 +355,10 @@
 
 
 
-        // .swiper {
-        //     width: 280px;
-        //     @include MyFlex();
-
-        //     img {
-        //         object-fit: cover;
-        //         width: 100%;
-        //         aspect-ratio: 1 / 1.5;
-        //     }
-        // }
-
-        // .swiper-slide {
-        //     @include MyFlex();
-
-        //     .posterBox {
-        //         @include MyFlex();
-        //         border-radius: 10px;
-        //         position: relative;
-        //         width: 280px;
-
-        //         img {
-        //             border-radius: 8px;
-
-        //         }
-
-        //         .changeBox {
-        //             position: absolute;
-        //             top: 20px;
-        //             right: 20px;
-        //             font-size: 30px;
-        //             color: var(--bg-color-1);
-        //             @include MyFlex();
-        //             border-radius: 50%;
-        //             background: white;
-        //         }
-
-        //     }
-
-        //     .textBox {
-        //         background: var(--mode-color-2);
-        //         background-position: center;
-        //         background-repeat: no-repeat;
-        //         background-size: cover;
-        //         width: 100%;
-
-        //         padding: 20px;
-        //         height: 420px;
-        //         flex-direction: column;
-        //         display: flex;
-        //         gap: 10px;
-        //         position: relative;
-        //         border-radius: 10px;
-        //         overflow: hidden;
-
-        //         .text {
-        //             z-index: 2;
-
-        //         }
-
-        //         .frontBox {
-        //             background: var(--mode-color-2);
-        //             height: 100%;
-        //             width: 100%;
-        //             position: absolute;
-        //             top: 0px;
-        //             left: 0px;
-        //             opacity: 0.3;
-        //             z-index: 1;
-        //         }
-
-        //         .playBtn {
-        //             background: var(--bg-color-1);
-        //             @include MyFlex();
-        //             height: 50px;
-        //             width: 50px;
-        //             border-radius: 50%;
-        //             position: absolute;
-        //             bottom: 30px;
-        //             right: 30px;
-        //             color: var(--mode-color-2);
-        //             cursor: pointer;
-        //         }
-
-        //         .playlistBox {
-        //             cursor: pointer;
-        //             font-size: 30px;
-        //             width: 30px;
-
-        //             &:hover {
-        //                 color: var(--bg-color-1);
-        //             }
-        //         }
-
-        //         color: var(--mode-color-1);
-
-        //         h1 {
-        //             font-size: 50px;
-        //             overflow: hidden;
-        //             white-space: nowrap;
-        //             text-overflow: ellipsis;
-        //             color: var(--bg-color-1);
-        //         }
-
-        //         span {
-        //             font-size: 20px;
-
-        //         }
-
-        //         h2 {
-        //             font-size: 18px;
-        //             display: flex;
-        //             gap: 5px;
-
-        //             p {
-        //                 color: var(--bg-color-1);
-        //                 font-size: 20px;
-        //             }
-        //         }
-
-        //         p {
-        //             font-size: 18px;
-
-        //             span {
-        //                 font-size: 17px;
-        //             }
-        //         }
-        //     }
-
-        //     .twoGridWidthText {
-        //         width: 200px;
-        //         height: 300px;
-        //     }
-
-        //     .twoGridWidthPoster {
-        //         width: 200px;
-
-        //     }
-        // }
-
     }
 
     .twoGrid {
-        gap: 30px 30px;
-        //   display: grid;
-        //   grid-template-columns: repeat(2, auto);
-        //   justify-content: unset;
-        //   gap: 260px 20px;
-        //   padding: 150px;
+        gap: 30px 0px;
     }
 
     .changeSwiper {

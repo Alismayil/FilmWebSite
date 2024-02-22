@@ -16,6 +16,7 @@ import useLocalStorage from '../../../hook/LocalStorage/useLocalStorage';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import { userContext } from '../../../context/UserContext';
+import { PlaylistContext } from '../../../context/PlaylistContext';
 
 function AnimationCartBox() {
     const [openFiltertextBox, setOpenFilterTextBox] = useState(false);
@@ -26,6 +27,8 @@ function AnimationCartBox() {
     const [movieCard, setMovieCard] = useState([]);
     const [filterData, setFilterData] = useState([]);
     const [filterCategory, setFilterCategory] = useState("All");
+    const [selectedCategories, setSelectedCategories] = useState([]);
+    const { playlist, handleAddPlaylist } = useContext(PlaylistContext)
 
     async function getMovieCardData() {
         try {
@@ -35,6 +38,21 @@ function AnimationCartBox() {
             console.error("Error fetching movie card data:", error);
         }
     }
+    const handleCategory = (categories) => {
+        if (selectedCategories.includes(categories)) {
+            setSelectedCategories(selectedCategories.filter((selected) => selected !== categories));
+        } else {
+            setSelectedCategories([...selectedCategories, categories]);
+        }
+    };
+    const filterByCategory = (movie) => {
+        return (
+            selectedCategories.length === 0 ||
+            movie.categories.some((cat) => selectedCategories.includes(cat.category))
+        );
+    };
+
+
 
     function handleChangeTwoGrid() {
         setChangeTwoGrid(!changeTwoGrid);
@@ -54,23 +72,7 @@ function AnimationCartBox() {
         getMovieCardData();
     }, []);
 
-    const handleCategoryFilter = (e) => {
-        const selectedValue = e.target.value;
 
-        if (!filterData.includes(selectedValue)) {
-            setFilterData([...filterData, selectedValue]);
-            setFilterCategory(selectedValue);
-        } else {
-            const updatedFilterData = filterData.filter((x) => x !== selectedValue);
-            setFilterData(updatedFilterData);
-
-            if (updatedFilterData.length === 0) {
-                setFilterCategory("All");
-            } else {
-                setFilterCategory(updatedFilterData[updatedFilterData.length - 1]);
-            }
-        }
-    };
 
     return (
         <section id='animationCartBox'>
@@ -90,44 +92,98 @@ function AnimationCartBox() {
                     </div>
                 </div>
             </div>
-            
+
             <div className={`middleBox ${openFiltertextBox ? 'open' : ''}`}>
                 <div className="filterTextBox">
                     <div className="filmTypeBox">
                         <form action="">
-                            <input type="checkbox" id="comedyCheckbox" />
+                            <input
+                                type="checkbox"
+                                id="comedyCheckbox"
+                                onChange={() => handleCategory("Comedy")}
+                                checked={selectedCategories.includes("Comedy")}
+                                value={'Comedy'}
+                            />
                             <label htmlFor="comedyCheckbox">{t("Comedy")}</label>
                         </form>
                         <form action="">
-                            <input type="checkbox" id="horrorCheckbox" />
+                            <input
+                                type="checkbox"
+                                id="horrorCheckbox"
+                                onChange={() => handleCategory("Horror")}
+                                checked={selectedCategories.includes("Horror")}
+                                value={'Horror'}
+                            />
                             <label htmlFor="horrorCheckbox">{t("Horror")}</label>
                         </form>
                         <form action="">
-                            <input type="checkbox" id="actionCheckbox" />
+                            <input
+                                type="checkbox"
+                                id="actionCheckbox"
+                                onChange={() => handleCategory("Action")}
+                                checked={selectedCategories.includes("Action")}
+                                value={'Action'}
+                            />
                             <label htmlFor="actionCheckbox">{t("Action")}</label>
                         </form>
                         <form action="">
-                            <input type="checkbox" id="dramaCheckbox" />
+                            <input
+                                type="checkbox"
+                                id="dramaCheckbox"
+                                onChange={() => handleCategory("Drama")}
+                                checked={selectedCategories.includes("Drama")}
+                                value={'Drama'}
+                            />
                             <label htmlFor="dramaCheckbox">{t("Drama")}</label>
                         </form>
                         <form action="">
-                            <input type="checkbox" id="romanticCheckbox" />
+                            <input
+                                type="checkbox"
+                                id="romanticCheckbox"
+                                onChange={() => handleCategory("Romantic")}
+                                checked={selectedCategories.includes("Romantic")}
+                                value={'Romantic'}
+                            />
                             <label htmlFor="romanticCheckbox">{t("Romantic")}</label>
                         </form>
                         <form action="">
-                            <input type="checkbox" id="adventureCheckbox" />
+                            <input
+                                type="checkbox"
+                                id="adventureCheckbox"
+                                onChange={() => handleCategory("Adventure")}
+                                checked={selectedCategories.includes("Adventure")}
+                                value={'Adventure'}
+                            />
                             <label htmlFor="adventureCheckbox">{t("Adventure")}</label>
                         </form>
                         <form action="">
-                            <input type="checkbox" id="fantasyCheckbox" />
+                            <input
+                                type="checkbox"
+                                id="fantasyCheckbox"
+                                onChange={() => handleCategory("Fantasy")}
+                                checked={selectedCategories.includes("Fantasy")}
+                                value={'Fantasy'}
+                            />
                             <label htmlFor="fantasyCheckbox">{t("Fantasy")}</label>
                         </form>
                         <form action="">
-                            <input type="checkbox" id="sportsCheckbox" />
+                            <input
+                                type="checkbox"
+                                id="sportsCheckbox"
+                                onChange={() => handleCategory("Sports")}
+                                checked={selectedCategories.includes("Sports")}
+                                value={'Sports'}
+                            />
                             <label htmlFor="sportsCheckbox">{t("Sports")}</label>
                         </form>
                         <form action="">
-                            <input type="checkbox" id="musicalCheckbox" />
+                            <input
+                                type="checkbox"
+                                id="musicalCheckbox"
+                                onChange={() => handleCategory("Musical")}
+                                checked={selectedCategories.includes("Musical")}
+                                value={'Musical'}
+                            />
                             <label htmlFor="musicalCheckbox">{t("Musical")}</label>
                         </form>
                     </div>
@@ -137,51 +193,46 @@ function AnimationCartBox() {
                 {movieCard && movieCard
                     .filter((x) => x.name.toLowerCase().includes(search.toLowerCase()))
                     .filter((item) => filterCategory === "All" || filterData.includes(item.movietype))
+                    .filter(filterByCategory)
                     .map((item) => (
                         <>
-                        {item.movietype=== "Animation" ?
-                        <>
-<Swiper
-                            effect={'flip'}
-                            grabCursor={true}
-                            loop={true}
-                            speed={900}
-                            modules={[EffectFlip, Autoplay]}
-                            className={`mySwiper ${changeTwoGrid ? 'changeSwiper' : ""}`}
-                            key={item._id}
-                        >
-                            <SwiperSlide>
-                                <div data-aos="flip-left" className={`posterBox ${changeTwoGrid ? 'twoGridWidthPoster' : ""}`} >
-                                    <img src={item.cartposterimage} alt="" />
-                                    <div className="changeBox">
-                                        <MdOutlineChangeCircle />
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className={`textBox ${changeTwoGrid ? 'twoGridWidthText' : ""}`} style={{ backgroundImage: `url(${item.moviegif})` }}>
-                                    <div className="frontBox"></div>
-                                    <div className="text">
-                                        <h1>{item.name}</h1>
-                                        <span>{item.writter}</span>
-                                        <p>{t("Time")}: <span>{convertMinuteToHour(item.hourtime)}</span></p>
-                                        <Link to={user ? `/watch/${item._id}` : "/login"}>
-                                            <div className="playBtn">
-                                                <FaPlay />
+                            {item.movietype === "Animation" ?
+                                <>
+                                           <div className="flipContainer">
+                                        <div className={`card ${changeTwoGrid ? 'changeSwiper' : ""} `} >
+                                            <div className={`frontSide ${changeTwoGrid ? 'changeSwiper' : ""}`}>
+                                                <img src={item.cartposterimage} alt="" />
+                                                <div className="changeBox">
+                                                    <MdOutlineChangeCircle />
+                                                </div>
                                             </div>
-                                        </Link>
-                                        <div className="playlistBox">
-                                            <MdPlaylistAdd />
+                                            <div className={`backSide ${changeTwoGrid ? 'changeSwiper' : ""}`} style={{ backgroundImage: `url(${item.moviegif})` }}>
+                                                <div className="frontBox"></div>
+                                                <div className="text">
+                                                    <h1 className={`${changeTwoGrid ? 'textSmall' : ""}`}>{item.name}</h1>
+                                                    <span>{item.writter}</span>
+                                                    <h2>{t("Type")} / <p>{item.movietype}</p></h2>
+                                                    <p>{t("Time")}: <span>{convertMinuteToHour(item.hourtime)}</span></p>
+                                                    <Link to={user ? `/watch/${item._id}` : "/login"}>
+                                                        <div className="playBtn">
+                                                            <FaPlay />
+                                                        </div>
+                                                    </Link>
+                                                    <Link style={{ color: 'var(--mode-color-1)' }} to={user ? "" : "/login"}>
+                                                        <div className="playlistBox" onClick={() => handleAddPlaylist(item._id)} >
+                                                            {playlist.find((x) => item._id === x.product._id) ? <CgPlayListCheck style={{ color: "var(--bg-color-1" }} /> : <MdPlaylistAdd />}
+                                                        </div>
+                                                    </Link>
+
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </SwiperSlide>
-                        </Swiper>
 
 
-                        </>
-                        
-                        :""}
+                                </>
+
+                                : ""}
                         </>
                     ))
                 }
