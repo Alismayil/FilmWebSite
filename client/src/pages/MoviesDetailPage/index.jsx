@@ -34,8 +34,6 @@ function MoviesDetailPage({ setloading, loading }) {
   const { currentUser } = useContext(PriceTypeContext)
   const mediaDisplay = windowWidth <= 720 ? "none" : ''
 
-  console.log("user.movieType", currentUser.stripe);
-  console.log("user", currentUser);
 
 
 

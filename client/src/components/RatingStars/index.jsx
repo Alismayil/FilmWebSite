@@ -58,9 +58,7 @@ const Star = ({ selected, onSelect }) => {
 const StarRating = ({ movieId, Film }) => {
   const { user } = useContext(userContext)
 
-  const [selectedStar, setSelectedStar] = useState(
-    localStorage.getItem(`selectedStar-${Film._id}`) || null
-  );
+  const [selectedStar, setSelectedStar] = useState(null);
 
   const handleStarSelect = async (index, rating, product) => {
     if (selectedStar === null) {
@@ -74,11 +72,11 @@ const StarRating = ({ movieId, Film }) => {
     })
   };
 
-  useEffect(() => {
-    if (selectedStar !== null) {
-      localStorage.setItem(`selectedStar-${movieId}`, selectedStar);
-    }
-  }, [selectedStar, movieId]);
+  // useEffect(() => {
+  //   if (selectedStar !== null) {
+  //     localStorage.setItem(`selectedStar-${movieId}`, selectedStar);
+  //   }
+  // }, [selectedStar, movieId]);
 
   return (
     <div>
