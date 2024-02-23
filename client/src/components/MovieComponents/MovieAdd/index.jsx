@@ -76,7 +76,7 @@ function MovieAdd() {
                             filmvideo: Yup.mixed().required('Required'),
                             playlistImage: Yup.mixed().required('Required'),
                             movietype: Yup.string().required('Required'),
-                            categories: Yup.string().required('Required'),
+                            categories: Yup.array().required('Required'),
                         })}
                         onSubmit={(values, { setSubmitting }) => {
                             try {
@@ -96,19 +96,26 @@ function MovieAdd() {
                                 formData.append('trailer', values.trailer);
                                 formData.append('movietype', values.movietype);
 
-                                // Assuming you have a category array in values
                                 values.categories.forEach((categoryId, index) => {
-                                    formData.append(`category[${index}]`, categoryId);
+                                    formData.append(`categories[${index}]`, categoryId);
                                 });
 
-                                axios.post("http://localhost:3000/moviecart", formData, {
+                                console.log("values:", values);
+                                console.log("formData:", formData);
+
+                                axios.post("http://localhost:3000/moviecart", values, {
                                     headers: {
                                         'Content-Type': 'multipart/form-data',
                                     },
+                                }).then(response => {
+                                    console.log('Movie added successfully:', response.data);
+                                    alert("Movie added successfully!");
+                                    setSubmitting(false);
+                                }).catch(error => {
+                                    console.error('Error adding movie:', error);
+                                    alert(error.message);
+                                    setSubmitting(false);
                                 });
-
-                                alert("Movie added successfully!");
-                                setSubmitting(false);
                             } catch (error) {
                                 console.error('Error adding movie:', error);
                                 alert("Failed to add movie!");
@@ -118,27 +125,95 @@ function MovieAdd() {
                     >
                         <Form style={{ display: 'flex', flexDirection: "column" }}>
                             <label htmlFor="cartposterimage">Cart Poster Image:</label>
-                            <Field name="cartposterimage" type="file" />
+                            <Field name="cartposterimage" type="file" >
+                                {({ field, form }) => (
+                                    <input
+                                        id="cartposterimage"
+                                        name="cartposterimage"
+                                        type="file"
+                                        onChange={(event) => {
+                                            form.setFieldValue('cartposterimage', event.currentTarget.files[0]);
+                                        }}
+                                    />
+                                )}
+
+                            </Field>
                             <ErrorMessage name="cartposterimage" component="div" />
 
+
                             <label htmlFor="moviegif">Movie Gif:</label>
-                            <Field name="moviegif" type="file" />
+                            <Field name="moviegif" type="file" >
+                                {({ field, form }) => (
+                                    <input
+                                        id="moviegif"
+                                        name="moviegif"
+                                        type="file"
+                                        onChange={(event) => {
+                                            form.setFieldValue('moviegif', event.currentTarget.files[0]);
+                                        }}
+                                    />
+                                )}
+                            </Field>
                             <ErrorMessage name="moviegif" component="div" />
 
                             <label htmlFor="popularcartimage">Popular Cart Image:</label>
-                            <Field name="popularcartimage" type="file" />
+                            <Field name="popularcartimage" type="file" >
+                                {({ field, form }) => (
+                                    <input
+                                        id="popularcartimage"
+                                        name="popularcartimage"
+                                        type="file"
+                                        onChange={(event) => {
+                                            form.setFieldValue('popularcartimage', event.currentTarget.files[0]);
+                                        }}
+                                    />
+                                )}
+                            </Field>
                             <ErrorMessage name="popularcartimage" component="div" />
 
                             <label htmlFor="detailbigimage">Detail Header Image:</label>
-                            <Field name="detailbigimage" type="file" />
+                            <Field name="detailbigimage" type="file" >
+                                {({ field, form }) => (
+                                    <input
+                                        id="detailbigimage"
+                                        name="detailbigimage"
+                                        type="file"
+                                        onChange={(event) => {
+                                            form.setFieldValue('detailbigimage', event.currentTarget.files[0]);
+                                        }}
+                                    />
+                                )}
+                            </Field>
                             <ErrorMessage name="detailbigimage" component="div" />
 
                             <label htmlFor="filmvideo">Film:</label>
-                            <Field name="filmvideo" type="file" />
+                            <Field name="filmvideo" type="file" >
+                                {({ field, form }) => (
+                                    <input
+                                        id="filmvideo"
+                                        name="filmvideo"
+                                        type="file"
+                                        onChange={(event) => {
+                                            form.setFieldValue('filmvideo', event.currentTarget.files[0]);
+                                        }}
+                                    />
+                                )}
+                            </Field>
                             <ErrorMessage name="filmvideo" component="div" />
 
                             <label htmlFor="playlistImage">Playlist Image:</label>
-                            <Field name="playlistImage" type="file" />
+                            <Field name="playlistImage" type="file" >
+                                {({ field, form }) => (
+                                    <input
+                                        id="playlistImage"
+                                        name="playlistImage"
+                                        type="file"
+                                        onChange={(event) => {
+                                            form.setFieldValue('playlistImage', event.currentTarget.files[0]);
+                                        }}
+                                    />
+                                )}
+                            </Field>
                             <ErrorMessage name="playlistImage" component="div" />
 
                             <label htmlFor="name">Name:</label>
@@ -173,12 +248,16 @@ function MovieAdd() {
                             <Field name="movietype" type="text" />
                             <ErrorMessage name="movietype" component="div" />
 
-                            {/* Assuming categories is an array */}
                             <Field as="select" name="categories" multiple>
                                 <option value="Comedy">Comedy</option>
                                 <option value="Horror">Horror</option>
                                 <option value="Action">Action</option>
-                                {/* Other options */}
+                                <option value="Drama">Drama</option>
+                                <option value="Romantic">Romantic</option>
+                                <option value="Adventure">Adventure</option>
+                                <option value="Fantasy">Fantasy</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Musical">Musical</option>
                             </Field>
 
                             <button type="submit">Submit</button>

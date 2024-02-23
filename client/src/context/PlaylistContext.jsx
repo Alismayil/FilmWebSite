@@ -10,6 +10,7 @@ export const PlaylistContext = createContext();
 
 function PlaylistProvider({ children }) {
     const [playlist, setPlaylist] = useState([]);
+    console.log("playlist:", playlist);
     const token = getCookie("token");
     const decoded = token && jwtDecode(token);
     const [clickCount, setClickCount] = useState(0);

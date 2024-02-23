@@ -7,7 +7,11 @@
 //   @include MyFlex();
 .moviesDetailPage {
     position: relative;
-
+    .loadBox{
+        height: 82vh;
+        @include MyFlex();
+        background: var(--mode-color-1);
+    }
     .movieWatchBox {
         position: fixed;
         top: 0px;
@@ -24,17 +28,6 @@
             .reklamShow{
               display: none;
             }
- 
-                // .boxxxxx{
-                //     background: red;
-                //     width: 100px;
-                //     height: 100px;
-                //     position: absolute;
-                //     bottom: 0px;
-                //     right: 10px;
-                //     z-index: 6;
-                // }
-         
         }
 
         .closeBtn {
@@ -82,15 +75,14 @@
 
         .trailerBox {
             position: absolute;
-            top: 180px;
+            top: 60px;
             right: 30px;
-            height: 40%;
-            width: 40%;
+            height: 80%;
+            width: 35%;
             border-radius: 7px;
             @include MyFlex();
             overflow: hidden;
             display: none;
-
             iframe {
                 width: 100%;
                 height: 100%;
@@ -347,6 +339,7 @@
     }
 
 }
+
 
 @media only screen and (max-width: 684px) {
     .moviesDetailPage {
