@@ -234,7 +234,8 @@ function MoviesDetailPage({ setloading, loading }) {
                         {t("Trailer")}
                       </div>
                     </div>
-                    <div className="seriesBox" onClick={handleOpenSeriesBox}>
+                      <StarRating filmİD={movieCartDetail.moviepoint} Film={movieCartDetail} />
+                    {/* <div className="seriesBox" onClick={handleOpenSeriesBox}>
                       <p>{t("AllSeries")}</p>
                       <>{openSeriesBox ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}</>
                       <div className={`openSeriesBox ${openSeriesBox ? "openBox" : ""}`}>
@@ -245,7 +246,6 @@ function MoviesDetailPage({ setloading, loading }) {
                     </div>
                     <div className="commentBox">
                       <span>{t("Comment")}</span>
-                      <StarRating filmİD={movieCartDetail.moviepoint} Film={movieCartDetail} />
                       <form action="">
                         <input type="text" placeholder={`${t("YourComment")}`} />
                         <button><p>{t("CommentBtn")}</p>
@@ -257,7 +257,7 @@ function MoviesDetailPage({ setloading, loading }) {
                       <div className="sendCommentBox">
                         her neyse comment
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </>
               ) : ''}

@@ -28,9 +28,9 @@ function PlaylistProvider({ children }) {
             }
             await fetchAllPlaylist();
         } catch (error) {
-            console.error("Error adding playlist:", error);
-            // toast.error(t("PlaylistError"));
-            toast.error(error.message);
+            // console.error("Error adding playlist:", error);
+            toast.error(t("PlaylistError"));
+            // toast.error(error.message);
         }
     }
 
@@ -54,7 +54,7 @@ function PlaylistProvider({ children }) {
                 setPlaylist(res.data);
             } catch (error) {
                 console.error("Error fetching playlists:", error);
-                toast.error(t("PlaylistFetchError"));
+                // toast.error(t("PlaylistFetchError"));
             }
         }
     }

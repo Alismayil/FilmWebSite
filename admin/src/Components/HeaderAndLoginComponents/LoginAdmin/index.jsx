@@ -16,31 +16,6 @@ function LoginAdmin() {
     const [openForm, setopenForm] = useState(false)
     const { t, i18n } = useTranslation();
 
-
-    const AddTeam = () => {
-      async function addTeam(values) {
-        try {
-          const formData = new FormData();
-          formData.append("title", values.title);
-          formData.append("position", values.position);
-          formData.append("image", values.image);
-    
-          const res = await axios.post("http://localhost:5000/team", formData, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          });
-    
-          // Handle response if needed
-          console.log(res.data);
-          toast.success("Successfully added!");
-        } catch (error) {
-          console.error("Error adding Spa Category:", error);
-          toast.error("Failed to add Spa Category");
-        }
-      }
-
-    }
     function handleOpenform() {
       setopenForm(!openForm)
     }

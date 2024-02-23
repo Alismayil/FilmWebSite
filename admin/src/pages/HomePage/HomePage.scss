@@ -1,0 +1,15 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+//   @include MyFlex();
+
+#adminHomePage{
+    background: var(--mode-color-2);
+    // height: 100vh;
+    width: 100%;
+    // padding: 50px 0px;
+    display: flex;
+}

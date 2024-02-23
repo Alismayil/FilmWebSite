@@ -37,7 +37,6 @@ function RegisterPage({ leftBox, setleftBox }) {
   async function handleSubmitRegister(e) {
     e.preventDefault();
     if (userName.length === 0 || password.length === 0) {
-      // alert('imput must not be empty')
       return
     }
     try {
