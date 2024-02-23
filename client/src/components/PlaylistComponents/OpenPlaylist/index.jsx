@@ -7,12 +7,13 @@ import { useTranslation } from 'react-i18next';
 import { PlaylistContext } from '../../../context/PlaylistContext';
 import { userContext } from '../../../context/UserContext';
 import { MdPlaylistRemove } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 function OpenPlaylist() {
     const { t, i18n } = useTranslation();
     const { playlist, fetchAllPlaylist, handleDeletePlaylist } = useContext(PlaylistContext)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    const mediaWidth = windowWidth <= 569 ? "70vw":'28vw'
+    const mediaWidth = windowWidth <= 569 ? "70vw" : '28vw'
 
     useEffect(() => {
         fetchAllPlaylist()
@@ -20,17 +21,17 @@ function OpenPlaylist() {
 
     useEffect(() => {
         const handleResize = () => {
-          setWindowWidth(window.innerWidth);
+            setWindowWidth(window.innerWidth);
         };
-    
-        window.addEventListener('resize', handleResize);
-    
-        return () => {
-          window.removeEventListener('resize', handleResize);
-        };
-      }, []);
 
-      
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+
     return (
         <section id='openPlaylist'>
             <div className="backPage">
@@ -66,8 +67,8 @@ function OpenPlaylist() {
             <div className="frontPage">
 
                 <Swiper
-                    style={playlist.length === 1 ? { width: '30vw', width:mediaWidth}
-                       : playlist.length === 2 ? { width: '65vw' } : playlist.length === 3 ? { width: '95vw' } : { width: '110vw' }}
+                    style={playlist.length === 1 ? { width: '30vw', width: mediaWidth }
+                        : playlist.length === 2 ? { width: '65vw' } : playlist.length === 3 ? { width: '95vw' } : { width: '110vw' }}
                     slidesPerView={playlist.length === 1 ? 1 : playlist.length === 2 ? 2 : playlist.length === 3 ? 3 : 4}
                     spaceBetween={30}
                     loop={true}
@@ -186,7 +187,9 @@ function OpenPlaylist() {
                                     </div>
                                     <div className="imgHoverBox"></div>
                                     <div className="imgBox">
-                                        <img src={item.product.playlistImage} alt="" />
+                                        <Link to={`/watch/${item.product._id}`}>
+                                            <img src={item.product.playlistImage} alt="" />
+                                        </Link>
 
                                     </div>
                                 </div>
