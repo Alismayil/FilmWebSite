@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './InformAdmin.scss'
 import { FaRegEdit } from "react-icons/fa";
 import { useState } from 'react';
@@ -9,11 +9,15 @@ import { useTranslation } from 'react-i18next';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import toast, { Toaster } from 'react-hot-toast';
+import { AiOutlineDelete } from "react-icons/ai";
+import { userContext } from '../../../context/UserContext';
 
 function InformAdmin() {
     const [inform, setInform] = useState([])
     const [openForm, setopenForm] = useState(false)
     const { t, i18n } = useTranslation();
+    const { token } = useContext(userContext)
 
     const VisuallyHiddenInput = styled('input')({
         clip: 'rect(0 0 0 0)',
@@ -36,6 +40,20 @@ function InformAdmin() {
         setInform(res.data)
     }
 
+    async function handleDelete(id, token) {
+        try {
+            await axios.delete(`http://localhost:3000/aboutinformsection/${id}`, {
+                headers: {
+                    Authorization: token
+                }
+            });
+            toast.success(`İnform Deleted`)
+            getHeaderData()
+        } catch (error) {
+            console.error("Error deleting user:", error);
+        }
+    }
+
     useEffect(() => {
         getInformData()
     }, [])
@@ -49,7 +67,7 @@ function InformAdmin() {
                     <th>{t("Comment")}</th>
                     <th>{t("Says")}</th>
                     <th>{t("Job")}</th>
-                    <th>{t("Edit")}</th>
+                    <th>Delete</th>
                 </tr>
                 {
                     inform && inform.map((inform) => (
@@ -60,7 +78,9 @@ function InformAdmin() {
                             <td><p>{inform.comment}</p></td>
                             <td><p>{inform.says}</p></td>
                             <td><p>{inform.job}</p></td>
-                            <td><span onClick={handleOpenform}><FaRegEdit /></span></td>
+                            <td>
+                            <button className='deleteBtn' onClick={() => handleDelete(item._id, token)}><AiOutlineDelete /></button>
+                                </td>
                         </tr>
                     ))
                 }

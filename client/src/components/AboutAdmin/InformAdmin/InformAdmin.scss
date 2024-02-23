@@ -47,6 +47,18 @@ background: var(--mode-color-2);
                 overflow: hidden;
                 padding: 0px 10px;
                 color: var(--mode-color-3);
+
+                button {
+                    height: 40px;
+                    width: 40px;
+                    font-size: 25px;
+                    border-radius: 7px;
+                    @include MyFlex();
+                    cursor: pointer;
+                    background-color: transparent;
+                    border: none;
+                    color: red;
+                }   
                 p {
                     text-overflow: ellipsis;
                     overflow: hidden;

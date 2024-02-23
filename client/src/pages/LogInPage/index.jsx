@@ -161,7 +161,7 @@ function LogInPage({ setloading, loading }) {
                       </div>
                     </div>
                     <button type="submit"><p>{t("LoginBtn")}</p><div className="line"></div></button>
-                    <div className="googleBox">
+                    <div className="googleBox" style={{display:'none'}}> 
                       <div className="image">
                         <FcGoogle />
                       </div>

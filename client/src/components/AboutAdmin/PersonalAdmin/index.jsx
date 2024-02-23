@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './PersonalAdmin.scss'
 import { useState } from 'react'
 import { useEffect } from 'react'
@@ -9,11 +9,15 @@ import { useTranslation } from 'react-i18next';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import toast, { Toaster } from 'react-hot-toast';
+import { AiOutlineDelete } from "react-icons/ai";
+import { userContext } from '../../../context/UserContext'
 
 function PersonalAdmin() {
   const [personal, setPersonal] = useState([])
   const [openForm, setopenForm] = useState(false)
   const { t, i18n } = useTranslation();
+  const { token } = useContext(userContext)
 
   const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -35,6 +39,20 @@ function PersonalAdmin() {
     setPersonal(res.data)
   }
 
+  async function handleDelete(id, token) {
+    try {
+        await axios.delete(`http://localhost:3000/personal/${id}`, {
+            headers: {
+                Authorization: token
+            }
+        });
+        toast.success(`User Deleted`)
+        getHeaderData()
+    } catch (error) {
+        console.error("Error deleting user:", error);
+    }
+}
+
   useEffect(() => {
     getPersonalData()
   }, [])
@@ -46,7 +64,7 @@ function PersonalAdmin() {
           <th style={{ width: "200px" }}>{t("Image")}</th>
           <th>{t("Says")}</th>
           <th>{t("Job")}</th>
-          <th>{t("Edit")}</th>
+          <th>Delete</th>
         </tr>
         {
           personal && personal.map((personal) => (
@@ -56,7 +74,9 @@ function PersonalAdmin() {
               </td>
               <td><p>{personal.name}</p></td>
               <td><p>{personal.job}</p></td>
-              <td><span onClick={handleOpenform}><FaRegEdit /></span></td>
+              <td>
+              <button className='deleteBtn' onClick={() => handleDelete(item._id, token)}><AiOutlineDelete /></button>
+              </td>
             </tr>
           ))
         }

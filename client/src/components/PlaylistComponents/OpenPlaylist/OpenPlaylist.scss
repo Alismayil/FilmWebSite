@@ -106,7 +106,6 @@
     transform: rotate(3.2deg);
 
 
-
     .swiper {
       height: 100%;
     }
@@ -116,6 +115,7 @@
       position: relative;
       @include MyFlex();
       overflow: hidden;
+      border-radius: 7px;
 
       .closeBtn {
         width: 25px;

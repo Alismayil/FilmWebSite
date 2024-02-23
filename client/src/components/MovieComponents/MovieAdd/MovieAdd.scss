@@ -32,7 +32,10 @@
         background: var(--mode-color-7);
         padding: 30px;
         border-radius: 6px;
-
+.rightBox, .leftBox{
+    display: flex;
+    flex-direction: column;
+}
         .firstForm {
             display: flex;
             gap: 30px;
@@ -141,7 +144,6 @@
     }
 
     .firstTable {
-
         tr {
             th {
                 width: 100px;

@@ -12,16 +12,72 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 function FilmCategoryAdmin() {
     const [gif, setGif] = useState([])
-    const [openForm, setopenForm] = useState(false)
+    const [openForm, setOpenForm] = useState(false)
     const { t, i18n } = useTranslation();
+    const [seriesgif, setseriesgif] = useState(null)
+    const [animationgif, setanimationgif] = useState(null)
+    const [filmgif, setfilmgif] = useState(null)
+    const [allmoviegif, setallmoviegif] = useState(null)
 
-    function handleOpenform() {
-        setopenForm(!openForm)
+    function handleChangePutFilm(type, e) {
+        const selectedFilmCategory = e.target.files[0]
+         if (type === 'filmgif') setfilmgif(selectedFilmCategory)
+         getGifData()
+
+    }
+
+    function handleChangePutSeries(type, e) {
+        const selectedFilmCategory = e.target.files[0]
+        if (type === 'seriesgif') setseriesgif(selectedFilmCategory)
+        getGifData()
+
+    }
+
+    function handleChangePutAnimation(type, e) {
+        const selectedFilmCategory = e.target.files[0]
+         if (type === 'animationgif') setanimationgif(selectedFilmCategory)
+         getGifData()
+
+    }
+
+    function handleChangePutMovie(type, e) {
+        const selectedFilmCategory = e.target.files[0]
+        if (type === 'allmoviegif') setallmoviegif(selectedFilmCategory)
+        getGifData()
+
+    }
+
+    async function handlePutFilmCategory(id) {
+        try {
+            const formData = new FormData()
+            formData.append("seriesgif", seriesgif)
+            formData.append("animationgif", animationgif)
+            formData.append("filmgif", filmgif)
+            formData.append("allmoviegif", allmoviegif)
+
+            const res = await axios.put(`http://localhost:3000/filmcategory/${id}`, formData)
+            setseriesgif(null)
+            setanimationgif(null)
+            setfilmgif(null)
+            setanimationgif(null)
+            getGifData()
+
+        } catch (error) {
+            console.error("Error while updating film category:", error)
+        }
+    }
+
+    function handleOpenForm() {
+        setOpenForm(!openForm)
     }
 
     async function getGifData() {
-        const res = await axios.get("http://localhost:3000/filmcategory")
-        setGif(res.data)
+        try {
+            const res = await axios.get("http://localhost:3000/filmcategory")
+            setGif(res.data)
+        } catch (error) {
+            console.error("Error while fetching gif data:", error)
+        }
     }
 
     useEffect(() => {
@@ -39,99 +95,57 @@ function FilmCategoryAdmin() {
         whiteSpace: 'nowrap',
         width: 1,
     });
+
     return (
         <section id='filmCategoryAdmin'>
             <h1>{t("EditedFilmCategory")}</h1>
             <div className={`gifFormBox ${openForm ? 'openForm' : ""}`}>
-                <form action="" >
-                    <div className="closeBtn" onClick={handleOpenform}>
+                <form action="">
+                    <div className="closeBtn" onClick={handleOpenForm}>
                         <IoMdClose />
                     </div>
                     <label htmlFor="">{t("UpdateGif")}</label>
                     <label className='gifLabel' htmlFor="">{`${t("Series")} Gif...`}</label>
-                    <Button
-                    className='uploadBtn'
-                        component="label"
-                        role={undefined}
-                        variant="contained"
-                        tabIndex={-1}
-                        startIcon={<CloudUploadIcon />}
-                    >
-                        Upload file
-                        <VisuallyHiddenInput type="file" />
-                    </Button>
+                    <input type="file" onChange={(e) => handleChangePutSeries('seriesgif', e)} />
                     <label className='gifLabel' htmlFor="">{`${t("Animation")} Gif...`}</label>
-                    <Button
-                    className='uploadBtn'
-                        component="label"
-                        role={undefined}
-                        variant="contained"
-                        tabIndex={-1}
-                        startIcon={<CloudUploadIcon />}
-                    >
-                        Upload file
-                        <VisuallyHiddenInput type="file" />
-                    </Button>
+                    <input type="file" onChange={(e) => handleChangePutAnimation('animationgif', e)} />
                     <label className='gifLabel' htmlFor="">{`${t("Film")} Gif...`}</label>
-                    <Button
-                    className='uploadBtn'
-                        component="label"
-                        role={undefined}
-                        variant="contained"
-                        tabIndex={-1}
-                        startIcon={<CloudUploadIcon />}
-                    >
-                        Upload file
-                        <VisuallyHiddenInput type="file" />
-                    </Button>
+                    <input type="file" onChange={(e) => handleChangePutFilm('filmgif', e)} />
                     <label className='gifLabel' htmlFor="">{`${t("AllMovie")} Gif...`}</label>
-                    <Button
-                    className='uploadBtn'
-                        component="label"
-                        role={undefined}
-                        variant="contained"
-                        tabIndex={-1}
-                        startIcon={<CloudUploadIcon />}
-                    >
-                        Upload file
-                        <VisuallyHiddenInput type="file" />
-                    </Button>
-                    <button onClick={console.log("salam")}>{t("Add")}</button>
+                    <input type="file" onChange={(e) => handleChangePutMovie('allmoviegif', e)} />
+                    <button onClick={() => handlePutFilmCategory(gif.map(item => item._id))}>{t("Add")}</button>
                 </form>
             </div>
-            <table >
-                <tr>
-                    <th>Gif</th>
-                    <th>{t("Edit")}</th>
-                </tr>
-                {
-                    gif && gif.map((gif) => (
-                        <>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gif</th>
+                        <th>{t("Edit")}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {gif && gif.map((gifItem, index) => (
+                        <React.Fragment key={index}>
                             <tr>
-                                <td><img src={gif.seriesgif} alt="" /></td>
-                                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><FaRegEdit /></p>
+                                <td><img src={gifItem.seriesgif} alt={`${t("Series")} Gif`} /></td>
+                                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenForm}><FaRegEdit /></p>
                                     <span>{t("Series")}</span></td>
                             </tr>
                             <tr>
-                                <td><img src={gif.animationgif} alt="" /></td>
-                                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><FaRegEdit /></p> <span>{t("Animation")}</span></td>
-
+                                <td><img src={gifItem.animationgif} alt={`${t("Animation")} Gif`} /></td>
+                                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenForm}><FaRegEdit /></p> <span>{t("Animation")}</span></td>
                             </tr>
                             <tr>
-                                <td><img src={gif.filmgif} alt="" /></td>
-                                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><FaRegEdit /></p> <span>{t("Film")}</span></td>
-
+                                <td><img src={gifItem.filmgif} alt={`${t("Film")} Gif`} /></td>
+                                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenForm}><FaRegEdit /></p> <span>{t("Film")}</span></td>
                             </tr>
                             <tr>
-                                <td><img src={gif.allmoviegif} alt="" /></td>
-                                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><FaRegEdit /></p> <span>{t("AllMovie")}</span></td>
-
+                                <td><img src={gifItem.allmoviegif} alt={`${t("AllMovie")} Gif`} /></td>
+                                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenForm}><FaRegEdit /></p> <span>{t("AllMovie")}</span></td>
                             </tr>
-
-                        </>
-                    ))
-                }
-
+                        </React.Fragment>
+                    ))}
+                </tbody>
             </table>
         </section>
     )
