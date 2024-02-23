@@ -13,6 +13,34 @@ function ReklamAdmin() {
     const [reklam, setReklam] = useState([])
     const [openForm, setopenForm] = useState(false)
     const { t, i18n } = useTranslation();
+    const [image, setImage] = useState(null)
+    const [name, setName] = useState('');
+    const [writter, setWritter] = useState('');
+    const [time, setTime] = useState('');
+    const [studio, setStudio] = useState('');
+    const [directed, setDirected] = useState('');
+
+    function handelChangePut(e) {
+        const selectedReklam = e.target.files[0]
+        setImage(selectedReklam)
+    }
+
+    async function handelPutReklam(id) {
+        try {
+            const formData = new FormData()
+            formData.append("image", image)
+            formData.append("name", name)
+            formData.append("writter", writter)
+            formData.append("time", time)
+            formData.append("studio", studio)
+            formData.append("directed", directed)
+
+            const res = await axios.put(`http://localhost:3000/reklam/${id}`,formData)
+            setImage(null)
+        } catch (error) {
+
+        }
+    }
 
     function handleOpenform() {
         setopenForm(!openForm)
@@ -26,6 +54,9 @@ function ReklamAdmin() {
         getReklamData()
     }, [])
 
+
+
+
     const VisuallyHiddenInput = styled('input')({
         clip: 'rect(0 0 0 0)',
         clipPath: 'inset(50%)',
@@ -37,54 +68,56 @@ function ReklamAdmin() {
         whiteSpace: 'nowrap',
         width: 1,
     });
-
+console.log("reklam:", reklam.map(item=>item._id));
     return (
         <section id='reklamAdmin'>
-            <h1>{t("EditedReklamPoster")}</h1>
+            <h1>edit</h1>
+            {/* <h1>{t("EditedReklamPoster")}</h1> */}
             {
                 reklam && reklam.map((reklam) => (
                     <table>
                         <tr>
                             <th style={{ height: "200px", flexDirection: 'column' }}>
-                                <p>{t("Poster")}</p>
+                                {/* <p>{t("Poster")}</p> */}
                                 <img src={reklam.image} alt="" />
                             </th>
 
                         </tr>
                         <tr>
                             <th>
-                                <p>{t("Name")}:</p>
+                                {/* <p>{t("Name")}:</p> */}
                                 <span>{reklam.name}</span>
                             </th>
                         </tr>
                         <tr>
                             <th>
-                                <p>{t("Writter")}:</p>
+                                {/* <p>{t("Writter")}:</p> */}
                                 <span>{reklam.writter}</span>
                             </th>
 
                         </tr>
                         <tr>
                             <th>
-                                <p>{t("Directed")}:</p>
+                                {/* <p>{t("Directed")}:</p> */}
                                 <span>{reklam.directed}</span>
                             </th>
                         </tr>
                         <tr>
                             <th>
-                                <p>{t("Studio")}:</p>
+                                {/* <p>{t("Studio")}:</p> */}
                                 <span>{reklam.studio}</span>
                             </th>
 
                         </tr>
                         <tr>
                             <th>
-                                <p>{t("Time")}:</p>
+                                {/* <p>{t("Time")}:</p> */}
                                 <span>{reklam.time}</span>
                             </th>
 
                         </tr>
-                        <button onClick={handleOpenform}>{t("Edit")}</button>
+                        <button onClick={handleOpenform}>edit</button>
+                        {/* <button onClick={handleOpenform}>{t("Edit")}</button> */}
                     </table>
                 ))
             }
@@ -94,9 +127,11 @@ function ReklamAdmin() {
                     <div className="closeBtn" onClick={handleOpenform}>
                         <IoMdClose />
                     </div>
-                    <label htmlFor="">{t("UpdateReklam")}</label>
-                    <label htmlFor="" className='posterLabel'>{`${t("Poster")}...`}</label>
-                    <Button
+                    <label htmlFor="">update</label>
+                    {/* <label htmlFor="">{t("UpdateReklam")}</label> */}
+                    <label htmlFor="" className='posterLabel'>poster</label>
+                    {/* <label htmlFor="" className='posterLabel'>{`${t("Poster")}...`}</label> */}
+                    {/* <Button
                         className='uploadBtn'
                         component="label"
                         role={undefined}
@@ -106,13 +141,15 @@ function ReklamAdmin() {
                     >
                         Upload file
                         <VisuallyHiddenInput type="file" />
-                    </Button>
-                    <input type="text" placeholder={`${t("Name")}...`} />
-                    <input type="text" placeholder={`${t("Writter")}...`} />
-                    <input type="text" placeholder={`${t("Directed")}...`} />
-                    <input type="text" placeholder={`${t("Studio")}...`} />
-                    <input type="text" placeholder={`${t("Time")}...`} />
-                    <button>{t("Add")}</button>
+                    </Button> */}
+                    <input type="file" onChange={handelChangePut} />
+                    <input type="text" placeholder="Name..." onChange={(e) => setName(e.target.value)} />
+                    <input type="text" placeholder="Writter..." onChange={(e) => setWritter(e.target.value)} />
+                    <input type="text" placeholder="Directed..." onChange={(e) => setDirected(e.target.value)} />
+                    <input type="text" placeholder="Studio..." onChange={(e) => setStudio(e.target.value)} />
+                    <input type="text" placeholder="Time..." onChange={(e) => setTime(e.target.value)} />
+                    <button onClick={()=>handelPutReklam(reklam.map(item=>item._id))}>add</button>
+                    {/* <button onClick={handelPutReklam}>{t("Add")}</button> */}
                 </form>
             </div>
         </section>
