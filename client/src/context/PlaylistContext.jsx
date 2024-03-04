@@ -10,7 +10,6 @@ export const PlaylistContext = createContext();
 
 function PlaylistProvider({ children }) {
     const [playlist, setPlaylist] = useState([]);
-    console.log("playlist:", playlist);
     const token = getCookie("token");
     const decoded = token && jwtDecode(token);
     const [clickCount, setClickCount] = useState(0);
@@ -30,7 +29,7 @@ function PlaylistProvider({ children }) {
             await fetchAllPlaylist();
         } catch (error) {
             // console.error("Error adding playlist:", error);
-            toast.error(t("PlaylistError"));
+            toast.error("Please Login");
             // toast.error(error.message);
         }
     }
@@ -49,7 +48,6 @@ function PlaylistProvider({ children }) {
     }
 
     async function fetchAllPlaylist(id) {
-        if (decoded) {
             try {
                 const res = await axios(`http://localhost:3000/users/${user._id}/wishlist`);
                 setPlaylist(res.data);
@@ -57,7 +55,6 @@ function PlaylistProvider({ children }) {
                 console.error("Error fetching playlists:", error);
                 // toast.error(t("PlaylistFetchError"));
             }
-        }
     }
 
     useEffect(() => {

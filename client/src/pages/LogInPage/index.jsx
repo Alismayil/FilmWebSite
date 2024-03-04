@@ -17,6 +17,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import './LogInPage.scss';
 import { PlaylistContext } from '../../context/PlaylistContext';
 import Loading from '../../components/Loading';
+
 function LogInPage({ setloading, loading }) {
   const { user } = useContext(userContext);
   const [leftBox, setleftBox] = useState(false)
@@ -26,6 +27,7 @@ function LogInPage({ setloading, loading }) {
   const [showPasswordRegister, setShowPasswordRegister] = useState(false);
   const { t, i18n } = useTranslation();
   const [login, setLogin] = useState([])
+  const [load, setload] = useState(true)
 
 
 
@@ -79,6 +81,8 @@ function LogInPage({ setloading, loading }) {
   async function getLoginData() {
     const res = await axios.get("http://localhost:3000/headerandlogin")
     setLogin(res.data)
+    setload(false)
+
   }
 
   useEffect(() => {
@@ -129,13 +133,23 @@ function LogInPage({ setloading, loading }) {
             </Helmet>
             <div className="loginPage">
               <div className="loginBox">
-                {
+              {
+                load ?
+                <div className='notMeanLogin'>
+                  <div class="loader"></div>
+                </div>
+                 :
+                <>
+                  {
                   login && login.map((item) => (
                     <div className={`changeImageBox ${leftBox ? "changeBox" : ""}`}>
                       <img src={item.loginimage} alt="" />
                     </div>
                   ))
                 }
+                </>
+              }
+              
                 <RegisterPage leftBox={leftBox} setleftBox={setleftBox} />
                 <div className="loginChangeBox">
                   <h1>{t("LoginText")}</h1>

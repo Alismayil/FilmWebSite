@@ -5,14 +5,10 @@
 }
 
 //   @include MyFlex();
-    
-#adminHeaderPage{
+
+#chartPageAdmin{
     background: var(--mode-color-2);
-    // height: 110vh;
+    height: 100vh;
     width: 100%;
-    display: flex;
-    // padding: 10px 0px;
+   display: flex;
 }
-
-
-

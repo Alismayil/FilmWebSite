@@ -12,10 +12,47 @@
     height: 86vh;
     @include MyFlex();
     font-family: 'Space Grotesk', sans-serif;
-input::placeholder{
-    font-family: 'Space Grotesk', sans-serif;
 
-}
+    input::placeholder {
+        font-family: 'Space Grotesk', sans-serif;
+
+    }
+
+    .notMeanLogin {
+        background: var(--bg-color-1);
+        height: 100%;
+        width: 550px;
+        z-index: 4;
+        position: absolute;
+        @include MyFlex();
+
+        /* HTML: <div class="loader"></div> */
+        .loader {
+            width: fit-content;
+            font-weight: bold;
+            font-family: monospace;
+            font-size: 30px;
+            background: radial-gradient(circle closest-side, #000 94%, #0000) right/calc(200% - 1em) 100%;
+            animation: l24 1s infinite alternate linear;
+        }
+
+        .loader::before {
+            content: "Loading...";
+            line-height: 1em;
+            color: #0000;
+            background: inherit;
+            background-image: radial-gradient(circle closest-side, #fff 94%, #000);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        @keyframes l24 {
+            100% {
+                background-position: left
+            }
+        }
+    }
+
     .loginBox {
         height: 85%;
         width: 70%;
@@ -129,7 +166,7 @@ input::placeholder{
                         left: 120px;
                         font-size: 17px;
                         z-index: 2;
-    font-family: 'Space Grotesk', sans-serif;
+                        font-family: 'Space Grotesk', sans-serif;
 
                     }
 
@@ -209,9 +246,11 @@ input::placeholder{
             width: 400px;
             @include MyFlex();
             flex-direction: column;
-h1{
-    font-size: 20px;
-}
+
+            h1 {
+                font-size: 20px;
+            }
+
             .changeImageBox {
                 height: 52.5%;
                 width: 400px;
@@ -233,7 +272,7 @@ h1{
                 height: 51%;
             }
 
-           
+
         }
     }
 

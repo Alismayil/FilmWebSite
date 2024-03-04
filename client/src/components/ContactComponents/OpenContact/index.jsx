@@ -28,7 +28,6 @@ function OpenContact() {
     }
 
     emailjs.send(serviceId, templateId, templateParams, publicKey).then((response) => {
-      console.log("Email Send Success", response);
       setName('')
       setEmail('')
       setMessage('')

@@ -60,7 +60,6 @@ app.post("/payment", async (req, res) => {
     });
     status = 'success';
   } catch (error) {
-    console.log(error);
     status = 'Failure';
   }
   res.json({ error, status });

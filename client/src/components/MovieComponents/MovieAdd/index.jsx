@@ -101,8 +101,6 @@ function MovieAdd() {
                                     formData.append(`categories[${index}]`, categoryId);
                                 });
 
-                                console.log("values:", values);
-                                console.log("formData:", formData);
 
                                 axios.post("http://localhost:3000/moviecart", values, {
                                     headers: {
@@ -222,38 +220,56 @@ function MovieAdd() {
 
                                 <div className="leftBox">
                                     <label htmlFor="name">Name:</label>
-                                    <Field name="name" type="text" />
+                                    <Field 
+                                    style={{borderRadius:"7px", height:"30px" , border:'1px solid black', padding:"5px", outline:"none"}}
+                                    name="name" type="text" />
                                     <ErrorMessage name="name" component="div" />
 
                                     <label htmlFor="writter">Writter:</label>
-                                    <Field name="writter" type="text" />
+                                    <Field 
+                                    style={{borderRadius:"7px", height:"30px" , border:'1px solid black', padding:"5px", outline:"none"}}
+                                    name="writter" type="text" />
                                     <ErrorMessage name="writter" component="div" />
 
                                     <label htmlFor="director">Director:</label>
-                                    <Field name="director" type="text" />
+                                    <Field 
+                                    style={{borderRadius:"7px", height:"30px" , border:'1px solid black', padding:"5px", outline:"none"}}
+                                    name="director" type="text" />
                                     <ErrorMessage name="director" component="div" />
 
                                     <label htmlFor="imdbpoint">IMDB Point:</label>
-                                    <Field name="imdbpoint" type="text" />
+                                    <Field 
+                                    style={{borderRadius:"7px", height:"30px" , border:'1px solid black', padding:"5px", outline:"none"}}
+                                    name="imdbpoint" type="text" />
                                     <ErrorMessage name="imdbpoint" component="div" />
 
                                     <label htmlFor="hourtime">Hour:</label>
-                                    <Field name="hourtime" type="number" />
+                                    <Field 
+                                    style={{borderRadius:"7px", height:"30px" , border:'1px solid black', padding:"5px", outline:"none"}}
+                                    name="hourtime" type="number" />
                                     <ErrorMessage name="hourtime" component="div" />
 
                                     <label htmlFor="daytime">Day:</label>
-                                    <Field name="daytime" type="text" />
+                                    <Field 
+                                    style={{borderRadius:"7px", height:"30px" , border:'1px solid black', padding:"5px", outline:"none"}}
+                                    name="daytime" type="text" />
                                     <ErrorMessage name="daytime" component="div" />
 
                                     <label htmlFor="trailer">Trailer:</label>
-                                    <Field name="trailer" type="text" />
+                                    <Field 
+                                    style={{borderRadius:"7px", height:"30px" , border:'1px solid black', padding:"5px", outline:"none"}}
+                                    name="trailer" type="text" />
                                     <ErrorMessage name="trailer" component="div" />
 
                                     <label htmlFor="movietype">Movie Type:</label>
-                                    <Field name="movietype" type="text" />
+                                    <Field 
+                                    style={{borderRadius:"7px", height:"30px" , border:'1px solid black', padding:"5px", outline:"none"}}
+                                    name="movietype" type="text" />
                                     <ErrorMessage name="movietype" component="div" />
 
-                                    <Field as="select" name="categories" multiple>
+                                    <Field 
+                                    style={{borderRadius:"7px", height:"25px" , border:'1px solid black', padding:"5px", outline:"none"}}
+                                    as="select" name="categories" multiple>
                                         <option value="Comedy">Comedy</option>
                                         <option value="Horror">Horror</option>
                                         <option value="Action">Action</option>

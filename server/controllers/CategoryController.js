@@ -28,7 +28,6 @@ export const DeleteCategory = async (req, res) => {
 export const PostCategory = async (req, res) => {
   try {
     const { category } = req.body;
-    console.log(category);
     const data = new Category({
         category
     })

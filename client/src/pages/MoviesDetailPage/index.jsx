@@ -228,7 +228,7 @@ function MoviesDetailPage({ setloading, loading }) {
                           {t("Trailer")}
                         </div>
                       </div>
-                      <StarRating filmİD={movieCartDetail.moviepoint} Film={movieCartDetail} />
+                      <StarRating filmİD={movieCartDetail.moviepoint} Film={movieCartDetail} GetMovieCard={getMovieCard} />
                     </div>
                   </>
                 ) : ''}

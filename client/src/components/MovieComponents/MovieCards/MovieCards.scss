@@ -252,7 +252,6 @@
                     background-repeat: no-repeat;
                     background-size: cover;
                     width: 90%;
-
                     padding: 20px;
                     height: 420px;
                     flex-direction: column;
@@ -264,10 +263,16 @@
 
                     .text {
                         z-index: 2;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        // align-items: center;
+                        width: 100%;
 
                     }
 
                     .frontBox {
+                        padding: 10px;
                         background: var(--mode-color-2);
                         height: 100%;
                         width: 100%;
@@ -304,11 +309,12 @@
                     color: var(--mode-color-1);
 
                     h1 {
-                        font-size: 50px;
+                        font-size: 40px;
                         overflow: hidden;
                         white-space: nowrap;
                         text-overflow: ellipsis;
                         color: var(--bg-color-1);
+                        width: 99%;
                     }
 
                     .textSmall {

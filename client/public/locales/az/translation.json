@@ -87,7 +87,50 @@
     "Passcannotbelessthanletters":"Parol 5 hərfdən az ola bilməz",
     "Empty":"Boşdur",
     "DeletePlaylist":"Pleylistdən Silindi",
-    "AddedPlaylist":"Pleylistə əlavə olundu"
+    "AddedPlaylist":"Pleylistə əlavə olundu",
+    "Home": "Ev",
+    "About": "Haqqımızda",
+    "Contact": "Əlaqə",
+    "Price": "Qiymət",
+    "Movie": "Film",
+    "Movies": "Filmlər",
+    "MovieCard": "Kino kartı",
+    "HeaderAndLogin":"Başlıqlar Və Giriş",
+    "Error": "Xəta",
+    "EditedFilmCategory":"Filmləri Redaktə Et ",
+    "EditedReklamPoster":"Reklamı Redaktə Et",
+    "EditedPersonal":"Heyyəti Redaktə Et",
+    "EditedInform":"Məlumatı Redaktə Et",
+    "EditedHeader":"Başlıqları Redaktə Et",
+    "EditedLogin":"Girişi Redaktə Et",
+    "Edit":"Redaktə et",
+    "Series":"Serial",
+    "Animation":"Animasiya",
+    "Film":"Film",
+    "AllMovie":"Bütün filmlər",
+    "Update":"Yenilə",
+    "Add":"Əlavə et",
+    "UpdateGif":"Gifi Yenilə",
+    "Poster":"Afişa",
+    "Name":"Ad",
+    "Writter":"Yazıçı",
+    "Directed":"Rejissor",
+    "Studio":"Studiya",
+    "Time":"Vaxt",
+    "UpdateReklam":"Reklamı yeniləyin",
+    "Image":"Şəkil",
+    "Comment":"Şərh",
+    "Says":"Söyləyən",
+    "Job":"İş",
+    "UpdateInform":"Məlumatı yeniləyin",
+    "UpdatePersonal":"Heyyəti yeniləyin",
+    "UpdateImage":"Şəkli yeniləyin",
+    "Images":"Şəkili",
+    "LogIn":"Giriş"
+
+
+
+
 
 
 

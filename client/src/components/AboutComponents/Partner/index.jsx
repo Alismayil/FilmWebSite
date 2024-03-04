@@ -77,7 +77,7 @@ function Partner() {
 					
 				</Swiper>
 			</div>
-			<div className="downSwiperBox">
+			{/* <div className="downSwiperBox">
 				<Swiper
 					slidesPerView={5}
 					spaceBetween={30}
@@ -132,7 +132,7 @@ function Partner() {
 					}
 
 				</Swiper>
-			</div>
+			</div> */}
 		</section>
 	)
 }

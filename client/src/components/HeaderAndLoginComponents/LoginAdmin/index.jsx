@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { CiEdit } from "react-icons/ci";
 
 function LoginAdmin() {
     const [header, setHeader] = useState([])
@@ -31,8 +32,6 @@ function LoginAdmin() {
             },
           });
     
-          // Handle response if needed
-          console.log(res.data);
           toast.success("Successfully added!");
         } catch (error) {
           console.error("Error adding Spa Category:", error);
@@ -88,7 +87,7 @@ function LoginAdmin() {
             <VisuallyHiddenInput type="file" />
           </Button>
       
-        <button onClick={console.log("salam")}>{t("Add")}</button>
+        <button>{t("Add")}</button>
       </form>
     </div>
     <table >
@@ -101,7 +100,7 @@ function LoginAdmin() {
           <>
             <tr>
               <td style={{width:'150px', height:"150px"}}><img src={image.loginimage}  alt="" /></td>
-              <td style={{ padding: "0px 20px", width:'80px', height:"150px" }}><p onClick={handleOpenform}><FaRegEdit /></p>
+              <td style={{ padding: "0px 20px", width:'80px', height:"150px" }}><p onClick={handleOpenform}><CiEdit /></p>
                </td>
             </tr>
           </>

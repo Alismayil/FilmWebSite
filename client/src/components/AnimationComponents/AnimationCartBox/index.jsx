@@ -1,5 +1,3 @@
-
-
 import React, { useContext, useEffect, useState } from 'react';
 import './AnimationCartBox.scss'
 import { FaPlay } from "react-icons/fa";

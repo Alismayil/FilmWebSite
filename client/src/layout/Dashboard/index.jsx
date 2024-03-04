@@ -22,25 +22,32 @@ function Dashboard() {
   }
   const navLinks = [
     {
-      title: 'Home',
+      title: 'Dashboard',
       path: '/admin',
     },
     {
-      title: 'About',
-      path: '/AdminAbout',
+      title: 'Users',
+      path: '/AdminUsers',
     },
     {
       title: 'Film',
       path: '/AdminFilm',
     },
     {
+      title: 'Home',
+      path: '/AdminHome',
+    },
+    {
+      title: 'About',
+      path: '/AdminAbout',
+    },
+ 
+    {
       title: 'Header And Login',
       path: '/AdminHeaderAndLogin',
     },
-    {
-      title: 'Users',
-      path: '/AdminUsers',
-    }
+  
+   
   ]
 
   return (

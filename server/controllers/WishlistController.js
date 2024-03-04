@@ -47,7 +47,6 @@ export const deleteDataFromWishlist = async (req, res) => {
     const userId = req.params.userId;
     const { productId } = req.body;
     const user = await Users.findById(userId).populate("wishlist.product");
-    console.log("productId:",productId);
     if (!user) {
       res.status(404).send("User Not Found");
       return;

@@ -11,7 +11,6 @@ import Loading from '../../components/Loading';
 
 function AboutPage({ setloading, loading }) {
   const location = useLocation()
-  // console.log(location.pathname);
 
   useEffect(() => {
     setTimeout(() => {

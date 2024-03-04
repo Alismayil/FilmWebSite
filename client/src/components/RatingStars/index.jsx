@@ -19,7 +19,7 @@ const Star = ({ selected, onSelect }) => {
   );
 };
 
-const StarRating = ({ Film }) => {
+const StarRating = ({ Film , GetMovieCard }) => {
   const { user } = useContext(userContext);
   const [selectedStar, setSelectedStar] = useState(null);
 
@@ -34,15 +34,14 @@ const StarRating = ({ Film }) => {
       rating: rating,
       product: product
     });
+    GetMovieCard()
   };
 
   if (Film.moviepoint.some((x) => x.rater === user._id)) {
-    // Kullanıcı zaten filme puan vermişse
     return (
-      <span style={{fontSize:'13px', color:'var(--mode-color-2)'}}>You have already rated this movie</span>
+      <span style={{fontSize:'17px', color:'var(--mode-color-2)', display:'flex', gap:'5px'}}>You have already <p style={{color:'var(--bg-color-1)'}}>rated</p> this movie</span>
     );
   } else {
-    // Kullanıcı filme puan vermemişse yıldızları göster
     return (
       <div>
         {[...Array(5)].map((_, index) => (

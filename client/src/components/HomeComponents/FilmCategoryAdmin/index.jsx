@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { CiEdit } from "react-icons/ci";
 
 function FilmCategoryAdmin() {
     const [gif, setGif] = useState([])
@@ -128,20 +129,20 @@ function FilmCategoryAdmin() {
                         <React.Fragment key={index}>
                             <tr>
                                 <td><img src={gifItem.seriesgif} alt={`${t("Series")} Gif`} /></td>
-                                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenForm}><FaRegEdit /></p>
+                                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenForm}><CiEdit /></p>
                                     <span>{t("Series")}</span></td>
                             </tr>
                             <tr>
                                 <td><img src={gifItem.animationgif} alt={`${t("Animation")} Gif`} /></td>
-                                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenForm}><FaRegEdit /></p> <span>{t("Animation")}</span></td>
+                                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenForm}><CiEdit /></p> <span>{t("Animation")}</span></td>
                             </tr>
                             <tr>
                                 <td><img src={gifItem.filmgif} alt={`${t("Film")} Gif`} /></td>
-                                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenForm}><FaRegEdit /></p> <span>{t("Film")}</span></td>
+                                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenForm}><CiEdit /></p> <span>{t("Film")}</span></td>
                             </tr>
                             <tr>
                                 <td><img src={gifItem.allmoviegif} alt={`${t("AllMovie")} Gif`} /></td>
-                                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenForm}><FaRegEdit /></p> <span>{t("AllMovie")}</span></td>
+                                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenForm}><CiEdit /></p> <span>{t("AllMovie")}</span></td>
                             </tr>
                         </React.Fragment>
                     ))}

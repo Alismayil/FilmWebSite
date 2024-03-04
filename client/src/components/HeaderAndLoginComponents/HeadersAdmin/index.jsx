@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { CiEdit } from "react-icons/ci";
 
 function HeadersAdmin() {
   const [header, setHeader] = useState([])
@@ -134,7 +135,7 @@ function HeadersAdmin() {
             <VisuallyHiddenInput type="file" />
           </Button>
 
-          <button onClick={console.log("salam")}>{t("Add")}</button>
+          <button>{t("Add")}</button>
         </form>
       </div>
       <table >
@@ -147,41 +148,41 @@ function HeadersAdmin() {
             <>
               <tr>
                 <td><img src={image.headerfromAbout} alt="" /></td>
-                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><FaRegEdit /></p>
+                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><CiEdit /></p>
                   <span>{t("About")}</span></td>
               </tr>
               <tr>
                 <td><img src={image.headerfromContact} alt="" /></td>
-                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><FaRegEdit /></p> <span>{t("Contact")}</span></td>
+                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><CiEdit /></p> <span>{t("Contact")}</span></td>
 
               </tr>
               <tr>
                 <td><img src={image.headerfromPrice} alt="" /></td>
-                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><FaRegEdit /></p> <span>{t("Price")}</span></td>
+                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><CiEdit /></p> <span>{t("Price")}</span></td>
 
               </tr>
               <tr>
                 <td><img src={image.headerfromMovie} alt="" /></td>
-                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><FaRegEdit /></p> <span>{t("Movie")}</span></td>
+                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><CiEdit /></p> <span>{t("Movie")}</span></td>
 
               </tr>
               <tr>
                 <td><img src={image.headerfromFilms} alt="" /></td>
-                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><FaRegEdit /></p> <span>{t("Film")}</span></td>
+                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><CiEdit /></p> <span>{t("Film")}</span></td>
 
               </tr>
               <tr>
                 <td><img src={image.headerfromAnimations} alt="" /></td>
-                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><FaRegEdit /></p> <span>{t("Animation")}</span></td>
+                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><CiEdit /></p> <span>{t("Animation")}</span></td>
 
               </tr>
               <tr>
                 <td><img src={image.headerfromSeries} alt="" /></td>
-                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><FaRegEdit /></p> <span>{t("Series")}</span></td>
+                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><CiEdit /></p> <span>{t("Series")}</span></td>
               </tr>
               <tr>
                 <td><video src={image.headerfromHome} autoPlay muted loop alt="" /></td>
-                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><FaRegEdit /></p> <span>{t("Series")}</span></td>
+                <td style={{ padding: "0px 20px" }}><p onClick={handleOpenform}><CiEdit /></p> <span>{t("Home")}</span></td>
               </tr>
 
 

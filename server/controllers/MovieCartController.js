@@ -100,7 +100,6 @@ export const PostMovieCart = async (req, res) => {
         playlistImageResponse,
       ] = await Promise.all(uploadPromises);
 
-      // console.log(categories);
 
       let AllCategories = [];
 
@@ -109,7 +108,6 @@ export const PostMovieCart = async (req, res) => {
         AllCategories.push(categ);
       }
 
-      // console.log(AllCategories);
 
       const newMovieCart = new MovieCart({
         name,

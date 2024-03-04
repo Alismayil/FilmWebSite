@@ -20,7 +20,6 @@ function UserProvider({ children }) {
             : null
     );
 
-    // console.log("user",user);
 
 
 

@@ -10,13 +10,13 @@ import PersonalAdmin from '../../components/AboutAdmin/PersonalAdmin'
 
 function AboutPageAdmin() {
   return (
-    <div style={{display:'flex'}}>
-    <NotMeanBoxPart2/>
-    <div id='adminAboutPage'>
-    <Dashboard/>
-      <PersonalAdmin/>
-      <InformAdmin/>
-    </div>
+    <div style={{ display: 'flex' }}>
+      <NotMeanBoxPart2 />
+      <div id='adminAboutPage'>
+        <Dashboard />
+        <PersonalAdmin />
+        <InformAdmin />
+      </div>
     </div>
   )
 }

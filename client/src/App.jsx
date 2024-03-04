@@ -29,6 +29,8 @@ import MovieCardAdmin from './pages/MovieCardAdmin';
 import UserPageAdmin from './pages/UserPageAdmin';
 import ChangeColorBox from './components/ChangeColorBox';
 import { Toaster } from 'react-hot-toast';
+import ChartAdmin from './components/ChartAdmin';
+import ChartPageAdmin from './pages/ChartPageAdmin';
 
 
 
@@ -98,19 +100,15 @@ function App() {
             <Route path="/animations" element={<AnimationsPage setloading={setloading} loading={loading} />} />
           </Route>
           <Route path="/*" element={<ErrorPage setloading={setloading} loading={loading} />} />
-          {/* <Route path="/" element={<ErrorPage setloading={setloading} loading={loading} />} />mellimnen sorus */}
-    
-          {/* <Route path="/homeadmin" element={<AdminLayOut/>} > */}
             <Route element={<PrivateRoute check={["admin"]} />}>
-              <Route path="/admin" element={<HomePageAdmin />} />
+              <Route path="/admin" element={<ChartPageAdmin />} />
+              <Route path="/AdminHome" element={<HomePageAdmin />} />
               <Route path="/AdminAbout" element={<AboutPageAdmin />} />
               <Route path="/AdminFilm" element={<MovieCardAdmin />} />
               <Route path="/AdminHeaderAndLogin" element={<HeadersAndLoginAdmin />} />
               <Route path="/AdminUsers" element={<UserPageAdmin />} />
             </Route>
          
-          {/* </Route> */}
-
 
         </Routes>
         {

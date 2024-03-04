@@ -97,7 +97,7 @@ function MovieCards() {
         }
     };
 
-  
+
 
     return (
         <section id='movieCards'>
@@ -233,47 +233,47 @@ function MovieCards() {
                 </div>
             </div>
             <div className={`downBox ${changeTwoGrid ? "twoGrid" : ""}`}>
-                {load ? 
-                <CardsLoad/>
-                :
-                movieCard
-                .filter((x) => x.name.toLowerCase().includes(search.toLowerCase()))
-                .filter((item) => filterCategory === "All" || filterData.includes(item.movietype))
-                .filter(filterByCategory)
-                .map((item) => (
-                    <>
-                        <div className="flipContainer">
-                            <div className={`card ${changeTwoGrid ? 'changeSwiper' : ""} `} >
-                                <div className={`frontSide ${changeTwoGrid ? 'changeSwiper' : ""}`}>
-                                    <img src={item.cartposterimage} alt="" />
-                                    <div className="changeBox">
-                                        <MdOutlineChangeCircle />
-                                    </div>
-                                </div>
-                                <div className={`backSide ${changeTwoGrid ? 'changeSwiper' : ""}`} style={{ backgroundImage: `url(${item.moviegif})` }}>
-                                    <div className="frontBox"></div>
-                                    <div className="text">
-                                        <h1 className={`${changeTwoGrid ? 'textSmall' : ""}`}>{item.name}</h1>
-                                        <span>{item.writter}</span>
-                                        <h2>{t("Type")} / <p>{item.movietype}</p></h2>
-                                        <p>{t("Time")}: <span>{convertMinuteToHour(item.hourtime)}</span></p>
-                                        <Link to={user ? `/watch/${item._id}` : "/login"}>
-                                            <div className="playBtn">
-                                                <FaPlay />
+                {load ?
+                    <CardsLoad />
+                    :
+                    movieCard
+                        .filter((x) => x.name.toLowerCase().includes(search.toLowerCase()))
+                        .filter((item) => filterCategory === "All" || filterData.includes(item.movietype))
+                        .filter(filterByCategory)
+                        .map((item) => (
+                            <>
+                                <div className="flipContainer">
+                                    <div className={`card ${changeTwoGrid ? 'changeSwiper' : ""} `} >
+                                        <div className={`frontSide ${changeTwoGrid ? 'changeSwiper' : ""}`}>
+                                            <img src={item.cartposterimage} alt="" />
+                                            <div className="changeBox">
+                                                <MdOutlineChangeCircle />
                                             </div>
-                                        </Link>
-                                        <Link style={{ color: 'var(--mode-color-1)' }} to={user ? "" : "/login"}>
-                                            <div className="playlistBox" onClick={() => handleAddPlaylist(item._id)} >
-                                                {playlist.find((x) => item._id === x.product._id) ? <CgPlayListCheck style={{ color: "var(--bg-color-1" }} /> : <MdPlaylistAdd />}
-                                            </div>
-                                        </Link>
+                                        </div>
+                                        <div className={`backSide ${changeTwoGrid ? 'changeSwiper' : ""}`} style={{ backgroundImage: `url(${item.moviegif})` }}>
+                                            <div className="frontBox"></div>
+                                            <div className="text">
+                                                <h1 className={`${changeTwoGrid ? 'textSmall' : ""}`}>{item.name}</h1>
+                                                <span>{item.writter}</span>
+                                                <h2>{t("Type")} / <p>{item.movietype}</p></h2>
+                                                <p>{t("Time")}: <span>{convertMinuteToHour(item.hourtime)}</span></p>
+                                                <Link to={user ? `/watch/${item._id}` : "/login"}>
+                                                    <div className="playBtn">
+                                                        <FaPlay />
+                                                    </div>
+                                                </Link>
+                                                <Link style={{ color: 'var(--mode-color-1)' }} to={user ? "" : "/login"}>
+                                                    <div className="playlistBox" onClick={() => handleAddPlaylist(item._id)} >
+                                                        {playlist.find((x) => item._id === x.product._id) ? <CgPlayListCheck style={{ color: "var(--bg-color-1" }} /> : <MdPlaylistAdd />}
+                                                    </div>
+                                                </Link>
 
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </>
-                ))
+                            </>
+                        ))
                 }
 
             </div>

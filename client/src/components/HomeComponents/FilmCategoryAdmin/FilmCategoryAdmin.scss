@@ -17,7 +17,7 @@
 
     h1 {
         font-size: 50px;
-        color: var(--mode-color-7);
+        color: var(--mode-color-1);
     }
 
     .gifFormBox {
@@ -56,11 +56,6 @@
 
             }
 
-            // .uploadBtn {
-            //     height: 40px;
-            //     font-size: 17px;
-            //     width: 200px;
-            // }
             .uploadBtn{
                 font-size: 17px;
             }
@@ -102,7 +97,8 @@
 
         tr {
             @include MyFlex();
-            gap: 10px;
+            gap: 10px ;
+            // background: red;
 
             th {
                 border: 1px solid var(--mode-color-1);
@@ -112,6 +108,7 @@
             }
 
             td {
+                margin-top: 15px;
                 border: 1px solid var(--mode-color-1);
                 border-radius: 3px;
                 overflow: hidden;
@@ -119,7 +116,6 @@
                 @include MyFlex();
                 height: 100px;
                 justify-content: space-around;
-
                 img {
                     max-width: 200px;
                 }
@@ -127,7 +123,7 @@
                 color: var(--mode-color-1);
 
                 p {
-                    font-size: 40px;
+                    font-size: 20px;
                     color: var(--mode-color-14);
                     cursor: pointer;
                 }

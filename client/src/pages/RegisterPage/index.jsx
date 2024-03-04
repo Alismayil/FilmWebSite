@@ -109,7 +109,7 @@ function RegisterPage({ leftBox, setleftBox }) {
       setToken(token);
       resetForm();
       navigate("/movies");
-      toast.success('İsdifadəçi yaradıldı 🎉');
+      toast.success('User Created 🎉');
     } catch (error) {
       // toast.error("Bütün inputları doldurun");
     } finally {

@@ -68,56 +68,55 @@ function ReklamAdmin() {
         whiteSpace: 'nowrap',
         width: 1,
     });
-console.log("reklam:", reklam.map(item=>item._id));
     return (
         <section id='reklamAdmin'>
-            <h1>edit</h1>
-            {/* <h1>{t("EditedReklamPoster")}</h1> */}
+            {/* <h1>edit</h1> */}
+            <h1>{t("EditedReklamPoster")}</h1>
             {
                 reklam && reklam.map((reklam) => (
                     <table>
                         <tr>
                             <th style={{ height: "200px", flexDirection: 'column' }}>
-                                {/* <p>{t("Poster")}</p> */}
+                                <p>{t("Poster")}</p>
                                 <img src={reklam.image} alt="" />
                             </th>
 
                         </tr>
                         <tr>
                             <th>
-                                {/* <p>{t("Name")}:</p> */}
+                                <p>{t("Name")}:</p>
                                 <span>{reklam.name}</span>
                             </th>
                         </tr>
                         <tr>
                             <th>
-                                {/* <p>{t("Writter")}:</p> */}
+                                <p>{t("Writter")}:</p>
                                 <span>{reklam.writter}</span>
                             </th>
 
                         </tr>
                         <tr>
                             <th>
-                                {/* <p>{t("Directed")}:</p> */}
+                                <p>{t("Directed")}:</p>
                                 <span>{reklam.directed}</span>
                             </th>
                         </tr>
                         <tr>
                             <th>
-                                {/* <p>{t("Studio")}:</p> */}
+                                <p>{t("Studio")}:</p>
                                 <span>{reklam.studio}</span>
                             </th>
 
                         </tr>
                         <tr>
                             <th>
-                                {/* <p>{t("Time")}:</p> */}
+                                <p>{t("Time")}:</p>
                                 <span>{reklam.time}</span>
                             </th>
 
                         </tr>
-                        <button onClick={handleOpenform}>edit</button>
-                        {/* <button onClick={handleOpenform}>{t("Edit")}</button> */}
+                        {/* <button onClick={handleOpenform}>edit</button> */}
+                        <button onClick={handleOpenform}>{t("Edit")}</button>
                     </table>
                 ))
             }
@@ -127,10 +126,10 @@ console.log("reklam:", reklam.map(item=>item._id));
                     <div className="closeBtn" onClick={handleOpenform}>
                         <IoMdClose />
                     </div>
-                    <label htmlFor="">update</label>
-                    {/* <label htmlFor="">{t("UpdateReklam")}</label> */}
-                    <label htmlFor="" className='posterLabel'>poster</label>
-                    {/* <label htmlFor="" className='posterLabel'>{`${t("Poster")}...`}</label> */}
+                    {/* <label htmlFor="">update</label> */}
+                    <label htmlFor="">{t("UpdateReklam")}</label>
+                    {/* <label htmlFor="" className='posterLabel'>poster</label> */}
+                    <label htmlFor="" className='posterLabel'>{`${t("Poster")}...`}</label>
                     {/* <Button
                         className='uploadBtn'
                         component="label"
@@ -148,7 +147,7 @@ console.log("reklam:", reklam.map(item=>item._id));
                     <input type="text" placeholder="Directed..." onChange={(e) => setDirected(e.target.value)} />
                     <input type="text" placeholder="Studio..." onChange={(e) => setStudio(e.target.value)} />
                     <input type="text" placeholder="Time..." onChange={(e) => setTime(e.target.value)} />
-                    <button onClick={()=>handelPutReklam(reklam.map(item=>item._id))}>add</button>
+                    <button onClick={()=>handelPutReklam(reklam.map(item=>item._id))}>{t("Add")}</button>
                     {/* <button onClick={handelPutReklam}>{t("Add")}</button> */}
                 </form>
             </div>
